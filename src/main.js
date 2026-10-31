@@ -59,17 +59,27 @@ function initEngineButtons(viewer) {
       document.querySelectorAll('.eng-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const eng = btn.dataset.engine;
+
+      // Hide all layer UIs first
+      ['fire-badge','fire-legend','gw-badge','gw-legend'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      document.getElementById('timeline').style.display = 'none';
+
       if (eng === '2') {
-        // Engine II — Live: show fire layer + legend
         import('./layers/fires.js').then(m => {
           m.loadFires(viewer);
           document.getElementById('fire-legend').style.display = 'flex';
+          document.getElementById('timeline').style.display = 'flex';
         });
-        setStatus('Engine II · Live');
+        setStatus('Engine II · Live Fire');
+      } else if (eng === '4') {
+        import('./layers/groundwater.js').then(m => {
+          m.loadGroundwater(viewer);
+        });
+        setStatus('Engine IV · Groundwater Depletion');
       } else {
-        // Hide fire layer UI for other engines
-        document.getElementById('fire-badge').style.display = 'none';
-        document.getElementById('fire-legend').style.display = 'none';
         setStatus('Engine ' + eng + ' — coming soon');
         setTimeout(() => setStatus('Phase 1 · Live'), 2000);
       }
@@ -177,6 +187,7 @@ function init() {
   import('./layers/fires.js').then(m => {
     m.loadFires(viewer);
     document.getElementById('fire-legend').style.display = 'flex';
+    document.getElementById('timeline').style.display = 'flex';
   });
 
   window.FALCON = { viewer, Cesium, PUNJAB };
