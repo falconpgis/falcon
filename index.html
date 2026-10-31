@@ -101,7 +101,22 @@
       border: 2px solid rgba(240,165,0,0.15); border-top-color: var(--gold);
       border-radius: 50%; animation: spin 0.75s linear infinite; margin-bottom: 16px;
     }
-    #loading .load-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+    #loading .load-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; }
+
+    #progress-wrap {
+      width: 220px; height: 2px; background: rgba(240,165,0,0.12);
+      border-radius: 2px; overflow: hidden; margin-bottom: 12px;
+    }
+    #progress-bar {
+      height: 100%; width: 0%; background: var(--gold);
+      border-radius: 2px; transition: width 0.3s ease;
+      box-shadow: 0 0 8px var(--gold-dim);
+    }
+    #load-meta {
+      display: flex; gap: 24px;
+      font-size: 10px; letter-spacing: 1px; color: rgba(160,144,112,0.5);
+      font-variant-numeric: tabular-nums;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* suppress Cesium credits */
@@ -157,6 +172,11 @@
     <div class="sub-big">Punjab Geospatial Intelligence System</div>
     <div class="spinner"></div>
     <div class="load-label" id="load-label">Loading globe…</div>
+    <div id="progress-wrap"><div id="progress-bar"></div></div>
+    <div id="load-meta">
+      <span id="load-pct">0%</span>
+      <span id="load-time">0.0s</span>
+    </div>
   </div>
 
   <script src="src/main.js"></script>

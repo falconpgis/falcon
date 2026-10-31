@@ -12,17 +12,45 @@ function setStatus(text) {
   if (el) el.textContent = text;
 }
 
+const _loadStart = Date.now();
+let _timerInterval = null;
+
 function setLoadLabel(text) {
   const el = document.getElementById('load-label');
   if (el) el.textContent = text;
 }
 
+function setProgress(pct) {
+  const bar = document.getElementById('progress-bar');
+  const label = document.getElementById('load-pct');
+  if (bar) bar.style.width = pct + '%';
+  if (label) label.textContent = Math.round(pct) + '%';
+}
+
+function startTimer() {
+  const el = document.getElementById('load-time');
+  if (!el) return;
+  _timerInterval = setInterval(() => {
+    el.textContent = ((Date.now() - _loadStart) / 1000).toFixed(1) + 's';
+  }, 100);
+}
+
+function stopTimer() {
+  if (_timerInterval) { clearInterval(_timerInterval); _timerInterval = null; }
+  const el = document.getElementById('load-time');
+  if (el) el.textContent = ((Date.now() - _loadStart) / 1000).toFixed(1) + 's';
+}
+
 function hideLoading() {
-  const el = document.getElementById('loading');
-  if (el) {
-    el.classList.add('fade-out');
-    setTimeout(() => { el.style.display = 'none'; }, 650);
-  }
+  stopTimer();
+  setProgress(100);
+  setTimeout(() => {
+    const el = document.getElementById('loading');
+    if (el) {
+      el.classList.add('fade-out');
+      setTimeout(() => { el.style.display = 'none'; }, 650);
+    }
+  }, 300);
 }
 
 function initEngineButtons() {
@@ -53,6 +81,8 @@ function updateCoords(viewer) {
 }
 
 function init() {
+  startTimer();
+  setProgress(10);
   setLoadLabel('Initialising CesiumJS…');
 
   // No Cesium ion token needed — pure CDN + OSM
@@ -73,6 +103,9 @@ function init() {
     navigationHelpButton: false,
   });
 
+  setProgress(40);
+  setLoadLabel('Loading imagery…');
+
   // OSM tiles — full zoom pyramid
   viewer.imageryLayers.add(
     Cesium.ImageryLayer.fromProviderAsync(
@@ -81,6 +114,9 @@ function init() {
       })
     )
   );
+
+  setProgress(65);
+  setLoadLabel('Positioning over Punjab…');
 
   viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#0a0a0f');
   viewer.scene.skyBox.show = false;
@@ -97,6 +133,9 @@ function init() {
       roll: 0,
     },
   });
+
+  setProgress(85);
+  setLoadLabel('Rendering first frame…');
 
   // Hide loading as soon as first frame renders, or after 3s max
   const removeListener = viewer.scene.postRender.addEventListener(() => {
