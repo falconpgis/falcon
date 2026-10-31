@@ -11,13 +11,14 @@ if not MAP_KEY:
     print('ERROR: FIRMS_MAP_KEY not set', file=sys.stderr)
     sys.exit(1)
 
-# Punjab bounding box: west,south,east,north
-BOUNDS = '73.8,29.5,76.9,32.5'
-DAYS   = 2   # last 2 days to catch any overnight fires
+# Punjab bounding box
+W, S, E, N = 73.8, 29.5, 76.9, 32.5
+DAYS = 2   # last 2 days
 
+# FIRMS area API: /api/area/json/{key}/{source}/{south,west,north,east}/{days}
 url = (
     f'https://firms.modaps.eosdis.nasa.gov/api/area/json/'
-    f'{MAP_KEY}/VIIRS_SNPP_NRT/{BOUNDS}/{DAYS}'
+    f'{MAP_KEY}/VIIRS_SNPP_NRT/{S},{W},{N},{E}/{DAYS}'
 )
 
 print(f'Fetching: {url}')
@@ -68,7 +69,7 @@ geojson = {
     'metadata': {
         'generated': datetime.datetime.utcnow().isoformat() + 'Z',
         'source':    'NASA FIRMS VIIRS SNPP NRT',
-        'bounds':    BOUNDS,
+        'bounds':    f'{W},{S},{E},{N}',
         'days':      DAYS,
         'count':     len(features),
     },
