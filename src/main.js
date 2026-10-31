@@ -67,12 +67,16 @@ function initEngineButtons(viewer) {
       import('./layers/history.js').then(m => m.removeHistory(viewer));
       import('./layers/aqi.js').then(m => m.removeAQI(viewer));
       import('./layers/mandi.js').then(m => m.removeMandi(viewer));
+      import('./layers/diaspora.js').then(m => m.removeDiaspora(viewer));
+      import('./layers/prediction.js').then(m => m.removePrediction(viewer));
+      import('./layers/geopolitical.js').then(m => m.removeGeopolitical(viewer));
       if (_gwModule) _gwModule.removeGroundwater(viewer);
 
       // Hide all layer UIs
       ['fire-badge','fire-legend','gw-badge','gw-legend','timeline',
        'hist-badge','hist-legend','hist-popup','aqi-badge','aqi-legend',
-       'mandi-badge','mandi-legend'].forEach(id => {
+       'mandi-badge','mandi-legend','diaspora-badge','diaspora-legend',
+       'prediction-badge','prediction-legend','geo-badge','geo-legend','geo-popup'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });
@@ -80,6 +84,9 @@ function initEngineButtons(viewer) {
       if (eng === '1') {
         import('./layers/history.js').then(m => m.loadHistory(viewer));
         setStatus('Engine I · Sikh History');
+      } else if (eng === '3') {
+        import('./layers/geopolitical.js').then(m => m.loadGeopolitical(viewer));
+        setStatus('Engine III · Geopolitical Intelligence');
       } else if (eng === '2') {
         import('./layers/fires.js').then(m => {
           m.loadFires(viewer);
@@ -94,7 +101,17 @@ function initEngineButtons(viewer) {
           _gwModule = m;
           m.loadGroundwater(viewer);
         });
-        setStatus('Engine IV · Groundwater Depletion');
+        import('./layers/prediction.js').then(m => m.loadPrediction(viewer));
+        setStatus('Engine IV · Groundwater + Distress Index');
+      } else if (eng === '5') {
+        import('./layers/diaspora.js').then(m => m.loadDiaspora(viewer));
+        // Fly out to show global view
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(30, 25, 18000000),
+          orientation: { heading: 0, pitch: Cesium.Math.toRadians(-90), roll: 0 },
+          duration: 2,
+        });
+        setStatus('Engine V · Sikh Diaspora');
       } else {
         setStatus('Engine ' + eng + ' — coming soon');
         setTimeout(() => setStatus('Phase 1 · Live'), 2000);
