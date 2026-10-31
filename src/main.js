@@ -128,6 +128,15 @@ function init() {
     })
   );
 
+  // ESRI labels overlay — village/city/road names on top of satellite
+  viewer.imageryLayers.addImageryProvider(
+    new Cesium.UrlTemplateImageryProvider({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+      credit: new Cesium.Credit('', false),
+      maximumLevel: 19,
+    })
+  );
+
   setProgress(65);
   setLoadLabel('Positioning over Punjab…');
 
