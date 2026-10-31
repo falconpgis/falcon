@@ -1,0 +1,10 @@
+{
+  "name": "falcon-pgis",
+  "version": "0.1.0",
+  "description": "Punjab Geospatial Intelligence System — CDN build",
+  "scripts": {
+    "dev": "python -m http.server 5173",
+    "build": "echo Static build: copy to dist/ for GitHub Pages",
+    "preview": "python -m http.server 4173"
+  }
+}

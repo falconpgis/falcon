@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FALCON — Punjab Geospatial Intelligence System</title>
+
+  <!-- CesiumJS 1.120 from CDN -->
+  <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Widgets/widgets.css" />
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Cesium.js"></script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:    #f0a500;
+      --gold-dim: rgba(240,165,0,0.35);
+      --bg:      #0a0a0f;
+      --surface: rgba(10,10,18,0.82);
+      --text:    #e8e0d0;
+      --muted:   #a09070;
+      --green:   #6aaf6a;
+      --red:     #c05050;
+    }
+
+    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
+
+    /* ── Globe ─────────────────────────────────── */
+    #cesiumContainer { position: absolute; inset: 0; }
+
+    /* ── Top HUD ────────────────────────────────── */
+    #hud-top {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.88) 0%, transparent 100%);
+      pointer-events: none; z-index: 10;
+    }
+
+    #brand { display: flex; align-items: baseline; gap: 10px; }
+    #brand .logo {
+      font-size: 22px; font-weight: 700; letter-spacing: 5px;
+      color: var(--gold); text-shadow: 0 0 24px var(--gold-dim);
+    }
+    #brand .sub { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+
+    #live-badge {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; letter-spacing: 2px; color: var(--green); text-transform: uppercase;
+    }
+    #live-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+    /* ── Bottom bar ─────────────────────────────── */
+    #hud-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px;
+      background: linear-gradient(to top, rgba(10,10,15,0.75) 0%, transparent 100%);
+      pointer-events: none; z-index: 10;
+    }
+    #tagline { font-size: 10px; letter-spacing: 2px; color: rgba(160,144,112,0.55); text-transform: uppercase; }
+    #coords  { font-size: 10px; letter-spacing: 1px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* ── Engine tabs (left sidebar) ─────────────── */
+    #engines {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 6px;
+      z-index: 10;
+    }
+    .eng-btn {
+      background: var(--surface); border: 1px solid rgba(240,165,0,0.18);
+      color: var(--muted); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 8px 10px; cursor: pointer; border-radius: 3px;
+      transition: all 0.2s; writing-mode: horizontal-tb;
+      backdrop-filter: blur(6px);
+      pointer-events: all;
+    }
+    .eng-btn:hover, .eng-btn.active {
+      border-color: var(--gold); color: var(--gold); background: rgba(240,165,0,0.08);
+    }
+    .eng-btn .eng-num { display: block; font-size: 15px; font-weight: 700; color: inherit; margin-bottom: 2px; }
+
+    /* ── Loading overlay ─────────────────────────── */
+    #loading {
+      position: absolute; inset: 0; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 100; transition: opacity 0.6s;
+    }
+    #loading.fade-out { opacity: 0; pointer-events: none; }
+    #loading .logo-big {
+      font-size: 48px; font-weight: 700; letter-spacing: 10px;
+      color: var(--gold); text-shadow: 0 0 40px var(--gold-dim); margin-bottom: 8px;
+    }
+    #loading .sub-big { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 36px; }
+    #loading .spinner {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(240,165,0,0.15); border-top-color: var(--gold);
+      border-radius: 50%; animation: spin 0.75s linear infinite; margin-bottom: 16px;
+    }
+    #loading .load-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* suppress Cesium credits */
+    .cesium-widget-credits { display: none !important; }
+    .cesium-viewer-toolbar { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Globe container -->
+  <div id="cesiumContainer"></div>
+
+  <!-- Top HUD -->
+  <div id="hud-top">
+    <div id="brand">
+      <span class="logo">FALCON</span>
+      <span class="sub">Punjab Geospatial Intelligence System</span>
+    </div>
+    <div id="live-badge">
+      <span class="dot"></span>
+      <span id="status-text">Initialising</span>
+    </div>
+  </div>
+
+  <!-- Engine selector -->
+  <div id="engines">
+    <button class="eng-btn" data-engine="1" title="Historical Record">
+      <span class="eng-num">I</span>History
+    </button>
+    <button class="eng-btn active" data-engine="2" title="Present Monitoring">
+      <span class="eng-num">II</span>Live
+    </button>
+    <button class="eng-btn" data-engine="3" title="Geopolitical Intelligence">
+      <span class="eng-num">III</span>Geo
+    </button>
+    <button class="eng-btn" data-engine="4" title="Prediction & Foresight">
+      <span class="eng-num">IV</span>Future
+    </button>
+    <button class="eng-btn" data-engine="5" title="Civilisational Intelligence">
+      <span class="eng-num">V</span>Diaspora
+    </button>
+  </div>
+
+  <!-- Bottom HUD -->
+  <div id="hud-bottom">
+    <div id="tagline">Making the invisible visible — from space, across time, for everyone</div>
+    <div id="coords">ਪੰਜਾਬ · 31.0°N 75.4°E</div>
+  </div>
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <div class="logo-big">FALCON</div>
+    <div class="sub-big">Punjab Geospatial Intelligence System</div>
+    <div class="spinner"></div>
+    <div class="load-label" id="load-label">Loading globe…</div>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+</html>
