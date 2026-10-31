@@ -3,7 +3,7 @@
 const PUNJAB = {
   lon: 75.35,
   lat: 30.9,
-  alt: 480000,
+  alt: 150000,
   bounds: { west: 73.8, south: 29.5, east: 76.9, north: 32.5 },
 };
 
@@ -128,7 +128,7 @@ function init() {
     })
   );
 
-  // ESRI labels overlay — village/city/road names on top of satellite
+  // ESRI transparent labels — cities, towns, villages, roads
   viewer.imageryLayers.addImageryProvider(
     new Cesium.UrlTemplateImageryProvider({
       url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
