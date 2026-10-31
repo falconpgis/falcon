@@ -2,8 +2,8 @@
 
 const PUNJAB = {
   lon: 75.35,
-  lat: 31.0,
-  alt: 750000,
+  lat: 31.15,
+  alt: 420000,
   bounds: { west: 73.8, south: 29.5, east: 76.9, north: 32.5 },
 };
 
@@ -142,7 +142,7 @@ function init() {
     destination: Cesium.Cartesian3.fromDegrees(PUNJAB.lon, PUNJAB.lat, PUNJAB.alt),
     orientation: {
       heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-50),
+      pitch: Cesium.Math.toRadians(-55),
       roll: 0,
     },
   });
