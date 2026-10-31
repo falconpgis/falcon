@@ -58,7 +58,7 @@ export async function loadGroundwater(viewer) {
     const label = viewer.entities.add({
       position: Cesium.Cartesian3.fromDegrees(lon, lat, 1000),
       label: {
-        text: `${p.district}\n${p.depth_mbgl}m`,
+        text: `${p.block || p.district}\n${p.depth_mbgl}m`,
         font: '11px Segoe UI',
         fillColor: Cesium.Color.WHITE,
         outlineColor: Cesium.Color.BLACK,

@@ -54,20 +54,29 @@ function hideLoading() {
 }
 
 function initEngineButtons(viewer) {
+  let _gwModule = null;
+
   document.querySelectorAll('.eng-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.eng-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const eng = btn.dataset.engine;
 
-      // Hide all layer UIs first
-      ['fire-badge','fire-legend','gw-badge','gw-legend'].forEach(id => {
+      // Tear down all layers — always import cached module to call remove
+      import('./layers/fires.js').then(m => m.removeFires(viewer));
+      import('./layers/history.js').then(m => m.removeHistory(viewer));
+      if (_gwModule) _gwModule.removeGroundwater(viewer);
+
+      // Hide all layer UIs
+      ['fire-badge','fire-legend','gw-badge','gw-legend','timeline','hist-badge','hist-legend','hist-popup'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });
-      document.getElementById('timeline').style.display = 'none';
 
-      if (eng === '2') {
+      if (eng === '1') {
+        import('./layers/history.js').then(m => m.loadHistory(viewer));
+        setStatus('Engine I · Sikh History');
+      } else if (eng === '2') {
         import('./layers/fires.js').then(m => {
           m.loadFires(viewer);
           document.getElementById('fire-legend').style.display = 'flex';
@@ -76,6 +85,7 @@ function initEngineButtons(viewer) {
         setStatus('Engine II · Live Fire');
       } else if (eng === '4') {
         import('./layers/groundwater.js').then(m => {
+          _gwModule = m;
           m.loadGroundwater(viewer);
         });
         setStatus('Engine IV · Groundwater Depletion');
