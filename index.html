@@ -176,6 +176,44 @@
     /* suppress Cesium credits */
     .cesium-widget-credits { display: none !important; }
     .cesium-viewer-toolbar { display: none !important; }
+
+    /* ── Mobile responsive (≤480px) ─────────────── */
+    @media (max-width: 480px) {
+      #engines {
+        left: 8px; gap: 4px;
+      }
+      .eng-btn {
+        padding: 6px 7px; font-size: 8px;
+      }
+      .eng-btn .eng-num { font-size: 12px; }
+
+      #timeline {
+        max-width: 95vw; overflow-x: auto;
+        bottom: 32px; padding: 5px 8px;
+        /* scrollbar hidden */
+        scrollbar-width: none;
+      }
+      #timeline::-webkit-scrollbar { display: none; }
+      #tl-label { display: none; }
+
+      #tagline { display: none; }
+
+      /* badges: tighter right margin */
+      #fire-badge, #hist-badge, #geo-badge, #diaspora-badge,
+      #prediction-badge, #aqi-badge, #mandi-badge, #gw-badge {
+        right: 8px !important; max-width: calc(100vw - 80px);
+        font-size: 9px !important; padding: 4px 8px !important;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+
+      /* legends: narrower */
+      .legend-panel {
+        max-width: calc(100vw - 120px) !important;
+      }
+
+      /* trend chart */
+      #trend-chart { width: 96vw !important; max-width: 96vw !important; }
+    }
   </style>
 </head>
 <body>
@@ -291,13 +329,19 @@
   </div>
 
   <!-- Trend chart panel -->
-  <div id="trend-chart" style="display:none;position:absolute;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(10,10,18,0.92);border:1px solid rgba(240,165,0,0.2);border-radius:4px;padding:10px 14px;width:380px;max-width:90vw;z-index:15;backdrop-filter:blur(8px);pointer-events:all;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <span style="font-size:9px;letter-spacing:2px;color:#f0a500">FIRE TREND · PUNJAB</span>
-      <button onclick="toggleTrendChart()" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:12px">✕</button>
+  <div id="trend-chart" style="display:none;position:absolute;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(10,10,18,0.92);border:1px solid rgba(240,165,0,0.2);border-radius:4px;padding:10px 14px;width:400px;max-width:94vw;z-index:15;backdrop-filter:blur(8px);pointer-events:all;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="display:flex;gap:4px">
+        <button class="tc-sel active" data-ds="fires"  onclick="selectTrendDS('fires')"  style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(255,80,0,0.5);background:rgba(255,80,0,0.15);color:#ff7043">🔥 FIRES</button>
+        <button class="tc-sel"        data-ds="aqi"    onclick="selectTrendDS('aqi')"    style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">💨 AQI</button>
+        <button class="tc-sel"        data-ds="mandi"  onclick="selectTrendDS('mandi')"  style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">🌾 MANDI</button>
+      </div>
+      <button onclick="toggleTrendChart()" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:12px;padding:0">✕</button>
     </div>
-    <canvas id="trend-canvas" width="352" height="80" style="width:100%;display:block"></canvas>
+    <div id="trend-title" style="font-size:9px;letter-spacing:2px;color:#f0a500;margin-bottom:6px">FIRE HOTSPOTS · PUNJAB · LAST 30 DAYS</div>
+    <canvas id="trend-canvas" width="372" height="80" style="width:100%;display:block"></canvas>
     <div id="trend-labels" style="display:flex;justify-content:space-between;font-size:8px;color:#706050;margin-top:2px"></div>
+    <div id="trend-stat" style="font-size:9px;color:#a09070;margin-top:4px;text-align:right"></div>
   </div>
 
   <!-- Bottom HUD -->
@@ -321,41 +365,89 @@
 
   <script src="src/main.js"></script>
   <script>
+  // ── Trend chart ──────────────────────────────────────────────────────────
+  const TREND_DS = {
+    fires: {
+      url:   './public/data/history/fires_timeseries.json',
+      title: 'FIRE HOTSPOTS · PUNJAB · LAST 30 DAYS',
+      valFn: r => r.count,
+      unit:  'fires',
+      color: ['rgba(255,80,0,0.85)', 'rgba(255,80,0,0.15)'],
+    },
+    aqi: {
+      url:   './public/data/history/aqi_timeseries.json',
+      title: 'AQI TREND · PUNJAB · LAST 30 DAYS',
+      // aqi timeseries stores {date, stations:{city:val,...}} — take avg
+      valFn: r => {
+        if (r.avg_aqi != null) return r.avg_aqi;
+        const vals = r.stations ? Object.values(r.stations).filter(v => v > 0) : [];
+        return vals.length ? Math.round(vals.reduce((a,b)=>a+b,0)/vals.length) : 0;
+      },
+      unit:  'avg AQI',
+      color: ['rgba(100,180,255,0.85)', 'rgba(100,180,255,0.15)'],
+    },
+    mandi: {
+      url:   './public/data/history/mandi_timeseries.json',
+      title: 'WHEAT MANDI PRICE · PUNJAB · LAST 30 DAYS',
+      // mandi timeseries: {date, wheat:{avg,min,max}, paddy:{...}}
+      valFn: r => r.wheat ? r.wheat.avg || 0 : 0,
+      unit:  '₹/qtl wheat',
+      color: ['rgba(255,215,0,0.85)', 'rgba(255,215,0,0.15)'],
+    },
+  };
+
+  let _trendDS = 'fires';
+
   function toggleTrendChart() {
     const panel = document.getElementById('trend-chart');
     if (panel.style.display === 'none') {
       panel.style.display = 'block';
-      drawTrendChart();
+      drawTrendChart(_trendDS);
     } else {
       panel.style.display = 'none';
     }
   }
 
-  async function drawTrendChart() {
+  function selectTrendDS(ds) {
+    _trendDS = ds;
+    document.querySelectorAll('.tc-sel').forEach(b => {
+      const active = b.dataset.ds === ds;
+      b.style.background = active ? (ds==='fires'?'rgba(255,80,0,0.15)':ds==='aqi'?'rgba(100,180,255,0.12)':'rgba(255,215,0,0.12)') : 'none';
+      b.style.color      = active ? (ds==='fires'?'#ff7043':ds==='aqi'?'#90caf9':'#ffd54f') : '#a09070';
+      b.style.borderColor= active ? (ds==='fires'?'rgba(255,80,0,0.5)':ds==='aqi'?'rgba(100,180,255,0.4)':'rgba(255,215,0,0.4)') : 'rgba(100,100,100,0.4)';
+    });
+    drawTrendChart(ds);
+  }
+
+  async function drawTrendChart(ds) {
+    const cfg = TREND_DS[ds];
+    document.getElementById('trend-title').textContent = cfg.title;
+
     const canvas = document.getElementById('trend-canvas');
     const labelsEl = document.getElementById('trend-labels');
+    const statEl   = document.getElementById('trend-stat');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const W = canvas.width, H = canvas.height;
 
     let ts;
     try {
-      const r = await fetch('./public/data/history/fires_timeseries.json?v=' + Date.now());
+      const r = await fetch(cfg.url + '?v=' + Date.now());
       ts = await r.json();
     } catch (e) { return; }
 
-    const records = (ts.records || []).slice(-30); // last 30 days
-    if (!records.length) return;
+    const records = (ts.records || []).slice(-30);
+    if (!records.length) { ctx.clearRect(0,0,W,H); return; }
 
-    const counts = records.map(r => r.count);
-    const maxC = Math.max(...counts, 1);
-    const pad = { t: 8, r: 4, b: 4, l: 32 };
-    const cW = W - pad.l - pad.r;
-    const cH = H - pad.t - pad.b;
+    const vals = records.map(cfg.valFn);
+    const maxV = Math.max(...vals, 1);
+    const pad  = { t: 8, r: 4, b: 4, l: 36 };
+    const cW   = W - pad.l - pad.r;
+    const cH   = H - pad.t - pad.b;
 
     ctx.clearRect(0, 0, W, H);
 
-    // Grid lines
+    // Grid lines + Y labels
     ctx.strokeStyle = 'rgba(240,165,0,0.08)';
     ctx.lineWidth = 1;
     [0.25, 0.5, 0.75, 1].forEach(f => {
@@ -363,32 +455,38 @@
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
       ctx.fillStyle = 'rgba(160,144,112,0.5)';
       ctx.font = '8px Segoe UI';
-      ctx.fillText(Math.round(maxC * f), 2, y + 3);
+      ctx.fillText(Math.round(maxV * f), 2, y + 3);
     });
 
-    // Fill area
+    // Bars
     const barW = Math.max(1, cW / records.length - 1);
-    records.forEach((r, i) => {
-      const x = pad.l + i * (cW / records.length);
-      const barH = (r.count / maxC) * cH;
-      const y = pad.t + cH - barH;
+    vals.forEach((v, i) => {
+      const x    = pad.l + i * (cW / records.length);
+      const barH = (v / maxV) * cH;
+      const y    = pad.t + cH - barH;
       const grad = ctx.createLinearGradient(0, y, 0, y + barH);
-      grad.addColorStop(0, 'rgba(255,80,0,0.85)');
-      grad.addColorStop(1, 'rgba(255,80,0,0.15)');
+      grad.addColorStop(0, cfg.color[0]);
+      grad.addColorStop(1, cfg.color[1]);
       ctx.fillStyle = grad;
       ctx.fillRect(x, y, barW, barH);
     });
 
-    // Labels (show every ~5th date)
+    // X labels
     labelsEl.innerHTML = '';
     records.forEach((r, i) => {
       if (i % Math.ceil(records.length / 6) === 0 || i === records.length - 1) {
-        const d = new Date(r.date);
+        const d    = new Date(r.date);
         const span = document.createElement('span');
         span.textContent = d.getDate() + ' ' + d.toLocaleDateString('en-GB',{month:'short'});
         labelsEl.appendChild(span);
       }
     });
+
+    // Stat line
+    const nonZero = vals.filter(v => v > 0);
+    const avg = nonZero.length ? Math.round(nonZero.reduce((a,b)=>a+b,0)/nonZero.length) : 0;
+    const peak = Math.max(...vals);
+    statEl.textContent = `avg ${avg} · peak ${peak} ${cfg.unit}`;
   }
   </script>
 </body>
