@@ -64,3 +64,25 @@ out = {'type':'FeatureCollection',
 path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'public','data','punjab_aqi.json')
 with open(path,'w') as f: json.dump(out,f,separators=(',',':'))
 print(f'Saved {len(features)} stations -> {path}')
+
+# --- Append to timeseries ---
+import datetime as _dt
+today = _dt.datetime.utcnow().strftime('%Y-%m-%d')
+station_aqi = {feat['properties']['city']: feat['properties']['aqi'] for feat in features}
+record = {'date': today, 'stations': station_aqi}
+
+ts_path = os.path.join(os.path.dirname(path), 'history', 'aqi_timeseries.json')
+try:
+    with open(ts_path) as f:
+        ts = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    ts = {'source': 'CPCB SAMEER', 'unit': 'AQI', 'records': []}
+
+ts['records'] = [r for r in ts['records'] if r['date'] != today]
+ts['records'].append(record)
+ts['records'].sort(key=lambda r: r['date'])
+
+os.makedirs(os.path.dirname(ts_path), exist_ok=True)
+with open(ts_path, 'w') as f:
+    json.dump(ts, f, separators=(',', ':'))
+print(f'AQI timeseries: {len(ts["records"])} days recorded')

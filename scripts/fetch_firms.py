@@ -91,3 +91,30 @@ with open(out_path, 'w', encoding='utf-8') as fh:
     json.dump(geojson, fh, separators=(',', ':'))
 
 print(f'Saved {len(features)} features → {out_path}')
+
+# --- Append to timeseries ---
+today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+frp_vals = [f['properties']['frp'] for f in features if f['properties']['frp'] > 0]
+record = {
+    'date':     today,
+    'count':    len(features),
+    'peak_frp': round(max(frp_vals), 1) if frp_vals else 0,
+    'avg_frp':  round(sum(frp_vals) / len(frp_vals), 1) if frp_vals else 0,
+}
+
+ts_path = os.path.join(os.path.dirname(out_path), 'history', 'fires_timeseries.json')
+try:
+    with open(ts_path) as f:
+        ts = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    ts = {'source': 'NASA FIRMS VIIRS NRT', 'unit': 'count/day', 'records': []}
+
+# Replace today's record if exists, else append
+ts['records'] = [r for r in ts['records'] if r['date'] != today]
+ts['records'].append(record)
+ts['records'].sort(key=lambda r: r['date'])
+
+os.makedirs(os.path.dirname(ts_path), exist_ok=True)
+with open(ts_path, 'w') as f:
+    json.dump(ts, f, separators=(',', ':'))
+print(f'Timeseries: {len(ts["records"])} days recorded → {ts_path}')

@@ -86,3 +86,42 @@ out = {'type':'FeatureCollection',
 path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'public','data','punjab_mandi.json')
 with open(path,'w') as f: json.dump(out,f,separators=(',',':'))
 print(f'Saved {len(features)} mandis -> {path}')
+
+# --- Append to timeseries ---
+import datetime as _dt
+today = _dt.datetime.utcnow().strftime('%Y-%m-%d')
+
+# Aggregate by commodity across all mandis
+commodity_prices = {}
+for feat in features:
+    crop = feat['properties'].get('main_crop','')
+    price = feat['properties'].get('main_price', 0)
+    if not crop or not price: continue
+    if crop not in commodity_prices:
+        commodity_prices[crop] = []
+    commodity_prices[crop].append(price)
+
+record = {'date': today}
+for crop, prices in commodity_prices.items():
+    record[crop] = {
+        'avg': round(sum(prices)/len(prices)),
+        'min': min(prices),
+        'max': max(prices),
+    }
+
+ts_path = os.path.join(os.path.dirname(path), 'history', 'mandi_timeseries.json')
+try:
+    with open(ts_path) as f:
+        ts = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    ts = {'source': 'AGMARKNET', 'unit': 'Rs per quintal',
+          'msp': {'wheat': 2275, 'paddy': 2320, 'cotton': 7020}, 'records': []}
+
+ts['records'] = [r for r in ts['records'] if r['date'] != today]
+ts['records'].append(record)
+ts['records'].sort(key=lambda r: r['date'])
+
+os.makedirs(os.path.dirname(ts_path), exist_ok=True)
+with open(ts_path, 'w') as f:
+    json.dump(ts, f, separators=(',', ':'))
+print(f'Mandi timeseries: {len(ts["records"])} days recorded')
