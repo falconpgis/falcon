@@ -76,7 +76,9 @@ function initEngineButtons(viewer) {
       ['fire-badge','fire-legend','gw-badge','gw-legend','timeline',
        'hist-badge','hist-legend','hist-popup','aqi-badge','aqi-legend',
        'mandi-badge','mandi-legend','diaspora-badge','diaspora-legend',
-       'prediction-badge','prediction-legend','geo-badge','geo-legend','geo-popup'].forEach(id => {
+       'prediction-badge','prediction-legend','pred-popup',
+       'geo-badge','geo-legend','geo-popup',
+       'fire-popup','gw-popup','diaspora-popup'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });

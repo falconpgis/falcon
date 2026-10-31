@@ -1,0 +1,19 @@
+{
+  "generated": "2026-10-31T00:00:00Z",
+  "source": "RBI State Development Loans",
+  "note": "Punjab SDL yield vs 10Y G-Sec spread. Data from RBI Auction results.",
+  "latest": {
+    "date": "2026-10-15",
+    "sdl_yield_pct": 7.58,
+    "gsec_yield_pct": 6.85,
+    "spread_bps": 73,
+    "outstanding_debt_cr": 349000,
+    "fiscal_deficit_gdp_pct": 4.2
+  },
+  "history": [
+    { "date": "2026-07-01", "sdl_yield_pct": 7.42, "spread_bps": 61 },
+    { "date": "2026-08-01", "sdl_yield_pct": 7.45, "spread_bps": 63 },
+    { "date": "2026-09-01", "sdl_yield_pct": 7.51, "spread_bps": 68 },
+    { "date": "2026-10-01", "sdl_yield_pct": 7.58, "spread_bps": 73 }
+  ]
+}
