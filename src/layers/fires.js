@@ -1,7 +1,7 @@
 // FALCON — Engine II: NASA FIRMS fire layer
 // Loads public/data/punjab_fires.geojson and renders glowing hotspots
 
-const FIRE_DATA_URL = './public/data/punjab_fires.geojson';
+const FIRE_DATA_URL = './public/data/punjab_fires.geojson?v=' + Date.now();
 
 // Colour by confidence level
 const CONF_COLOR = {

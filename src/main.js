@@ -119,11 +119,11 @@ function init() {
   setProgress(40);
   setLoadLabel('Loading imagery…');
 
-  // OSM via UrlTemplateImageryProvider — synchronous, no initial network check
+  // ESRI World Imagery — free satellite, no API key
   viewer.imageryLayers.addImageryProvider(
     new Cesium.UrlTemplateImageryProvider({
-      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-      credit: new Cesium.Credit('© OpenStreetMap contributors', false),
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      credit: new Cesium.Credit('Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics', false),
       maximumLevel: 19,
     })
   );
