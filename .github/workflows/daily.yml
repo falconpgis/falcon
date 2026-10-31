@@ -1,0 +1,32 @@
+name: Daily data pipeline
+
+on:
+  schedule:
+    - cron: '30 0 * * *'   # 00:30 UTC daily
+  workflow_dispatch:         # manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch NASA FIRMS fires
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        run: python scripts/fetch_firms.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name  "FALCON Bot"
+          git config user.email "bot@falconpgis.github.io"
+          git add public/data/punjab_fires.geojson
+          git diff --staged --quiet || git commit -m "chore: daily fire data $(date -u +%Y-%m-%d)"
+          git push

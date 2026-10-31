@@ -1,4 +1,4 @@
-// FALCON Phase 0 — Base globe, Punjab camera, no token required
+// FALCON Phase 1 — Base globe + NASA FIRMS fire layer
 
 const PUNJAB = {
   lon: 75.35,
@@ -53,13 +53,26 @@ function hideLoading() {
   }, 300);
 }
 
-function initEngineButtons() {
+function initEngineButtons(viewer) {
   document.querySelectorAll('.eng-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.eng-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      setStatus('Engine ' + btn.dataset.engine + ' — coming soon');
-      setTimeout(() => setStatus('Phase 0 · Live'), 2000);
+      const eng = btn.dataset.engine;
+      if (eng === '2') {
+        // Engine II — Live: show fire layer + legend
+        import('./layers/fires.js').then(m => {
+          m.loadFires(viewer);
+          document.getElementById('fire-legend').style.display = 'flex';
+        });
+        setStatus('Engine II · Live');
+      } else {
+        // Hide fire layer UI for other engines
+        document.getElementById('fire-badge').style.display = 'none';
+        document.getElementById('fire-legend').style.display = 'none';
+        setStatus('Engine ' + eng + ' — coming soon');
+        setTimeout(() => setStatus('Phase 1 · Live'), 2000);
+      }
     });
   });
 }
@@ -141,15 +154,21 @@ function init() {
   const removeListener = viewer.scene.postRender.addEventListener(() => {
     removeListener();
     hideLoading();
-    setStatus('Phase 0 · Live');
+    setStatus('Phase 1 · Live');
   });
   setTimeout(() => {
     hideLoading();
-    setStatus('Phase 0 · Live');
+    setStatus('Phase 1 · Live');
   }, 3000);
 
-  initEngineButtons();
+  initEngineButtons(viewer);
   updateCoords(viewer);
+
+  // Auto-load Engine II (fires) on startup — it's the default active engine
+  import('./layers/fires.js').then(m => {
+    m.loadFires(viewer);
+    document.getElementById('fire-legend').style.display = 'flex';
+  });
 
   window.FALCON = { viewer, Cesium, PUNJAB };
 }
