@@ -65,10 +65,14 @@ function initEngineButtons(viewer) {
       // Tear down all layers — always import cached module to call remove
       import('./layers/fires.js').then(m => m.removeFires(viewer));
       import('./layers/history.js').then(m => m.removeHistory(viewer));
+      import('./layers/aqi.js').then(m => m.removeAQI(viewer));
+      import('./layers/mandi.js').then(m => m.removeMandi(viewer));
       if (_gwModule) _gwModule.removeGroundwater(viewer);
 
       // Hide all layer UIs
-      ['fire-badge','fire-legend','gw-badge','gw-legend','timeline','hist-badge','hist-legend','hist-popup'].forEach(id => {
+      ['fire-badge','fire-legend','gw-badge','gw-legend','timeline',
+       'hist-badge','hist-legend','hist-popup','aqi-badge','aqi-legend',
+       'mandi-badge','mandi-legend'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
       });
@@ -82,7 +86,9 @@ function initEngineButtons(viewer) {
           document.getElementById('fire-legend').style.display = 'flex';
           document.getElementById('timeline').style.display = 'flex';
         });
-        setStatus('Engine II · Live Fire');
+        import('./layers/aqi.js').then(m => m.loadAQI(viewer));
+        import('./layers/mandi.js').then(m => m.loadMandi(viewer));
+        setStatus('Engine II · Fire · AQI · Mandi');
       } else if (eng === '4') {
         import('./layers/groundwater.js').then(m => {
           _gwModule = m;
@@ -193,12 +199,14 @@ function init() {
   initEngineButtons(viewer);
   updateCoords(viewer);
 
-  // Auto-load Engine II (fires) on startup — it's the default active engine
+  // Auto-load Engine II (fires + AQI + mandi) on startup — it's the default active engine
   import('./layers/fires.js').then(m => {
     m.loadFires(viewer);
     document.getElementById('fire-legend').style.display = 'flex';
     document.getElementById('timeline').style.display = 'flex';
   });
+  import('./layers/aqi.js').then(m => m.loadAQI(viewer));
+  import('./layers/mandi.js').then(m => m.loadMandi(viewer));
 
   window.FALCON = { viewer, Cesium, PUNJAB };
 }
