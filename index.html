@@ -217,6 +217,9 @@
   <!-- Fire badge -->
   <div id="fire-badge"><span class="fire-icon">🔥</span><span>Loading…</span></div>
 
+  <!-- Fire detail popup -->
+  <div id="fire-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(255,119,0,0.4);border-radius:4px;padding:14px 16px;max-width:300px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
+
   <!-- AQI badge -->
   <div id="aqi-badge" style="display:none;position:absolute;top:82px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(255,126,0,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#ffb74d;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
 
@@ -265,6 +268,9 @@
   <!-- Groundwater legend -->
   <div id="gw-legend" style="display:none;position:absolute;bottom:76px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.78);border:1px solid rgba(33,150,243,0.2);border-radius:3px;padding:8px 12px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
 
+  <!-- Groundwater click popup -->
+  <div id="gw-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(33,150,243,0.4);border-radius:4px;padding:14px 16px;max-width:300px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
+
   <!-- Fire legend -->
   <div id="fire-legend">
     <div class="leg-title">NASA FIRMS · VIIRS NRT</div>
@@ -279,6 +285,17 @@
     <div id="tl-label">ALL DATES</div>
     <div id="tl-days"></div>
     <button id="tl-all">ALL</button>
+    <button id="tl-chart-btn" onclick="toggleTrendChart()" style="background:rgba(240,165,0,0.1);border:1px solid rgba(240,165,0,0.3);color:#f0a500;font-size:9px;letter-spacing:1px;padding:4px 8px;cursor:pointer;border-radius:2px;margin-left:4px">TREND</button>
+  </div>
+
+  <!-- Trend chart panel -->
+  <div id="trend-chart" style="display:none;position:absolute;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(10,10,18,0.92);border:1px solid rgba(240,165,0,0.2);border-radius:4px;padding:10px 14px;width:380px;max-width:90vw;z-index:15;backdrop-filter:blur(8px);pointer-events:all;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:9px;letter-spacing:2px;color:#f0a500">FIRE TREND · PUNJAB</span>
+      <button onclick="toggleTrendChart()" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:12px">✕</button>
+    </div>
+    <canvas id="trend-canvas" width="352" height="80" style="width:100%;display:block"></canvas>
+    <div id="trend-labels" style="display:flex;justify-content:space-between;font-size:8px;color:#706050;margin-top:2px"></div>
   </div>
 
   <!-- Bottom HUD -->
@@ -301,5 +318,76 @@
   </div>
 
   <script src="src/main.js"></script>
+  <script>
+  function toggleTrendChart() {
+    const panel = document.getElementById('trend-chart');
+    if (panel.style.display === 'none') {
+      panel.style.display = 'block';
+      drawTrendChart();
+    } else {
+      panel.style.display = 'none';
+    }
+  }
+
+  async function drawTrendChart() {
+    const canvas = document.getElementById('trend-canvas');
+    const labelsEl = document.getElementById('trend-labels');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    let ts;
+    try {
+      const r = await fetch('./public/data/history/fires_timeseries.json?v=' + Date.now());
+      ts = await r.json();
+    } catch (e) { return; }
+
+    const records = (ts.records || []).slice(-30); // last 30 days
+    if (!records.length) return;
+
+    const counts = records.map(r => r.count);
+    const maxC = Math.max(...counts, 1);
+    const pad = { t: 8, r: 4, b: 4, l: 32 };
+    const cW = W - pad.l - pad.r;
+    const cH = H - pad.t - pad.b;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(240,165,0,0.08)';
+    ctx.lineWidth = 1;
+    [0.25, 0.5, 0.75, 1].forEach(f => {
+      const y = pad.t + cH * (1 - f);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(160,144,112,0.5)';
+      ctx.font = '8px Segoe UI';
+      ctx.fillText(Math.round(maxC * f), 2, y + 3);
+    });
+
+    // Fill area
+    const barW = Math.max(1, cW / records.length - 1);
+    records.forEach((r, i) => {
+      const x = pad.l + i * (cW / records.length);
+      const barH = (r.count / maxC) * cH;
+      const y = pad.t + cH - barH;
+      const grad = ctx.createLinearGradient(0, y, 0, y + barH);
+      grad.addColorStop(0, 'rgba(255,80,0,0.85)');
+      grad.addColorStop(1, 'rgba(255,80,0,0.15)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x, y, barW, barH);
+    });
+
+    // Labels (show every ~5th date)
+    labelsEl.innerHTML = '';
+    records.forEach((r, i) => {
+      if (i % Math.ceil(records.length / 6) === 0 || i === records.length - 1) {
+        const d = new Date(r.date);
+        const span = document.createElement('span');
+        span.textContent = d.getDate() + ' ' + d.toLocaleDateString('en-GB',{month:'short'});
+        labelsEl.appendChild(span);
+      }
+    });
+  }
+  </script>
 </body>
 </html>

@@ -20,7 +20,8 @@ let _viewer    = null;
 let _features  = [];
 let _primitives = null;
 let _loaded    = false;
-let _activeDate = null;   // null = all dates
+let _activeDate = null;
+let _clickHandler = null;
 
 export async function loadFires(viewer) {
   if (_loaded) return;
@@ -71,7 +72,18 @@ function renderPoints(features) {
       outlineWidth: 1,
       translucencyByDistance: new Cesium.NearFarScalar(1e5, 1.0, 8e6, 0.4),
       scaleByDistance:        new Cesium.NearFarScalar(1e4, 2.0, 5e6, 0.5),
+      id: { type: 'fire', lon, lat, props: p },
     });
+  }
+
+  // Click handler — show fire detail popup
+  if (!_clickHandler) {
+    _clickHandler = _viewer.screenSpaceEventHandler.setInputAction(e => {
+      const picked = _viewer.scene.pick(e.position);
+      if (picked && picked.id && picked.id.type === 'fire') {
+        showFirePopup(picked.id.props, picked.id.lon, picked.id.lat);
+      }
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
   }
 }
 
@@ -127,12 +139,41 @@ function filterByDate(date, btn, label, allBtn) {
   btn.classList.add('active');
 }
 
+function showFirePopup(p, lon, lat) {
+  const popup = document.getElementById('fire-popup');
+  if (!popup) return;
+  const confLabel = { h: 'High', n: 'Nominal', l: 'Low' }[p.confidence] || 'Unknown';
+  const confColor = { h: '#ff2200', n: '#ff7700', l: '#ffcc00' }[p.confidence] || '#ff7700';
+  const time = p.time ? String(p.time).padStart(4,'0').replace(/(\d{2})(\d{2})/, '$1:$2') + ' UTC' : '';
+  popup.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+      <span style="font-size:10px;letter-spacing:2px;color:#ff7700;text-transform:uppercase">🔥 FIRE DETECTION</span>
+      <button onclick="document.getElementById('fire-popup').style.display='none'" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:14px;padding:0;margin-left:8px">✕</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:10px;color:#c8c0b0">
+      <span style="color:#a09070">Date</span><span>${p.date || '—'} ${time}</span>
+      <span style="color:#a09070">Confidence</span><span style="color:${confColor}">${confLabel}</span>
+      <span style="color:#a09070">FRP</span><span>${p.frp ? p.frp.toFixed(1) + ' MW' : '—'}</span>
+      <span style="color:#a09070">Brightness</span><span>${p.brightness ? p.brightness.toFixed(1) + ' K' : '—'}</span>
+      <span style="color:#a09070">Location</span><span>${lat.toFixed(4)}°N ${lon.toFixed(4)}°E</span>
+      <span style="color:#a09070">Source</span><span>NASA FIRMS VIIRS</span>
+    </div>
+  `;
+  popup.style.display = 'block';
+}
+
 export function removeFires(viewer) {
   if (_primitives) {
     viewer.scene.primitives.remove(_primitives);
     _primitives = null;
     _loaded = false;
   }
+  if (_clickHandler !== null) {
+    viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    _clickHandler = null;
+  }
+  const popup = document.getElementById('fire-popup');
+  if (popup) popup.style.display = 'none';
   const tl = document.getElementById('timeline');
   if (tl) tl.style.display = 'none';
   updateBadge(null, null);
