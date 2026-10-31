@@ -13,7 +13,7 @@ if not MAP_KEY:
 
 # Punjab bounding box: west,south,east,north (FIRMS area API format)
 W, S, E, N = 73.8, 29.5, 76.9, 32.5
-DAYS = 7   # last 7 days for timeline
+DAYS = 5   # last 5 days (FIRMS NRT max)
 
 # FIRMS area API: /api/area/csv/{key}/{source}/{west,south,east,north}/{days}
 url = (
