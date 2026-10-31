@@ -106,13 +106,13 @@ function init() {
   setProgress(40);
   setLoadLabel('Loading imagery…');
 
-  // OSM tiles — full zoom pyramid
-  viewer.imageryLayers.add(
-    Cesium.ImageryLayer.fromProviderAsync(
-      Cesium.OpenStreetMapImageryProvider.fromUrl('https://tile.openstreetmap.org/', {
-        credit: new Cesium.Credit('© OpenStreetMap contributors', false),
-      })
-    )
+  // OSM via UrlTemplateImageryProvider — synchronous, no initial network check
+  viewer.imageryLayers.addImageryProvider(
+    new Cesium.UrlTemplateImageryProvider({
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      credit: new Cesium.Credit('© OpenStreetMap contributors', false),
+      maximumLevel: 19,
+    })
   );
 
   setProgress(65);
