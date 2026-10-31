@@ -20,12 +20,19 @@ url = (
     f'{MAP_KEY}/VIIRS_SNPP_NRT/{BOUNDS}/{DAYS}'
 )
 
-print(f'Fetching FIRMS data for Punjab (last {DAYS} days)…')
+print(f'Fetching: {url}')
 try:
-    with urllib.request.urlopen(url, timeout=30) as r:
-        fires = json.loads(r.read().decode())
+    req = urllib.request.Request(url, headers={'User-Agent': 'FALCON-PGIS/1.0'})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        raw = r.read().decode()
+        print(f'Response ({r.status}): {raw[:200]}')
+        fires = json.loads(raw)
+except urllib.error.HTTPError as e:
+    body = e.read().decode()
+    print(f'ERROR HTTP {e.code}: {body}', file=sys.stderr)
+    sys.exit(1)
 except Exception as e:
-    print(f'ERROR fetching FIRMS: {e}', file=sys.stderr)
+    print(f'ERROR fetching FIRMS: {type(e).__name__}: {e}', file=sys.stderr)
     sys.exit(1)
 
 print(f'Found {len(fires)} fire detections')
