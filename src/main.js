@@ -1,10 +1,9 @@
 // FALCON Phase 0 — Base globe, Punjab camera, no token required
-// Uses OpenStreetMap imagery + ellipsoid terrain (no Cesium ion token needed)
 
 const PUNJAB = {
   lon: 75.35,
   lat: 31.0,
-  alt: 750000,          // ~750 km — full Punjab in view
+  alt: 750000,
   bounds: { west: 73.8, south: 29.5, east: 76.9, north: 32.5 },
 };
 
@@ -26,12 +25,11 @@ function hideLoading() {
   }
 }
 
-function initEngineButtons(viewer) {
+function initEngineButtons() {
   document.querySelectorAll('.eng-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.eng-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // Engine switching will be wired in later phases
       setStatus('Engine ' + btn.dataset.engine + ' — coming soon');
       setTimeout(() => setStatus('Phase 0 · Live'), 2000);
     });
@@ -41,32 +39,25 @@ function initEngineButtons(viewer) {
 function updateCoords(viewer) {
   const coordEl = document.getElementById('coords');
   if (!coordEl) return;
-
   viewer.scene.canvas.addEventListener('mousemove', e => {
     const rect = viewer.scene.canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const ray = viewer.camera.getPickRay(new Cesium.Cartesian2(x, y));
+    const ray = viewer.camera.getPickRay(
+      new Cesium.Cartesian2(e.clientX - rect.left, e.clientY - rect.top)
+    );
     if (!ray) return;
     const pos = viewer.scene.globe.pick(ray, viewer.scene);
     if (!pos) return;
-    const carto = Cesium.Cartographic.fromCartesian(pos);
-    const lat = Cesium.Math.toDegrees(carto.latitude).toFixed(3);
-    const lon = Cesium.Math.toDegrees(carto.longitude).toFixed(3);
-    coordEl.textContent = `ਪੰਜਾਬ · ${lat}°N ${lon}°E`;
+    const c = Cesium.Cartographic.fromCartesian(pos);
+    coordEl.textContent = `ਪੰਜਾਬ · ${Cesium.Math.toDegrees(c.latitude).toFixed(3)}°N ${Cesium.Math.toDegrees(c.longitude).toFixed(3)}°E`;
   });
 }
 
 function init() {
   setLoadLabel('Initialising CesiumJS…');
 
-  // No Cesium ion token — use bundled Natural Earth II imagery (served from
-  // same CDN as CesiumJS itself, no external tile requests needed).
-  // In Cesium 1.117+ imageryProvider constructor option is deprecated;
-  // use baseLayer with ImageryLayer.fromProviderAsync instead.
+  // No Cesium ion token needed — pure CDN + OSM
   Cesium.Ion.defaultAccessToken = '';
 
-  // baseLayer constructor option is unreliable in 1.120 — add layer after init
   const viewer = new Cesium.Viewer('cesiumContainer', {
     baseLayer: false,
     terrainProvider: new Cesium.EllipsoidTerrainProvider(),
@@ -82,7 +73,7 @@ function init() {
     navigationHelpButton: false,
   });
 
-  // OSM tiles — full zoom pyramid, sharp at Punjab district level
+  // OSM tiles — full zoom pyramid
   viewer.imageryLayers.add(
     Cesium.ImageryLayer.fromProviderAsync(
       Cesium.OpenStreetMapImageryProvider.fromUrl('https://tile.openstreetmap.org/', {
@@ -91,38 +82,39 @@ function init() {
     )
   );
 
-  // Dark space background
   viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#0a0a0f');
   viewer.scene.skyBox.show = false;
   viewer.scene.sun.show = true;
   viewer.scene.moon.show = false;
   viewer.scene.globe.enableLighting = false;
 
-  setLoadLabel('Flying to Punjab…');
-
-  // Fly to Punjab
-  viewer.camera.flyTo({
+  // Set camera instantly — no fly animation that can hang
+  viewer.camera.setView({
     destination: Cesium.Cartesian3.fromDegrees(PUNJAB.lon, PUNJAB.lat, PUNJAB.alt),
     orientation: {
       heading: Cesium.Math.toRadians(0),
       pitch: Cesium.Math.toRadians(-50),
       roll: 0,
     },
-    duration: 2.5,
-    complete: () => {
-      hideLoading();
-      setStatus('Phase 0 · Live');
-    },
   });
 
-  initEngineButtons(viewer);
+  // Hide loading as soon as first frame renders, or after 3s max
+  const removeListener = viewer.scene.postRender.addEventListener(() => {
+    removeListener();
+    hideLoading();
+    setStatus('Phase 0 · Live');
+  });
+  setTimeout(() => {
+    hideLoading();
+    setStatus('Phase 0 · Live');
+  }, 3000);
+
+  initEngineButtons();
   updateCoords(viewer);
 
-  // Expose globally for layer modules loaded in later phases
   window.FALCON = { viewer, Cesium, PUNJAB };
 }
 
-// Wait for Cesium to be available (loaded via CDN script tag)
 if (typeof Cesium !== 'undefined') {
   init();
 } else {
