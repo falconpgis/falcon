@@ -68,16 +68,24 @@
     .cesium-widget-credits { display: none !important; }
     .cesium-viewer-toolbar { display: none !important; }
 
-    /* ── Dashboard width transitions for map mode ──────── */
+    /* ── Dashboard width/height transitions for map mode ── */
     #dash-overlay {
-      transition: width 0.3s ease;
+      transition: width 0.3s ease, height 0.3s ease, max-height 0.3s ease;
       width: 100%;
     }
     #app-shell.map-open #dash-overlay {
       width: calc(100% - min(55vw, 900px));
     }
     @media (max-width: 700px) {
-      #app-shell.map-open #dash-overlay { width: 100%; }
+      /* Mobile: map panel is a 45vh bottom drawer; shrink dashboard to top 55vh */
+      #app-shell.map-open #dash-overlay {
+        width: 100%;
+        height: 55vh;
+        max-height: 55vh;
+        flex-grow: 0;
+        flex-shrink: 0;
+        overflow-y: auto;
+      }
     }
 
     /* ── Map overlay panel (transparent — globe shows through) ── */
@@ -94,7 +102,6 @@
       pointer-events: all;
     }
     @media (max-width: 700px) {
-      #app-shell.map-open #dash-overlay { width: 100%; }
       #map-panel.open {
         width: 100vw; top: auto; height: 45vh; bottom: 0;
         border-top: 2px solid var(--gold);
