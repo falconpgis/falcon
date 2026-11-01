@@ -114,8 +114,8 @@ export function drawHorizBars(canvas, labels, values, opts = {}) {
 
   const colors    = opts.colors || labels.map(() => GOLD);
   const maxV      = Math.max(...values, 1);
-  const pad       = { t: 6, r: 8, b: 6, l: opts.labelW || 72 };
-  const barH      = Math.max(6, (H - pad.t - pad.b) / labels.length - 3);
+  const pad       = { t: 6, r: 8, b: 6, l: opts.labelW || 120 };
+  const barH      = Math.max(16, (H - pad.t - pad.b) / labels.length - 4);
   const barSpaceH = (H - pad.t - pad.b) / labels.length;
   const cW        = W - pad.l - pad.r;
 
@@ -132,17 +132,17 @@ export function drawHorizBars(canvas, labels, values, opts = {}) {
     ctx.fillStyle = hexAlpha(col.startsWith('#') ? col : '#f0a500', 0.75);
     ctx.fillRect(pad.l, y + 1, barW, barH);
 
-    // label left
+    // label left — full name, 12px for readability
     ctx.fillStyle = MUTED;
-    ctx.font = `8px Segoe UI,system-ui`;
+    ctx.font = `12px Segoe UI,system-ui`;
     ctx.textAlign = 'right';
-    ctx.fillText(lbl.length > 9 ? lbl.slice(0,9) : lbl, pad.l - 3, y + barH/2 + 3);
+    ctx.fillText(lbl.length > 16 ? lbl.slice(0,16) : lbl, pad.l - 5, y + barH/2 + 4);
 
     // value right of bar
     ctx.fillStyle = TEXT;
-    ctx.font = '9px Consolas,monospace';
+    ctx.font = 'bold 11px Consolas,monospace';
     ctx.textAlign = 'left';
-    ctx.fillText(fmtNum(values[i]) + (opts.unit || ''), pad.l + barW + 3, y + barH/2 + 3);
+    ctx.fillText(fmtNum(values[i]) + (opts.unit || ''), pad.l + barW + 4, y + barH/2 + 4);
   });
   ctx.textAlign = 'left';
 }
@@ -472,8 +472,8 @@ async function renderAQITab() {
   const c = pane.querySelector('.dash-aqi-canvas');
   if (c) {
     c.width  = c.offsetWidth || 600;
-    c.height = Math.max(160, sorted.length * 16 + 12);
-    drawHorizBars(c, labels, values, { colors, unit: ' AQI', labelW: 80 });
+    c.height = Math.max(220, sorted.length * 24 + 16);
+    drawHorizBars(c, labels, values, { colors, unit: ' AQI', labelW: 130 });
   }
 
   // Category breakdown

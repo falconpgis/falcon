@@ -55,78 +55,144 @@
       font-size: 14px;
     }
 
-    /* ── Globe ─────────────────────────────────────────── */
-    #cesiumContainer { position: absolute; inset: 0; }
+    /* ── App shell: topbar + body (flex column) ─────────── */
+    #app-shell {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      z-index: 10; pointer-events: none;
+    }
+    #app-shell > * { pointer-events: all; }
 
-    /* suppress Cesium chrome */
+    /* ── Globe (behind shell) ───────────────────────────── */
+    #cesiumContainer { position: absolute; inset: 0; z-index: 1; }
     .cesium-widget-credits { display: none !important; }
     .cesium-viewer-toolbar { display: none !important; }
 
-    /* ── TOP BAR — stays dark ──────────────────────────── */
+    /* ── Map slide-in panel ─────────────────────────────── */
+    #map-panel {
+      position: fixed; top: var(--topbar-h); right: 0; bottom: 0;
+      width: 0; overflow: hidden;
+      transition: width 0.3s ease;
+      z-index: 20; pointer-events: none;
+      background: #111;
+    }
+    #map-panel.open {
+      width: 55vw; min-width: 300px; max-width: 900px;
+      pointer-events: all;
+    }
+    @media (max-width: 700px) {
+      #map-panel.open { width: 100vw; top: auto; height: 50vh; bottom: 0; }
+    }
+    #map-panel-header {
+      position: absolute; top: 0; left: 0; right: 0; height: 38px;
+      background: var(--topbar-bg); border-bottom: 1px solid var(--topbar-border);
+      display: flex; align-items: center; padding: 0 14px; gap: 10px; z-index: 2;
+    }
+    #map-panel-label {
+      flex: 1; font-size: 11px; letter-spacing: 2px; color: var(--gold);
+      text-transform: uppercase; font-weight: 600;
+    }
+    #map-panel-close {
+      background: none; border: none; color: #888; font-size: 18px;
+      cursor: pointer; padding: 0 4px;
+    }
+    #map-panel-close:hover { color: var(--gold); }
+    #map-cesium-wrap {
+      position: absolute; top: 38px; inset-inline: 0; bottom: 0;
+      border-left: 2px solid var(--gold-dim);
+    }
+
+    /* ── TOP BAR ─────────────────────────────────────────── */
     #hud-top {
-      position: absolute; top: 0; left: 0; right: 0;
       height: var(--topbar-h);
-      display: flex; align-items: center; gap: 0;
+      display: flex; align-items: center;
       background: var(--topbar-bg);
       border-bottom: 1px solid var(--topbar-border);
-      z-index: 20; pointer-events: all;
+      flex-shrink: 0; user-select: none;
+      position: relative; z-index: 30;
     }
 
     /* Brand */
     #brand {
-      display: flex; align-items: center; gap: 8px;
-      padding: 0 16px; border-right: 1px solid var(--topbar-border);
-      height: 100%; min-width: 160px; flex-shrink: 0;
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 18px; border-right: 1px solid var(--topbar-border);
+      height: 100%; flex-shrink: 0;
     }
     #brand .logo {
-      font-size: 18px; font-weight: 700; letter-spacing: 5px;
+      font-size: 17px; font-weight: 700; letter-spacing: 4px;
       color: var(--gold);
     }
     #brand .sub {
-      display: none;
-      font-size: 9px; letter-spacing: 1.5px; color: #888;
+      font-size: 10px; letter-spacing: 1.2px; color: #666;
       text-transform: uppercase; white-space: nowrap;
     }
-    @media (min-width: 900px) { #brand .sub { display: block; } }
+    @media (max-width: 800px) { #brand .sub { display: none; } }
 
-    /* Engine tabs — horizontal in top bar */
+    /* Engine nav tabs */
     #engines {
       display: flex; align-items: stretch;
-      flex: 1; height: 100%;
-      border-right: 1px solid var(--topbar-border);
+      flex: 1; height: 100%; overflow-x: auto;
+      scrollbar-width: none;
     }
+    #engines::-webkit-scrollbar { display: none; }
+
     .eng-btn {
       background: none; border: none; border-right: 1px solid var(--topbar-border);
-      color: #888; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 0 14px; cursor: pointer; height: 100%;
-      transition: all 0.18s; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 2px;
-      pointer-events: all; white-space: nowrap; min-width: 56px;
+      color: #999; cursor: pointer; height: 100%;
+      transition: all 0.16s; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px;
+      white-space: nowrap; padding: 0 18px; min-width: 70px; flex-shrink: 0;
     }
-    .eng-btn:last-child { border-right: none; }
-    .eng-btn:hover, .eng-btn.active {
-      color: var(--gold); background: rgba(200,150,42,0.12);
-    }
-    .eng-btn.active { border-bottom: 2px solid var(--gold); }
-    .eng-btn .eng-num { font-size: 13px; font-weight: 700; color: inherit; line-height: 1; }
-    .eng-btn .eng-lbl { font-size: 8px; line-height: 1; }
+    .eng-btn:hover  { color: var(--gold); background: rgba(200,150,42,0.10); }
+    .eng-btn.active { color: var(--gold); background: rgba(200,150,42,0.14);
+                      border-bottom: 2px solid var(--gold); }
+    .eng-btn .eng-num { font-size: 11px; font-weight: 700; line-height: 1; letter-spacing: 1px; color: inherit; }
+    .eng-btn .eng-lbl { font-size: 10px; line-height: 1; letter-spacing: 0.5px; }
 
-    /* Top-bar right section */
+    /* Live Map button */
+    #live-map-btn {
+      background: none; border: none; border-left: 1px solid var(--topbar-border);
+      border-right: 1px solid var(--topbar-border);
+      color: #4caf6e; cursor: pointer; height: 100%;
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 16px; flex-shrink: 0; font-size: 11px;
+      letter-spacing: 1px; text-transform: uppercase; transition: all 0.15s;
+    }
+    #live-map-btn:hover { background: rgba(76,175,110,0.12); }
+    #live-map-btn.map-open { color: var(--gold); border-bottom: 2px solid var(--gold); }
+    #live-map-btn .map-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Top-bar right */
     #hud-top-right {
-      display: flex; align-items: center; gap: 16px;
-      padding: 0 16px; flex-shrink: 0;
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 14px; flex-shrink: 0;
     }
     #live-badge {
       display: flex; align-items: center; gap: 6px;
-      font-size: 9px; letter-spacing: 2px; color: #4caf6e; text-transform: uppercase;
+      font-size: 10px; letter-spacing: 1.5px; color: #4caf6e; text-transform: uppercase;
     }
     #live-badge .dot {
-      width: 5px; height: 5px; border-radius: 50%; background: #4caf6e;
+      width: 6px; height: 6px; border-radius: 50%; background: #4caf6e;
       animation: pulse 2s ease-in-out infinite;
     }
     #utc-clock {
-      font-size: 10px; letter-spacing: 1px; color: #888;
+      font-size: 11px; letter-spacing: 1px; color: #888;
       font-variant-numeric: tabular-nums; font-family: 'Consolas', monospace;
+    }
+    /* mobile hamburger */
+    #mob-menu-btn {
+      display: none; background: none; border: none;
+      color: #aaa; font-size: 20px; cursor: pointer;
+      padding: 0 16px; height: 100%; flex-shrink: 0;
+      line-height: 1; letter-spacing: -1px;
+    }
+    @media (max-width: 640px) {
+      #engines { display: none; }
+      #live-map-btn .map-lbl { display: none; }
+      #mob-menu-btn { display: flex; align-items: center; }
     }
 
     /* ── INTELLIGENCE PANEL (right side) ──────────────── */
@@ -392,86 +458,62 @@
       border-bottom: 1px solid var(--panel-border);
     }
 
-    /* ── DASHBOARD OVERLAY ──────────────────────────── */
+    /* ── DASHBOARD — permanent primary view ─────────── */
     #dash-overlay {
-      position: absolute; inset: 0;
-      background: var(--bg);
-      z-index: 50; display: none; flex-direction: column;
+      flex: 1; display: flex; flex-direction: column;
+      background: var(--bg); overflow: hidden;
+      position: relative;
     }
+    /* Secondary sub-tab bar inside dashboard body */
     #dash-topbar {
       display: flex; align-items: center;
-      height: var(--topbar-h);
+      height: 44px; flex-shrink: 0;
       background: var(--topbar-bg);
       border-bottom: 1px solid var(--topbar-border);
-      flex-shrink: 0;
     }
-    #dash-brand {
-      display: flex; align-items: center; gap: 8px;
-      padding: 0 16px; border-right: 1px solid var(--panel-border);
-      height: 100%; min-width: 140px;
+    #dash-brand { display: none; }   /* brand is in main topbar now */
+    #dash-tabs {
+      display: flex; align-items: stretch; flex: 1; height: 100%;
+      overflow-x: auto; scrollbar-width: none;
     }
-    #dash-brand .d-logo { font-size: 14px; font-weight: 700; letter-spacing: 5px; color: var(--gold); }
-    #dash-brand .d-sub  { font-size: 8px; letter-spacing: 2px; color: #888; text-transform: uppercase; }
-    #dash-tabs { display: flex; align-items: stretch; flex: 1; height: 100%; }
+    #dash-tabs::-webkit-scrollbar { display: none; }
     .dash-tab-btn {
       background: none; border: none; border-right: 1px solid var(--topbar-border);
-      color: #888; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-      padding: 0 18px; cursor: pointer; height: 100%;
+      color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      padding: 0 16px; cursor: pointer; height: 100%;
       transition: all 0.15s; display: flex; align-items: center; gap: 6px;
-      pointer-events: all; white-space: nowrap;
+      white-space: nowrap; flex-shrink: 0; min-width: 80px; justify-content: center;
     }
     .dash-tab-btn:hover, .dash-tab-btn.active { color: var(--gold); background: rgba(200,150,42,0.12); }
     .dash-tab-btn.active { border-bottom: 2px solid var(--gold); }
-    #dash-close-btn {
-      background: none; border: none; border-left: 1px solid var(--topbar-border);
-      color: #888; font-size: 16px; cursor: pointer;
-      width: 48px; height: 100%; display: flex; align-items: center; justify-content: center;
-      transition: color 0.15s; flex-shrink: 0;
-    }
-    #dash-close-btn:hover { color: var(--gold); }
+    /* No close button — dashboard is permanent */
+    #dash-close-btn { display: none; }
+
     #dash-body { flex: 1; overflow: hidden; position: relative; }
     .dash-tab-pane {
       position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
       padding: 20px 24px; display: none;
       scrollbar-width: thin; scrollbar-color: rgba(200,150,42,0.25) transparent;
     }
-    .dash-tab-pane::-webkit-scrollbar { width: 4px; }
-    .dash-tab-pane::-webkit-scrollbar-thumb { background: rgba(200,150,42,0.25); }
+    .dash-tab-pane::-webkit-scrollbar { width: 5px; }
+    .dash-tab-pane::-webkit-scrollbar-thumb { background: rgba(200,150,42,0.25); border-radius:4px; }
     .dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     @media (max-width: 900px) { .dash-row { grid-template-columns: 1fr; } }
 
-    /* ── Dashboard mobile ≤600px ──────────────────── */
-    @media (max-width: 600px) {
-      #dash-brand { min-width: 80px; padding: 0 10px; }
-      #dash-brand .d-sub { display: none; }
-      #dash-tabs { overflow-x: auto; scrollbar-width: none; }
-      #dash-tabs::-webkit-scrollbar { display: none; }
-      .dash-tab-btn { padding: 0 10px; font-size: 8px; letter-spacing: 1px; min-width: 60px; }
-      .dash-tab-pane { padding: 12px 12px; }
+    /* ── Dashboard mobile ≤640px ──────────────────── */
+    @media (max-width: 640px) {
+      #dash-tabs { overflow-x: auto; }
+      .dash-tab-btn { padding: 0 10px; font-size: 10px; min-width: 60px; }
+      .dash-tab-pane { padding: 12px; }
       .dash-row { gap: 10px; margin-bottom: 10px; }
-      .dash-card { padding: 10px 12px; }
-      .dash-card-title { font-size: 7px; letter-spacing: 1.5px; }
-
-      /* KPI tiles stack on mobile */
+      .dash-card { padding: 12px 14px; }
+      .dash-card-title { font-size: 9px; }
       .pred-kpi-row { flex-direction: column; gap: 6px; }
       .pred-kpi-tile { min-width: unset; }
-
-      /* groundwater grid: 3 columns instead of 5 */
       .gw-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
-      .gw-tile { padding: 5px 4px; }
-      .gw-tile-name { font-size: 7px; }
-      .gw-tile-years { font-size: 15px; }
-
-      /* demog bars */
-      .demog-year { font-size: 8px; min-width: 32px; }
-      .demog-pct  { font-size: 8px; min-width: 32px; }
-
-      /* news */
-      .news-title { font-size: 10px; }
-      .news-filter-row { gap: 3px; }
-      .news-filter-btn { font-size: 7px; padding: 2px 6px; }
-
-      /* eurasia table */
+      .demog-year, .demog-pct { font-size: 10px; }
+      .news-title { font-size: 12px; }
+      .news-filter-btn { font-size: 9px; padding: 3px 7px; }
       .eurasia-row { flex-wrap: wrap; gap: 2px; }
       .eurasia-note { display: none; }
     }
@@ -640,8 +682,11 @@
 </head>
 <body>
 
-  <!-- Globe -->
+  <!-- Globe — always behind everything -->
   <div id="cesiumContainer"></div>
+
+  <!-- App shell: topbar + dashboard (permanent primary view) -->
+  <div id="app-shell">
 
   <!-- ── TOP BAR ─────────────────────────────────────── -->
   <div id="hud-top">
@@ -673,6 +718,12 @@
       </button>
     </div>
 
+    <!-- Live Map button -->
+    <button id="live-map-btn" onclick="toggleMapPanel()" title="Toggle Live Map">
+      <span id="live-map-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#4caf6e;margin-right:5px;animation:pulse 2s infinite"></span>
+      🗺 Live Map
+    </button>
+
     <div id="hud-top-right">
       <div id="live-badge">
         <span class="dot"></span>
@@ -685,11 +736,11 @@
 
     <!-- Mobile hamburger -->
     <button id="mob-menu-btn" onclick="toggleMobMenu()" title="Menu"
-      style="display:none;background:none;border:none;color:#888;font-size:22px;cursor:pointer;padding:0 14px;height:100%;flex-shrink:0;">☰</button>
+      style="background:none;border:none;color:#888;font-size:22px;cursor:pointer;padding:0 14px;height:100%;flex-shrink:0;">☰</button>
   </div>
 
   <!-- Mobile engines drawer -->
-  <div id="mob-menu" style="display:none;position:absolute;top:var(--topbar-h);left:0;right:0;background:var(--topbar-bg);border-bottom:1px solid var(--topbar-border);z-index:25;flex-direction:column;">
+  <div id="mob-menu" style="display:none;position:fixed;top:var(--topbar-h);left:0;right:0;background:var(--topbar-bg);border-bottom:1px solid var(--topbar-border);z-index:200;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
     <button class="eng-btn" data-engine="1" style="width:100%;height:52px;border-right:none;border-bottom:1px solid var(--topbar-border);">
       <span class="eng-num">I</span><span class="eng-lbl">History</span>
     </button>
@@ -1044,13 +1095,9 @@
     statEl.textContent = `avg ${avg} · peak ${peak} ${cfg.unit}`;
   }
   </script>
-  <!-- ── DASHBOARD OVERLAY ──────────────────────────────── -->
+  <!-- ── DASHBOARD — primary permanent view ──────────────── -->
   <div id="dash-overlay">
     <div id="dash-topbar">
-      <div id="dash-brand">
-        <span class="d-logo">FALCON</span>
-        <span class="d-sub">Analytics</span>
-      </div>
       <div id="dash-tabs">
         <button class="dash-tab-btn" data-tab="history" onclick="dashSwitchTab('history')">I · History</button>
         <button class="dash-tab-btn active" data-tab="fires" onclick="dashSwitchTab('fires')">II · Fires</button>
@@ -1062,7 +1109,6 @@
         <button class="dash-tab-btn" data-tab="predictions" onclick="dashSwitchTab('predictions')">IV · Predict</button>
         <button class="dash-tab-btn" data-tab="diaspora" onclick="dashSwitchTab('diaspora')">V · Diaspora</button>
       </div>
-      <button id="dash-close-btn" onclick="window._dashModule && window._dashModule.closeDashboard()" title="Close dashboard">✕</button>
     </div>
 
     <div id="dash-body">
@@ -1071,7 +1117,10 @@
       <div class="dash-tab-pane" data-tab="fires" style="display:block">
         <div class="dash-row">
           <div class="dash-card full">
-            <div class="dash-card-title">Fire Intelligence — Engine II · Punjab</div>
+            <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
+              Fire Intelligence — Engine II · Punjab
+              <button onclick="toggleMapPanel('fires')" style="font-size:10px;padding:3px 10px;background:rgba(255,112,67,0.15);border:1px solid rgba(255,112,67,0.4);border-radius:4px;color:#ff7043;cursor:pointer;">🗺 Show on Map</button>
+            </div>
             <div class="dash-fire-kpi"></div>
           </div>
         </div>
@@ -1099,7 +1148,10 @@
         </div>
         <div class="dash-row">
           <div class="dash-card" style="grid-column:1/-1">
-            <div class="dash-card-title">AQI by Station — Ranked Worst to Best</div>
+            <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
+              AQI by Station — Ranked Worst to Best
+              <button onclick="toggleMapPanel('aqi')" style="font-size:10px;padding:3px 10px;background:rgba(76,175,110,0.15);border:1px solid rgba(76,175,110,0.4);border-radius:4px;color:#4caf6e;cursor:pointer;">🗺 Show on Map</button>
+            </div>
             <canvas class="dash-canvas dash-aqi-canvas"></canvas>
             <div class="dash-aqi-cats"></div>
           </div>
@@ -1110,7 +1162,10 @@
       <div class="dash-tab-pane" data-tab="mandi">
         <div class="dash-row">
           <div class="dash-card full">
-            <div class="dash-card-title">Mandi Price Intelligence — Engine II · Punjab</div>
+            <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
+              Mandi Price Intelligence — Engine II · Punjab
+              <button onclick="toggleMapPanel('mandi')" style="font-size:10px;padding:3px 10px;background:rgba(200,150,42,0.15);border:1px solid rgba(200,150,42,0.4);border-radius:4px;color:var(--gold);cursor:pointer;">🗺 Show on Map</button>
+            </div>
             <div class="dash-mandi-kpi"></div>
           </div>
         </div>
@@ -1244,6 +1299,27 @@
 
     </div><!-- /dash-body -->
   </div><!-- /dash-overlay -->
+
+  <!-- Slide-in map panel (secondary view) -->
+  <div id="map-panel">
+    <div id="map-panel-header">
+      <div style="display:flex;align-items:center;gap:10px;flex:1;overflow-x:auto;scrollbar-width:none">
+        <span id="map-panel-title" style="font-size:11px;letter-spacing:2px;color:#ccc;text-transform:uppercase;white-space:nowrap;">🗺 Live Map</span>
+        <!-- Layer toggles -->
+        <button class="map-layer-btn active" data-layer="fires"   onclick="mapLayerToggle(this,'fires')"   style="font-size:10px;padding:2px 8px;background:rgba(255,112,67,0.2);border:1px solid rgba(255,112,67,0.5);border-radius:3px;color:#ff7043;cursor:pointer;white-space:nowrap">🔥 Fires</button>
+        <button class="map-layer-btn"        data-layer="aqi"     onclick="mapLayerToggle(this,'aqi')"     style="font-size:10px;padding:2px 8px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap">💨 AQI</button>
+        <button class="map-layer-btn"        data-layer="gw"      onclick="mapLayerToggle(this,'gw')"      style="font-size:10px;padding:2px 8px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap">💧 Water</button>
+        <button class="map-layer-btn"        data-layer="air"     onclick="mapLayerToggle(this,'air')"     style="font-size:10px;padding:2px 8px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap">✈ Air Traffic</button>
+        <button class="map-layer-btn"        data-layer="rail"    onclick="mapLayerToggle(this,'rail')"    style="font-size:10px;padding:2px 8px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap">🚂 Railway</button>
+        <button class="map-layer-btn"        data-layer="vessels" onclick="mapLayerToggle(this,'vessels')" style="font-size:10px;padding:2px 8px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap">🚢 Ocean</button>
+      </div>
+      <button onclick="toggleMapPanel()" style="background:none;border:none;color:#888;font-size:18px;cursor:pointer;padding:0 12px;height:100%;flex-shrink:0">✕</button>
+    </div>
+    <div id="map-cesium-wrap" style="position:absolute;inset:38px 0 0 0;"></div>
+  </div>
+
+  </div><!-- /app-shell -->
+
   <script type="module">
     import { openDashboard, closeDashboard, initEngine2Panel, _renderTab } from './src/ui/dashboard.js';
     import { renderIntelligenceTab, renderMiniNewsFeed } from './src/ui/news.js';
@@ -1323,6 +1399,144 @@
       if (btn) btn.textContent = '☾';
     }
   })();
+
+  // ── Map panel toggle ─────────────────────────────────────────────────────
+  function toggleMapPanel(layerId) {
+    const panel = document.getElementById('map-panel');
+    const btn   = document.getElementById('live-map-btn');
+    const isOpen = panel && panel.classList.contains('open');
+    if (!panel) return;
+    if (isOpen && !layerId) {
+      panel.classList.remove('open');
+      if (btn) btn.classList.remove('map-open');
+    } else {
+      panel.classList.add('open');
+      if (btn) btn.classList.add('map-open');
+      // Move CesiumJS container into map panel
+      const cesium = document.getElementById('cesiumContainer');
+      const wrap   = document.getElementById('map-cesium-wrap');
+      if (cesium && wrap && cesium.parentNode !== wrap) {
+        wrap.appendChild(cesium);
+        if (window._cesiumViewer) window._cesiumViewer.resize();
+      }
+      if (layerId && window._cesiumViewer) {
+        const lbl = document.getElementById('map-panel-title');
+        if (lbl) lbl.textContent = 'Live Map · ' + layerId.toUpperCase();
+      }
+    }
+  }
+
+  // ── Map layer toggles in map panel ─────────────────────────────────────────
+  const _activeLayers = new Set(['fires']);
+  function mapLayerToggle(btn, layerId) {
+    const active = _activeLayers.has(layerId);
+    if (active) {
+      _activeLayers.delete(layerId);
+      btn.style.background = 'none';
+      btn.style.color = '#888';
+      btn.style.borderColor = '#444';
+    } else {
+      _activeLayers.add(layerId);
+      // highlight color per layer
+      const colors = { fires:'rgba(255,112,67,0.2)', aqi:'rgba(76,175,110,0.2)', gw:'rgba(33,150,243,0.2)', air:'rgba(156,39,176,0.2)', rail:'rgba(255,193,7,0.2)', vessels:'rgba(0,188,212,0.2)' };
+      const borders = { fires:'rgba(255,112,67,0.5)', aqi:'rgba(76,175,110,0.5)', gw:'rgba(33,150,243,0.5)', air:'rgba(156,39,176,0.5)', rail:'rgba(255,193,7,0.5)', vessels:'rgba(0,188,212,0.5)' };
+      const texts   = { fires:'#ff7043', aqi:'#4caf6e', gw:'#2196f3', air:'#ab47bc', rail:'#ffc107', vessels:'#00bcd4' };
+      btn.style.background   = colors[layerId]  || 'rgba(200,150,42,0.2)';
+      btn.style.borderColor  = borders[layerId] || 'rgba(200,150,42,0.5)';
+      btn.style.color        = texts[layerId]   || '#f0a500';
+    }
+    // Route to layer loaders when ready
+    if (window._layerModule) {
+      if (_activeLayers.has(layerId)) {
+        if (layerId === 'air')     loadAirTrafficLayer();
+        if (layerId === 'vessels') loadVesselsLayer();
+        if (layerId === 'rail')    loadRailwayTiles();
+      }
+    }
+  }
+
+  // ── Air traffic layer (OpenSky via GeoJSON) ──────────────────────────────────
+  async function loadAirTrafficLayer() {
+    const viewer = window._cesiumViewer;
+    if (!viewer) return;
+    try {
+      const resp = await fetch('./public/data/air_traffic.geojson');
+      if (!resp.ok) return;
+      const data = await resp.json();
+      data.features.forEach(f => {
+        const [lon, lat] = f.geometry.coordinates;
+        const p = f.properties;
+        viewer.entities.add({
+          id:       'air_' + p.icao24,
+          name:     p.callsign,
+          position: Cesium.Cartesian3.fromDegrees(lon, lat),
+          billboard: {
+            image: _makeAircraftIcon(p.heading || 0),
+            width: 20, height: 20,
+            verticalOrigin: Cesium.VerticalOrigin.CENTER,
+          },
+          description: `<b>${p.callsign}</b><br>${p.altitude_ft} ft · ${p.speed_kts} kts`,
+        });
+      });
+    } catch(e) { console.warn('Air traffic layer failed:', e); }
+  }
+
+  function _makeAircraftIcon(heading) {
+    const c = document.createElement('canvas');
+    c.width = c.height = 24;
+    const ctx = c.getContext('2d');
+    ctx.translate(12, 12);
+    ctx.rotate((heading - 90) * Math.PI / 180);
+    ctx.fillStyle = '#ab47bc';
+    ctx.beginPath();
+    ctx.moveTo(0, -9); ctx.lineTo(6, 9); ctx.lineTo(0, 5); ctx.lineTo(-6, 9);
+    ctx.closePath(); ctx.fill();
+    return c.toDataURL();
+  }
+
+  // ── Vessels layer (AIS Hub via GeoJSON) ─────────────────────────────────────
+  async function loadVesselsLayer() {
+    const viewer = window._cesiumViewer;
+    if (!viewer) return;
+    try {
+      const resp = await fetch('./public/data/vessels.geojson');
+      if (!resp.ok) return;
+      const data = await resp.json();
+      data.features.forEach(f => {
+        const [lon, lat] = f.geometry.coordinates;
+        const p = f.properties;
+        if (p.type === 'port') {
+          viewer.entities.add({
+            id: 'port_' + p.name,
+            position: Cesium.Cartesian3.fromDegrees(lon, lat),
+            point: { pixelSize: 8, color: Cesium.Color.fromCssColorString('#00bcd4'), outlineColor: Cesium.Color.WHITE, outlineWidth: 1 },
+            label: { text: p.name, font: '10px sans-serif', fillColor: Cesium.Color.fromCssColorString('#00bcd4'), pixelOffset: new Cesium.Cartesian2(0, -16), showBackground: false },
+          });
+        } else {
+          viewer.entities.add({
+            id: 'vessel_' + (p.mmsi || Math.random()),
+            position: Cesium.Cartesian3.fromDegrees(lon, lat),
+            point: { pixelSize: 5, color: Cesium.Color.fromCssColorString('#0097a7') },
+            description: `<b>${p.name}</b><br>${p.speed_kts} kts`,
+          });
+        }
+      });
+    } catch(e) { console.warn('Vessels layer failed:', e); }
+  }
+
+  // ── Railway tile overlay (OpenRailwayMap) ───────────────────────────────────
+  function loadRailwayTiles() {
+    const viewer = window._cesiumViewer;
+    if (!viewer) return;
+    if (viewer._railwayLayer) return; // already loaded
+    const provider = new Cesium.UrlTemplateImageryProvider({
+      url: 'https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
+      subdomains: ['a','b','c'],
+      credit: '© OpenRailwayMap contributors',
+      minimumLevel: 5, maximumLevel: 16,
+    });
+    viewer._railwayLayer = viewer.imageryLayers.addImageryProvider(provider);
+  }
 
   function toggleTheme() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
