@@ -1,18 +1,12 @@
 {
-  "generated": "2026-10-31T00:00:00Z",
-  "source": "World Bank Pink Sheet",
-  "note": "International prices USD/mt; MSP in INR/quintal (GOI 2024-25)",
-  "prices": {
-    "wheat":    { "value": 229.7, "date": "2024-10", "unit": "USD/mt" },
-    "rice":     { "value": 455.0, "date": "2024-10", "unit": "USD/mt" },
-    "cotton":   { "value": 1498.0, "date": "2024-10", "unit": "USD/mt" },
-    "sugar":    { "value": 445.0, "date": "2024-10", "unit": "USD/mt" },
-    "palm_oil": { "value": 990.0, "date": "2024-10", "unit": "USD/mt" }
-  },
-  "msp_inr_quintal": {
-    "wheat":  2275,
-    "paddy":  2300,
-    "cotton": 7121,
-    "maize":  2090
+  "generated":"2026-11-01T07:06:56.791715Z",
+  "source":"World Bank Pink Sheet",
+  "note":"International prices USD/mt; MSP in INR/quintal (GOI 2024-25)",
+  "prices":{},
+  "msp_inr_quintal":{
+    "wheat":2275,
+    "paddy":2300,
+    "cotton":7121,
+    "maize":2090
   }
 }
