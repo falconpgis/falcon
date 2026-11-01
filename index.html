@@ -528,6 +528,76 @@
     .dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     @media (max-width: 900px) { .dash-row { grid-template-columns: 1fr; } }
 
+    /* ── MOBILE redesign (≤700px) — globe full-screen, dashboard bottom sheet ── */
+    @media (max-width: 700px) {
+      /* Intel panel: hide entirely */
+      #intel-panel { display: none !important; }
+
+      /* Map-panel layer bar: thin horizontal strip below topbar, not bottom drawer */
+      #map-panel {
+        top: var(--topbar-h) !important; bottom: auto !important;
+        left: 0 !important; right: 0 !important;
+        width: 0 !important; height: 0 !important;
+        overflow: hidden;
+        border-top: none !important;
+      }
+      #map-panel.open {
+        width: 100vw !important; height: 42px !important;
+        border-bottom: 1px solid var(--topbar-border) !important;
+      }
+      #map-panel-header {
+        position: static !important; height: 42px !important;
+        border-left: none !important;
+      }
+
+      /* Dashboard: fixed bottom sheet */
+      #dash-overlay {
+        position: fixed !important;
+        bottom: 0 !important; left: 0 !important; right: 0 !important; top: auto !important;
+        width: 100% !important;
+        height: 52px !important;          /* collapsed = just the tab bar */
+        max-height: none !important;
+        flex-grow: 0 !important; flex-shrink: 0 !important;
+        z-index: 20 !important;
+        border-top: 2px solid var(--gold) !important;
+        border-radius: 14px 14px 0 0 !important;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.3) !important;
+        overflow: hidden !important;
+        transition: height 0.32s cubic-bezier(0.4,0,0.2,1) !important;
+      }
+      #dash-overlay.mob-expanded {
+        height: 82vh !important;
+      }
+      /* Override the earlier .map-open rule on mobile */
+      #app-shell.map-open #dash-overlay {
+        width: 100% !important; height: 52px !important; max-height: none !important;
+      }
+      #app-shell.map-open #dash-overlay.mob-expanded {
+        height: 82vh !important;
+      }
+
+      /* Drag handle above tab bar */
+      #dash-topbar {
+        position: relative; cursor: pointer;
+        border-radius: 12px 12px 0 0;
+      }
+      #dash-topbar::before {
+        content: '';
+        position: absolute; top: 6px; left: 50%;
+        transform: translateX(-50%);
+        width: 32px; height: 3px;
+        background: rgba(200,150,42,0.4); border-radius: 2px;
+      }
+
+      /* Body + cmd-bar invisible when collapsed */
+      #dash-overlay:not(.mob-expanded) #dash-body { display: none !important; }
+      #dash-overlay:not(.mob-expanded) #cmd-bar   { display: none !important; }
+
+      /* Hamburger always visible on mobile */
+      #mob-menu-btn { display: flex !important; align-items: center; }
+      #engines { display: none !important; }
+    }
+
     /* ── Command bar ───────────────────────────────── */
     #cmd-bar {
       flex-shrink: 0; position: relative;
@@ -827,7 +897,7 @@
   </div>
 
   <!-- ── INTELLIGENCE PANEL ──────────────────────────── -->
-  <div id="intel-panel">
+  <div id="intel-panel" class="collapsed">
     <button id="intel-toggle" onclick="toggleIntelPanel()" title="Toggle panel">‹</button>
 
     <div id="intel-header">
@@ -2147,6 +2217,38 @@
     };
     _speech.start();
   };
+
+  // ── Mobile bottom-sheet: tap topbar drag handle to expand / collapse ──
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth > 700) return;
+    const overlay = document.getElementById('dash-overlay');
+    const topbar  = document.getElementById('dash-topbar');
+    if (!topbar || !overlay) return;
+
+    // Tapping topbar (not a tab button) toggles sheet
+    topbar.addEventListener('click', (e) => {
+      if (e.target.closest('.dash-tab-btn')) {
+        // Tab click → always expand
+        overlay.classList.add('mob-expanded');
+        return;
+      }
+      overlay.classList.toggle('mob-expanded');
+    });
+
+    // Any tab click elsewhere expands sheet
+    document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => overlay.classList.add('mob-expanded'));
+    });
+
+    // Swipe-down on overlay closes sheet
+    let _touchY = 0;
+    overlay.addEventListener('touchstart', (e) => { _touchY = e.touches[0].clientY; }, { passive: true });
+    overlay.addEventListener('touchend', (e) => {
+      const dy = e.changedTouches[0].clientY - _touchY;
+      if (dy > 60) overlay.classList.remove('mob-expanded');   // swipe down → collapse
+      if (dy < -60) overlay.classList.add('mob-expanded');     // swipe up → expand
+    }, { passive: true });
+  });
 
   // Slash key focuses command bar from anywhere
   document.addEventListener('keydown', (e) => {
