@@ -1,0 +1,49 @@
+{
+  "fetched_utc": "2026-11-01T00:00:00Z",
+  "data_year": "2023",
+  "food_security": {
+    "india_wheat_imports_usd": 142000000,
+    "india_wheat_imports_t": 418000,
+    "india_rice_exports_usd": 10530000000,
+    "india_rice_exports_t": 21200000,
+    "pakistan_wheat_imports_usd": 1820000000,
+    "india_potash_imports_usd": 3240000000,
+    "india_urea_imports_usd": 2180000000,
+    "year": "2023"
+  },
+  "india_bilateral": {
+    "india_russia_imports_usd": 61200000000,
+    "india_russia_exports_usd": 4100000000,
+    "india_russia_total_usd": 65300000000,
+    "india_canada_imports_usd": 4900000000,
+    "india_canada_exports_usd": 4200000000,
+    "india_canada_total_usd": 9100000000,
+    "india_china_imports_usd": 98600000000,
+    "india_china_exports_usd": 16700000000,
+    "india_china_total_usd": 115300000000,
+    "india_usa_imports_usd": 42300000000,
+    "india_usa_exports_usd": 77500000000,
+    "india_usa_total_usd": 119800000000,
+    "india_uae_imports_usd": 53200000000,
+    "india_uae_exports_usd": 31400000000,
+    "india_uae_total_usd": 84600000000,
+    "india_pakistan_imports_usd": 480000000,
+    "india_pakistan_exports_usd": 1890000000,
+    "india_pakistan_total_usd": 2370000000,
+    "india_russia_crude_imports_usd": 46800000000,
+    "india_russia_crude_imports_t": 86400000,
+    "year": "2023"
+  },
+  "semiconductors": {
+    "india_china_chip_imports_usd": 24100000000,
+    "india_usa_chip_imports_usd": 9800000000,
+    "year": "2023"
+  },
+  "falcon_signals": {
+    "russia_trade_intensity": 71.7,
+    "india_canada_trade_usd": 9100000000,
+    "pakistan_wheat_import_pressure": "HIGH",
+    "india_fertiliser_imports_usd": 5420000000,
+    "chip_china_pct": 71.1
+  }
+}

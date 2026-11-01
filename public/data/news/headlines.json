@@ -1,0 +1,115 @@
+{
+  "generated": "2026-11-01T03:21:41Z",
+  "date": "2026-11-01",
+  "source": "seed \u2014 run daily pipeline for live GDELT + RSS data",
+  "articles": [
+    {
+      "topic": "russia_eurasia",
+      "title": "Russia-Ukraine war enters third year: grain corridor negotiations stall at Black Sea",
+      "source": "Reuters",
+      "domain": "reuters.com",
+      "url": "https://reuters.com",
+      "date": "2026-11-01",
+      "tone": -3.2
+    },
+    {
+      "topic": "cpec_china",
+      "title": "CPEC Phase II: China accelerates ML-1 railway upgrade despite Pakistan debt concerns",
+      "source": "Dawn News",
+      "domain": "dawn.com",
+      "url": "https://dawn.com",
+      "date": "2026-11-01",
+      "tone": -1.1
+    },
+    {
+      "topic": "ukraine_wheat",
+      "title": "Global wheat prices ease as Ukraine exports continue via Danube corridor",
+      "source": "Reuters Commodities",
+      "domain": "reuters.com",
+      "url": "https://reuters.com",
+      "date": "2026-11-01",
+      "tone": 1.4
+    },
+    {
+      "topic": "iran_chabahar",
+      "title": "India expands Chabahar Port operations \u2014 INSTC corridor gaining traction",
+      "source": "Al Jazeera",
+      "domain": "aljazeera.com",
+      "url": "https://aljazeera.com",
+      "date": "2026-11-01",
+      "tone": 2.1
+    },
+    {
+      "topic": "india_canada",
+      "title": "India-Canada diplomatic tensions persist as Punjab diaspora politics intensify",
+      "source": "Tribune India",
+      "domain": "tribuneindia.com",
+      "url": "https://tribuneindia.com",
+      "date": "2026-11-01",
+      "tone": -2.8
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "Canadian Sikh community raises $2.1M for Punjab flood relief through gurdwara networks",
+      "source": "Tribune India",
+      "domain": "tribuneindia.com",
+      "url": "https://tribuneindia.com",
+      "date": "2026-11-01",
+      "tone": 3.5
+    },
+    {
+      "topic": "punjab_farm",
+      "title": "Punjab farmers demand MSP guarantee ahead of winter crop sowing \u2014 protests resume in Sangrur",
+      "source": "NDTV Punjab",
+      "domain": "ndtv.com",
+      "url": "https://ndtv.com",
+      "date": "2026-11-01",
+      "tone": -2.1
+    },
+    {
+      "topic": "punjab_fires",
+      "title": "Stubble burning hotspots surge in Malwa belt \u2014 satellite count 1,115 fires this season",
+      "source": "Tribune India",
+      "domain": "tribuneindia.com",
+      "url": "https://tribuneindia.com",
+      "date": "2026-11-01",
+      "tone": -3.8
+    },
+    {
+      "topic": "punjab_water",
+      "title": "CGWB report: Sangrur groundwater depth now 12.5m \u2014 fastest depletion in Punjab",
+      "source": "Tribune India",
+      "domain": "tribuneindia.com",
+      "url": "https://tribuneindia.com",
+      "date": "2026-11-01",
+      "tone": -4.2
+    },
+    {
+      "topic": "afghanistan",
+      "title": "Taliban crackdown on poppy cultivation collapses South Asian heroin supply \u2014 new routes emerging",
+      "source": "BBC South Asia",
+      "domain": "bbc.com",
+      "url": "https://bbc.com",
+      "date": "2026-11-01",
+      "tone": -1.5
+    },
+    {
+      "topic": "pakistan_border",
+      "title": "Pakistan closes Attari-Wagah border to trade \u2014 impact on Punjab agricultural exports",
+      "source": "Al Jazeera",
+      "domain": "aljazeera.com",
+      "url": "https://aljazeera.com",
+      "date": "2026-11-01",
+      "tone": -3.1
+    },
+    {
+      "topic": "balticdry",
+      "title": "Baltic Dry Index at 1,412 \u2014 freight costs moderate as Red Sea disruptions ease",
+      "source": "Reuters",
+      "domain": "reuters.com",
+      "url": "https://reuters.com",
+      "date": "2026-11-01",
+      "tone": 0.8
+    }
+  ]
+}

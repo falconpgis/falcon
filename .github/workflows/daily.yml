@@ -18,6 +18,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install Python dependencies
+        run: pip install requests pdfminer.six
+
       - name: Fetch NASA FIRMS fires
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
@@ -31,20 +34,53 @@ jobs:
         run: python scripts/fetch_mandi.py
         continue-on-error: true
 
-      - name: Fetch currency rates
+      - name: Fetch currency rates + history
         run: python scripts/fetch_currencies.py
+        continue-on-error: true
+
+      - name: Fetch news intelligence (GDELT + RSS)
+        run: python scripts/fetch_news.py
+        continue-on-error: true
+
+      - name: Fetch ACLED conflict events (Engine III)
+        env:
+          ACLED_EMAIL: ${{ secrets.ACLED_EMAIL }}
+          ACLED_PASSWORD: ${{ secrets.ACLED_PASSWORD }}
+        run: python scripts/fetch_acled.py
+        continue-on-error: true
+
+      - name: Fetch geopolitical intelligence (Engine III)
+        run: python scripts/fetch_geopolitics.py
+        continue-on-error: true
+
+      - name: Compute prediction indexes (Engine IV)
+        run: python scripts/fetch_predictions.py
+        continue-on-error: true
+
+      - name: Fetch Open-Meteo weather + rainfall
+        run: python scripts/fetch_weather.py
+        continue-on-error: true
+
+      - name: Fetch CGWB groundwater levels
+        run: python scripts/fetch_groundwater.py
         continue-on-error: true
 
       - name: Commit updated data
         run: |
           git config user.name  "FALCON Bot"
           git config user.email "bot@falconpgis.github.io"
-          git add public/data/punjab_fires.geojson \
-                  public/data/punjab_aqi.json \
-                  public/data/punjab_mandi.json \
-                  public/data/currencies.json \
-                  public/data/history/fires_timeseries.json \
-                  public/data/history/aqi_timeseries.json \
-                  public/data/history/mandi_timeseries.json
+          git add \
+            public/data/punjab_fires.geojson \
+            public/data/punjab_aqi.json \
+            public/data/punjab_mandi.json \
+            public/data/punjab_events.geojson \
+            public/data/acled_summary.json \
+            public/data/currencies.json \
+            public/data/predictions.json \
+            public/data/geopolitics.json \
+            public/data/weather.json \
+            public/data/punjab_groundwater.geojson \
+            public/data/news/ \
+            public/data/history/
           git diff --staged --quiet || git commit -m "chore: daily data refresh $(date -u +%Y-%m-%d)"
           git push

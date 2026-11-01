@@ -1,0 +1,55 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [74.879, 31.634] },
+      "properties": {
+        "id": "seed-001", "date": "2024-09-15", "type": "Protests",
+        "sub_type": "Peaceful protest", "country": "India", "admin1": "Punjab",
+        "location": "Amritsar", "actor1": "Farmers (India)", "actor2": null,
+        "fatalities": 0, "notes": "Farmers protest against crop price policies near Golden Temple area.", "source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [75.857, 30.900] },
+      "properties": {
+        "id": "seed-002", "date": "2024-10-02", "type": "Protests",
+        "sub_type": "Peaceful protest", "country": "India", "admin1": "Punjab",
+        "location": "Ludhiana", "actor1": "Farmers (India)", "actor2": null,
+        "fatalities": 0, "notes": "Demonstration against MSP non-implementation.", "source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [76.389, 30.641] },
+      "properties": {
+        "id": "seed-003", "date": "2024-08-22", "type": "Strategic developments",
+        "sub_type": "Agreement", "country": "India", "admin1": "Punjab",
+        "location": "Sirhind", "actor1": "Government of India", "actor2": "Punjab State Government",
+        "fatalities": 0, "notes": "State-centre agreement on canal water allocation.", "source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [74.308, 31.549] },
+      "properties": {
+        "id": "seed-004", "date": "2024-10-10", "type": "Violence against civilians",
+        "sub_type": "Attack", "country": "Pakistan", "admin1": "Punjab",
+        "location": "Lahore", "actor1": "Unknown Armed Group (Pakistan)", "actor2": "Civilians (Pakistan)",
+        "fatalities": 2, "notes": "Armed attack in Lahore suburbs.", "source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [74.530, 32.082] },
+      "properties": {
+        "id": "seed-005", "date": "2024-09-30", "type": "Battles",
+        "sub_type": "Armed clash", "country": "India", "admin1": "Jammu and Kashmir",
+        "location": "Gurdaspur border zone", "actor1": "Military Forces of India", "actor2": "Unknown Armed Group",
+        "fatalities": 1, "notes": "Border area security incident near Pathankot district.", "source": "ACLED"
+      }
+    }
+  ]
+}

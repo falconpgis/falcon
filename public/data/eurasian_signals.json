@@ -1,0 +1,102 @@
+{
+  "generated": "2026-11-01T03:21:41Z",
+  "date": "2026-11-01",
+  "source": "seed \u2014 run weekly pipeline for live values",
+  "commodities": {
+    "wheat": {
+      "value": 238.5,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "rice": {
+      "value": 548.0,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "potash": {
+      "value": 312.0,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "urea": {
+      "value": 370.0,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "dap": {
+      "value": 530.0,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "crude": {
+      "value": 76.4,
+      "unit": "USD/bbl",
+      "source": "World Bank"
+    },
+    "palm_oil": {
+      "value": 920.0,
+      "unit": "USD/mt",
+      "source": "World Bank"
+    },
+    "natural_gas": {
+      "value": 2.84,
+      "unit": "USD/MMBtu",
+      "source": "World Bank"
+    },
+    "cotton": {
+      "value": 0.72,
+      "unit": "USD/lb",
+      "source": "World Bank"
+    }
+  },
+  "baltic_dry_index": {
+    "value": 1412,
+    "source": "stooq.com",
+    "date": "2026-11-01",
+    "note": "BDI < 1000: depression. 1000-2000: normal. > 2500: elevated freight cost"
+  },
+  "currency_30d": {
+    "CAD": {
+      "latest": 61.2,
+      "change_30d_pct": -0.8,
+      "source": "frankfurter.app"
+    },
+    "GBP": {
+      "latest": 106.5,
+      "change_30d_pct": 0.3,
+      "source": "frankfurter.app"
+    },
+    "EUR": {
+      "latest": 89.2,
+      "change_30d_pct": 0.1,
+      "source": "frankfurter.app"
+    },
+    "AED": {
+      "latest": 22.7,
+      "change_30d_pct": -0.2,
+      "source": "frankfurter.app"
+    },
+    "AUD": {
+      "latest": 55.1,
+      "change_30d_pct": -1.2,
+      "source": "frankfurter.app"
+    },
+    "USD": {
+      "latest": 83.6,
+      "change_30d_pct": 0.0,
+      "source": "frankfurter.app"
+    },
+    "PKR": {
+      "latest": 0.3,
+      "change_30d_pct": -2.1,
+      "source": "frankfurter.app"
+    }
+  },
+  "geopolitical_signals": {
+    "cpec_status": "Phase II construction active \u2014 ML-1 railway upgrade under negotiation",
+    "instc_status": "Iran corridor operational \u2014 Chabahar Port Indian investment continues",
+    "arctic_shipping": "Northern Sea Route: Russia-China traffic +12% YoY",
+    "belt_road_projects": "64 active BRI projects across Eurasia as of 2024",
+    "scl_expansion": "Iran + Saudi Arabia joined SCO as full members 2023"
+  }
+}

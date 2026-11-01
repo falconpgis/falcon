@@ -1,90 +1,323 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FALCON — Punjab Geospatial Intelligence System</title>
 
-  <!-- CesiumJS 1.120 from CDN -->
   <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Widgets/widgets.css" />
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Cesium.js"></script>
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ── Light mode (default) ── */
     :root {
-      --gold:    #f0a500;
-      --gold-dim: rgba(240,165,0,0.35);
-      --bg:      #0a0a0f;
-      --surface: rgba(10,10,18,0.82);
-      --text:    #e8e0d0;
-      --muted:   #a09070;
-      --green:   #6aaf6a;
-      --red:     #c05050;
+      --gold:         #c8962a;
+      --gold-dim:     rgba(200,150,42,0.25);
+      --gold-faint:   rgba(200,150,42,0.10);
+      --bg:           #f5f0e8;
+      --surface:      rgba(255,255,255,0.97);
+      --panel-bg:     #ede8df;
+      --panel-border: #d4ccc0;
+      --text:         #1a1a1a;
+      --muted:        #7a6e5f;
+      --muted2:       rgba(122,110,95,0.5);
+      --green:        #2a7a3e;
+      --red:          #b03030;
+      --topbar-bg:    #1a1a1a;
+      --topbar-text:  #cccccc;
+      --topbar-border:rgba(200,150,42,0.2);
+      --topbar-h:     52px;
+      --botbar-h:     36px;
+      --panel-w:      300px;
+      --radius:       10px;
+      --radius-sm:    6px;
     }
 
-    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
+    /* ── Dark mode ── */
+    [data-theme="dark"] {
+      --bg:           #111014;
+      --surface:      rgba(28,26,36,0.97);
+      --panel-bg:     #1c1a24;
+      --panel-border: rgba(200,150,42,0.18);
+      --text:         #e8e0d0;
+      --muted:        #9a8e80;
+      --muted2:       rgba(154,142,128,0.5);
+      --green:        #3aaa55;
+      --red:          #e04444;
+    }
 
-    /* ── Globe ─────────────────────────────────── */
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: var(--bg); color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 14px;
+    }
+
+    /* ── Globe ─────────────────────────────────────────── */
     #cesiumContainer { position: absolute; inset: 0; }
 
-    /* ── Top HUD ────────────────────────────────── */
+    /* suppress Cesium chrome */
+    .cesium-widget-credits { display: none !important; }
+    .cesium-viewer-toolbar { display: none !important; }
+
+    /* ── TOP BAR — stays dark ──────────────────────────── */
     #hud-top {
       position: absolute; top: 0; left: 0; right: 0;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 20px;
-      background: linear-gradient(to bottom, rgba(10,10,15,0.88) 0%, transparent 100%);
-      pointer-events: none; z-index: 10;
+      height: var(--topbar-h);
+      display: flex; align-items: center; gap: 0;
+      background: var(--topbar-bg);
+      border-bottom: 1px solid var(--topbar-border);
+      z-index: 20; pointer-events: all;
     }
 
-    #brand { display: flex; align-items: baseline; gap: 10px; }
+    /* Brand */
+    #brand {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 16px; border-right: 1px solid var(--topbar-border);
+      height: 100%; min-width: 160px; flex-shrink: 0;
+    }
     #brand .logo {
-      font-size: 22px; font-weight: 700; letter-spacing: 5px;
-      color: var(--gold); text-shadow: 0 0 24px var(--gold-dim);
+      font-size: 18px; font-weight: 700; letter-spacing: 5px;
+      color: var(--gold);
     }
-    #brand .sub { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+    #brand .sub {
+      display: none;
+      font-size: 9px; letter-spacing: 1.5px; color: #888;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    @media (min-width: 900px) { #brand .sub { display: block; } }
 
-    #live-badge {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 10px; letter-spacing: 2px; color: var(--green); text-transform: uppercase;
-    }
-    #live-badge .dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-
-    /* ── Bottom bar ─────────────────────────────── */
-    #hud-bottom {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 20px;
-      background: linear-gradient(to top, rgba(10,10,15,0.75) 0%, transparent 100%);
-      pointer-events: none; z-index: 10;
-    }
-    #tagline { font-size: 10px; letter-spacing: 2px; color: rgba(160,144,112,0.55); text-transform: uppercase; }
-    #coords  { font-size: 10px; letter-spacing: 1px; color: var(--muted); font-variant-numeric: tabular-nums; }
-
-    /* ── Engine tabs (left sidebar) ─────────────── */
+    /* Engine tabs — horizontal in top bar */
     #engines {
-      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 6px;
-      z-index: 10;
+      display: flex; align-items: stretch;
+      flex: 1; height: 100%;
+      border-right: 1px solid var(--topbar-border);
     }
     .eng-btn {
-      background: var(--surface); border: 1px solid rgba(240,165,0,0.18);
-      color: var(--muted); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-      padding: 8px 10px; cursor: pointer; border-radius: 3px;
-      transition: all 0.2s; writing-mode: horizontal-tb;
-      backdrop-filter: blur(6px);
+      background: none; border: none; border-right: 1px solid var(--topbar-border);
+      color: #888; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0 14px; cursor: pointer; height: 100%;
+      transition: all 0.18s; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2px;
+      pointer-events: all; white-space: nowrap; min-width: 56px;
+    }
+    .eng-btn:last-child { border-right: none; }
+    .eng-btn:hover, .eng-btn.active {
+      color: var(--gold); background: rgba(200,150,42,0.12);
+    }
+    .eng-btn.active { border-bottom: 2px solid var(--gold); }
+    .eng-btn .eng-num { font-size: 13px; font-weight: 700; color: inherit; line-height: 1; }
+    .eng-btn .eng-lbl { font-size: 8px; line-height: 1; }
+
+    /* Top-bar right section */
+    #hud-top-right {
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 16px; flex-shrink: 0;
+    }
+    #live-badge {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 9px; letter-spacing: 2px; color: #4caf6e; text-transform: uppercase;
+    }
+    #live-badge .dot {
+      width: 5px; height: 5px; border-radius: 50%; background: #4caf6e;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    #utc-clock {
+      font-size: 10px; letter-spacing: 1px; color: #888;
+      font-variant-numeric: tabular-nums; font-family: 'Consolas', monospace;
+    }
+
+    /* ── INTELLIGENCE PANEL (right side) ──────────────── */
+    #intel-panel {
+      position: absolute;
+      top: var(--topbar-h); right: 0;
+      bottom: var(--botbar-h);
+      width: var(--panel-w);
+      background: var(--panel-bg);
+      border-left: 1px solid var(--panel-border);
+      backdrop-filter: blur(12px);
+      z-index: 15;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s ease;
       pointer-events: all;
     }
-    .eng-btn:hover, .eng-btn.active {
-      border-color: var(--gold); color: var(--gold); background: rgba(240,165,0,0.08);
+    #intel-panel.collapsed {
+      transform: translateX(var(--panel-w));
     }
-    .eng-btn .eng-num { display: block; font-size: 15px; font-weight: 700; color: inherit; margin-bottom: 2px; }
 
-    /* ── Loading overlay ─────────────────────────── */
+    /* Panel toggle button — on left edge of panel */
+    #intel-toggle {
+      position: absolute;
+      left: -26px; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 56px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      color: var(--muted); font-size: 10px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0; writing-mode: vertical-rl;
+      pointer-events: all;
+    }
+    #intel-toggle:hover { color: var(--gold); }
+
+    /* Panel header */
+    #intel-header {
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid var(--panel-border);
+      flex-shrink: 0;
+    }
+    #intel-engine-label {
+      font-size: 8px; letter-spacing: 2.5px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 2px;
+    }
+    #intel-engine-name {
+      font-size: 11px; font-weight: 600; color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    /* Panel body — scrollable */
+    #intel-body {
+      flex: 1; overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(200,150,42,0.25) transparent;
+    }
+    #intel-body::-webkit-scrollbar { width: 4px; }
+    #intel-body::-webkit-scrollbar-thumb { background: rgba(200,150,42,0.25); }
+
+    /* ── Intel stats (badges) ──────────────────────────── */
+    .intel-stat {
+      display: none; /* JS sets to flex */
+      align-items: center; gap: 10px;
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--panel-border);
+      font-size: 11px; letter-spacing: 0.5px;
+    }
+    .intel-stat .stat-icon { font-size: 16px; flex-shrink: 0; }
+    .intel-stat .stat-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+    .intel-stat .stat-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .intel-stat .stat-value { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ── Intel legends ─────────────────────────────────── */
+    .intel-legend {
+      display: none; /* JS sets to flex */
+      flex-direction: column; gap: 5px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--panel-border);
+      font-size: 9px; letter-spacing: 1px; color: var(--muted);
+    }
+    .intel-legend .leg-title {
+      font-size: 8px; letter-spacing: 2px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 3px; font-weight: 600;
+    }
+    .leg-row { display: flex; align-items: center; gap: 7px; }
+    .leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Trend chart — inside intel panel ──────────────── */
+    #trend-chart {
+      display: none; /* toggled by JS */
+      flex-direction: column;
+      padding: 10px 14px;
+      border-top: 1px solid var(--panel-border);
+    }
+    #trend-chart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .tc-sel {
+      font-size: 8px; letter-spacing: 1px; padding: 3px 7px;
+      border-radius: 2px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    #trend-title { font-size: 8px; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 6px; }
+    #trend-canvas { width: 100%; display: block; }
+    #trend-labels {
+      display: flex; justify-content: space-between;
+      font-size: 8px; color: #605040; margin-top: 2px;
+    }
+    #trend-stat { font-size: 9px; color: var(--muted); margin-top: 4px; text-align: right; }
+
+    /* ── MAP POPUPS — bottom-right, left of panel ──────── */
+    .map-popup {
+      position: absolute;
+      bottom: calc(var(--botbar-h) + 12px);
+      right: calc(var(--panel-w) + 12px);
+      max-width: 300px; width: 88%;
+      background: rgba(8,8,16,0.96);
+      border-radius: 4px;
+      padding: 14px 16px;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      pointer-events: all;
+      display: none;
+    }
+    #fire-popup    { border: 1px solid rgba(255,119,0,0.4); }
+    #hist-popup    { border: 1px solid rgba(240,165,0,0.35); max-width: 320px; }
+    #gw-popup      { border: 1px solid rgba(33,150,243,0.4); }
+    #geo-popup     { border: 1px solid rgba(239,83,80,0.4); max-width: 320px; }
+    #pred-popup    { border: 1px solid rgba(244,67,54,0.4); max-width: 310px; }
+    #diaspora-popup { border: 1px solid rgba(240,165,0,0.4); }
+
+    /* ── BOTTOM BAR ────────────────────────────────────── */
+    #hud-bottom {
+      position: absolute; bottom: 0; left: 0;
+      right: var(--panel-w);
+      height: var(--botbar-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px;
+      background: var(--panel-bg);
+      border-top: 1px solid var(--panel-border);
+      backdrop-filter: blur(12px);
+      z-index: 15; pointer-events: none;
+      transition: right 0.25s ease;
+    }
+    #intel-panel.collapsed ~ #hud-bottom { right: 0; }
+
+    #tagline { font-size: 9px; letter-spacing: 1.5px; color: var(--muted2); text-transform: uppercase; }
+    #coords  { font-size: 9px; letter-spacing: 1px; color: var(--muted); font-variant-numeric: tabular-nums; font-family: 'Consolas', monospace; }
+
+    /* ── TIMELINE — inside bottom area, above bottom bar ─ */
+    #timeline {
+      position: absolute;
+      bottom: calc(var(--botbar-h) + 8px);
+      left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 5px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px; padding: 5px 10px;
+      backdrop-filter: blur(8px); z-index: 12; pointer-events: all;
+      display: none;
+    }
+    #tl-label {
+      font-size: 8px; letter-spacing: 2px; color: var(--gold);
+      text-transform: uppercase; white-space: nowrap; min-width: 72px;
+    }
+    #tl-days { display: flex; gap: 3px; }
+    .tl-btn {
+      background: var(--gold-faint); border: 1px solid rgba(240,165,0,0.18);
+      color: var(--muted); font-size: 8px; letter-spacing: 1px;
+      padding: 3px 7px; cursor: pointer; border-radius: 2px;
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .tl-btn:hover, .tl-btn.active {
+      border-color: var(--gold); color: var(--gold); background: rgba(240,165,0,0.15);
+    }
+    #tl-all {
+      background: rgba(240,165,0,0.10); border: 1px solid rgba(240,165,0,0.3);
+      color: var(--gold); font-size: 8px; letter-spacing: 2px;
+      padding: 3px 7px; cursor: pointer; border-radius: 2px;
+      text-transform: uppercase;
+    }
+    #tl-all.active { background: rgba(240,165,0,0.28); }
+    #tl-chart-btn {
+      background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.25);
+      color: var(--gold); font-size: 8px; letter-spacing: 1px;
+      padding: 3px 7px; cursor: pointer; border-radius: 2px; margin-left: 2px;
+    }
+
+    /* ── LOADING SCREEN ────────────────────────────────── */
     #loading {
       position: absolute; inset: 0; background: var(--bg);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -92,265 +325,539 @@
     }
     #loading.fade-out { opacity: 0; pointer-events: none; }
     #loading .logo-big {
-      font-size: 48px; font-weight: 700; letter-spacing: 10px;
-      color: var(--gold); text-shadow: 0 0 40px var(--gold-dim); margin-bottom: 8px;
+      font-size: 52px; font-weight: 700; letter-spacing: 12px;
+      color: var(--gold); margin-bottom: 6px;
     }
-    #loading .sub-big { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 36px; }
+    #loading .sub-big {
+      font-size: 10px; letter-spacing: 3px; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 40px;
+    }
     #loading .spinner {
-      width: 36px; height: 36px;
-      border: 2px solid rgba(240,165,0,0.15); border-top-color: var(--gold);
-      border-radius: 50%; animation: spin 0.75s linear infinite; margin-bottom: 16px;
+      width: 32px; height: 32px;
+      border: 2px solid rgba(240,165,0,0.12); border-top-color: var(--gold);
+      border-radius: 50%; animation: spin 0.75s linear infinite; margin-bottom: 14px;
     }
-    #loading .load-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; }
-
+    #loading .load-label {
+      font-size: 9px; letter-spacing: 3px; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
     #progress-wrap {
-      width: 220px; height: 2px; background: rgba(240,165,0,0.12);
-      border-radius: 2px; overflow: hidden; margin-bottom: 12px;
+      width: 200px; height: 1px; background: rgba(240,165,0,0.10);
+      border-radius: 1px; overflow: hidden; margin-bottom: 12px;
     }
     #progress-bar {
       height: 100%; width: 0%; background: var(--gold);
-      border-radius: 2px; transition: width 0.3s ease;
-      box-shadow: 0 0 8px var(--gold-dim);
+      border-radius: 1px; transition: width 0.3s ease;
     }
     #load-meta {
       display: flex; gap: 24px;
-      font-size: 10px; letter-spacing: 1px; color: rgba(160,144,112,0.5);
+      font-size: 9px; letter-spacing: 1px; color: rgba(138,122,96,0.45);
       font-variant-numeric: tabular-nums;
     }
+
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Fire badge ─────────────────────────────── */
-    #fire-badge {
-      position: absolute; top: 52px; right: 20px;
-      display: none; align-items: center; gap: 6px;
-      background: rgba(10,10,18,0.78); border: 1px solid rgba(255,80,0,0.35);
-      border-radius: 3px; padding: 5px 10px;
-      font-size: 10px; letter-spacing: 1px; color: #ff8844;
-      backdrop-filter: blur(6px); z-index: 10; pointer-events: none;
-    }
-    #fire-badge .fire-icon { font-size: 13px; }
+    /* ── Mobile (≤640px) ───────────────────────────────── */
+    @media (max-width: 640px) {
+      :root { --panel-w: 0px; }
 
-    /* ── Fire legend ─────────────────────────────── */
-    #fire-legend {
-      position: absolute; bottom: 36px; right: 20px;
-      display: none; flex-direction: column; gap: 4px;
-      background: rgba(10,10,18,0.78); border: 1px solid rgba(240,165,0,0.15);
-      border-radius: 3px; padding: 8px 12px;
-      font-size: 9px; letter-spacing: 1px; color: #a09070;
-      backdrop-filter: blur(6px); z-index: 10; pointer-events: none;
-    }
-    #fire-legend .leg-title { font-size: 9px; letter-spacing: 2px; color: #f0a500; margin-bottom: 4px; text-transform: uppercase; }
-    .leg-row { display: flex; align-items: center; gap: 6px; }
-    .leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-    /* ── Timeline ───────────────────────────────── */
-    #timeline {
-      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(10,10,18,0.82); border: 1px solid rgba(240,165,0,0.2);
-      border-radius: 4px; padding: 6px 10px;
-      backdrop-filter: blur(6px); z-index: 10; pointer-events: all;
-    }
-    #tl-label {
-      font-size: 9px; letter-spacing: 2px; color: var(--gold);
-      text-transform: uppercase; white-space: nowrap; min-width: 72px;
-    }
-    #tl-days { display: flex; gap: 4px; }
-    .tl-btn {
-      background: rgba(240,165,0,0.07); border: 1px solid rgba(240,165,0,0.2);
-      color: var(--muted); font-size: 9px; letter-spacing: 1px;
-      padding: 4px 8px; cursor: pointer; border-radius: 2px;
-      transition: all 0.15s; white-space: nowrap;
-    }
-    .tl-btn:hover, .tl-btn.active {
-      border-color: var(--gold); color: var(--gold); background: rgba(240,165,0,0.15);
-    }
-    #tl-all {
-      background: rgba(240,165,0,0.12); border: 1px solid rgba(240,165,0,0.35);
-      color: var(--gold); font-size: 9px; letter-spacing: 2px;
-      padding: 4px 8px; cursor: pointer; border-radius: 2px;
-      text-transform: uppercase;
-    }
-    #tl-all.active { background: rgba(240,165,0,0.3); }
-
-    /* suppress Cesium credits */
-    .cesium-widget-credits { display: none !important; }
-    .cesium-viewer-toolbar { display: none !important; }
-
-    /* ── Mobile responsive (≤480px) ─────────────── */
-    @media (max-width: 480px) {
-      #engines {
-        left: 8px; gap: 4px;
+      #intel-panel {
+        top: auto; bottom: var(--botbar-h);
+        left: 0; right: 0; width: 100%;
+        max-height: 50vh; border-left: none;
+        border-top: 1px solid var(--panel-border);
+        transform: translateY(100%);
       }
-      .eng-btn {
-        padding: 6px 7px; font-size: 8px;
-      }
-      .eng-btn .eng-num { font-size: 12px; }
+      #intel-panel.open { transform: translateY(0); }
+      #intel-toggle { display: none; }
 
-      #timeline {
-        max-width: 95vw; overflow-x: auto;
-        bottom: 32px; padding: 5px 8px;
-        /* scrollbar hidden */
-        scrollbar-width: none;
-      }
+      /* Hide desktop engine row; show hamburger */
+      #engines { display: none; }
+      #mob-menu-btn { display: flex !important; align-items: center; }
+
+      #hud-bottom { right: 0; }
+
+      .map-popup { right: 12px; bottom: calc(var(--botbar-h) + 12px); }
+
+      #timeline { max-width: 90vw; overflow-x: auto; scrollbar-width: none; }
       #timeline::-webkit-scrollbar { display: none; }
       #tl-label { display: none; }
+    }
 
-      #tagline { display: none; }
+    /* ── Panel section divider ─────────────────────────── */
+    .intel-section-title {
+      font-size: 7px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--muted2); padding: 8px 14px 4px;
+      border-bottom: 1px solid var(--panel-border);
+    }
 
-      /* badges: tighter right margin */
-      #fire-badge, #hist-badge, #geo-badge, #diaspora-badge,
-      #prediction-badge, #aqi-badge, #mandi-badge, #gw-badge {
-        right: 8px !important; max-width: calc(100vw - 80px);
-        font-size: 9px !important; padding: 4px 8px !important;
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      }
+    /* ── DASHBOARD OVERLAY ──────────────────────────── */
+    #dash-overlay {
+      position: absolute; inset: 0;
+      background: var(--bg);
+      z-index: 50; display: none; flex-direction: column;
+    }
+    #dash-topbar {
+      display: flex; align-items: center;
+      height: var(--topbar-h);
+      background: var(--topbar-bg);
+      border-bottom: 1px solid var(--topbar-border);
+      flex-shrink: 0;
+    }
+    #dash-brand {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 16px; border-right: 1px solid var(--panel-border);
+      height: 100%; min-width: 140px;
+    }
+    #dash-brand .d-logo { font-size: 14px; font-weight: 700; letter-spacing: 5px; color: var(--gold); }
+    #dash-brand .d-sub  { font-size: 8px; letter-spacing: 2px; color: #888; text-transform: uppercase; }
+    #dash-tabs { display: flex; align-items: stretch; flex: 1; height: 100%; }
+    .dash-tab-btn {
+      background: none; border: none; border-right: 1px solid var(--topbar-border);
+      color: #888; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 0 18px; cursor: pointer; height: 100%;
+      transition: all 0.15s; display: flex; align-items: center; gap: 6px;
+      pointer-events: all; white-space: nowrap;
+    }
+    .dash-tab-btn:hover, .dash-tab-btn.active { color: var(--gold); background: rgba(200,150,42,0.12); }
+    .dash-tab-btn.active { border-bottom: 2px solid var(--gold); }
+    #dash-close-btn {
+      background: none; border: none; border-left: 1px solid var(--topbar-border);
+      color: #888; font-size: 16px; cursor: pointer;
+      width: 48px; height: 100%; display: flex; align-items: center; justify-content: center;
+      transition: color 0.15s; flex-shrink: 0;
+    }
+    #dash-close-btn:hover { color: var(--gold); }
+    #dash-body { flex: 1; overflow: hidden; position: relative; }
+    .dash-tab-pane {
+      position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
+      padding: 20px 24px; display: none;
+      scrollbar-width: thin; scrollbar-color: rgba(200,150,42,0.25) transparent;
+    }
+    .dash-tab-pane::-webkit-scrollbar { width: 4px; }
+    .dash-tab-pane::-webkit-scrollbar-thumb { background: rgba(200,150,42,0.25); }
+    .dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 900px) { .dash-row { grid-template-columns: 1fr; } }
 
-      /* legends: narrower */
-      .legend-panel {
-        max-width: calc(100vw - 120px) !important;
-      }
+    /* ── Dashboard mobile ≤600px ──────────────────── */
+    @media (max-width: 600px) {
+      #dash-brand { min-width: 80px; padding: 0 10px; }
+      #dash-brand .d-sub { display: none; }
+      #dash-tabs { overflow-x: auto; scrollbar-width: none; }
+      #dash-tabs::-webkit-scrollbar { display: none; }
+      .dash-tab-btn { padding: 0 10px; font-size: 8px; letter-spacing: 1px; min-width: 60px; }
+      .dash-tab-pane { padding: 12px 12px; }
+      .dash-row { gap: 10px; margin-bottom: 10px; }
+      .dash-card { padding: 10px 12px; }
+      .dash-card-title { font-size: 7px; letter-spacing: 1.5px; }
 
-      /* trend chart */
-      #trend-chart { width: 96vw !important; max-width: 96vw !important; }
+      /* KPI tiles stack on mobile */
+      .pred-kpi-row { flex-direction: column; gap: 6px; }
+      .pred-kpi-tile { min-width: unset; }
+
+      /* groundwater grid: 3 columns instead of 5 */
+      .gw-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
+      .gw-tile { padding: 5px 4px; }
+      .gw-tile-name { font-size: 7px; }
+      .gw-tile-years { font-size: 15px; }
+
+      /* demog bars */
+      .demog-year { font-size: 8px; min-width: 32px; }
+      .demog-pct  { font-size: 8px; min-width: 32px; }
+
+      /* news */
+      .news-title { font-size: 10px; }
+      .news-filter-row { gap: 3px; }
+      .news-filter-btn { font-size: 7px; padding: 2px 6px; }
+
+      /* eurasia table */
+      .eurasia-row { flex-wrap: wrap; gap: 2px; }
+      .eurasia-note { display: none; }
+    }
+
+    .dash-card {
+      background: var(--surface); border: 1px solid var(--panel-border);
+      border-radius: var(--radius); padding: 16px 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .dash-card.full { grid-column: 1 / -1; }
+    .dash-card-title {
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px; font-weight: 600;
+      border-bottom: 1px solid var(--panel-border); padding-bottom: 8px;
+    }
+    .dash-section-title { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .dash-empty { font-size: 12px; color: var(--muted); text-align: center; padding: 20px 0; }
+    .dash-canvas { width: 100%; display: block; }
+    .dash-aqi-cats { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    /* ── NEWS + INTELLIGENCE STYLES ──────────────── */
+    .news-card {
+      display:block; text-decoration:none; padding:9px 12px;
+      border-bottom:1px solid var(--panel-border);
+      transition:background 0.12s; color:inherit;
+    }
+    .news-card:hover { background:rgba(200,150,42,0.06); }
+    .news-topic-chip {
+      font-size:8px; letter-spacing:1.5px; text-transform:uppercase;
+      padding:1px 5px; border-radius:2px; display:inline-block; margin-bottom:3px;
+    }
+    .news-title { font-size:13px; color:var(--text); line-height:1.4; margin-bottom:2px; }
+    .news-meta  { font-size:10px; color:var(--muted); }
+    .news-filter-row { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+    .news-filter-btn {
+      background:#f0ebe3; border:1px solid var(--panel-border);
+      color:var(--muted); font-size:8px; letter-spacing:1px; padding:3px 8px;
+      border-radius:2px; cursor:pointer; transition:all 0.12s;
+    }
+    .news-filter-btn.active { color:var(--gold); border-color:var(--gold); background:var(--gold-faint); }
+    .tone-grid { display:flex; flex-wrap:wrap; gap:6px; }
+    .tone-chip {
+      border:1px solid; border-radius:3px; padding:5px 10px;
+      background:var(--surface); min-width:110px;
+    }
+    .tone-key   { display:block; font-size:7px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+    .tone-score { font-size:18px; font-weight:700; display:block; line-height:1.2; }
+    .tone-label { font-size:7px; letter-spacing:2px; text-transform:uppercase; }
+    .eurasia-table { display:flex; flex-direction:column; gap:0; }
+    .eurasia-row {
+      display:flex; align-items:center; gap:8px; padding:6px 0;
+      border-bottom:1px solid var(--panel-border); font-size:10px;
+    }
+    .eurasia-label { flex:1; color:var(--muted); font-size:9px; letter-spacing:1px; }
+    .eurasia-value { font-weight:700; font-variant-numeric:tabular-nums; min-width:70px; text-align:right; }
+    .eurasia-note  { font-size:8px; color:#8a7a60; min-width:80px; }
+    .mini-news-item {
+      display:block; padding:7px 14px; border-bottom:1px solid var(--panel-border);
+      text-decoration:none; transition:background 0.1s;
+    }
+    .mini-news-item:hover { background:var(--gold-faint); }
+    .mini-news-topic { font-size:7px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:2px; }
+    .mini-news-title { font-size:10px; color:var(--text); line-height:1.3; margin-bottom:1px; }
+    .mini-news-src   { font-size:8px; color:#8a7a60; }
+
+    /* ── PREDICTION STYLES ────────────────────────── */
+    .pred-section { margin-bottom:16px; }
+    .pred-section-title {
+      font-size:8px; letter-spacing:2px; text-transform:uppercase;
+      color:#f0a500; margin-bottom:8px; font-weight:600;
+    }
+    .pred-kpi-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .pred-kpi-tile {
+      flex:1; min-width:80px;
+      background:var(--surface); border:1px solid var(--panel-border);
+      border-radius:var(--radius-sm); padding:10px 12px; text-align:center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .pred-kpi-label { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+    .pred-kpi-value { font-size:22px; font-weight:700; line-height:1.2; }
+    .pred-kpi-sub   { font-size:9px; color:var(--muted); }
+    .pred-gauge { margin-bottom:14px; }
+    .pred-gauge-header { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+    .pred-gauge-label  { flex:1; font-size:12px; color:var(--text); }
+    .pred-gauge-score  { font-size:18px; font-weight:700; }
+    .pred-level-chip { font-size:7px; letter-spacing:2px; padding:2px 6px; border-radius:2px; }
+    .pred-gauge-track { height:6px; background:var(--panel-bg); border-radius:3px; overflow:hidden; }
+    .pred-gauge-fill  { height:100%; border-radius:3px; transition:width 0.4s ease; }
+    .pred-gauge-sub   { font-size:8px; color:var(--muted); margin-top:3px; }
+    .pred-legend-row { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+    .pred-leg-chip { font-size:8px; border:1px solid; border-radius:2px; padding:2px 7px; }
+    .pred-source { font-size:8px; color:#8a7a60; margin-top:8px; }
+    .pred-empty { font-size:10px; color:#8a7a60; padding:16px 0; text-align:center; }
+    .gw-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(72px, 1fr));
+      gap:4px; margin-top:10px;
+    }
+    .gw-tile {
+      background:var(--surface); border:1px solid var(--panel-border);
+      border-radius:3px; padding:5px 3px; text-align:center; cursor:default;
+      transition:border-color 0.15s;
+    }
+    .gw-tile:hover { border-color:var(--gold); }
+    .gw-tile-top { height:3px; border-radius:1px 1px 0 0; margin:-5px -3px 4px; }
+    .gw-tile-name { font-size:7px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .gw-tile-years { font-size:20px; font-weight:700; line-height:1.1; }
+    .gw-tile-sub   { font-size:7px; color:#8a7a60; }
+    .demog-bars { display:flex; flex-direction:column; gap:4px; margin-top:10px; }
+    .demog-bar-row { display:flex; align-items:center; gap:8px; }
+    .demog-year { font-size:9px; color:var(--muted); min-width:32px; font-variant-numeric:tabular-nums; }
+    .demog-track { flex:1; height:10px; background:var(--panel-bg); border-radius:2px; overflow:hidden; }
+    .demog-fill  { height:100%; border-radius:2px; }
+    .demog-pct   { font-size:9px; font-weight:700; min-width:32px; text-align:right; font-variant-numeric:tabular-nums; }
+
+    /* ── GEOPOLITICS / ENGINE III ──────────────────────── */
+    .geo-bodies-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:8px; margin-top:6px; }
+    .geo-body-card { background:var(--surface); border:1px solid var(--panel-border); border-radius:var(--radius-sm); padding:12px 14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .geo-body-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+    .geo-body-name { font-size:9px; letter-spacing:1.5px; color:var(--gold); font-weight:600; text-transform:uppercase; }
+    .geo-body-member { font-size:8px; letter-spacing:1px; font-weight:700; }
+    .geo-body-note { font-size:8px; line-height:1.5; margin-bottom:4px; color:var(--muted); }
+    .geo-body-impact { font-size:8px; line-height:1.5; border-top:1px solid var(--panel-border); padding-top:4px; margin-top:4px; color:var(--text); }
+
+    .geo-scenarios-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; margin-top:6px; }
+    .geo-scenario-card { background:var(--surface); border:1px solid var(--panel-border); border-radius:var(--radius-sm); padding:14px; display:flex; flex-direction:column; gap:5px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .geo-scenario-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+    .geo-scenario-title { font-size:10px; font-weight:600; color:var(--text); line-height:1.3; flex:1; }
+    .geo-prob-badge { font-size:9px; font-weight:700; padding:2px 7px; border-radius:2px; white-space:nowrap; }
+    .geo-scenario-timeframe { font-size:8px; color:#8a7a60; }
+    .geo-scenario-trigger,.geo-scenario-who,.geo-scenario-impact,.geo-scenario-rep,.geo-scenario-watch { font-size:8px; line-height:1.4; }
+    .geo-scenario-impact { font-weight:600; }
+
+    .yalta-timeline { display:flex; flex-direction:column; gap:0; margin-top:8px; }
+    .yalta-item { display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--panel-border); }
+    .yalta-year { font-size:13px; font-weight:700; min-width:40px; line-height:1; color:#f44336; }
+    .yalta-connector { width:2px; background:var(--gold-dim); flex-shrink:0; margin-top:2px; }
+    .yalta-content { flex:1; display:flex; flex-direction:column; gap:3px; }
+    .yalta-event { font-size:9px; font-weight:600; color:var(--text); letter-spacing:0.5px; }
+    .yalta-powers { font-size:8px; color:#8a7a60; }
+    .yalta-impact { font-size:8px; line-height:1.4; color:#ff9800; }
+    .yalta-pattern { font-size:7px; color:#8a7a60; font-style:italic; margin-top:2px; }
+
+    .sikh-power-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    .sikh-power-tile { background:var(--surface); border:1px solid var(--panel-border); border-radius:var(--radius-sm); padding:14px 16px; min-width:140px; flex:1; display:flex; flex-direction:column; gap:4px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .sikh-power-flag { font-size:20px; }
+    .sikh-power-country { font-size:8px; letter-spacing:2px; color:var(--gold); font-weight:700; }
+    .sikh-power-pop { font-size:8px; color:#8a7a60; }
+    .sikh-power-reps { font-size:14px; font-weight:700; }
+    .sikh-power-level { line-height:1.4; }
+    .sikh-power-risk  { line-height:1.4; margin-top:2px; }
+
+    .sanction-row { padding:8px 0; border-bottom:1px solid var(--panel-border); display:flex; flex-wrap:wrap; gap:6px; align-items:baseline; }
+    .sanction-name { font-size:9px; font-weight:600; color:var(--text); flex:1; min-width:160px; }
+    .sanction-risk { font-size:7px; letter-spacing:1px; padding:2px 6px; border:1px solid; border-radius:2px; font-weight:700; }
+    .sanction-impact { font-size:8px; color:#8a7a60; width:100%; line-height:1.4; }
+
+    .geo-signals-row { display:flex; flex-wrap:wrap; gap:4px; margin-top:8px; }
+    .geo-signal-chip { font-size:7px; background:var(--panel-bg); border:1px solid var(--panel-border); padding:2px 6px; border-radius:2px; }
+    .geo-note { font-size:8px; color:var(--muted); }
+
+    @media (max-width:600px) {
+      .geo-bodies-grid,.geo-scenarios-grid { grid-template-columns:1fr; }
+      .sikh-power-grid { flex-direction:column; }
+      .yalta-connector { display:none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Globe container -->
+  <!-- Globe -->
   <div id="cesiumContainer"></div>
 
-  <!-- Top HUD -->
+  <!-- ── TOP BAR ─────────────────────────────────────── -->
   <div id="hud-top">
     <div id="brand">
       <span class="logo">FALCON</span>
-      <span class="sub">Punjab Geospatial Intelligence System</span>
+      <span class="sub">Punjab Geospatial Intelligence</span>
     </div>
-    <div id="live-badge">
-      <span class="dot"></span>
-      <span id="status-text">Initialising</span>
+
+    <div id="engines">
+      <button class="eng-btn" data-engine="1" title="Historical Record">
+        <span class="eng-num">I</span>
+        <span class="eng-lbl">History</span>
+      </button>
+      <button class="eng-btn active" data-engine="2" title="Present Monitoring">
+        <span class="eng-num">II</span>
+        <span class="eng-lbl">Live</span>
+      </button>
+      <button class="eng-btn" data-engine="3" title="Geopolitical Intelligence">
+        <span class="eng-num">III</span>
+        <span class="eng-lbl">Geo</span>
+      </button>
+      <button class="eng-btn" data-engine="4" title="Prediction & Foresight">
+        <span class="eng-num">IV</span>
+        <span class="eng-lbl">Future</span>
+      </button>
+      <button class="eng-btn" data-engine="5" title="Civilisational Intelligence">
+        <span class="eng-num">V</span>
+        <span class="eng-lbl">Diaspora</span>
+      </button>
     </div>
-  </div>
 
-  <!-- Engine selector -->
-  <div id="engines">
-    <button class="eng-btn" data-engine="1" title="Historical Record">
-      <span class="eng-num">I</span>History
-    </button>
-    <button class="eng-btn active" data-engine="2" title="Present Monitoring">
-      <span class="eng-num">II</span>Live
-    </button>
-    <button class="eng-btn" data-engine="3" title="Geopolitical Intelligence">
-      <span class="eng-num">III</span>Geo
-    </button>
-    <button class="eng-btn" data-engine="4" title="Prediction & Foresight">
-      <span class="eng-num">IV</span>Future
-    </button>
-    <button class="eng-btn" data-engine="5" title="Civilisational Intelligence">
-      <span class="eng-num">V</span>Diaspora
-    </button>
-  </div>
-
-  <!-- Fire badge -->
-  <div id="fire-badge"><span class="fire-icon">🔥</span><span>Loading…</span></div>
-
-  <!-- Fire detail popup -->
-  <div id="fire-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(255,119,0,0.4);border-radius:4px;padding:14px 16px;max-width:300px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-
-  <!-- AQI badge -->
-  <div id="aqi-badge" style="display:none;position:absolute;top:82px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(255,126,0,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#ffb74d;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Mandi badge -->
-  <div id="mandi-badge" style="display:none;position:absolute;top:112px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(76,175,80,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#a5d6a7;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- AQI legend -->
-  <div id="aqi-legend" style="display:none;position:absolute;bottom:76px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.78);border:1px solid rgba(255,126,0,0.2);border-radius:3px;padding:8px 12px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Mandi legend -->
-  <div id="mandi-legend" style="display:none;position:absolute;bottom:116px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.78);border:1px solid rgba(76,175,80,0.2);border-radius:3px;padding:8px 12px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- History badge -->
-  <div id="hist-badge" style="display:none;position:absolute;top:52px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(240,165,0,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#f0c060;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- History legend -->
-  <div id="hist-legend" style="display:none;position:absolute;bottom:36px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.78);border:1px solid rgba(240,165,0,0.2);border-radius:3px;padding:8px 12px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- History site popup (click) -->
-  <div id="hist-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(240,165,0,0.35);border-radius:4px;padding:14px 16px;max-width:320px;width:90%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-
-  <!-- Geopolitical badge -->
-  <div id="geo-badge" style="display:none;position:absolute;top:52px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(239,83,80,0.4);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#ef9a9a;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Geopolitical legend -->
-  <div id="geo-legend" style="display:none;position:absolute;bottom:36px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.85);border:1px solid rgba(239,83,80,0.2);border-radius:3px;padding:10px 14px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;min-width:200px;"></div>
-
-  <!-- Geopolitical popup -->
-  <div id="geo-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(239,83,80,0.4);border-radius:4px;padding:14px 16px;max-width:320px;width:90%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-
-  <!-- Diaspora badge -->
-  <div id="diaspora-badge" style="display:none;position:absolute;top:52px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(240,165,0,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#f0c060;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Diaspora legend -->
-  <div id="diaspora-legend" style="display:none;position:absolute;bottom:36px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.85);border:1px solid rgba(240,165,0,0.2);border-radius:3px;padding:10px 14px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;min-width:200px;"></div>
-
-  <!-- Prediction badge -->
-  <div id="prediction-badge" style="display:none;position:absolute;top:52px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(255,152,0,0.4);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#ffb74d;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Prediction legend -->
-  <div id="prediction-legend" style="display:none;position:absolute;bottom:36px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.85);border:1px solid rgba(255,152,0,0.2);border-radius:3px;padding:10px 14px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;min-width:180px;"></div>
-
-  <!-- Groundwater badge -->
-  <div id="gw-badge" style="display:none;position:absolute;top:82px;right:20px;align-items:center;gap:6px;background:rgba(10,10,18,0.78);border:1px solid rgba(33,150,243,0.35);border-radius:3px;padding:5px 10px;font-size:10px;letter-spacing:1px;color:#64b5f6;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Groundwater legend -->
-  <div id="gw-legend" style="display:none;position:absolute;bottom:76px;right:20px;flex-direction:column;gap:4px;background:rgba(10,10,18,0.78);border:1px solid rgba(33,150,243,0.2);border-radius:3px;padding:8px 12px;font-size:9px;letter-spacing:1px;color:#a09070;backdrop-filter:blur(6px);z-index:10;pointer-events:none;"></div>
-
-  <!-- Groundwater click popup -->
-  <div id="gw-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(33,150,243,0.4);border-radius:4px;padding:14px 16px;max-width:300px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-  <div id="pred-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(244,67,54,0.4);border-radius:4px;padding:14px 16px;max-width:310px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-  <div id="diaspora-popup" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,0.94);border:1px solid rgba(240,165,0,0.4);border-radius:4px;padding:14px 16px;max-width:300px;width:88%;z-index:20;backdrop-filter:blur(10px);pointer-events:all;"></div>
-
-  <!-- Fire legend -->
-  <div id="fire-legend">
-    <div class="leg-title">NASA FIRMS · VIIRS NRT</div>
-    <div class="leg-row"><div class="leg-dot" style="background:#ff2200"></div>High confidence</div>
-    <div class="leg-row"><div class="leg-dot" style="background:#ff7700"></div>Nominal</div>
-    <div class="leg-row"><div class="leg-dot" style="background:#ffcc00"></div>Low confidence</div>
-    <div class="leg-row"><div class="leg-dot" style="background:#ff7700;width:12px;height:12px"></div>Larger = higher FRP</div>
-  </div>
-
-  <!-- Timeline bar -->
-  <div id="timeline" style="display:none">
-    <div id="tl-label">ALL DATES</div>
-    <div id="tl-days"></div>
-    <button id="tl-all">ALL</button>
-    <button id="tl-chart-btn" onclick="toggleTrendChart()" style="background:rgba(240,165,0,0.1);border:1px solid rgba(240,165,0,0.3);color:#f0a500;font-size:9px;letter-spacing:1px;padding:4px 8px;cursor:pointer;border-radius:2px;margin-left:4px">TREND</button>
-  </div>
-
-  <!-- Trend chart panel -->
-  <div id="trend-chart" style="display:none;position:absolute;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(10,10,18,0.92);border:1px solid rgba(240,165,0,0.2);border-radius:4px;padding:10px 14px;width:400px;max-width:94vw;z-index:15;backdrop-filter:blur(8px);pointer-events:all;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <div style="display:flex;gap:4px">
-        <button class="tc-sel active" data-ds="fires"  onclick="selectTrendDS('fires')"  style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(255,80,0,0.5);background:rgba(255,80,0,0.15);color:#ff7043">🔥 FIRES</button>
-        <button class="tc-sel"        data-ds="aqi"    onclick="selectTrendDS('aqi')"    style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">💨 AQI</button>
-        <button class="tc-sel"        data-ds="mandi"  onclick="selectTrendDS('mandi')"  style="font-size:8px;letter-spacing:1px;padding:3px 7px;border-radius:2px;cursor:pointer;border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">🌾 MANDI</button>
+    <div id="hud-top-right">
+      <div id="live-badge">
+        <span class="dot"></span>
+        <span id="status-text">Initialising</span>
       </div>
-      <button onclick="toggleTrendChart()" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:12px;padding:0">✕</button>
+      <div id="utc-clock">UTC --:--</div>
+      <button id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode"
+        style="background:none;border:1px solid var(--topbar-border);border-radius:6px;color:#888;font-size:14px;cursor:pointer;padding:4px 8px;transition:all 0.15s;">☀</button>
     </div>
-    <div id="trend-title" style="font-size:9px;letter-spacing:2px;color:#f0a500;margin-bottom:6px">FIRE HOTSPOTS · PUNJAB · LAST 30 DAYS</div>
-    <canvas id="trend-canvas" width="372" height="80" style="width:100%;display:block"></canvas>
-    <div id="trend-labels" style="display:flex;justify-content:space-between;font-size:8px;color:#706050;margin-top:2px"></div>
-    <div id="trend-stat" style="font-size:9px;color:#a09070;margin-top:4px;text-align:right"></div>
+
+    <!-- Mobile hamburger -->
+    <button id="mob-menu-btn" onclick="toggleMobMenu()" title="Menu"
+      style="display:none;background:none;border:none;color:#888;font-size:22px;cursor:pointer;padding:0 14px;height:100%;flex-shrink:0;">☰</button>
   </div>
 
-  <!-- Bottom HUD -->
+  <!-- Mobile engines drawer -->
+  <div id="mob-menu" style="display:none;position:absolute;top:var(--topbar-h);left:0;right:0;background:var(--topbar-bg);border-bottom:1px solid var(--topbar-border);z-index:25;flex-direction:column;">
+    <button class="eng-btn" data-engine="1" style="width:100%;height:52px;border-right:none;border-bottom:1px solid var(--topbar-border);">
+      <span class="eng-num">I</span><span class="eng-lbl">History</span>
+    </button>
+    <button class="eng-btn active" data-engine="2" style="width:100%;height:52px;border-right:none;border-bottom:1px solid var(--topbar-border);">
+      <span class="eng-num">II</span><span class="eng-lbl">Live Monitoring</span>
+    </button>
+    <button class="eng-btn" data-engine="3" style="width:100%;height:52px;border-right:none;border-bottom:1px solid var(--topbar-border);">
+      <span class="eng-num">III</span><span class="eng-lbl">Geopolitical</span>
+    </button>
+    <button class="eng-btn" data-engine="4" style="width:100%;height:52px;border-right:none;border-bottom:1px solid var(--topbar-border);">
+      <span class="eng-num">IV</span><span class="eng-lbl">Predictions</span>
+    </button>
+    <button class="eng-btn" data-engine="5" style="width:100%;height:52px;border-right:none;">
+      <span class="eng-num">V</span><span class="eng-lbl">Diaspora</span>
+    </button>
+  </div>
+
+  <!-- ── INTELLIGENCE PANEL ──────────────────────────── -->
+  <div id="intel-panel">
+    <button id="intel-toggle" onclick="toggleIntelPanel()" title="Toggle panel">‹</button>
+
+    <div id="intel-header">
+      <div id="intel-engine-label">Active Engine</div>
+      <div id="intel-engine-name">Engine II — Live Monitor</div>
+    </div>
+
+    <div id="intel-body">
+
+      <!-- Stat badges — shown/hidden by JS via layer files -->
+      <div class="intel-section-title">Status</div>
+
+      <div id="fire-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">🔥</span>
+        <div class="stat-body">
+          <span class="stat-label">Fire Hotspots</span>
+          <span class="stat-value" id="fire-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="aqi-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">💨</span>
+        <div class="stat-body">
+          <span class="stat-label">Air Quality</span>
+          <span class="stat-value" id="aqi-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="mandi-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">🌾</span>
+        <div class="stat-body">
+          <span class="stat-label">Mandi Price</span>
+          <span class="stat-value" id="mandi-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="gw-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">💧</span>
+        <div class="stat-body">
+          <span class="stat-label">Groundwater</span>
+          <span class="stat-value" id="gw-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="hist-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">🏛</span>
+        <div class="stat-body">
+          <span class="stat-label">Historical Sites</span>
+          <span class="stat-value" id="hist-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="geo-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">⚔</span>
+        <div class="stat-body">
+          <span class="stat-label">Geopolitical Events</span>
+          <span class="stat-value" id="geo-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="diaspora-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">🌍</span>
+        <div class="stat-body">
+          <span class="stat-label">Diaspora Cities</span>
+          <span class="stat-value" id="diaspora-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <div id="prediction-badge" class="intel-stat" style="display:none">
+        <span class="stat-icon">📊</span>
+        <div class="stat-body">
+          <span class="stat-label">Prediction Layer</span>
+          <span class="stat-value" id="prediction-badge-val">Loading…</span>
+        </div>
+      </div>
+
+      <!-- Legends — shown/hidden by JS -->
+      <div class="intel-section-title" id="intel-legend-title" style="display:none">Legend</div>
+
+      <div id="fire-legend" class="intel-legend" style="display:none">
+        <div class="leg-title">NASA FIRMS · VIIRS NRT</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ff2200"></div>High confidence</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ff7700"></div>Nominal</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ffcc00"></div>Low confidence</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ff7700;width:11px;height:11px"></div>Larger = higher FRP</div>
+      </div>
+
+      <div id="aqi-legend" class="intel-legend" style="display:none"></div>
+      <div id="mandi-legend" class="intel-legend" style="display:none"></div>
+      <div id="hist-legend" class="intel-legend" style="display:none"></div>
+      <div id="geo-legend" class="intel-legend" style="display:none;min-width:0"></div>
+      <div id="diaspora-legend" class="intel-legend" style="display:none;min-width:0"></div>
+      <div id="gw-legend" class="intel-legend" style="display:none"></div>
+      <div id="prediction-legend" class="intel-legend" style="display:none;min-width:0"></div>
+
+      <!-- Trend chart — toggle via TREND button in timeline -->
+      <div id="trend-chart">
+        <div id="trend-chart-header">
+          <div style="display:flex;gap:4px">
+            <button class="tc-sel active" data-ds="fires" onclick="selectTrendDS('fires')"
+              style="border:1px solid rgba(255,80,0,0.5);background:rgba(255,80,0,0.15);color:#ff7043">🔥 FIRES</button>
+            <button class="tc-sel" data-ds="aqi" onclick="selectTrendDS('aqi')"
+              style="border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">💨 AQI</button>
+            <button class="tc-sel" data-ds="mandi" onclick="selectTrendDS('mandi')"
+              style="border:1px solid rgba(100,100,100,0.4);background:none;color:#a09070">🌾 MANDI</button>
+          </div>
+          <button onclick="toggleTrendChart()" style="background:none;border:none;color:#a09070;cursor:pointer;font-size:11px;padding:0">✕</button>
+        </div>
+        <div id="trend-title">FIRE HOTSPOTS · PUNJAB · LAST 30 DAYS</div>
+        <canvas id="trend-canvas" width="264" height="80"></canvas>
+        <div id="trend-labels"></div>
+        <div id="trend-stat"></div>
+      </div>
+
+      <!-- SDL bonds panel injected by prediction.js -->
+      <div id="sdl-panel"></div>
+
+      <!-- Mini news feed -->
+      <div class="intel-section-title" style="margin-top:8px">Intelligence Feed</div>
+      <div id="intel-news-feed" style="min-height:40px">
+        <div style="font-size:9px;color:#8a7a60;padding:8px 14px">Loading…</div>
+      </div>
+
+    </div><!-- /intel-body -->
+  </div><!-- /intel-panel -->
+
+  <!-- ── CLICK POPUPS — anchored bottom-right, left of panel ── -->
+  <div id="fire-popup"     class="map-popup"></div>
+  <div id="hist-popup"     class="map-popup"></div>
+  <div id="gw-popup"       class="map-popup"></div>
+  <div id="geo-popup"      class="map-popup"></div>
+  <div id="pred-popup"     class="map-popup"></div>
+  <div id="diaspora-popup" class="map-popup"></div>
+
+  <!-- ── BOTTOM BAR ─────────────────────────────────── -->
   <div id="hud-bottom">
     <div id="tagline">Making the invisible visible — from space, across time, for everyone</div>
     <div id="coords">ਪੰਜਾਬ · 31.0°N 75.4°E</div>
   </div>
 
-  <!-- Loading screen -->
+  <!-- ── TIMELINE BAR (Engine II) ───────────────────── -->
+  <div id="timeline">
+    <div id="tl-label">ALL DATES</div>
+    <div id="tl-days"></div>
+    <button id="tl-all">ALL</button>
+    <button id="tl-chart-btn" onclick="toggleTrendChart()">TREND</button>
+  </div>
+
+  <!-- ── LOADING SCREEN ──────────────────────────────── -->
   <div id="loading">
     <div class="logo-big">FALCON</div>
     <div class="sub-big">Punjab Geospatial Intelligence System</div>
@@ -364,8 +871,57 @@
   </div>
 
   <script src="src/main.js"></script>
+
   <script>
-  // ── Trend chart ──────────────────────────────────────────────────────────
+  // ── UTC Clock ─────────────────────────────────────────────────────────────
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getUTCHours()).padStart(2,'0');
+    const m = String(now.getUTCMinutes()).padStart(2,'0');
+    document.getElementById('utc-clock').textContent = 'UTC ' + h + ':' + m;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  // ── Intel panel collapse ──────────────────────────────────────────────────
+  function toggleIntelPanel() {
+    const panel  = document.getElementById('intel-panel');
+    const toggle = document.getElementById('intel-toggle');
+    const collapsed = panel.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? '›' : '‹';
+    // shift popups when panel collapses
+    const popups = document.querySelectorAll('.map-popup');
+    popups.forEach(p => {
+      p.style.right = collapsed ? '12px' : 'calc(var(--panel-w) + 12px)';
+    });
+  }
+
+  // ── Update engine name label in panel header ──────────────────────────────
+  const ENGINE_NAMES = {
+    1: 'Engine I — Historical Record',
+    2: 'Engine II — Live Monitor',
+    3: 'Engine III — Geopolitical',
+    4: 'Engine IV — Prediction & Foresight',
+    5: 'Engine V — Civilisational',
+  };
+  function updateEngineLabel(n) {
+    const label = document.getElementById('intel-engine-name');
+    if (label) label.textContent = ENGINE_NAMES[n] || ('Engine ' + n);
+  }
+  // Hook into engine button clicks (after main.js loads)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.eng-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const n = parseInt(btn.dataset.engine);
+        if (!isNaN(n)) updateEngineLabel(n);
+      });
+    });
+    // Set initial
+    const active = document.querySelector('.eng-btn.active');
+    if (active) updateEngineLabel(parseInt(active.dataset.engine));
+  });
+
+  // ── Trend chart ────────────────────────────────────────────────────────────
   const TREND_DS = {
     fires: {
       url:   './public/data/history/fires_timeseries.json',
@@ -377,7 +933,6 @@
     aqi: {
       url:   './public/data/history/aqi_timeseries.json',
       title: 'AQI TREND · PUNJAB · LAST 30 DAYS',
-      // aqi timeseries stores {date, stations:{city:val,...}} — take avg
       valFn: r => {
         if (r.avg_aqi != null) return r.avg_aqi;
         const vals = r.stations ? Object.values(r.stations).filter(v => v > 0) : [];
@@ -389,7 +944,6 @@
     mandi: {
       url:   './public/data/history/mandi_timeseries.json',
       title: 'WHEAT MANDI PRICE · PUNJAB · LAST 30 DAYS',
-      // mandi timeseries: {date, wheat:{avg,min,max}, paddy:{...}}
       valFn: r => r.wheat ? r.wheat.avg || 0 : 0,
       unit:  '₹/qtl wheat',
       color: ['rgba(255,215,0,0.85)', 'rgba(255,215,0,0.15)'],
@@ -400,9 +954,12 @@
 
   function toggleTrendChart() {
     const panel = document.getElementById('trend-chart');
-    if (panel.style.display === 'none') {
-      panel.style.display = 'block';
+    if (panel.style.display === 'none' || !panel.style.display) {
+      panel.style.display = 'flex';
       drawTrendChart(_trendDS);
+      // open intel panel if collapsed
+      const ip = document.getElementById('intel-panel');
+      if (ip.classList.contains('collapsed')) toggleIntelPanel();
     } else {
       panel.style.display = 'none';
     }
@@ -412,9 +969,9 @@
     _trendDS = ds;
     document.querySelectorAll('.tc-sel').forEach(b => {
       const active = b.dataset.ds === ds;
-      b.style.background = active ? (ds==='fires'?'rgba(255,80,0,0.15)':ds==='aqi'?'rgba(100,180,255,0.12)':'rgba(255,215,0,0.12)') : 'none';
-      b.style.color      = active ? (ds==='fires'?'#ff7043':ds==='aqi'?'#90caf9':'#ffd54f') : '#a09070';
-      b.style.borderColor= active ? (ds==='fires'?'rgba(255,80,0,0.5)':ds==='aqi'?'rgba(100,180,255,0.4)':'rgba(255,215,0,0.4)') : 'rgba(100,100,100,0.4)';
+      b.style.background  = active ? (ds==='fires'?'rgba(255,80,0,0.15)':ds==='aqi'?'rgba(100,180,255,0.12)':'rgba(255,215,0,0.12)') : 'none';
+      b.style.color       = active ? (ds==='fires'?'#ff7043':ds==='aqi'?'#90caf9':'#ffd54f') : '#a09070';
+      b.style.borderColor = active ? (ds==='fires'?'rgba(255,80,0,0.5)':ds==='aqi'?'rgba(100,180,255,0.4)':'rgba(255,215,0,0.4)') : 'rgba(100,100,100,0.4)';
     });
     drawTrendChart(ds);
   }
@@ -422,43 +979,43 @@
   async function drawTrendChart(ds) {
     const cfg = TREND_DS[ds];
     document.getElementById('trend-title').textContent = cfg.title;
-
-    const canvas = document.getElementById('trend-canvas');
+    const canvas   = document.getElementById('trend-canvas');
     const labelsEl = document.getElementById('trend-labels');
     const statEl   = document.getElementById('trend-stat');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    // Resize canvas to actual panel width
+    const panelW = canvas.parentElement.clientWidth - 28;
+    canvas.width = panelW > 0 ? panelW : 264;
     const W = canvas.width, H = canvas.height;
 
     let ts;
     try {
       const r = await fetch(cfg.url + '?v=' + Date.now());
       ts = await r.json();
-    } catch (e) { return; }
+    } catch(e) { return; }
 
     const records = (ts.records || []).slice(-30);
     if (!records.length) { ctx.clearRect(0,0,W,H); return; }
 
     const vals = records.map(cfg.valFn);
     const maxV = Math.max(...vals, 1);
-    const pad  = { t: 8, r: 4, b: 4, l: 36 };
+    const pad  = { t: 8, r: 4, b: 4, l: 32 };
     const cW   = W - pad.l - pad.r;
     const cH   = H - pad.t - pad.b;
 
     ctx.clearRect(0, 0, W, H);
 
-    // Grid lines + Y labels
-    ctx.strokeStyle = 'rgba(240,165,0,0.08)';
+    ctx.strokeStyle = 'rgba(200,150,42,0.12)';
     ctx.lineWidth = 1;
     [0.25, 0.5, 0.75, 1].forEach(f => {
       const y = pad.t + cH * (1 - f);
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
-      ctx.fillStyle = 'rgba(160,144,112,0.5)';
+      ctx.fillStyle = 'rgba(160,144,112,0.45)';
       ctx.font = '8px Segoe UI';
       ctx.fillText(Math.round(maxV * f), 2, y + 3);
     });
 
-    // Bars
     const barW = Math.max(1, cW / records.length - 1);
     vals.forEach((v, i) => {
       const x    = pad.l + i * (cW / records.length);
@@ -471,23 +1028,560 @@
       ctx.fillRect(x, y, barW, barH);
     });
 
-    // X labels
     labelsEl.innerHTML = '';
     records.forEach((r, i) => {
       if (i % Math.ceil(records.length / 6) === 0 || i === records.length - 1) {
-        const d    = new Date(r.date);
+        const d = new Date(r.date);
         const span = document.createElement('span');
         span.textContent = d.getDate() + ' ' + d.toLocaleDateString('en-GB',{month:'short'});
         labelsEl.appendChild(span);
       }
     });
 
-    // Stat line
     const nonZero = vals.filter(v => v > 0);
-    const avg = nonZero.length ? Math.round(nonZero.reduce((a,b)=>a+b,0)/nonZero.length) : 0;
+    const avg  = nonZero.length ? Math.round(nonZero.reduce((a,b)=>a+b,0)/nonZero.length) : 0;
     const peak = Math.max(...vals);
     statEl.textContent = `avg ${avg} · peak ${peak} ${cfg.unit}`;
   }
+  </script>
+  <!-- ── DASHBOARD OVERLAY ──────────────────────────────── -->
+  <div id="dash-overlay">
+    <div id="dash-topbar">
+      <div id="dash-brand">
+        <span class="d-logo">FALCON</span>
+        <span class="d-sub">Analytics</span>
+      </div>
+      <div id="dash-tabs">
+        <button class="dash-tab-btn" data-tab="history" onclick="dashSwitchTab('history')">I · History</button>
+        <button class="dash-tab-btn active" data-tab="fires" onclick="dashSwitchTab('fires')">II · Fires</button>
+        <button class="dash-tab-btn" data-tab="aqi"   onclick="dashSwitchTab('aqi')">II · Air</button>
+        <button class="dash-tab-btn" data-tab="mandi" onclick="dashSwitchTab('mandi')">II · Mandi</button>
+        <button class="dash-tab-btn" data-tab="economy" onclick="dashSwitchTab('economy')">II · Economy</button>
+        <button class="dash-tab-btn" data-tab="geopolitics" onclick="dashSwitchTab('geopolitics')">III · Geo</button>
+        <button class="dash-tab-btn" data-tab="intel" onclick="dashSwitchTab('intel')">III · Intel</button>
+        <button class="dash-tab-btn" data-tab="predictions" onclick="dashSwitchTab('predictions')">IV · Predict</button>
+        <button class="dash-tab-btn" data-tab="diaspora" onclick="dashSwitchTab('diaspora')">V · Diaspora</button>
+      </div>
+      <button id="dash-close-btn" onclick="window._dashModule && window._dashModule.closeDashboard()" title="Close dashboard">✕</button>
+    </div>
+
+    <div id="dash-body">
+
+      <!-- FIRES TAB -->
+      <div class="dash-tab-pane" data-tab="fires" style="display:block">
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Fire Intelligence — Engine II · Punjab</div>
+            <div class="dash-fire-kpi"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card">
+            <div class="dash-card-title">Daily Fire Count — Last 30 Days</div>
+            <canvas class="dash-canvas dash-fire-canvas" height="110"></canvas>
+            <div class="dash-legend-note"><span class="leg-dot-sm" style="background:#ff7043"></span> NASA FIRMS VIIRS NRT detections per day</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-title">Peak Fire Radiative Power (MW)</div>
+            <canvas class="dash-canvas dash-frp-canvas" height="90"></canvas>
+            <div class="dash-legend-note"><span class="leg-dot-sm" style="background:#ffd600"></span> Higher FRP = larger / more intense fire</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AQI TAB -->
+      <div class="dash-tab-pane" data-tab="aqi">
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Air Quality Intelligence — Engine II · Punjab</div>
+            <div class="dash-aqi-kpi"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card" style="grid-column:1/-1">
+            <div class="dash-card-title">AQI by Station — Ranked Worst to Best</div>
+            <canvas class="dash-canvas dash-aqi-canvas"></canvas>
+            <div class="dash-aqi-cats"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANDI TAB -->
+      <div class="dash-tab-pane" data-tab="mandi">
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Mandi Price Intelligence — Engine II · Punjab</div>
+            <div class="dash-mandi-kpi"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Crop Price vs MSP — Bullet Chart</div>
+            <canvas class="dash-canvas dash-mandi-bullet"></canvas>
+            <div class="dash-legend-note">
+              <span class="leg-dot-sm" style="background:#5a9f5a"></span> Above MSP &nbsp;&nbsp;
+              <span class="leg-dot-sm" style="background:#f44336"></span> Below MSP &nbsp;&nbsp;
+              <span style="background:rgba(240,165,0,0.4);width:2px;height:10px;display:inline-block;vertical-align:middle;margin:0 4px"></span> MSP marker
+            </div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card">
+            <div class="dash-card-title">Wheat Price Trend</div>
+            <canvas class="dash-canvas dash-wheat-canvas" height="80"></canvas>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-title">Paddy Price Trend</div>
+            <canvas class="dash-canvas dash-paddy-canvas" height="80"></canvas>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Mandi Heatmap — Price vs MSP by Market</div>
+            <div class="dash-mandi-heatmap"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ECONOMY TAB -->
+      <div class="dash-tab-pane" data-tab="economy">
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Diaspora Currency Rates — INR Exchange</div>
+            <div class="dash-currency-grid"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Global Commodity Prices (World Bank Pink Sheet)</div>
+            <div class="dash-commodity-kpi"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Punjab MSP Reference — ₹/Quintal</div>
+            <canvas class="dash-canvas dash-msp-canvas" height="90"></canvas>
+          </div>
+        </div>
+        <!-- Comtrade trade visualization -->
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">India Trade Partners — UN Comtrade 2023</div>
+            <canvas id="comtrade-partner-chart" class="dash-canvas" height="180"></canvas>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card">
+            <div class="dash-card-title">Russia Crude Dependency</div>
+            <div id="comtrade-russia-kpi" style="padding:10px 0;font-size:13px;"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-title">Semiconductor Source Split</div>
+            <canvas id="comtrade-chip-chart" class="dash-canvas" height="120"></canvas>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="dash-card full">
+            <div class="dash-card-title">Food Security Signals</div>
+            <div id="comtrade-food-kpi" style="display:flex;flex-wrap:wrap;gap:10px;padding:6px 0;"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- GEOPOLITICS TAB -->
+      <div class="dash-tab-pane" data-tab="geopolitics">
+        <div id="geopolitics-tab-content">
+          <div class="pred-empty">Loading geopolitical intelligence…</div>
+        </div>
+      </div>
+
+      <!-- INTELLIGENCE TAB -->
+      <div class="dash-tab-pane" data-tab="intel">
+        <div class="dash-row">
+          <div class="dash-card full" id="intel-tab-content">
+            <div class="pred-empty">Loading intelligence feed...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREDICTIONS TAB -->
+      <div class="dash-tab-pane" data-tab="predictions">
+        <div id="predictions-tab-content">
+          <div class="pred-empty">Loading predictions...</div>
+        </div>
+      </div>
+
+      <!-- HISTORY TAB (stub) -->
+      <div class="dash-tab-pane" data-tab="history">
+        <div id="history-tab-content" style="padding:24px">
+          <div class="dash-card-title" style="margin-bottom:12px">Engine I — Historical Record</div>
+          <div style="font-size:10px;color:var(--muted);line-height:1.8">
+            <div>· Anglo-Sikh Wars battle sites (1845–1849)</div>
+            <div>· 12 Misl territories and capitals</div>
+            <div>· Partition 1947 — displacement routes</div>
+            <div>· CORONA 1965 satellite backward analysis</div>
+            <div>· Sikh historical GIS — Guru Udasis</div>
+            <div style="margin-top:12px;color:rgba(138,122,96,0.5)">[ Engine I — in development ]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIASPORA TAB (stub) -->
+      <div class="dash-tab-pane" data-tab="diaspora">
+        <div id="diaspora-tab-content" style="padding:24px">
+          <div class="dash-card-title" style="margin-bottom:12px">Engine V — Civilisational Intelligence</div>
+          <div style="font-size:10px;color:var(--muted);line-height:1.8">
+            <div>· Sikh diaspora — Canada 770k · UK 600k · UAE 200k</div>
+            <div>· Federal MPs: Canada 18 · UK 9 · USA 1</div>
+            <div>· Remittances to Punjab (RBI / World Bank)</div>
+            <div>· SGPC budget and Gurdwara economy</div>
+            <div>· NRI investment corridors</div>
+            <div style="margin-top:12px;color:rgba(138,122,96,0.5)">[ Engine V — in development ]</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dash-body -->
+  </div><!-- /dash-overlay -->
+  <script type="module">
+    import { openDashboard, closeDashboard, initEngine2Panel, _renderTab } from './src/ui/dashboard.js';
+    import { renderIntelligenceTab, renderMiniNewsFeed } from './src/ui/news.js';
+    import { renderPredictionsTab } from './src/ui/predictions.js';
+    import { renderGeopoliticsTab } from './src/ui/geopolitics.js';
+    window._dashModule = { openDashboard, closeDashboard, initEngine2Panel, _renderTab };
+    window._renderGeoTab  = renderGeopoliticsTab;
+    window._renderIntelTab = renderIntelligenceTab;
+    window._renderPredTab  = renderPredictionsTab;
+    window._renderMiniNews = renderMiniNewsFeed;
+    // Wrap openDashboard so it routes through dashSwitchTab for intel/predictions
+    window.openDashboard = function(tab) {
+      const overlay = document.getElementById('dash-overlay');
+      if (!overlay) return;
+      overlay.style.display = 'flex';
+      window.dashSwitchTab(tab || 'fires');
+    };
+    window.closeDashboard = closeDashboard;
+
+    // Tab switching wired in HTML via onclick; also wire renderTab
+    window.dashSwitchTab = function(tab) {
+      document.querySelectorAll('.dash-tab-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.tab === tab));
+      document.querySelectorAll('.dash-tab-pane').forEach(p =>
+        p.style.display = p.dataset.tab === tab ? 'block' : 'none');
+      // Route to the right renderer
+      if (tab === 'geopolitics') {
+        const el = document.getElementById('geopolitics-tab-content');
+        if (el && window._renderGeoTab) window._renderGeoTab(el);
+      } else if (tab === 'intel') {
+        const el = document.getElementById('intel-tab-content');
+        if (el && window._renderIntelTab) window._renderIntelTab(el);
+      } else if (tab === 'predictions') {
+        const el = document.getElementById('predictions-tab-content');
+        if (el && window._renderPredTab) window._renderPredTab(el);
+      } else if (tab === 'history' || tab === 'diaspora') {
+        // stub tabs — content already in HTML, nothing extra to render
+      } else if (window._dashModule && window._dashModule._renderTab) {
+        window._dashModule._renderTab(tab);
+      }
+    };
+
+    // Auto-init and auto-open dashboard after globe loads
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        initEngine2Panel();
+        window.openDashboard('fires');
+        const newsFeedEl = document.getElementById('intel-news-feed');
+        if (newsFeedEl && window._renderMiniNews) {
+          window._renderMiniNews(newsFeedEl, 6);
+        }
+      }, 1800);
+    });
+
+    // Engine button routing — each engine opens dashboard to its primary tab
+    const ENGINE_TAB = { '1': 'history', '2': 'fires', '3': 'geopolitics', '4': 'predictions', '5': 'diaspora' };
+    document.querySelectorAll('.eng-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const eng = btn.dataset.engine;
+        const tab = ENGINE_TAB[eng] || 'fires';
+        window.openDashboard(tab);
+        if (eng === '2') setTimeout(() => initEngine2Panel(), 400);
+        // Close mobile menu on selection
+        const mm = document.getElementById('mob-menu');
+        if (mm) mm.style.display = 'none';
+      });
+    });
+  </script>
+
+  <script>
+  // ── Theme toggle ────────────────────────────────────────────────────────────
+  (function() {
+    const saved = localStorage.getItem('falcon-theme') || 'light';
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.textContent = '☾';
+    }
+  })();
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('falcon-theme', next);
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = next === 'dark' ? '☾' : '☀';
+  }
+
+  // ── Mobile menu ─────────────────────────────────────────────────────────────
+  function toggleMobMenu() {
+    const m = document.getElementById('mob-menu');
+    if (!m) return;
+    const open = m.style.display === 'flex';
+    m.style.display = open ? 'none' : 'flex';
+  }
+  // Wire mobile engine buttons too
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#mob-menu .eng-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const eng = btn.dataset.engine;
+        const ENGINE_TAB_MOB = { '1':'history','2':'fires','3':'geopolitics','4':'predictions','5':'diaspora' };
+        const tab = ENGINE_TAB_MOB[eng] || 'fires';
+        if (window.openDashboard) window.openDashboard(tab);
+        document.getElementById('mob-menu').style.display = 'none';
+        document.querySelectorAll('.eng-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+
+  // ── ACLED conflict layer on globe ─────────────────────────────────────────
+  const ACLED_COLORS = {
+    'Battles':                    '#e53935',
+    'Violence against civilians': '#f57c00',
+    'Explosions/Remote violence': '#d81b60',
+    'Protests':                   '#fdd835',
+    'Riots':                      '#fb8c00',
+    'Strategic developments':     '#43a047',
+  };
+
+  async function loadAcledLayer(viewer) {
+    try {
+      const resp = await fetch('./public/data/punjab_events.geojson');
+      if (!resp.ok) return;
+      const geojson = await resp.json();
+
+      geojson.features.forEach(f => {
+        const p   = f.properties;
+        const lon = f.geometry.coordinates[0];
+        const lat = f.geometry.coordinates[1];
+        const col = Cesium.Color.fromCssColorString(
+          ACLED_COLORS[p.type] || '#9c27b0'
+        ).withAlpha(0.85);
+
+        viewer.entities.add({
+          position: Cesium.Cartesian3.fromDegrees(lon, lat),
+          billboard: {
+            image: createAcledPin(ACLED_COLORS[p.type] || '#9c27b0', p.fatalities > 0),
+            verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+            heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+            disableDepthTestDistance: Number.POSITIVE_INFINITY,
+            scale: 0.7,
+          },
+          properties: { layerId: 'acled', ...p },
+          description: `
+            <b>${p.type}</b><br/>
+            ${p.location}, ${p.country}<br/>
+            ${p.date} · Fatalities: ${p.fatalities}<br/>
+            <small>${(p.notes || '').slice(0, 200)}</small>
+          `,
+        });
+      });
+      console.log('[ACLED] loaded', geojson.features.length, 'events');
+    } catch(e) {
+      console.warn('[ACLED] layer failed:', e.message);
+    }
+  }
+
+  function createAcledPin(hexColor, hasFatalities) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 24; canvas.height = 28;
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(12, 10, 8, 0, Math.PI * 2);
+    ctx.fillStyle = hexColor;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    if (hasFatalities) {
+      ctx.beginPath();
+      ctx.moveTo(12, 18); ctx.lineTo(12, 26);
+      ctx.strokeStyle = hexColor;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    return canvas.toDataURL();
+  }
+
+  // Attach to globe once Cesium viewer is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const checkViewer = setInterval(() => {
+      if (window._cesiumViewer) {
+        clearInterval(checkViewer);
+        loadAcledLayer(window._cesiumViewer);
+      }
+    }, 800);
+  });
+
+  // ── Comtrade visualizations ─────────────────────────────────────────────────
+  async function renderComtradeCharts() {
+    let data;
+    try {
+      const r = await fetch('./public/data/comtrade.json');
+      if (!r.ok) return;
+      data = await r.json();
+    } catch(e) { return; }
+
+    const bil = data.india_bilateral || {};
+    const semi = data.semiconductors || {};
+    const food = data.food_security || {};
+    const sig  = data.falcon_signals || {};
+
+    // ── Partner bar chart ────────────────────────────────────────────────────
+    const partnerEl = document.getElementById('comtrade-partner-chart');
+    if (partnerEl) {
+      const partners = [
+        { name: 'USA',      val: bil.india_usa_total_usd   || 0 },
+        { name: 'China',    val: bil.india_china_total_usd || 0 },
+        { name: 'UAE',      val: bil.india_uae_total_usd   || 0 },
+        { name: 'Russia',   val: bil.india_russia_total_usd|| 0 },
+        { name: 'Canada',   val: bil.india_canada_total_usd|| 0 },
+        { name: 'Pakistan', val: bil.india_pakistan_total_usd|| 0 },
+      ].sort((a,b) => b.val - a.val);
+      const colors = ['#c8962a','#e53935','#43a047','#1e88e5','#8e24aa','#f57c00'];
+      const max = partners[0].val;
+      const W = partnerEl.parentElement.clientWidth - 36 || 600;
+      const barH = 22, gap = 10, pad = { t:10, b:10, l:80, r:80 };
+      const H = pad.t + partners.length*(barH+gap) + pad.b;
+      partnerEl.width = W; partnerEl.height = H;
+      const ctx = partnerEl.getContext('2d');
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const textCol = isDark ? '#e8e0d0' : '#1a1a1a';
+      const mutedCol = isDark ? '#9a8e80' : '#7a6e5f';
+      const trackCol = isDark ? 'rgba(200,150,42,0.1)' : '#ede8df';
+      ctx.clearRect(0,0,W,H);
+      partners.forEach((p,i) => {
+        const y = pad.t + i*(barH+gap);
+        const bw = Math.round((p.val/max)*(W-pad.l-pad.r));
+        ctx.fillStyle = trackCol;
+        ctx.beginPath(); ctx.roundRect(pad.l, y, W-pad.l-pad.r, barH, 4); ctx.fill();
+        ctx.fillStyle = colors[i % colors.length] + 'cc';
+        ctx.beginPath(); ctx.roundRect(pad.l, y, bw, barH, 4); ctx.fill();
+        ctx.fillStyle = textCol; ctx.font = `600 11px 'Segoe UI',sans-serif`;
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        ctx.fillText(p.name, pad.l - 8, y + barH/2);
+        ctx.fillStyle = mutedCol; ctx.font = `10px 'Segoe UI',sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText('$' + (p.val/1e9).toFixed(0)+'B', pad.l + bw + 6, y + barH/2);
+      });
+    }
+
+    // ── Russia crude KPI ────────────────────────────────────────────────────
+    const rusEl = document.getElementById('comtrade-russia-kpi');
+    if (rusEl) {
+      const crude = bil.india_russia_crude_imports_usd || 0;
+      const pct = sig.russia_trade_intensity || 0;
+      rusEl.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+          <div style="flex:1;min-width:140px;">
+            <div style="font-size:28px;font-weight:700;color:#e53935;">$${(crude/1e9).toFixed(1)}B</div>
+            <div style="font-size:11px;color:var(--muted);">Russian crude imports 2023</div>
+          </div>
+          <div style="flex:1;min-width:140px;">
+            <div style="font-size:28px;font-weight:700;color:#c8962a;">${pct.toFixed(1)}%</div>
+            <div style="font-size:11px;color:var(--muted);">Russia share of India oil imports</div>
+          </div>
+          <div style="flex:2;min-width:200px;font-size:11px;color:var(--muted);line-height:1.6;">
+            India is Russia's largest crude buyer since EU/UK sanctions (2022).
+            Punjab proximity to Pakistan border creates supply chain exposure.
+          </div>
+        </div>`;
+    }
+
+    // ── Chip split donut ────────────────────────────────────────────────────
+    const chipEl = document.getElementById('comtrade-chip-chart');
+    if (chipEl) {
+      const china = semi.india_china_chip_imports_usd || 0;
+      const usa   = semi.india_usa_chip_imports_usd   || 0;
+      const total = china + usa;
+      const W2 = 200, H2 = chipEl.height = 120;
+      chipEl.width = W2;
+      const ctx2 = chipEl.getContext('2d');
+      const cx = W2/2 - 20, cy = H2/2, r = 45;
+      const chinaPct = china/total;
+      const chinaEnd = -Math.PI/2 + chinaPct*2*Math.PI;
+      ctx2.clearRect(0,0,W2,H2);
+      // China arc
+      ctx2.beginPath(); ctx2.moveTo(cx,cy);
+      ctx2.arc(cx,cy,r,-Math.PI/2,chinaEnd); ctx2.closePath();
+      ctx2.fillStyle = '#e53935bb'; ctx2.fill();
+      // USA arc
+      ctx2.beginPath(); ctx2.moveTo(cx,cy);
+      ctx2.arc(cx,cy,r,chinaEnd,-Math.PI/2); ctx2.closePath();
+      ctx2.fillStyle = '#1e88e5bb'; ctx2.fill();
+      // Hole
+      ctx2.beginPath(); ctx2.arc(cx,cy,r*0.55,0,2*Math.PI);
+      ctx2.fillStyle = document.documentElement.getAttribute('data-theme')==='dark' ? '#1c1a24' : '#fff';
+      ctx2.fill();
+      // Center label
+      ctx2.fillStyle = '#e53935'; ctx2.font='bold 16px Segoe UI';
+      ctx2.textAlign='center'; ctx2.textBaseline='middle';
+      ctx2.fillText((chinaPct*100).toFixed(0)+'%', cx, cy-5);
+      ctx2.fillStyle='var(--muted)'; ctx2.font='9px Segoe UI';
+      ctx2.fillText('China', cx, cy+9);
+      // Legend
+      const lx = W2-60;
+      [['China','#e53935',(china/1e9).toFixed(0)+'B'],['USA','#1e88e5',(usa/1e9).toFixed(0)+'B']].forEach(([n,c,v],i)=>{
+        ctx2.fillStyle=c; ctx2.beginPath(); ctx2.arc(lx,30+i*22,5,0,2*Math.PI); ctx2.fill();
+        ctx2.fillStyle=document.documentElement.getAttribute('data-theme')==='dark'?'#e8e0d0':'#1a1a1a';
+        ctx2.font='10px Segoe UI'; ctx2.textAlign='left';
+        ctx2.fillText(n+' $'+v, lx+10, 30+i*22+3);
+      });
+    }
+
+    // ── Food security KPIs ──────────────────────────────────────────────────
+    const foodEl = document.getElementById('comtrade-food-kpi');
+    if (foodEl) {
+      const kpis = [
+        { icon:'🌾', label:'Rice exports (India)', val:'$'+((food.india_rice_exports_usd||0)/1e9).toFixed(1)+'B', sub: (food.india_rice_exports_t/1e6).toFixed(1)+'M t' },
+        { icon:'🌿', label:'Fertiliser imports', val:'$'+((sig.india_fertiliser_imports_usd||0)/1e9).toFixed(1)+'B', sub:'Potash + Urea' },
+        { icon:'🇵🇰', label:'Pakistan wheat pressure', val:sig.pakistan_wheat_import_pressure||'—', sub:'2023 signal' },
+        { icon:'💊', label:'Chip China share', val:(sig.chip_china_pct||0).toFixed(1)+'%', sub:'Semiconductor risk' },
+      ];
+      foodEl.innerHTML = kpis.map(k=>`
+        <div style="flex:1;min-width:130px;background:var(--panel-bg);border:1px solid var(--panel-border);
+          border-radius:8px;padding:10px 12px;">
+          <div style="font-size:20px;margin-bottom:4px;">${k.icon}</div>
+          <div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">${k.label}</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">${k.val}</div>
+          <div style="font-size:10px;color:var(--muted);">${k.sub}</div>
+        </div>`).join('');
+    }
+  }
+
+  // Run when economy tab is first opened
+  document.addEventListener('DOMContentLoaded', () => {
+    const orig = window.dashSwitchTab;
+    let comtradeLoaded = false;
+    window.dashSwitchTab = function(tab) {
+      if (orig) orig(tab);
+      if (tab === 'economy' && !comtradeLoaded) {
+        comtradeLoaded = true;
+        setTimeout(renderComtradeCharts, 200);
+      }
+    };
+  });
   </script>
 </body>
 </html>

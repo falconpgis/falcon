@@ -160,6 +160,7 @@ function init() {
     timeline: false,
     navigationHelpButton: false,
   });
+  window._cesiumViewer = viewer;
 
   setProgress(40);
   setLoadLabel('Loading imagery…');

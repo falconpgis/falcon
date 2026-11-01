@@ -1,0 +1,15 @@
+{
+  "generated": "2026-11-01T03:21:41Z",
+  "date": "2026-11-01",
+  "source": "seed \u2014 run daily pipeline for live GDELT tone scores",
+  "tone_scores": {
+    "punjab_overall": -1.8,
+    "india_canada": -3.2,
+    "ukraine_wheat": 1.2,
+    "russia_energy": -2.1,
+    "pakistan_economy": -4.5,
+    "cpec_corridor": -0.8,
+    "sikh_diaspora": 2.3,
+    "punjab_agriculture": -2.4
+  }
+}

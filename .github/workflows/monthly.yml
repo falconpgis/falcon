@@ -2,8 +2,8 @@ name: Monthly data pipeline
 
 on:
   schedule:
-    - cron: '0 1 1 * *'   # 01:00 UTC on the 1st of each month
-  workflow_dispatch:        # manual trigger for testing
+    - cron: '0 4 1 * *'   # 04:00 UTC on 1st of each month
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,15 +18,39 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Fetch World Bank commodity prices
+      - name: Install Python dependencies
+        run: pip install requests pdfminer.six
+
+      - name: Refresh historical layer (Anglo-Sikh Wars, Misl capitals)
+        run: python scripts/fetch_history.py
+        continue-on-error: true
+
+      - name: Fetch commodities (World Bank Pink Sheet)
         run: python scripts/fetch_commodities.py
+        continue-on-error: true
+
+      - name: Fetch groundwater (CGWB quarterly — runs monthly, detects new data)
+        run: python scripts/fetch_groundwater.py
+        continue-on-error: true
+
+      - name: Fetch Eurasian signals (monthly deep history)
+        run: python scripts/fetch_eurasian.py
+        continue-on-error: true
+
+      - name: Re-compute prediction indexes (monthly refresh)
+        run: python scripts/fetch_predictions.py
         continue-on-error: true
 
       - name: Commit updated data
         run: |
           git config user.name  "FALCON Bot"
           git config user.email "bot@falconpgis.github.io"
-          git add public/data/commodities.json \
-                  public/data/history/commodities_timeseries.json
-          git diff --staged --quiet || git commit -m "chore: monthly commodities refresh $(date -u +%Y-%m)"
+          git add \
+            public/data/commodities.json \
+            public/data/punjab_groundwater.geojson \
+            public/data/eurasian_signals.json \
+            public/data/predictions.json \
+            public/data/punjab_historical/ \
+            public/data/history/
+          git diff --staged --quiet || git commit -m "chore: monthly data refresh $(date -u +%Y-%m-%d)"
           git push
