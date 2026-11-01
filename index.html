@@ -1160,6 +1160,8 @@
 
       <!-- MANDI TAB -->
       <div class="dash-tab-pane" data-tab="mandi">
+        <!-- Weather KPI strip (Open-Meteo, updated daily) -->
+        <div id="weather-strip" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:14px;"></div>
         <div class="dash-row">
           <div class="dash-card full">
             <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
@@ -1332,9 +1334,6 @@
     window._renderMiniNews = renderMiniNewsFeed;
     // Wrap openDashboard so it routes through dashSwitchTab for intel/predictions
     window.openDashboard = function(tab) {
-      const overlay = document.getElementById('dash-overlay');
-      if (!overlay) return;
-      overlay.style.display = 'flex';
       window.dashSwitchTab(tab || 'fires');
     };
     window.closeDashboard = closeDashboard;
@@ -1355,8 +1354,6 @@
       } else if (tab === 'predictions') {
         const el = document.getElementById('predictions-tab-content');
         if (el && window._renderPredTab) window._renderPredTab(el);
-      } else if (tab === 'history' || tab === 'diaspora') {
-        // stub tabs — content already in HTML, nothing extra to render
       } else if (window._dashModule && window._dashModule._renderTab) {
         window._dashModule._renderTab(tab);
       }

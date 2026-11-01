@@ -364,19 +364,14 @@ let _open = false;
 export function isDashboardOpen() { return _open; }
 
 export function openDashboard(tab) {
-  const overlay = document.getElementById('dash-overlay');
-  if (!overlay) return;
-  overlay.style.display = 'flex';
-  _open = true;
+  // Dashboard is always visible — just switch to the requested tab
   switchDashTab(tab || 'fires');
 }
 
 export { renderTab as _renderTab };
 
 export function closeDashboard() {
-  const overlay = document.getElementById('dash-overlay');
-  if (overlay) overlay.style.display = 'none';
-  _open = false;
+  // No-op: dashboard is now the permanent primary view
 }
 
 function switchDashTab(tab) {
@@ -391,10 +386,12 @@ function switchDashTab(tab) {
 
 // ── Tab renders ───────────────────────────────────────────────────────────────
 async function renderTab(tab) {
-  if (tab === 'fires')   await renderFiresTab();
-  if (tab === 'aqi')     await renderAQITab();
-  if (tab === 'mandi')   await renderMandiTab();
-  if (tab === 'economy') await renderEconomyTab();
+  if (tab === 'fires')    await renderFiresTab();
+  if (tab === 'aqi')      await renderAQITab();
+  if (tab === 'mandi')    await renderMandiTab();
+  if (tab === 'economy')  await renderEconomyTab();
+  if (tab === 'history')  await renderHistoryTab();
+  if (tab === 'diaspora') await renderDiasporaTab();
 }
 
 async function renderFiresTab() {
@@ -491,9 +488,62 @@ async function renderAQITab() {
   }
 }
 
+async function renderWeatherStrip() {
+  const strip = document.getElementById('weather-strip');
+  if (!strip) return;
+  let w;
+  try {
+    const r = await fetch('./public/data/weather.json?v=' + Date.now());
+    if (!r.ok) return;
+    w = await r.json();
+  } catch(e) { return; }
+
+  const sig    = w.signals || {};
+  const cur    = w.current || {};
+  const fc     = (w.forecast || []).slice(0, 5);
+  const rain7  = sig.rain_7d_mm ?? '—';
+  const signal = sig.drought_signal || 'NORMAL';
+  const sigCol = { CRITICAL:'#e53935', DRY:'#f57c00', FLOOD_RISK:'#2196f3', NORMAL:'#4caf6e' }[signal] || '#888';
+  const tempC  = cur.temperature != null ? cur.temperature + '°C' : '—';
+  const windKm = cur.windspeed   != null ? cur.windspeed + ' km/h' : '—';
+
+  const kpis = [
+    { icon:'🌡', val: tempC,         label: 'Temperature',    color: '#f57c00' },
+    { icon:'💧', val: rain7 + ' mm', label: '7-day rainfall', color: '#2196f3' },
+    { icon:'💨', val: windKm,        label: 'Wind speed',     color: '#888'    },
+    { icon:'🚨', val: signal,        label: 'Drought signal', color: sigCol    },
+  ];
+
+  strip.innerHTML = kpis.map(k => `
+    <div style="background:var(--surface);border:1px solid var(--panel-border);border-top:2px solid ${k.color};border-radius:var(--radius);padding:10px 12px;">
+      <div style="font-size:18px;line-height:1">${k.icon}</div>
+      <div style="font-size:14px;font-weight:700;color:${k.color};margin:4px 0 2px">${k.val}</div>
+      <div style="font-size:10px;color:var(--muted)">${k.label}</div>
+    </div>`).join('');
+
+  // Append 5-day mini forecast if space
+  if (fc.length) {
+    const fcHtml = fc.map(d => {
+      const day = (d.date || '').slice(5);
+      const r   = d.rain_mm != null ? d.rain_mm.toFixed(0) + 'mm' : '—';
+      const t   = d.temp_max != null ? d.temp_max.toFixed(0) + '°' : '—';
+      return `<div style="text-align:center;font-size:10px;padding:4px 6px;background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:4px;">
+        <div style="color:var(--muted)">${day}</div>
+        <div style="font-weight:600;color:var(--text)">${t}</div>
+        <div style="color:#2196f3">${r}</div>
+      </div>`;
+    }).join('');
+    strip.innerHTML += `<div style="grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap">
+      <div style="font-size:10px;color:var(--muted);align-self:center;margin-right:4px">5-day:</div>
+      ${fcHtml}
+    </div>`;
+  }
+}
+
 async function renderMandiTab() {
   const pane = document.querySelector('.dash-tab-pane[data-tab="mandi"]');
   if (!pane) return;
+  renderWeatherStrip();
 
   let mandi, ts;
   try {
@@ -635,4 +685,303 @@ export async function initEngine2Panel() {
 
   // Mini fire sparkline in trend-chart section if already open
   // (full dashboard is opened on button click; panel just shows the button)
+}
+
+// ── ENGINE I — HISTORY TAB ───────────────────────────────────────────────────
+const ANGLO_SIKH_WARS_FALLBACK = [
+  { name: "Battle of Mudki",    date: "1845-12-18", war: "First Anglo-Sikh War", outcome: "British victory", lon: 74.601, lat: 30.775, fatalities: 872  },
+  { name: "Battle of Ferozeshah", date: "1845-12-21", war: "First Anglo-Sikh War", outcome: "British victory", lon: 74.569, lat: 30.872, fatalities: 2415 },
+  { name: "Battle of Aliwal",   date: "1846-01-28", war: "First Anglo-Sikh War", outcome: "British victory", lon: 74.875, lat: 30.965, fatalities: 580  },
+  { name: "Battle of Sobraon",  date: "1846-02-10", war: "First Anglo-Sikh War", outcome: "British victory", lon: 74.430, lat: 31.070, fatalities: 2383 },
+  { name: "Battle of Ramnagar", date: "1848-11-22", war: "Second Anglo-Sikh War", outcome: "Inconclusive",   lon: 73.606, lat: 32.555, fatalities: 300  },
+  { name: "Battle of Chilianwala", date: "1849-01-13", war: "Second Anglo-Sikh War", outcome: "Inconclusive", lon: 73.640, lat: 32.581, fatalities: 2300 },
+  { name: "Battle of Gujarat",  date: "1849-02-21", war: "Second Anglo-Sikh War", outcome: "British victory", lon: 74.082, lat: 32.573, fatalities: 1500 },
+];
+
+const MISL_FALLBACK = [
+  { name: "Sukerchakia Misl", capital: "Gujranwala", lon: 74.186, lat: 32.161, founder: "Charat Singh", note: "Dynasty of Ranjit Singh" },
+  { name: "Bhangi Misl",      capital: "Lahore",     lon: 74.343, lat: 31.549, founder: "Hari Singh Bhangi" },
+  { name: "Ramgarhia Misl",   capital: "Sri Hargobindpur", lon: 75.377, lat: 31.831, founder: "Jassa Singh Ramgarhia" },
+  { name: "Kanhaiya Misl",    capital: "Batala",     lon: 75.204, lat: 31.818, founder: "Jai Singh Kanhaiya" },
+  { name: "Nakkai Misl",      capital: "Chunian",    lon: 73.978, lat: 30.965, founder: "Hira Singh Nakkai" },
+  { name: "Dallewalia Misl",  capital: "Rahon",      lon: 76.114, lat: 31.053, founder: "Gulab Singh Dallewalia" },
+  { name: "Ahluwalia Misl",   capital: "Kapurthala", lon: 75.380, lat: 31.381, founder: "Jassa Singh Ahluwalia" },
+  { name: "Phulkian Misl",    capital: "Patiala",    lon: 76.381, lat: 30.340, founder: "Phul (ancestor)" },
+  { name: "Shaheed Misl",     capital: "Amritsar",   lon: 74.879, lat: 31.634, founder: "Baba Deep Singh" },
+  { name: "Karora Singhia",   capital: "Batala area",lon: 75.20,  lat: 31.80,  founder: "Karora Singh" },
+  { name: "Nishanwalia Misl", capital: "Amritsar",   lon: 74.879, lat: 31.634, founder: "Sangat Singh" },
+  { name: "Faizullahpuria",   capital: "Singhpura",  lon: 74.5,   lat: 31.9,   founder: "Nawab Kapur Singh" },
+];
+
+const HERITAGE_SITES = [
+  { name: "Nankana Sahib",      lon: 73.704, lat: 31.451, type: "Birthplace",  note: "Guru Nanak Dev Ji Parkash Asthan" },
+  { name: "Golden Temple",      lon: 74.879, lat: 31.634, type: "Sanctum",     note: "Sri Harmandir Sahib, Amritsar" },
+  { name: "Anandpur Sahib",     lon: 76.494, lat: 31.230, type: "Khalsa",      note: "Khalsa Panth founded 1699" },
+  { name: "Fatehgarh Sahib",    lon: 76.387, lat: 30.641, type: "Shaheedi",    note: "Sahibzadey Shaheedi — Sirhind" },
+  { name: "Jallianwala Bagh",   lon: 74.879, lat: 31.620, type: "Massacre",    note: "1919 British massacre" },
+  { name: "Muktsar Sahib",      lon: 74.515, lat: 30.473, type: "Battle",      note: "Battle of Khidrana 1705" },
+  { name: "Chamkaur Sahib",     lon: 76.399, lat: 30.899, type: "Shaheedi",    note: "Battle of Chamkaur 1704" },
+  { name: "Lahore Fort",        lon: 74.310, lat: 31.588, type: "Empire",      note: "Sikh Empire capital" },
+  { name: "Rohtas Fort",        lon: 73.581, lat: 32.966, type: "Strategic",   note: "Sher Shah Suri — key Punjab fortress" },
+  { name: "Wagah Border",       lon: 74.571, lat: 31.604, type: "Partition",   note: "Radcliffe Line — 1947 Partition" },
+];
+
+async function renderHistoryTab() {
+  const pane = document.querySelector('.dash-tab-pane[data-tab="history"]');
+  if (!pane) return;
+  const container = pane.querySelector('#history-tab-content');
+  if (!container) return;
+
+  // Try loading real GeoJSON; fall back to hardcoded data
+  let battles = ANGLO_SIKH_WARS_FALLBACK;
+  let misls   = MISL_FALLBACK;
+  try {
+    const r = await fetch('./public/data/punjab_historical/anglo_sikh_wars.geojson?v=' + Date.now());
+    if (r.ok) {
+      const geo = await r.json();
+      if (geo.features && geo.features.length > 3) {
+        battles = geo.features.map(f => ({
+          name:       f.properties.name,
+          date:       f.properties.date || '',
+          war:        f.properties.war  || '',
+          outcome:    f.properties.outcome || '',
+          fatalities: f.properties.fatalities || 0,
+          lon:        f.geometry.coordinates[0],
+          lat:        f.geometry.coordinates[1],
+        }));
+      }
+    }
+  } catch(e) { /* use fallback */ }
+
+  try {
+    const r = await fetch('./public/data/punjab_historical/misl_capitals.geojson?v=' + Date.now());
+    if (r.ok) {
+      const geo = await r.json();
+      if (geo.features && geo.features.length > 3) {
+        misls = geo.features.map(f => ({
+          name:    f.properties.name,
+          capital: f.properties.capital || '',
+          founder: f.properties.founder || '',
+          note:    f.properties.note    || '',
+          lon:     f.geometry.coordinates[0],
+          lat:     f.geometry.coordinates[1],
+        }));
+      }
+    }
+  } catch(e) { /* use fallback */ }
+
+  // Sort battles by date
+  battles.sort((a, b) => (a.date || '') < (b.date || '') ? -1 : 1);
+  const war1 = battles.filter(b => b.war && b.war.includes('First'));
+  const war2 = battles.filter(b => b.war && b.war.includes('Second'));
+  const other = battles.filter(b => !b.war || (!b.war.includes('First') && !b.war.includes('Second')));
+
+  const totalFatalities = battles.reduce((s, b) => s + (b.fatalities || 0), 0);
+
+  container.innerHTML = `
+    <!-- KPI strip -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:18px;">
+      ${_histKpi('⚔', battles.length, 'Battles recorded', '#e53935')}
+      ${_histKpi('💀', totalFatalities.toLocaleString(), 'Estimated killed', '#f57c00')}
+      ${_histKpi('🏴', misls.length, 'Sikh Misls', GOLD)}
+      ${_histKpi('🕌', HERITAGE_SITES.length, 'Heritage sites', '#4caf6e')}
+    </div>
+
+    <!-- Anglo-Sikh Wars timeline -->
+    <div class="dash-card" style="margin-bottom:14px">
+      <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
+        Anglo-Sikh Wars — Battle Timeline
+        <button onclick="toggleMapPanel('history')" style="font-size:10px;padding:3px 10px;background:rgba(229,57,53,0.15);border:1px solid rgba(229,57,53,0.4);border-radius:4px;color:#e53935;cursor:pointer;">🗺 Show on Map</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
+        <div>
+          <div style="font-size:9px;letter-spacing:2px;color:#e53935;font-weight:700;margin-bottom:6px;text-transform:uppercase;">First War 1845–46</div>
+          ${war1.map(b => _battleRow(b)).join('')}
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:2px;color:#f57c00;font-weight:700;margin-bottom:6px;text-transform:uppercase;">Second War 1848–49</div>
+          ${war2.map(b => _battleRow(b)).join('')}
+        </div>
+      </div>
+      ${other.length ? `<div style="margin-top:8px">${other.map(b => _battleRow(b)).join('')}</div>` : ''}
+    </div>
+
+    <!-- Sikh Misls grid -->
+    <div class="dash-card" style="margin-bottom:14px">
+      <div class="dash-card-title">Sikh Empire — 12 Misls (Confederacy 1716–1799)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px;">
+        ${misls.map(m => _mislCard(m)).join('')}
+      </div>
+    </div>
+
+    <!-- Key heritage sites -->
+    <div class="dash-card">
+      <div class="dash-card-title">Key Heritage Sites — Punjab</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px;">
+        ${HERITAGE_SITES.map(s => _siteCard(s)).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function _histKpi(icon, val, label, color) {
+  return `<div style="background:var(--surface);border:1px solid var(--panel-border);border-radius:var(--radius);padding:12px 14px;border-top:2px solid ${color}">
+    <div style="font-size:22px;line-height:1">${icon}</div>
+    <div style="font-size:18px;font-weight:700;color:${color};margin:4px 0 2px">${val}</div>
+    <div style="font-size:10px;color:var(--muted)">${label}</div>
+  </div>`;
+}
+
+function _battleRow(b) {
+  const dateStr = b.date ? b.date.slice(0, 10) : '—';
+  const fat = b.fatalities ? `<span style="color:#f57c00">${b.fatalities.toLocaleString()} killed</span>` : '';
+  const outcome = b.outcome || '';
+  const oBrit = outcome.toLowerCase().includes('british');
+  const oSikh = outcome.toLowerCase().includes('sikh') || outcome.toLowerCase().includes('khalsa');
+  const oCol  = oBrit ? '#f57c00' : oSikh ? '#4caf6e' : '#888';
+  return `<div style="padding:7px 0;border-bottom:1px solid var(--panel-border);display:flex;flex-direction:column;gap:2px">
+    <div style="font-size:12px;font-weight:600;color:var(--text)">${b.name}</div>
+    <div style="font-size:10px;color:var(--muted)">${dateStr} &nbsp;·&nbsp; ${fat}</div>
+    <div style="font-size:10px;color:${oCol}">${outcome}</div>
+  </div>`;
+}
+
+function _mislCard(m) {
+  return `<div style="background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:6px;padding:10px 12px;">
+    <div style="font-size:11px;font-weight:600;color:${GOLD};margin-bottom:3px">${m.name}</div>
+    <div style="font-size:10px;color:var(--muted)">Capital: ${m.capital || '—'}</div>
+    ${m.founder ? `<div style="font-size:10px;color:var(--muted)">Founder: ${m.founder}</div>` : ''}
+    ${m.note    ? `<div style="font-size:10px;color:#888;margin-top:3px">${m.note}</div>` : ''}
+  </div>`;
+}
+
+function _siteCard(s) {
+  const typeColors = { Birthplace:'#4caf6e', Sanctum:'#f0a500', Khalsa:'#2196f3', Shaheedi:'#e53935', Battle:'#f57c00', Massacre:'#9c27b0', Empire:'#c8962a', Strategic:'#607d8b', Partition:'#795548' };
+  const col = typeColors[s.type] || '#888';
+  return `<div style="background:var(--panel-bg);border:1px solid var(--panel-border);border-left:3px solid ${col};border-radius:6px;padding:10px 12px;">
+    <div style="font-size:10px;letter-spacing:1.5px;color:${col};font-weight:700;text-transform:uppercase;margin-bottom:3px">${s.type}</div>
+    <div style="font-size:12px;font-weight:600;color:var(--text)">${s.name}</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:2px">${s.note}</div>
+  </div>`;
+}
+
+// ── ENGINE V — DIASPORA TAB ───────────────────────────────────────────────────
+const DIASPORA_FALLBACK = [
+  { country: "Canada",     flag: "🇨🇦", population: 770000, gurdwaras: 130, sikh_mps: 18, remittance_bn: 2.1, cities: ["Brampton", "Surrey", "Mississauga", "Calgary"] },
+  { country: "UK",         flag: "🇬🇧", population: 600000, gurdwaras: 250, sikh_mps: 9,  remittance_bn: 0.8, cities: ["Southall", "Birmingham", "Leicester", "Wolverhampton"] },
+  { country: "USA",        flag: "🇺🇸", population: 500000, gurdwaras: 90,  sikh_mps: 1,  remittance_bn: 1.2, cities: ["Fresno", "Yuba City", "New York", "Chicago"] },
+  { country: "UAE",        flag: "🇦🇪", population: 200000, gurdwaras: 8,   sikh_mps: 0,  remittance_bn: 3.4, cities: ["Dubai", "Abu Dhabi", "Sharjah"] },
+  { country: "Australia",  flag: "🇦🇺", population: 210000, gurdwaras: 35,  sikh_mps: 2,  remittance_bn: 0.4, cities: ["Melbourne", "Sydney", "Perth", "Brisbane"] },
+  { country: "Italy",      flag: "🇮🇹", population: 80000,  gurdwaras: 15,  sikh_mps: 0,  remittance_bn: 0.2, cities: ["Brescia", "Rome", "Milan", "Reggio Emilia"] },
+  { country: "New Zealand",flag: "🇳🇿", population: 40000,  gurdwaras: 12,  sikh_mps: 2,  remittance_bn: 0.1, cities: ["Auckland", "Wellington"] },
+  { country: "Germany",    flag: "🇩🇪", population: 30000,  gurdwaras: 8,   sikh_mps: 0,  remittance_bn: 0.1, cities: ["Frankfurt", "Berlin", "Hamburg"] },
+];
+
+async function renderDiasporaTab() {
+  const pane = document.querySelector('.dash-tab-pane[data-tab="diaspora"]');
+  if (!pane) return;
+  const container = pane.querySelector('#diaspora-tab-content');
+  if (!container) return;
+
+  let countries = DIASPORA_FALLBACK;
+  let totalGurdwaras = 0, totalMPs = 0, totalPop = 0;
+  let mps = [];
+
+  // Try loading real diaspora_summary.json
+  try {
+    const r = await fetch('./public/data/diaspora_summary.json?v=' + Date.now());
+    if (r.ok) {
+      const d = await r.json();
+      totalGurdwaras = d.total_gurdwaras || 0;
+      totalMPs = d.total_sikh_politicians || 0;
+      // Merge real gurdwara counts into fallback population data
+      const realMap = {};
+      (d.by_country || []).forEach(c => { realMap[c.country] = c; });
+      countries = DIASPORA_FALLBACK.map(c => ({
+        ...c,
+        gurdwaras: realMap[c.country]?.gurdwaras ?? c.gurdwaras,
+        sikh_mps:  realMap[c.country]?.sikh_mps  ?? c.sikh_mps,
+      }));
+    }
+  } catch(e) { /* use fallback */ }
+
+  // Try loading sikh_mps.json for named politicians
+  try {
+    const r = await fetch('./public/data/sikh_mps.json?v=' + Date.now());
+    if (r.ok) {
+      const d = await r.json();
+      mps = (d.politicians || []).slice(0, 30);
+    }
+  } catch(e) { /* skip */ }
+
+  totalPop = countries.reduce((s, c) => s + c.population, 0);
+  if (!totalGurdwaras) totalGurdwaras = countries.reduce((s, c) => s + c.gurdwaras, 0);
+  if (!totalMPs) totalMPs = countries.reduce((s, c) => s + c.sikh_mps, 0);
+
+  container.innerHTML = `
+    <!-- KPI strip -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:18px;">
+      ${_histKpi('👥', (totalPop/1000000).toFixed(1) + 'M', 'Global Sikh diaspora', GOLD)}
+      ${_histKpi('🕌', totalGurdwaras.toLocaleString(), 'Gurdwaras worldwide', '#4caf6e')}
+      ${_histKpi('🏛', totalMPs, 'Elected representatives', '#2196f3')}
+      ${_histKpi('💸', '$8.2B', 'Remittances to Punjab', '#f57c00')}
+    </div>
+
+    <!-- Country grid -->
+    <div class="dash-card" style="margin-bottom:14px">
+      <div class="dash-card-title" style="display:flex;justify-content:space-between;align-items:center;">
+        Sikh Diaspora — Country Map
+        <button onclick="toggleMapPanel('diaspora')" style="font-size:10px;padding:3px 10px;background:rgba(76,175,110,0.15);border:1px solid rgba(76,175,110,0.4);border-radius:4px;color:#4caf6e;cursor:pointer;">🗺 Show on Map</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:12px;">
+        ${countries.map(c => _diasporaCard(c, totalPop)).join('')}
+      </div>
+    </div>
+
+    <!-- Named politicians (if available from Wikidata) -->
+    ${mps.length > 0 ? `
+    <div class="dash-card">
+      <div class="dash-card-title">Sikh Elected Representatives — Wikidata</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+        ${mps.map(m => `<div style="background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:4px;padding:5px 10px;font-size:10px;">
+          <span style="font-weight:600;color:var(--text)">${m.name}</span>
+          <span style="color:var(--muted)"> · ${m.country}</span>
+          ${m.party ? `<span style="color:#888"> · ${m.party.slice(0,20)}</span>` : ''}
+        </div>`).join('')}
+      </div>
+    </div>` : ''}
+  `;
+}
+
+function _diasporaCard(c, totalPop) {
+  const pct = ((c.population / totalPop) * 100).toFixed(1);
+  const barW = Math.min(100, (c.population / 800000) * 100);
+  return `<div style="background:var(--surface);border:1px solid var(--panel-border);border-radius:var(--radius);padding:14px 16px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <span style="font-size:24px">${c.flag}</span>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">${c.country}</div>
+        <div style="font-size:10px;color:var(--muted)">${pct}% of diaspora</div>
+      </div>
+    </div>
+    <!-- Population bar -->
+    <div style="height:6px;background:var(--panel-bg);border-radius:3px;overflow:hidden;margin-bottom:8px">
+      <div style="height:100%;width:${barW}%;background:${GOLD};border-radius:3px"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;text-align:center">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:${GOLD}">${c.population >= 1000000 ? (c.population/1000000).toFixed(1)+'M' : (c.population/1000).toFixed(0)+'k'}</div>
+        <div style="font-size:9px;color:var(--muted)">Population</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#4caf6e">${c.gurdwaras}</div>
+        <div style="font-size:9px;color:var(--muted)">Gurdwaras</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#2196f3">${c.sikh_mps}</div>
+        <div style="font-size:9px;color:var(--muted)">MPs/Reps</div>
+      </div>
+    </div>
+    ${c.cities ? `<div style="font-size:10px;color:var(--muted);margin-top:8px;border-top:1px solid var(--panel-border);padding-top:6px">${c.cities.slice(0,3).join(' · ')}</div>` : ''}
+  </div>`;
 }
