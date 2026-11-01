@@ -528,6 +528,46 @@
     .dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     @media (max-width: 900px) { .dash-row { grid-template-columns: 1fr; } }
 
+    /* ── Command bar ───────────────────────────────── */
+    #cmd-bar {
+      flex-shrink: 0; position: relative;
+      background: var(--surface); border-top: 1px solid var(--panel-border);
+      padding: 6px 10px 8px;
+    }
+    #cmd-toast {
+      position: absolute; bottom: 100%; left: 10px; right: 10px;
+      background: rgba(26,26,26,0.92); color: #eee;
+      font-size: 11px; letter-spacing: 0.5px;
+      padding: 5px 10px; border-radius: var(--radius-sm);
+      pointer-events: none; opacity: 0;
+      transition: opacity 0.2s; margin-bottom: 4px;
+    }
+    #cmd-toast.show { opacity: 1; }
+    #cmd-input-row {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--panel-bg); border: 1px solid var(--panel-border);
+      border-radius: 20px; padding: 0 4px 0 14px;
+      transition: border-color 0.15s;
+    }
+    #cmd-input-row:focus-within { border-color: var(--gold); }
+    #cmd-input {
+      flex: 1; background: none; border: none; outline: none;
+      font-size: 13px; color: var(--text); padding: 7px 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    #cmd-input::placeholder { color: var(--muted2); }
+    #cmd-mic-btn, #cmd-send-btn {
+      background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; color: var(--muted); transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    #cmd-mic-btn:hover, #cmd-send-btn:hover { color: var(--gold); background: var(--gold-faint); }
+    #cmd-mic-btn.listening { color: #e04444; background: rgba(224,68,68,0.15); animation: pulse-mic 1s infinite; }
+    @keyframes pulse-mic { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+    #cmd-listening-text { font-size: 11px; color: #e04444; min-width: 60px; text-align:center; }
+
     /* ── Dashboard mobile ≤640px ──────────────────── */
     @media (max-width: 640px) {
       #dash-tabs { overflow-x: auto; }
@@ -1328,6 +1368,19 @@
       </div>
 
     </div><!-- /dash-body -->
+
+    <!-- ── Command bar ── -->
+    <div id="cmd-bar">
+      <div id="cmd-toast"></div>
+      <div id="cmd-input-row">
+        <input id="cmd-input" type="text" placeholder="Type / for commands" autocomplete="off"
+               onkeydown="if(event.key==='Enter')runCommand(this.value)" />
+        <span id="cmd-listening-text" style="display:none">🔴 listening…</span>
+        <button id="cmd-mic-btn" title="Voice command" onclick="toggleVoice()">🎤</button>
+        <button id="cmd-send-btn" title="Send" onclick="runCommand(document.getElementById('cmd-input').value)">↵</button>
+      </div>
+    </div>
+
   </div><!-- /dash-overlay -->
 
   <!-- Map overlay panel — transparent; globe (z:1) shows through -->
@@ -1937,6 +1990,171 @@
         setTimeout(renderComtradeCharts, 200);
       }
     };
+  });
+  </script>
+
+  <!-- ── Command bar: text + voice ─────────────────────── -->
+  <script>
+  // ── Command response toast ──────────────────────────
+  function cmdToast(msg, ok) {
+    const t = document.getElementById('cmd-toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.style.background = ok === false ? 'rgba(160,40,40,0.92)' : 'rgba(26,26,26,0.92)';
+    t.classList.add('show');
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ── Command router ──────────────────────────────────
+  window.runCommand = function(raw) {
+    const inp = document.getElementById('cmd-input');
+    if (!raw || !raw.trim()) return;
+    const cmd = raw.trim().toLowerCase().replace(/^\//, '');
+    if (inp) inp.value = '';
+
+    // ── Layer toggles ──
+    const LAYER_ALIASES = {
+      fires: ['fires','fire','hotspot','hotspots','nasa'],
+      aqi:   ['aqi','air quality','pollution','smog'],
+      gw:    ['water','groundwater','gw','cgwb'],
+      air:   ['air traffic','airtraffic','aircraft','flight','flights','plane','planes','opensky'],
+      rail:  ['rail','railway','railways','train','trains'],
+      vessels:['ocean','vessels','vessel','ship','ships','shipping','maritime'],
+    };
+    for (const [layerId, aliases] of Object.entries(LAYER_ALIASES)) {
+      if (aliases.some(a => cmd.includes(a))) {
+        const on  = /(show|open|enable|activate|add|turn on|switch on)/.test(cmd) || !/(hide|off|remove|disable|turn off|close)/.test(cmd);
+        const off = /(hide|off|remove|disable|turn off|close)/.test(cmd);
+        const btn = document.querySelector(`.map-layer-btn[data-layer="${layerId}"]`);
+        const vis = window._layerVisible || {};
+        const isOn = vis[layerId];
+        if (off && isOn) { if (btn) btn.click(); cmdToast(`🙈 ${layerId} hidden`); return; }
+        if (!off && !isOn) { if (btn) btn.click(); cmdToast(`✅ ${layerId} layer on`); return; }
+        if (!off && isOn)  { cmdToast(`✅ ${layerId} already showing`); return; }
+        if (off && !isOn)  { cmdToast(`${layerId} already hidden`); return; }
+      }
+    }
+
+    // ── Show / hide everything ──
+    if (/show (all|everything)|all layers|everything on/.test(cmd)) {
+      if (!document.getElementById('map-panel').classList.contains('open')) toggleMapPanel();
+      setTimeout(() => { if (window.loadAllLiveLayers) loadAllLiveLayers(); }, 400);
+      cmdToast('🗺 All live layers activated');
+      return;
+    }
+    if (/hide (all|everything)|clear (all|map|layers)|everything off/.test(cmd)) {
+      Object.keys(window._layerVisible || {}).forEach(id => {
+        if (window._layerVisible[id]) {
+          const btn = document.querySelector(`.map-layer-btn[data-layer="${id}"]`);
+          if (btn) btn.click();
+        }
+      });
+      cmdToast('Map cleared');
+      return;
+    }
+
+    // ── Map open / close ──
+    if (/(live map|open map|show map|map on|launch map)/.test(cmd)) {
+      if (!document.getElementById('map-panel').classList.contains('open')) toggleMapPanel();
+      cmdToast('🗺 Live map opened');
+      return;
+    }
+    if (/(close map|hide map|map off|close globe)/.test(cmd)) {
+      if (document.getElementById('map-panel').classList.contains('open')) toggleMapPanel();
+      cmdToast('Map closed');
+      return;
+    }
+
+    // ── Camera: zoom to Punjab ──
+    if (/(zoom|fly|go to|center|punjab|home)/.test(cmd)) {
+      const v = window._cesiumViewer;
+      if (v) {
+        v.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(75.3, 30.9, 350000), duration: 2 });
+        if (!document.getElementById('map-panel').classList.contains('open')) toggleMapPanel();
+        cmdToast('📍 Flying to Punjab');
+      } else { cmdToast('Globe not ready yet', false); }
+      return;
+    }
+
+    // ── Tab switches ──
+    const TAB_ALIASES = {
+      fires:     ['fire','fires','hotspot'],
+      aqi:       ['aqi','air quality','air','pollution'],
+      mandi:     ['mandi','market','wheat','rice','price','prices','crop','crops','weather'],
+      geo:       ['geo','geopolitical','geopolitics','border','acled','conflict','cpec'],
+      economy:   ['economy','economic','trade','currency','currencies','gdp','comtrade'],
+      history:   ['history','historical','sikh','heritage','battle','misl','wars'],
+      diaspora:  ['diaspora','diaspora','canada','uk','nri','migrant'],
+    };
+    for (const [tab, aliases] of Object.entries(TAB_ALIASES)) {
+      if (aliases.some(a => cmd.includes(a))) {
+        if (window.dashSwitchTab) dashSwitchTab(tab);
+        cmdToast(`📊 ${tab.charAt(0).toUpperCase()+tab.slice(1)} tab`);
+        return;
+      }
+    }
+
+    // ── Help ──
+    if (/help|commands|\?$/.test(cmd)) {
+      cmdToast('Cmds: show fires · hide aqi · live map · zoom punjab · show all · history · geopolitical');
+      return;
+    }
+
+    cmdToast(`❓ Unknown: "${cmd.slice(0,30)}" — try "help"`, false);
+  };
+
+  // ── Voice recognition ───────────────────────────────
+  let _speech = null;
+  let _listening = false;
+
+  window.toggleVoice = function() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { cmdToast('Voice not supported in this browser', false); return; }
+    const mic = document.getElementById('cmd-mic-btn');
+    const lt  = document.getElementById('cmd-listening-text');
+    const inp = document.getElementById('cmd-input');
+    if (_listening) {
+      if (_speech) _speech.stop();
+      return;
+    }
+    _speech = new SR();
+    _speech.lang = 'en-IN';
+    _speech.interimResults = true;
+    _speech.maxAlternatives = 1;
+    _speech.onstart = () => {
+      _listening = true;
+      if (mic) mic.classList.add('listening');
+      if (lt)  { lt.style.display = 'inline'; }
+    };
+    _speech.onresult = (e) => {
+      let interim = '', final = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const t = e.results[i][0].transcript;
+        if (e.results[i].isFinal) final += t; else interim += t;
+      }
+      if (inp) inp.value = final || interim;
+      if (final) { runCommand(final); }
+    };
+    _speech.onerror = (e) => {
+      cmdToast('Voice error: ' + e.error, false);
+    };
+    _speech.onend = () => {
+      _listening = false;
+      if (mic) mic.classList.remove('listening');
+      if (lt)  lt.style.display = 'none';
+      _speech = null;
+    };
+    _speech.start();
+  };
+
+  // Slash key focuses command bar from anywhere
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      const inp = document.getElementById('cmd-input');
+      if (inp) { inp.focus(); inp.value = ''; }
+    }
   });
   </script>
 </body>
