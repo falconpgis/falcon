@@ -1379,7 +1379,7 @@
       }
     };
 
-    // Auto-init and auto-open dashboard after globe loads
+    // Auto-init: open dashboard + live map with all layers on load
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         initEngine2Panel();
@@ -1388,6 +1388,17 @@
         if (newsFeedEl && window._renderMiniNews) {
           window._renderMiniNews(newsFeedEl, 6);
         }
+        // Open live map panel and load all layers
+        toggleMapPanel();
+        // Wait for Cesium to be ready, then load layers
+        const tryLoadLayers = (attempts) => {
+          if (window._cesiumViewer) {
+            loadAllLiveLayers();
+          } else if (attempts > 0) {
+            setTimeout(() => tryLoadLayers(attempts - 1), 800);
+          }
+        };
+        tryLoadLayers(10);
       }, 1800);
     });
 
@@ -1442,116 +1453,224 @@
     }
   }
 
-  // ── Map layer toggles in map panel ─────────────────────────────────────────
-  const _activeLayers = new Set(['fires']);
-  function mapLayerToggle(btn, layerId) {
-    const active = _activeLayers.has(layerId);
+  // ── Live Map Layer System ─────────────────────────────────────────────────
+  // Each layer: { label, color, on: fn(viewer), off: fn(viewer) }
+  // Layers are loaded once and toggled via show/hide on their primitives.
+
+  const MAP_LAYER_COLORS = {
+    fires:   { bg:'rgba(255,112,67,0.25)', bd:'rgba(255,112,67,0.6)', tx:'#ff7043' },
+    aqi:     { bg:'rgba(76,175,110,0.25)', bd:'rgba(76,175,110,0.6)', tx:'#4caf6e' },
+    gw:      { bg:'rgba(33,150,243,0.25)', bd:'rgba(33,150,243,0.6)', tx:'#42a5f5' },
+    air:     { bg:'rgba(171,71,188,0.25)', bd:'rgba(171,71,188,0.6)', tx:'#ce93d8' },
+    rail:    { bg:'rgba(255,193,7,0.25)',  bd:'rgba(255,193,7,0.6)',  tx:'#ffc107' },
+    vessels: { bg:'rgba(0,188,212,0.25)',  bd:'rgba(0,188,212,0.6)',  tx:'#00bcd4' },
+  };
+
+  // Track what's loaded and shown
+  const _layerState = {};  // layerId -> { loaded: bool, visible: bool, entityIds: [], primitives: [] }
+
+  function _setLayerBtnActive(btn, active, layerId) {
+    if (!btn) return;
+    const c = MAP_LAYER_COLORS[layerId] || { bg:'rgba(200,150,42,0.2)', bd:'rgba(200,150,42,0.5)', tx:'#f0a500' };
     if (active) {
-      _activeLayers.delete(layerId);
-      btn.style.background = 'none';
-      btn.style.color = '#888';
-      btn.style.borderColor = '#444';
+      btn.style.background  = c.bg;
+      btn.style.borderColor = c.bd;
+      btn.style.color       = c.tx;
     } else {
-      _activeLayers.add(layerId);
-      // highlight color per layer
-      const colors = { fires:'rgba(255,112,67,0.2)', aqi:'rgba(76,175,110,0.2)', gw:'rgba(33,150,243,0.2)', air:'rgba(156,39,176,0.2)', rail:'rgba(255,193,7,0.2)', vessels:'rgba(0,188,212,0.2)' };
-      const borders = { fires:'rgba(255,112,67,0.5)', aqi:'rgba(76,175,110,0.5)', gw:'rgba(33,150,243,0.5)', air:'rgba(156,39,176,0.5)', rail:'rgba(255,193,7,0.5)', vessels:'rgba(0,188,212,0.5)' };
-      const texts   = { fires:'#ff7043', aqi:'#4caf6e', gw:'#2196f3', air:'#ab47bc', rail:'#ffc107', vessels:'#00bcd4' };
-      btn.style.background   = colors[layerId]  || 'rgba(200,150,42,0.2)';
-      btn.style.borderColor  = borders[layerId] || 'rgba(200,150,42,0.5)';
-      btn.style.color        = texts[layerId]   || '#f0a500';
-    }
-    // Route to layer loaders when ready
-    if (window._layerModule) {
-      if (_activeLayers.has(layerId)) {
-        if (layerId === 'air')     loadAirTrafficLayer();
-        if (layerId === 'vessels') loadVesselsLayer();
-        if (layerId === 'rail')    loadRailwayTiles();
-      }
+      btn.style.background  = 'none';
+      btn.style.borderColor = '#444';
+      btn.style.color       = '#888';
     }
   }
 
-  // ── Air traffic layer (OpenSky via GeoJSON) ──────────────────────────────────
-  async function loadAirTrafficLayer() {
-    const viewer = window._cesiumViewer;
-    if (!viewer) return;
-    try {
-      const resp = await fetch('./public/data/air_traffic.geojson');
-      if (!resp.ok) return;
-      const data = await resp.json();
-      data.features.forEach(f => {
-        const [lon, lat] = f.geometry.coordinates;
-        const p = f.properties;
-        viewer.entities.add({
-          id:       'air_' + p.icao24,
-          name:     p.callsign,
-          position: Cesium.Cartesian3.fromDegrees(lon, lat),
-          billboard: {
-            image: _makeAircraftIcon(p.heading || 0),
-            width: 20, height: 20,
-            verticalOrigin: Cesium.VerticalOrigin.CENTER,
-          },
-          description: `<b>${p.callsign}</b><br>${p.altitude_ft} ft · ${p.speed_kts} kts`,
-        });
-      });
-    } catch(e) { console.warn('Air traffic layer failed:', e); }
+  function _hideLayerEntities(viewer, ids) {
+    ids.forEach(id => {
+      const e = viewer.entities.getById(id);
+      if (e) e.show = false;
+    });
+  }
+  function _showLayerEntities(viewer, ids) {
+    ids.forEach(id => {
+      const e = viewer.entities.getById(id);
+      if (e) e.show = true;
+    });
   }
 
-  function _makeAircraftIcon(heading) {
+  // ── FIRES via existing layer module ─────────────────────────────────────
+  async function _loadLayerFires(viewer) {
+    const m = await import('./src/layers/fires.js');
+    await m.loadFires(viewer);
+    document.getElementById('fire-legend').style.display = 'flex';
+    document.getElementById('timeline').style.display    = 'flex';
+  }
+  function _hideLayerFires(viewer) {
+    import('./src/layers/fires.js').then(m => m.removeFires(viewer));
+    const leg = document.getElementById('fire-legend');
+    const tl  = document.getElementById('timeline');
+    if (leg) leg.style.display = 'none';
+    if (tl)  tl.style.display  = 'none';
+  }
+
+  // ── AQI via existing layer module ────────────────────────────────────────
+  async function _loadLayerAQI(viewer) {
+    const m = await import('./src/layers/aqi.js');
+    await m.loadAQI(viewer);
+  }
+  function _hideLayerAQI(viewer) {
+    import('./src/layers/aqi.js').then(m => m.removeAQI(viewer));
+  }
+
+  // ── Groundwater via existing layer module ─────────────────────────────────
+  async function _loadLayerGW(viewer) {
+    const m = await import('./src/layers/groundwater.js');
+    await m.loadGroundwater(viewer);
+  }
+  function _hideLayerGW(viewer) {
+    import('./src/layers/groundwater.js').then(m => m.removeGroundwater(viewer));
+  }
+
+  // ── Air traffic (OpenSky GeoJSON) ─────────────────────────────────────────
+  function _aircraftIcon(heading) {
     const c = document.createElement('canvas');
     c.width = c.height = 24;
     const ctx = c.getContext('2d');
     ctx.translate(12, 12);
-    ctx.rotate((heading - 90) * Math.PI / 180);
-    ctx.fillStyle = '#ab47bc';
+    ctx.rotate(((heading || 0) - 90) * Math.PI / 180);
+    ctx.fillStyle = '#ce93d8';
     ctx.beginPath();
-    ctx.moveTo(0, -9); ctx.lineTo(6, 9); ctx.lineTo(0, 5); ctx.lineTo(-6, 9);
+    ctx.moveTo(0,-9); ctx.lineTo(6,9); ctx.lineTo(0,5); ctx.lineTo(-6,9);
     ctx.closePath(); ctx.fill();
     return c.toDataURL();
   }
-
-  // ── Vessels layer (AIS Hub via GeoJSON) ─────────────────────────────────────
-  async function loadVesselsLayer() {
-    const viewer = window._cesiumViewer;
-    if (!viewer) return;
+  async function _loadLayerAir(viewer) {
+    const st = _layerState['air'];
+    if (st && st.loaded) { _showLayerEntities(viewer, st.entityIds); return; }
+    const state = { loaded: true, visible: true, entityIds: [] };
+    _layerState['air'] = state;
     try {
-      const resp = await fetch('./public/data/vessels.geojson');
-      if (!resp.ok) return;
-      const data = await resp.json();
-      data.features.forEach(f => {
+      const r = await fetch('./public/data/air_traffic.geojson?v=' + Date.now());
+      if (!r.ok) return;
+      const geo = await r.json();
+      geo.features.forEach(f => {
         const [lon, lat] = f.geometry.coordinates;
         const p = f.properties;
+        const id = 'air_' + (p.icao24 || Math.random().toString(36).slice(2));
+        viewer.entities.add({
+          id, name: p.callsign || id,
+          position: Cesium.Cartesian3.fromDegrees(lon, lat),
+          billboard: { image: _aircraftIcon(p.heading), width:20, height:20,
+            verticalOrigin: Cesium.VerticalOrigin.CENTER },
+          description: `<b>${p.callsign}</b><br>${p.altitude_ft} ft · ${p.speed_kts} kts`,
+        });
+        state.entityIds.push(id);
+      });
+    } catch(e) { console.warn('Air traffic layer:', e); }
+  }
+  function _hideLayerAir(viewer) {
+    const st = _layerState['air'];
+    if (st) _hideLayerEntities(viewer, st.entityIds);
+  }
+
+  // ── Vessels (AIS Hub + ports GeoJSON) ────────────────────────────────────
+  async function _loadLayerVessels(viewer) {
+    const st = _layerState['vessels'];
+    if (st && st.loaded) { _showLayerEntities(viewer, st.entityIds); return; }
+    const state = { loaded: true, visible: true, entityIds: [] };
+    _layerState['vessels'] = state;
+    try {
+      const r = await fetch('./public/data/vessels.geojson?v=' + Date.now());
+      if (!r.ok) return;
+      const geo = await r.json();
+      geo.features.forEach(f => {
+        const [lon, lat] = f.geometry.coordinates;
+        const p = f.properties;
+        const id = p.type === 'port' ? 'port_' + p.name : 'vessel_' + (p.mmsi || Math.random().toString(36).slice(2));
         if (p.type === 'port') {
           viewer.entities.add({
-            id: 'port_' + p.name,
-            position: Cesium.Cartesian3.fromDegrees(lon, lat),
-            point: { pixelSize: 8, color: Cesium.Color.fromCssColorString('#00bcd4'), outlineColor: Cesium.Color.WHITE, outlineWidth: 1 },
-            label: { text: p.name, font: '10px sans-serif', fillColor: Cesium.Color.fromCssColorString('#00bcd4'), pixelOffset: new Cesium.Cartesian2(0, -16), showBackground: false },
+            id, position: Cesium.Cartesian3.fromDegrees(lon, lat),
+            point: { pixelSize:8, color:Cesium.Color.fromCssColorString('#00bcd4'),
+              outlineColor:Cesium.Color.WHITE, outlineWidth:1 },
+            label: { text:p.name, font:'10px sans-serif',
+              fillColor:Cesium.Color.fromCssColorString('#00bcd4'),
+              pixelOffset:new Cesium.Cartesian2(0,-14), showBackground:false },
           });
         } else {
           viewer.entities.add({
-            id: 'vessel_' + (p.mmsi || Math.random()),
-            position: Cesium.Cartesian3.fromDegrees(lon, lat),
-            point: { pixelSize: 5, color: Cesium.Color.fromCssColorString('#0097a7') },
+            id, position: Cesium.Cartesian3.fromDegrees(lon, lat),
+            point: { pixelSize:5, color:Cesium.Color.fromCssColorString('#0097a7') },
             description: `<b>${p.name}</b><br>${p.speed_kts} kts`,
           });
         }
+        state.entityIds.push(id);
       });
-    } catch(e) { console.warn('Vessels layer failed:', e); }
+    } catch(e) { console.warn('Vessels layer:', e); }
+  }
+  function _hideLayerVessels(viewer) {
+    const st = _layerState['vessels'];
+    if (st) _hideLayerEntities(viewer, st.entityIds);
   }
 
-  // ── Railway tile overlay (OpenRailwayMap) ───────────────────────────────────
-  function loadRailwayTiles() {
+  // ── Railway tiles (OpenRailwayMap) ────────────────────────────────────────
+  function _loadLayerRail(viewer) {
+    if (viewer._railwayLayer) {
+      viewer._railwayLayer.show = true; return;
+    }
+    viewer._railwayLayer = viewer.imageryLayers.addImageryProvider(
+      new Cesium.UrlTemplateImageryProvider({
+        url: 'https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
+        subdomains: ['a','b','c'],
+        credit: '© OpenRailwayMap contributors',
+        minimumLevel: 5, maximumLevel: 16,
+      })
+    );
+  }
+  function _hideLayerRail(viewer) {
+    if (viewer._railwayLayer) viewer._railwayLayer.show = false;
+  }
+
+  // ── Master toggle ─────────────────────────────────────────────────────────
+  const _MAP_LOAD = {
+    fires:   _loadLayerFires,
+    aqi:     _loadLayerAQI,
+    gw:      _loadLayerGW,
+    air:     _loadLayerAir,
+    vessels: _loadLayerVessels,
+    rail:    _loadLayerRail,
+  };
+  const _MAP_HIDE = {
+    fires:   _hideLayerFires,
+    aqi:     _hideLayerAQI,
+    gw:      _hideLayerGW,
+    air:     _hideLayerAir,
+    vessels: _hideLayerVessels,
+    rail:    _hideLayerRail,
+  };
+  const _layerVisible = {};
+
+  function mapLayerToggle(btn, layerId) {
+    const viewer = window._cesiumViewer;
+    if (!viewer) { console.warn('Cesium not ready'); return; }
+    const nowOn = !_layerVisible[layerId];
+    _layerVisible[layerId] = nowOn;
+    _setLayerBtnActive(btn, nowOn, layerId);
+    if (nowOn) {
+      (_MAP_LOAD[layerId] || (() => {}))(viewer);
+    } else {
+      (_MAP_HIDE[layerId] || (() => {}))(viewer);
+    }
+  }
+
+  // Load all available live layers and open map by default
+  function loadAllLiveLayers() {
     const viewer = window._cesiumViewer;
     if (!viewer) return;
-    if (viewer._railwayLayer) return; // already loaded
-    const provider = new Cesium.UrlTemplateImageryProvider({
-      url: 'https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
-      subdomains: ['a','b','c'],
-      credit: '© OpenRailwayMap contributors',
-      minimumLevel: 5, maximumLevel: 16,
+    // Mark all as visible and style their buttons
+    ['fires','aqi','gw','air','vessels','rail'].forEach(id => {
+      _layerVisible[id] = true;
+      const btn = document.querySelector(`.map-layer-btn[data-layer="${id}"]`);
+      _setLayerBtnActive(btn, true, id);
+      (_MAP_LOAD[id] || (() => {}))(viewer);
     });
-    viewer._railwayLayer = viewer.imageryLayers.addImageryProvider(provider);
   }
 
   function toggleTheme() {
