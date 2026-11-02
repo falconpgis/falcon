@@ -1,115 +1,637 @@
 {
-  "generated": "2026-11-01T03:21:41Z",
-  "date": "2026-11-01",
-  "source": "seed \u2014 run daily pipeline for live GDELT + RSS data",
+  "generated": "2026-11-02T09:06:37Z",
+  "date": "2026-11-02",
+  "source": "GDELT 2.0 + RSS aggregation",
   "articles": [
     {
-      "topic": "russia_eurasia",
-      "title": "Russia-Ukraine war enters third year: grain corridor negotiations stall at Black Sea",
-      "source": "Reuters",
-      "domain": "reuters.com",
-      "url": "https://reuters.com",
-      "date": "2026-11-01",
-      "tone": -3.2
+      "topic": "china_military",
+      "title": "Ambuja Cements Plans Rs 14,500 Crore Expansion To Add 30 MTPA Capacity",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/ambuja-cements-plans-rs-14-500-crore-expansion-to-add-30-mtpa-capacity-12270209#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "cpec_china",
-      "title": "CPEC Phase II: China accelerates ML-1 railway upgrade despite Pakistan debt concerns",
-      "source": "Dawn News",
-      "domain": "dawn.com",
-      "url": "https://dawn.com",
-      "date": "2026-11-01",
-      "tone": -1.1
+      "topic": "rss",
+      "title": "7 States, Rs 20,000: How Women Were Lured Into Egg Donation Racket",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/how-women-were-lured-into-egg-donation-racket-hyderabad-telangana-7-states-rs-20-000-12270287#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "ukraine_wheat",
-      "title": "Global wheat prices ease as Ukraine exports continue via Danube corridor",
-      "source": "Reuters Commodities",
-      "domain": "reuters.com",
-      "url": "https://reuters.com",
-      "date": "2026-11-01",
-      "tone": 1.4
+      "topic": "rss",
+      "title": "\"Strive To Fight As Part Of NDA\": JDU's Nishant Kumar On UP Polls",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/strive-to-fight-as-part-of-nda-jdus-nishant-kumar-on-up-polls-12270288#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "iran_chabahar",
-      "title": "India expands Chabahar Port operations \u2014 INSTC corridor gaining traction",
-      "source": "Al Jazeera",
-      "domain": "aljazeera.com",
-      "url": "https://aljazeera.com",
-      "date": "2026-11-01",
-      "tone": 2.1
+      "topic": "rss",
+      "title": "Education Ministry Extends Deadline For Seva First Innovation Challenge 2026; Check Details",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/education-ministry-extends-deadline-for-seva-first-innovation-challenge-2026-check-details-12270241#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "india_canada",
-      "title": "India-Canada diplomatic tensions persist as Punjab diaspora politics intensify",
-      "source": "Tribune India",
-      "domain": "tribuneindia.com",
-      "url": "https://tribuneindia.com",
-      "date": "2026-11-01",
-      "tone": -2.8
+      "topic": "rss",
+      "title": "SWAYAM July Semester Exam 2026: Testing Agency Extended Registration Deadline, Here's How To Apply",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/swayam-july-semester-exam-2026-testing-agency-extended-registration-deadline-heres-how-to-apply-12270213#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "sikh_diaspora",
-      "title": "Canadian Sikh community raises $2.1M for Punjab flood relief through gurdwara networks",
-      "source": "Tribune India",
-      "domain": "tribuneindia.com",
-      "url": "https://tribuneindia.com",
-      "date": "2026-11-01",
-      "tone": 3.5
+      "topic": "rss",
+      "title": "\"Bhagwant Mann Has Destroyed Punjab\": 3 AAP MLAs Join BJP Ahead Of Polls",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/setback-for-aap-ahead-of-punjab-polls-3-mlas-join-bjp-hours-after-resigning-12269786#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "punjab_farm",
-      "title": "Punjab farmers demand MSP guarantee ahead of winter crop sowing \u2014 protests resume in Sangrur",
-      "source": "NDTV Punjab",
-      "domain": "ndtv.com",
-      "url": "https://ndtv.com",
-      "date": "2026-11-01",
-      "tone": -2.1
+      "topic": "rss",
+      "title": "IIT Bombay Student Sahil Wakode's Parents Approach High Court, Seek CBI Probe",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/iit-bombay-student-sahil-wakodes-parents-approach-bombay-high-court-seek-cbi-probe-12270064#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "punjab_fires",
-      "title": "Stubble burning hotspots surge in Malwa belt \u2014 satellite count 1,115 fires this season",
-      "source": "Tribune India",
-      "domain": "tribuneindia.com",
-      "url": "https://tribuneindia.com",
-      "date": "2026-11-01",
-      "tone": -3.8
+      "topic": "rss",
+      "title": "Money Laundering Case Filed Against Subhash Chandra Over Loan Fraud",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/money-laundering-case-filed-against-subhash-chandra-over-loan-fraud-12270020#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "punjab_water",
-      "title": "CGWB report: Sangrur groundwater depth now 12.5m \u2014 fastest depletion in Punjab",
-      "source": "Tribune India",
-      "domain": "tribuneindia.com",
-      "url": "https://tribuneindia.com",
-      "date": "2026-11-01",
-      "tone": -4.2
+      "topic": "rss",
+      "title": "Dia Mirza's Anti-Crackers Video Deleted By Mumbai Civic Body BMC After BJP Objects",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/dia-mirza-bmc-video-crackers-dia-mirzas-anti-crackers-video-deleted-by-mumbai-civic-body-after-bjp-objects-12270087#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "afghanistan",
-      "title": "Taliban crackdown on poppy cultivation collapses South Asian heroin supply \u2014 new routes emerging",
-      "source": "BBC South Asia",
-      "domain": "bbc.com",
-      "url": "https://bbc.com",
-      "date": "2026-11-01",
-      "tone": -1.5
+      "topic": "rss",
+      "title": "Cyclone Murasu: Chennai Schools Closed Today; Telangana, Andhra Pradesh, Odisha On Alert",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/cyclone-murasu-chennai-schools-closed-today-telangana-andhra-pradesh-odisha-on-alert-12269987#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "pakistan_border",
-      "title": "Pakistan closes Attari-Wagah border to trade \u2014 impact on Punjab agricultural exports",
-      "source": "Al Jazeera",
-      "domain": "aljazeera.com",
-      "url": "https://aljazeera.com",
-      "date": "2026-11-01",
-      "tone": -3.1
+      "topic": "rss",
+      "title": "Gujarat Makes Counsellors Mandatory In Schools, Sets Up Suicide Prevention Teams",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/gujarat-makes-counsellors-mandatory-in-schools-sets-up-suicide-prevention-teams-12269955#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
     },
     {
-      "topic": "balticdry",
-      "title": "Baltic Dry Index at 1,412 \u2014 freight costs moderate as Red Sea disruptions ease",
-      "source": "Reuters",
-      "domain": "reuters.com",
-      "url": "https://reuters.com",
-      "date": "2026-11-01",
-      "tone": 0.8
+      "topic": "rss",
+      "title": "\"Corruption Hasn't Come Down\": RG Kar Victim's Mother Unhappy With Probe",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/corruption-hasnt-come-down-west-bengal-rg-kar-victims-mother-ratna-debnath-unhappy-with-probe-12269917#publisher=newsstand]]>",
+      "date": "<![CDATA[M",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Punjab by-polls: Notices served on minister, SAPM for 'violating' election code of conduct",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381918-notices-served-on-minister-sapm-for-violating-election-code-of-conduct]]>",
+      "date": "<![CDATA[F",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "27th Amendment empowers FCC to hear all constitutional cases: minister",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381786-27th-amendment-empowers-fcc-to-hear-all-constitutional-cases-minister]]>",
+      "date": "<![CDATA[F",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "JF-17 attracts strong attention at Dubai Airshow as friendly country inks procurement MoU",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381731-jf-17-attracts-strong-attention-at-dubai-airshow-as-friendly-country-inks-procurement-mou]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "US lawmakers laud Punjab govt's initiative to modernise brick-kiln",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381705-us-lawmakers-laud-punjab-govts-initiative-to-modernise-brick-kiln]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Security forces gun down 30 terrorists in multiple IBOs in KP: ISPR",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381698-security-forces-gun-down-30-terrorists-in-multiple-ibos-in-kp-ispr]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "MQM-P calls for new province in Sindh",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381701-mqm-p-calls-for-new-province-in-sindh]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "US report validates Pakistan military edge over India: PM",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381699-us-report-validates-pakistan-military-edge-over-india-pm]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "Banned TTP poses serious threat to Pakistan security: UNSC panel",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359210-banned-ttp-poses-serious-threat-to-pakistan-security-unsc-panel]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "CM Afridi clarifies remarks on by-poll after ECP requests army deployment",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359222-ecp-seeks-troops-deployment-in-haripur-by-polls-takes-notices-of-cm-afridis-threats]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "Dubai sees 3.2m Pakistani passengers in 2025 as airport sets new milestone",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359184-dubai-sees-32m-pakistani-passengers-in-2025-as-airport-sets-new-milestone]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Security forces kill 23 Indian proxy terrorists in KP's Kurram",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359185-security-forces-kill-23-indian-proxy-terrorists-in-kps-kurram]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "Pakistan to construct island to boost oil exploration: report",
+      "source": "The News Pakistan",
+      "domain": "www.thenews.com.pk",
+      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359101-pakistan-to-construct-island-to-boost-oil-exploration-report]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Trump makes controversial claims at final Republican campaign rallies",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/2/trump-makes-controversial-claims-at-final-republican-campaign-rallies?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Anthrax outbreak kills hippos in DR Congo’s Virunga National Park",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/2/anthrax-outbreak-kills-hippos-in-dr-congos-virunga-national-park?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Sydney deploys heavily armed police unit after Bondi attack",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/2/sydney-deploys-heavily-armed-police-unit-after-bondi-attack?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Thousands evacuated as India braces for second cyclone in a week",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/2/thousands-evacuated-as-india-braces-for-second-cyclone-in-a-week?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Coventry fan, 14, hands himself in after Bradley Lowery taunt in Sunderland",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/sports/2026/11/2/coventry-fan-14-hands-himself-in-after-bradley-lowery-taunt-in-sunderland?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Chinese state TV continues Real Madrid blackout after Mbappe-Mao meme row",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/sports/2026/11/2/chinese-state-tv-continues-real-madrid-blackout-after-mbappe-mao-meme-row?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "How the president’s party has fared in every US midterm election since 1946",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/2/how-the-presidents-party-has-fared-in-every-us-midterm-election-since-1946?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "RFK Jr is wrong about the Arab world",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/opinions/2026/11/2/rfk-jr-is-wrong-about-the-arab-world?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "UN staffer’s death in custody exposes Houthi ‘political extortion’ in Yemen",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/2/un-staffers-death-in-custody-exposes-houthi-political-extortion-in-yemen?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "NBA: Yaxel Lendeborg scores 37 as Warriors defeat Clippers",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/sports/2026/11/2/nba-yaxel-lendeborg-scores-37-as-warriors-defeat-clippers?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Hormuz shipping still faces major risks",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/2/hormuz-shipping-still-faces-major-risks?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The future of the Palestinian vote in Israel",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/opinions/2026/11/2/the-future-of-the-palestinian-vote-in-israel?traffic_source=rss",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "scl_brics",
+      "title": "Sinkholes, scarred land and scapegoats: the scourge of illegal gold mining in Johannesburg",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/business/2026/oct/30/sinkholes-scarred-land-scapegoats-illegal-gold-mining-johannesburg",
+      "date": "Fri, 30 Oc",
+      "tone": null
+    },
+    {
+      "topic": "remittance_india",
+      "title": "Sudanese diaspora and human rights groups denounce UAE nominee for UN top job",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/oct/30/sudanese-diaspora-human-rights-groups-denounce-uae-nominee-un-top-job",
+      "date": "Fri, 30 Oc",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Egypt fines prominent editor Lina Attalah and shuts independent news outlet Mada Masr",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/oct/28/egypt-lina-attalah-mada-masr-press-freedom-clampdown",
+      "date": "Wed, 28 Oc",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Africa’s ‘unprecedented’ Ebola outbreak could reach UK, says top health official",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/global-development/2026/oct/28/africa-ebola-outbreak-could-reach-uk-says-top-health-official",
+      "date": "Wed, 28 Oc",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "UK sanctions Sudanese military leaders implicated in El Fasher ‘campaign of rape’",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/global-development/2026/oct/26/uk-sanctions-sudanese-military-leaders-implicated-in-el-fasher-campaign-of",
+      "date": "Mon, 26 Oc",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda",
+      "date": "Sun, 01 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Canada and EU announce new alliance open to like-minded countries",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/oct/30/canada-european-union-alliance",
+      "date": "Fri, 30 Oc",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "‘Amateur morons’: Flávio Bolsonaro’s short-lived ‘president-elect’ claim met with mockery",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/oct/30/flavio-bolsonaros-president-elect-claim-mockery-brazil",
+      "date": "Fri, 30 Oc",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Severe rainfall and flood warnings issued for central Greece and western Turkey",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/environment/2026/oct/30/severe-rainfall-flood-warnings-greece-turkey",
+      "date": "Fri, 30 Oc",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Cuts like a knife: Canadian rocker Bryan Adams trolls Trump with new song",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/oct/29/bryan-adams-donald-trump-song",
+      "date": "Thu, 29 Oc",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "The US-China trade war seems to have subsided – but the sense of calm is misleading",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/01/us-china-trade-war-trump-xi",
+      "date": "Sun, 01 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Binance resumes customer withdrawals after record $6.3bn hack",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/business/2026/nov/01/binance-losses-covered-hack-fbi-north-korea-cryptocurrency",
+      "date": "Sun, 01 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Trump makes final pitch to restive voters in midterms campaign",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/75e8405b-124f-44aa-9c5e-0a33d0ee5b92?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Petrol prices set to hit record high under Trump on eve of US elections",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/ee2748fb-9f85-4095-b599-526e5a4a6baa?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The meaning of the midterms",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/35d78f66-3558-402b-8816-356c0b6b2f81?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The race to keep AI under control",
+      "source": "Financial Times",
+      "domain": "ig.ft.com",
+      "url": "https://ig.ft.com/ai-safety/?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Why rich Ireland still feels poor",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/637d66c0-0b2d-48b2-9d17-f2f5edb86971?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "AI mania can’t survive higher interest rates",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/6e99dc59-8bd0-4c5c-8186-f6ceed04233a?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Global AI sell-off eases after Nasdaq’s worst month in over a year",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/d7fe99f8-d292-4cb5-a8fd-45be0f8cc2b3?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "What data centre construction delays mean for debt holders",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/824fcec4-bded-44f3-9e42-565ba0d2cfa8",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Gulf braced for escalation of war between US-Israel alliance and Iran",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Alstom shares tumble 26% after train maker cuts profit forecast",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/95723b31-c35b-4d68-9abe-9e082e95e362?syn-25a6b1a6=1",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Beijing urges Hong Kong to bring in more governance talent with integrity, competence",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/politics/article/3372991/beijing-urges-hong-kong-bring-more-governance-talent-integrity-competence",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The Apec moment Hong Kong needs to seize",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/opinion/hong-kong-opinion/article/3372698/apec-moment-hong-kong-needs-seize",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "As BYD and Geely hit sales highs, pressure mounts on China’s smaller carmakers",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/business/china-business/article/3372948/byd-and-geely-hit-sales-highs-pressure-mounts-chinas-smaller-carmakers",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Japanese ex-adult film actress recalls ‘terror’ after alleged drugging in Hong Kong",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3372969/japanese-ex-adult-film-actress-recalls-terror-after-alleged-drugging-hong-kong",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Tempers fray as thousands of Bangladeshi garment workers protest for pay hike",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/asia/south-asia/article/3372963/cheap-fashion-under-pressure-bangladeshi-garment-workers-protest-pay-hike",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "China touts AI milestone: models generate more tokens than used in training",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/tech/big-tech/article/3372961/china-touts-ai-milestone-running-models-now-uses-more-data-training-them",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "China’s fifth plenum: everything you need to know from the war on corruption to promotions",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/china/article/3372950/chinas-fifth-plenum-everything-you-need-know-war-corruption-promotions",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Chinese start-up says it is developing country’s first home-grown new-energy business jet",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/economy/china-economy/article/3372959/chinese-start-says-it-developing-countrys-first-home-grown-new-energy-business-jet",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "South Korea probes death of frontline soldier near North Korean border",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/asia/east-asia/article/3372956/south-korea-probes-death-frontline-soldier-near-north-korean-border",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Iran warns new war with US could last longer as Trump threatens ‘the hammer’",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/world/middle-east/article/3372947/iran-warns-new-war-us-could-last-longer-trump-threatens-hammer",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Launch of global legal body’s office in Hong Kong seals city’s law hub status: John Lee",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3372946/launch-global-legal-bodys-office-hong-kong-seals-citys-law-hub-status-john-lee",
+      "date": "Mon, 02 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "How South Korea can play pivotal role in  Philippines’ military modernisation drive",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/week-asia/politics/article/3372945/how-south-korea-can-play-pivotal-role-philippines-military-modernisation-drive",
+      "date": "Mon, 02 No",
+      "tone": null
     }
   ]
 }

@@ -1,0 +1,524 @@
+{
+  "fetched_utc": "2026-11-02T09:17:08.423432Z",
+  "total": 74,
+  "politicians": [
+    {
+      "name": "Gursharan Kaur",
+      "country": "India",
+      "position": "Spouse of the Prime Minister of India",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q5620296"
+    },
+    {
+      "name": "K. S. Nijhar",
+      "country": "Malaysia",
+      "position": "member of the Dewan Rakyat",
+      "party": "Malaysian Indian Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q6323953"
+    },
+    {
+      "name": "Kharak Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q6400556"
+    },
+    {
+      "name": "Nau Nihal Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q6981064"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Ministry of External Affairs",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 13th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 15th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 17th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Sher Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q7494639"
+    },
+    {
+      "name": "Tarlochan Singh",
+      "country": "India",
+      "position": "member of Rajya Sabha",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q7686332"
+    },
+    {
+      "name": "Sucha Singh Langah",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q16731224"
+    },
+    {
+      "name": "Giani Gurbachan Singh",
+      "country": "India",
+      "position": "Jathedar of the Akal Takht",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q16866313"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Prime Minister of India",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Minister of External Affairs",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Minister of Finance",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Deputy Chairman of the Planning Commission",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Governor of the Reserve Bank of India",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "member of Rajya Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Leader of the Opposition in the Rajya Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Manmohan Singh",
+      "country": "India",
+      "position": "Minister of Culture",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q41914"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 15th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "member of Rajya Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 15th Punjab Legislative Assembly",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 14th Punjab Legislative Assembly",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 15th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "member of Rajya Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 15th Punjab Legislative Assembly",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Navjot Singh Sidhu",
+      "country": "India",
+      "position": "Member of the 14th Punjab Legislative Assembly",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q270100"
+    },
+    {
+      "name": "Ranjit Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q332620"
+    },
+    {
+      "name": "Duleep Singh I",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q333140"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "President of India",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "Chief Minister of Punjab",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "Minister of Home Affairs",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "Non-Aligned Movement",
+      "position": "Secretary General of the Non-Aligned Movement",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "Member of the 7th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "Member of the Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Zail Singh",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q334851"
+    },
+    {
+      "name": "Rajinder Singh",
+      "country": "Patiala State",
+      "position": "Maharaja of Patiala",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q487443"
+    },
+    {
+      "name": "Swaran Singh",
+      "country": "India",
+      "position": "Minister of External Affairs",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q1034290"
+    },
+    {
+      "name": "Swaran Singh",
+      "country": "India",
+      "position": "Member of the Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q1034290"
+    },
+    {
+      "name": "Dalip Singh Saund",
+      "country": "United States",
+      "position": "United States representative",
+      "party": "Democratic Party",
+      "wikidata": "http://www.wikidata.org/entity/Q1157945"
+    },
+    {
+      "name": "Jassa Singh Ahluwalia",
+      "country": "India",
+      "position": "Jathedar of the Akal Takht",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q1639665"
+    },
+    {
+      "name": "Parkash Singh Badal",
+      "country": "India",
+      "position": "Chief Minister of Punjab",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q1686500"
+    },
+    {
+      "name": "Parkash Singh Badal",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q1686500"
+    },
+    {
+      "name": "Parkash Singh Badal",
+      "country": "India",
+      "position": "Member of the 15th Punjab Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q1686500"
+    },
+    {
+      "name": "Parkash Singh Badal",
+      "country": "India",
+      "position": "Member of the 14th Punjab Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q1686500"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 12th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 13th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 15th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 16th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 9th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 11th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Member of the 17th Lok Sabha",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Maneka Gandhi",
+      "country": "India",
+      "position": "Minister of Culture",
+      "party": "Bharatiya Janata Party",
+      "wikidata": "http://www.wikidata.org/entity/Q2739159"
+    },
+    {
+      "name": "Manmeet Bhullar",
+      "country": "Canada",
+      "position": "member of Alberta Legislative Assembly",
+      "party": "Progressive Conservative Association of Alberta",
+      "wikidata": "http://www.wikidata.org/entity/Q4100826"
+    },
+    {
+      "name": "Dalvir Singh Khangura Goldy",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q20676773"
+    },
+    {
+      "name": "Dalvir Singh Khangura Goldy",
+      "country": "India",
+      "position": "Member of the 15th Punjab Legislative Assembly",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q20676773"
+    },
+    {
+      "name": "Harjit Sajjan",
+      "country": "Canada",
+      "position": "Minister of Veterans Affairs",
+      "party": "Liberal Party of Canada",
+      "wikidata": "http://www.wikidata.org/entity/Q21336246"
+    },
+    {
+      "name": "Harjit Sajjan",
+      "country": "Canada",
+      "position": "Minister of National Defence",
+      "party": "Liberal Party of Canada",
+      "wikidata": "http://www.wikidata.org/entity/Q21336246"
+    },
+    {
+      "name": "Harjit Sajjan",
+      "country": "Canada",
+      "position": "member of the House of Commons of Canada",
+      "party": "Liberal Party of Canada",
+      "wikidata": "http://www.wikidata.org/entity/Q21336246"
+    },
+    {
+      "name": "Harjit Sajjan",
+      "country": "Canada",
+      "position": "Minister for International Development",
+      "party": "Liberal Party of Canada",
+      "wikidata": "http://www.wikidata.org/entity/Q21336246"
+    },
+    {
+      "name": "Manjinder Singh Sirsa",
+      "country": "India",
+      "position": "Member of the Delhi Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q28474547"
+    },
+    {
+      "name": "Preet Kaur Gill",
+      "country": "United Kingdom",
+      "position": "Shadow Secretary of State for International Development",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q30173119"
+    },
+    {
+      "name": "Preet Kaur Gill",
+      "country": "United Kingdom",
+      "position": "member of the 57th Parliament of the United Kingdom",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q30173119"
+    },
+    {
+      "name": "Preet Kaur Gill",
+      "country": "United Kingdom",
+      "position": "member of the 58th Parliament of the United Kingdom",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q30173119"
+    },
+    {
+      "name": "Preet Kaur Gill",
+      "country": "United Kingdom",
+      "position": "member of the 59th Parliament of the United Kingdom",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q30173119"
+    },
+    {
+      "name": "Ravinder Bhalla",
+      "country": "United States",
+      "position": "Mayor of Hoboken, New Jersey",
+      "party": "Democratic Party",
+      "wikidata": "http://www.wikidata.org/entity/Q42839309"
+    },
+    {
+      "name": "Ravinder Bhalla",
+      "country": "United States",
+      "position": "Member of the New Jersey General Assembly",
+      "party": "Democratic Party",
+      "wikidata": "http://www.wikidata.org/entity/Q42839309"
+    },
+    {
+      "name": "Gurbir Grewal",
+      "country": "United States",
+      "position": "New Jersey Attorney General",
+      "party": "Democratic Party",
+      "wikidata": "http://www.wikidata.org/entity/Q46351033"
+    },
+    {
+      "name": "Harpal Singh Cheema",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Aam Aadmi Party",
+      "wikidata": "http://www.wikidata.org/entity/Q55759115"
+    },
+    {
+      "name": "Harpal Singh Cheema",
+      "country": "India",
+      "position": "Member of the 16th Punjab Legislative Assembly",
+      "party": "Aam Aadmi Party",
+      "wikidata": "http://www.wikidata.org/entity/Q55759115"
+    },
+    {
+      "name": "Harpal Singh Cheema",
+      "country": "India",
+      "position": "Member of the 15th Punjab Legislative Assembly",
+      "party": "Aam Aadmi Party",
+      "wikidata": "http://www.wikidata.org/entity/Q55759115"
+    },
+    {
+      "name": "Gurinder Josan",
+      "country": "United Kingdom",
+      "position": "member of the 59th Parliament of the United Kingdom",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q60218953"
+    },
+    {
+      "name": "Kuldip Sahota, Baron Sahota",
+      "country": "United Kingdom",
+      "position": "member of the House of Lords",
+      "party": "Labour Party",
+      "wikidata": "http://www.wikidata.org/entity/Q76363328"
+    }
+  ]
+}
