@@ -41,6 +41,14 @@ jobs:
         run: python scripts/fetch_predictions.py
         continue-on-error: true
 
+      - name: Fetch SIPRI arms + military expenditure data
+        run: python scripts/fetch_sipri.py
+        continue-on-error: true
+
+      - name: Fetch Guru Nanak Udasis routes (Wikidata + curated)
+        run: python scripts/fetch_udasis.py
+        continue-on-error: true
+
       - name: Commit updated data
         run: |
           git config user.name  "FALCON Bot"
@@ -50,6 +58,8 @@ jobs:
             public/data/punjab_groundwater.geojson \
             public/data/eurasian_signals.json \
             public/data/predictions.json \
+            public/data/sipri_arms.json \
+            public/data/guru_udasis.geojson \
             public/data/punjab_historical/ \
             public/data/history/
           git diff --staged --quiet || git commit -m "chore: monthly data refresh $(date -u +%Y-%m-%d)"

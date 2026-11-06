@@ -73,6 +73,18 @@ jobs:
         run: python scripts/fetch_vessels.py
         continue-on-error: true
 
+      - name: Fetch USGS earthquakes (South/Central Asia seismic zone)
+        run: python scripts/fetch_earthquakes.py
+        continue-on-error: true
+
+      - name: Fetch regional news intelligence (Russia/China/Iran + zone countries)
+        run: python scripts/fetch_regional_news.py
+        continue-on-error: true
+
+      - name: Fetch Punjab reservoir levels (CWC India)
+        run: python scripts/fetch_reservoir.py
+        continue-on-error: true
+
       - name: Commit updated data
         run: |
           git config user.name  "FALCON Bot"
@@ -90,6 +102,9 @@ jobs:
             public/data/punjab_groundwater.geojson \
             public/data/air_traffic.geojson \
             public/data/vessels.geojson \
+            public/data/earthquakes.geojson \
+            public/data/regional_news.json \
+            public/data/punjab_reservoirs.json \
             public/data/news/ \
             public/data/history/
           git diff --staged --quiet || git commit -m "chore: daily data refresh $(date -u +%Y-%m-%d)"

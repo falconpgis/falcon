@@ -43,6 +43,14 @@ jobs:
         run: python scripts/fetch_gurdwaras.py
         continue-on-error: true
 
+      - name: Fetch World Bank indicators (11 countries)
+        run: python scripts/fetch_worldbank.py
+        continue-on-error: true
+
+      - name: Fetch FAO food prices + commodity markets
+        run: python scripts/fetch_fao_prices.py
+        continue-on-error: true
+
       - name: Commit updated data
         run: |
           git config user.name  "FALCON Bot"
@@ -55,6 +63,8 @@ jobs:
             public/data/gurdwaras.geojson \
             public/data/sikh_mps.json \
             public/data/diaspora_summary.json \
+            public/data/worldbank_indicators.json \
+            public/data/fao_prices.json \
             public/data/news/ \
             public/data/history/
           git diff --staged --quiet || git commit -m "chore: weekly signals refresh $(date -u +%Y-%m-%d)"
