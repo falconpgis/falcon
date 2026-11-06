@@ -93,4 +93,5 @@ jobs:
             public/data/news/ \
             public/data/history/
           git diff --staged --quiet || git commit -m "chore: daily data refresh $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
