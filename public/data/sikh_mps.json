@@ -1,91 +1,7 @@
 {
-  "fetched_utc": "2026-11-02T09:17:08.423432Z",
+  "fetched_utc": "2026-11-09T09:36:37.798780Z",
   "total": 74,
   "politicians": [
-    {
-      "name": "Gursharan Kaur",
-      "country": "India",
-      "position": "Spouse of the Prime Minister of India",
-      "party": "Indian National Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q5620296"
-    },
-    {
-      "name": "K. S. Nijhar",
-      "country": "Malaysia",
-      "position": "member of the Dewan Rakyat",
-      "party": "Malaysian Indian Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q6323953"
-    },
-    {
-      "name": "Kharak Singh",
-      "country": "India",
-      "position": "Maharaja",
-      "party": "",
-      "wikidata": "http://www.wikidata.org/entity/Q6400556"
-    },
-    {
-      "name": "Nau Nihal Singh",
-      "country": "India",
-      "position": "Maharaja",
-      "party": "",
-      "wikidata": "http://www.wikidata.org/entity/Q6981064"
-    },
-    {
-      "name": "Preneet Kaur",
-      "country": "India",
-      "position": "Ministry of External Affairs",
-      "party": "Indian National Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q7240540"
-    },
-    {
-      "name": "Preneet Kaur",
-      "country": "India",
-      "position": "Member of the 13th Lok Sabha",
-      "party": "Indian National Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q7240540"
-    },
-    {
-      "name": "Preneet Kaur",
-      "country": "India",
-      "position": "Member of the 15th Lok Sabha",
-      "party": "Indian National Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q7240540"
-    },
-    {
-      "name": "Preneet Kaur",
-      "country": "India",
-      "position": "Member of the 17th Lok Sabha",
-      "party": "Indian National Congress",
-      "wikidata": "http://www.wikidata.org/entity/Q7240540"
-    },
-    {
-      "name": "Sher Singh",
-      "country": "India",
-      "position": "Maharaja",
-      "party": "",
-      "wikidata": "http://www.wikidata.org/entity/Q7494639"
-    },
-    {
-      "name": "Tarlochan Singh",
-      "country": "India",
-      "position": "member of Rajya Sabha",
-      "party": "",
-      "wikidata": "http://www.wikidata.org/entity/Q7686332"
-    },
-    {
-      "name": "Sucha Singh Langah",
-      "country": "India",
-      "position": "Member of the Punjab Legislative Assembly",
-      "party": "Shiromani Akali Dal",
-      "wikidata": "http://www.wikidata.org/entity/Q16731224"
-    },
-    {
-      "name": "Giani Gurbachan Singh",
-      "country": "India",
-      "position": "Jathedar of the Akal Takht",
-      "party": "",
-      "wikidata": "http://www.wikidata.org/entity/Q16866313"
-    },
     {
       "name": "Manmohan Singh",
       "country": "India",
@@ -386,6 +302,90 @@
       "position": "member of Alberta Legislative Assembly",
       "party": "Progressive Conservative Association of Alberta",
       "wikidata": "http://www.wikidata.org/entity/Q4100826"
+    },
+    {
+      "name": "Gursharan Kaur",
+      "country": "India",
+      "position": "Spouse of the Prime Minister of India",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q5620296"
+    },
+    {
+      "name": "K. S. Nijhar",
+      "country": "Malaysia",
+      "position": "member of the Dewan Rakyat",
+      "party": "Malaysian Indian Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q6323953"
+    },
+    {
+      "name": "Kharak Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q6400556"
+    },
+    {
+      "name": "Nau Nihal Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q6981064"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Ministry of External Affairs",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 13th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 15th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Preneet Kaur",
+      "country": "India",
+      "position": "Member of the 17th Lok Sabha",
+      "party": "Indian National Congress",
+      "wikidata": "http://www.wikidata.org/entity/Q7240540"
+    },
+    {
+      "name": "Sher Singh",
+      "country": "India",
+      "position": "Maharaja",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q7494639"
+    },
+    {
+      "name": "Tarlochan Singh",
+      "country": "India",
+      "position": "member of Rajya Sabha",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q7686332"
+    },
+    {
+      "name": "Sucha Singh Langah",
+      "country": "India",
+      "position": "Member of the Punjab Legislative Assembly",
+      "party": "Shiromani Akali Dal",
+      "wikidata": "http://www.wikidata.org/entity/Q16731224"
+    },
+    {
+      "name": "Giani Gurbachan Singh",
+      "country": "India",
+      "position": "Jathedar of the Akal Takht",
+      "party": "",
+      "wikidata": "http://www.wikidata.org/entity/Q16866313"
     },
     {
       "name": "Dalvir Singh Khangura Goldy",

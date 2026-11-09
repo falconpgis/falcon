@@ -1,18 +1,28 @@
 {
-  "generated":"2026-11-02T09:06:24.960093Z",
+  "generated":"2026-11-09T09:26:17.932048Z",
   "source":"Google Trends (pytrends)",
   "geo":"IN-PB",
   "note":"Relative interest 0-100 within Punjab, India; 7-day window",
   "keywords":{
     "Punjab kisan":{
-      "avg_7d":8.9,
+      "avg_7d":5.4,
+      "peak_7d":100,
+      "last":0
+    },
+    "Punjab suicide":{
+      "avg_7d":0.6,
+      "peak_7d":100,
+      "last":0
+    },
+    "paddy stubble burning":{
+      "avg_7d":0.7,
       "peak_7d":100,
       "last":0
     },
     "Amritsar AQI":{
-      "avg_7d":0.9,
+      "avg_7d":4.4,
       "peak_7d":100,
-      "last":0
+      "last":26
     }
   }
 }

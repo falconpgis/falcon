@@ -24,5 +24,31 @@
       "scl_brics": 1,
       "remittance_india": 1
     }
+  },
+  {
+    "date": "2026-11-09",
+    "tone_scores": {
+      "punjab_overall": null,
+      "india_canada": null,
+      "ukraine_wheat": null,
+      "russia_energy": null,
+      "pakistan_economy": null,
+      "cpec_corridor": null,
+      "sikh_diaspora": null,
+      "punjab_agriculture": null,
+      "china_india": null,
+      "iran_chabahar": null,
+      "brics_expansion": null,
+      "de_dollarisation": null
+    },
+    "article_count": 81,
+    "topic_breakdown": {
+      "rss": 60,
+      "pakistan_economy": 4,
+      "china_military": 3,
+      "russia_ukraine": 4,
+      "kashmir": 1,
+      "sikh_diaspora": 9
+    }
   }
 ]

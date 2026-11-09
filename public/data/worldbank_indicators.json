@@ -1,0 +1,537 @@
+{
+  "generated_at": "2026-11-09T09:36:41.405032Z",
+  "source": "World Bank Open Data API",
+  "countries": {
+    "India": {
+      "code": "IN",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 3956067115771.63
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 2702.48
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 2.399
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 4.219
+        },
+        "Population": {
+          "year": "2025",
+          "value": 1463865525.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 59.942
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 66.492
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 54.052
+        },
+        "Poverty headcount (%)": {
+          "year": "2011",
+          "value": 21.9
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 150711596171.493
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 2.295
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 0.069
+        }
+      }
+    },
+    "Pakistan": {
+      "code": "PK",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 407307214476.222
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 1595.909
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 3.546
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 5.42
+        },
+        "Population": {
+          "year": "2025",
+          "value": 255219554.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 47.204
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 109.993
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 58.375
+        },
+        "Poverty headcount (%)": {
+          "year": "2024",
+          "value": 28.9
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 40478000000.0
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 2.914
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 1.198
+        }
+      }
+    },
+    "China": {
+      "code": "CN",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 19498039388042.6
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 13861.97
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 0.06
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 4.615
+        },
+        "Population": {
+          "year": "2025",
+          "value": 1406585000.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 41.736
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 41.519
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 31.992
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 30002559370.67
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 1.725
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": -0.001
+        }
+      }
+    },
+    "Russia": {
+      "code": "RU",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 2561310169358.74
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 17546.609
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 8.72
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 2.133
+        },
+        "Population": {
+          "year": "2025",
+          "value": 143513328.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 13.172
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 4.122
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 11.566
+        },
+        "Poverty headcount (%)": {
+          "year": "2024",
+          "value": 7.2
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 1611550000.0
+        }
+      }
+    },
+    "Iran": {
+      "code": "IR",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 362682115433.364
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 3924.38
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 42.171
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 8.301
+        },
+        "Population": {
+          "year": "2025",
+          "value": 92417681.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 29.009
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 40.245
+        },
+        "Personal remittances received (USD)": {
+          "year": "2004",
+          "value": 1032000000.0
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 2.092
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 0.053
+        }
+      }
+    },
+    "Afghanistan": {
+      "code": "AF",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2024",
+          "value": 17778508875.74
+        },
+        "GDP per capita (USD)": {
+          "year": "2024",
+          "value": 416.871
+        },
+        "Inflation rate (%)": {
+          "year": "2024",
+          "value": -6.601
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 13.351
+        },
+        "Population": {
+          "year": "2025",
+          "value": 43844111.0
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 37.948
+        },
+        "Poverty headcount (%)": {
+          "year": "2019",
+          "value": 47.1
+        },
+        "Personal remittances received (USD)": {
+          "year": "2020",
+          "value": 788917115.245
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2021",
+          "value": 1.828
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 17.757
+        }
+      }
+    },
+    "Canada": {
+      "code": "CA",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 2319899772425.92
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 55697.664
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 2.072
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 6.907
+        },
+        "Population": {
+          "year": "2025",
+          "value": 41651653.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 6.462
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 3.721
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 6.55
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 834011822.893
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 1.627
+        }
+      }
+    },
+    "UK": {
+      "code": "GB",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 4002587541846.01
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 57601.962
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 3.883
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 4.746
+        },
+        "Population": {
+          "year": "2025",
+          "value": 69487000.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 69.212
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 14.355
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 9.463
+        },
+        "Poverty headcount (%)": {
+          "year": "2017",
+          "value": 18.6
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 5363775142.135
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 2.353
+        }
+      }
+    },
+    "UAE": {
+      "code": "AE",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2024",
+          "value": 552324919095.872
+        },
+        "GDP per capita (USD)": {
+          "year": "2024",
+          "value": 50273.513
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 1.251
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 2.174
+        },
+        "Population": {
+          "year": "2025",
+          "value": 11513149.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 5.599
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 1509.933
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2014",
+          "value": 5.644
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "1995",
+          "value": 0.008
+        }
+      }
+    },
+    "Kazakhstan": {
+      "code": "KZ",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 306239209650.024
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 14692.133
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 11.379
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 4.771
+        },
+        "Population": {
+          "year": "2025",
+          "value": 20843754.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 79.188
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 34.627
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 19.596
+        },
+        "Poverty headcount (%)": {
+          "year": "2024",
+          "value": 5.0
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 236761388.166
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2025",
+          "value": 0.43
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 0.034
+        }
+      }
+    },
+    "Uzbekistan": {
+      "code": "UZ",
+      "indicators": {
+        "GDP (current USD)": {
+          "year": "2025",
+          "value": 147038081129.405
+        },
+        "GDP per capita (USD)": {
+          "year": "2025",
+          "value": 3968.272
+        },
+        "Inflation rate (%)": {
+          "year": "2025",
+          "value": 8.796
+        },
+        "Unemployment rate (%)": {
+          "year": "2025",
+          "value": 4.622
+        },
+        "Population": {
+          "year": "2025",
+          "value": 37053428.0
+        },
+        "Agricultural land (% of land)": {
+          "year": "2024",
+          "value": 58.949
+        },
+        "Water stress level (%)": {
+          "year": "2022",
+          "value": 123.028
+        },
+        "PM2.5 air pollution (mcg/m3)": {
+          "year": "2023",
+          "value": 32.771
+        },
+        "Poverty headcount (%)": {
+          "year": "2025",
+          "value": 5.8
+        },
+        "Personal remittances received (USD)": {
+          "year": "2025",
+          "value": 21100902510.685
+        },
+        "Military expenditure (% of GDP)": {
+          "year": "2018",
+          "value": 2.49
+        },
+        "Foreign aid received (% of GNI)": {
+          "year": "2023",
+          "value": 1.106
+        }
+      }
+    }
+  }
+}

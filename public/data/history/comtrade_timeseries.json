@@ -9,5 +9,16 @@
       "india_fertiliser_imports_usd": 0,
       "chip_china_pct": null
     }
+  },
+  {
+    "date": "2026-11-09",
+    "year": "2025",
+    "signals": {
+      "russia_trade_intensity": null,
+      "india_canada_trade_usd": 0,
+      "pakistan_wheat_import_pressure": "LOW",
+      "india_fertiliser_imports_usd": 0,
+      "chip_china_pct": null
+    }
   }
 ]
