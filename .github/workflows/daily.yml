@@ -89,24 +89,7 @@ jobs:
         run: |
           git config user.name  "FALCON Bot"
           git config user.email "bot@falconpgis.github.io"
-          git add \
-            public/data/punjab_fires.geojson \
-            public/data/punjab_aqi.json \
-            public/data/punjab_mandi.json \
-            public/data/punjab_events.geojson \
-            public/data/acled_summary.json \
-            public/data/currencies.json \
-            public/data/predictions.json \
-            public/data/geopolitics.json \
-            public/data/weather.json \
-            public/data/punjab_groundwater.geojson \
-            public/data/air_traffic.geojson \
-            public/data/vessels.geojson \
-            public/data/earthquakes.geojson \
-            public/data/regional_news.json \
-            public/data/punjab_reservoirs.json \
-            public/data/news/ \
-            public/data/history/
+          git add public/data/ || true
           git diff --staged --quiet || git commit -m "chore: daily data refresh $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push
