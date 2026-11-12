@@ -50,5 +50,32 @@
       "kashmir": 1,
       "sikh_diaspora": 9
     }
+  },
+  {
+    "date": "2026-11-12",
+    "tone_scores": {
+      "punjab_overall": null,
+      "india_canada": null,
+      "ukraine_wheat": null,
+      "russia_energy": null,
+      "pakistan_economy": null,
+      "cpec_corridor": null,
+      "sikh_diaspora": null,
+      "punjab_agriculture": null,
+      "china_india": null,
+      "iran_chabahar": null,
+      "brics_expansion": null,
+      "de_dollarisation": null
+    },
+    "article_count": 78,
+    "topic_breakdown": {
+      "rss": 52,
+      "china_military": 5,
+      "kashmir": 4,
+      "pakistan_economy": 4,
+      "russia_ukraine": 2,
+      "scl_brics": 2,
+      "sikh_diaspora": 9
+    }
   }
 ]

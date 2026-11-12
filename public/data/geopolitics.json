@@ -1,25 +1,24 @@
 {
-  "generated": "2026-11-01T03:34:40Z",
-  "date": "2026-11-01",
-  "source": "seed — run daily pipeline for live data",
+  "generated": "2026-11-12T07:38:55Z",
+  "date": "2026-11-12",
   "india_alignment": {
-    "score": 52,
-    "label": "Genuinely Non-Aligned (moderate Western lean)",
-    "interpretation": "India buys Russian oil, sits in BRICS and SCO, but also joins QUAD and buys Western weapons. Currently the most non-aligned major country. Under increasing pressure to choose.",
-    "punjab_impact": "Non-alignment keeps multiple diaspora corridors open. A forced choice would close either Five Eyes (Canada/UK/Australia) or Russia/Gulf channels.",
+    "score": 59,
+    "label": "Leaning West",
     "signals": {
-      "UN abstain on Ukraine": "+12",
-      "BRICS membership": "-15",
-      "SCO membership": "-10",
-      "QUAD membership": "+20",
-      "Russia oil imports": "-18",
-      "US F414 engine deal": "+15",
-      "Russia S-400": "-12",
-      "France Rafale": "+10",
-      "Chabahar": "+8",
-      "CPEC opposition": "+10",
-      "Five Eyes NRI diaspora": "+15"
-    }
+      "UN vote with West on Ukraine": 12,
+      "BRICS membership": -15,
+      "SCO membership": -10,
+      "QUAD membership": 20,
+      "Russia oil imports post-sanctions": -18,
+      "US F414 engine deal": 15,
+      "Russia S-400 purchase": -12,
+      "France Rafale purchase": 10,
+      "Chabahar (counter-CPEC)": 8,
+      "CPEC opposition": 10,
+      "NRI diaspora in Five Eyes countries": 15
+    },
+    "interpretation": "India is strategically non-aligned but under increasing pressure to choose. Current tilt: moderate Western lean while maintaining Russian energy ties.",
+    "punjab_impact": "Non-alignment keeps multiple diaspora corridors open. A forced choice would close either Five Eyes (Canada/UK/Australia) or Russia/Gulf channels."
   },
   "international_bodies": {
     "UN_SC": {
@@ -31,9 +30,21 @@
         "UK",
         "France"
       ],
+      "current_elected": [
+        "Algeria",
+        "Guyana",
+        "Sierra Leone",
+        "Slovenia",
+        "South Korea",
+        "Japan",
+        "Malta",
+        "Mozambique",
+        "Switzerland",
+        "Ecuador"
+      ],
       "india_member": false,
       "note": "India has no veto. Permanent members control any binding resolution on South Asia.",
-      "punjab_relevance": "Any India-Pakistan conflict requires UNSC resolution. China (Pakistan ally) and USA (India partner) both have veto. Punjab is the battlefield."
+      "punjab_relevance": "Any India-Pakistan conflict requires UNSC resolution. India has no veto. China (Pakistan ally) and USA (India partner) have veto. Punjab is the battlefield."
     },
     "BRICS": {
       "name": "BRICS+",
@@ -51,8 +62,8 @@
       ],
       "india_member": true,
       "gdp_share_pct": 36,
-      "note": "India-China border dispute while in same bloc creates structural tension.",
-      "punjab_relevance": "De-dollarisation push affects remittance corridors. Russia-India oil trade boosts economy but angers West — affects diaspora visa access."
+      "note": "India joined BRICS 2009. Tension: India-China border dispute while in same bloc.",
+      "punjab_relevance": "BRICS de-dollarisation push affects remittance corridors. Russia-India oil trade boosts India economy but angers West — affects visa/diaspora access."
     },
     "SCO": {
       "name": "Shanghai Cooperation Organisation",
@@ -69,15 +80,15 @@
         "Belarus"
       ],
       "india_member": true,
-      "note": "India and Pakistan both members since 2017. China leads de facto.",
-      "punjab_relevance": "SCO frames India-Pakistan dialogue through Chinese-led structure. Sikh pilgrimage to Pakistan (Nankana Sahib, Panja Sahib) dependent on India-Pakistan SCO cooperation."
+      "note": "India and Pakistan are both SCO members since 2017. China leads de facto.",
+      "punjab_relevance": "SCO frames India-Pakistan dialogue through Chinese-led structure. Punjab border directly affected. Sikh pilgrimage to Pakistan (Nankana Sahib, Panja Sahib) dependent on India-Pakistan SCO cooperation."
     },
     "G20": {
       "name": "G20",
       "india_member": true,
       "india_presidency": 2023,
       "note": "India held G20 presidency 2023. Food security and fertiliser supply chain are G20 agenda items.",
-      "punjab_relevance": "G20 food security resolutions directly affect global wheat/fertiliser prices that Punjab agriculture depends on."
+      "punjab_relevance": "G20 food security resolutions directly affect global wheat/fertiliser prices. Punjab agriculture dependent on international price signals set here."
     },
     "G7": {
       "name": "G7",
@@ -92,7 +103,7 @@
       ],
       "india_member": false,
       "note": "G7 controls global financial sanctions (SWIFT), technology export controls, and sets norms India must navigate.",
-      "punjab_relevance": "G7 sanctions on Russia restrict India trade. Canada-India tension directly affects Punjab NRI remittances and immigration."
+      "punjab_relevance": "G7 sanctions on Russia restrict India trade. Canada-India tension (Sikh diaspora nexus) directly affects Punjab NRI remittances and immigration. UK visa policy affects Doaba corridor."
     },
     "QUAD": {
       "name": "Quadrilateral Security Dialogue",
@@ -103,16 +114,16 @@
         "Australia"
       ],
       "india_member": true,
-      "note": "Anti-China in practice. India participates but hedges — simultaneously in SCO and BRICS with China.",
+      "note": "QUAD is anti-China in practice. India participates but hedges — simultaneously in SCO and BRICS with China.",
       "punjab_relevance": "If QUAD becomes formal alliance, India must take a side. China-India tension escalates. Punjab border posture affected."
     },
     "CPEC": {
       "name": "China-Pakistan Economic Corridor",
-      "status": "Phase II under negotiation",
+      "status": "Phase II under negotiation (ML-1 railway, Gwadar port expansion)",
       "total_investment_usd_bn": 62,
       "india_member": false,
-      "note": "Passes through Pakistan-administered Kashmir — India rejects as sovereignty violation.",
-      "punjab_relevance": "CPEC completion changes Central Asian trade routes. Wagah crossing importance shifts. Long-term Punjab trade economics affected."
+      "note": "CPEC passes through Pakistan-administered Kashmir — India rejects it as sovereignty violation.",
+      "punjab_relevance": "CPEC completion changes Central Asian trade routes. Pakistan becomes China transit hub. India-Pakistan trade economics shift. Long-term: Wagah crossing importance changes."
     },
     "INSTC": {
       "name": "International North-South Transport Corridor",
@@ -121,12 +132,13 @@
         "Russia",
         "Iran",
         "Azerbaijan",
-        "Kazakhstan"
+        "Kazakhstan",
+        "Others"
       ],
       "india_member": true,
-      "status": "Operational — Chabahar port active",
+      "status": "Operational — Chabahar port development active",
       "note": "India alternative to CPEC. Bypasses Pakistan entirely.",
-      "punjab_relevance": "INSTC success reduces India dependence on Pakistan transit. Punjab agricultural exports could reach Central Asia via this corridor."
+      "punjab_relevance": "INSTC success reduces India dependence on Pakistan transit. Punjab agricultural exports could reach Central Asia via this corridor. Counter to CPEC."
     }
   },
   "next_yalta_scenarios": [
@@ -139,12 +151,12 @@
       "who_decides": [
         "India",
         "Pakistan",
-        "USA",
-        "China",
+        "USA (mediator)",
+        "China (Pakistan backer)",
         "World Bank"
       ],
-      "punjab_impact": "CRITICAL — Punjab rivers are Indus tributaries. Ravi, Beas, Sutlej. Agricultural water access existential.",
-      "sikh_representation": "None at negotiating table.",
+      "punjab_impact": "CRITICAL — Punjab rivers are the Indus tributaries. Ravi, Beas, Sutlej. Agricultural water access existential.",
+      "sikh_representation": "None at negotiating table. Punjab farmers have no direct voice.",
       "signal_to_watch": "India-Pakistan IWT meetings, World Bank arbitration filings"
     },
     {
@@ -158,60 +170,60 @@
         "USA",
         "UK",
         "India",
-        "Five Eyes"
+        "Five Eyes intelligence alliance"
       ],
-      "punjab_impact": "HIGH — 770,000 Punjabis in Canada. Remittance corridor ($3B+/yr) at risk. Doaba region most affected.",
-      "sikh_representation": "Sikh MPs in Canada but no institutional Panthic representation.",
-      "signal_to_watch": "RCMP charges against Indian operatives, Canadian visa processing"
+      "punjab_impact": "HIGH — 770,000 Punjabis in Canada. Remittance corridor ($3B+/year) at risk. Doaba region most affected.",
+      "sikh_representation": "Sikh MPs in Canada have voice but are caught between two governments. No institutional Panthic representation.",
+      "signal_to_watch": "RCMP charges against Indian operatives, Canadian visa processing for Indians"
     },
     {
       "id": "china_india_border_war",
       "title": "China-India LAC Conflict Escalates",
       "probability": 22,
       "timeframe": "2025-2030",
-      "trigger": "Galwan-style incident escalates. Two-front war scenario.",
+      "trigger": "Galwan-style incident escalates. China blockades Ladakh. Two-front war scenario.",
       "who_decides": [
         "China",
         "India",
         "USA",
-        "Russia"
+        "Russia (hedging)"
       ],
-      "punjab_impact": "HIGH — Punjab is Indian Army primary mobilisation base. Amritsar/Jalandhar are logistics hubs.",
+      "punjab_impact": "HIGH — Punjab is Indian Army's primary mobilisation base. Amritsar, Jalandhar are logistics hubs. Civilian economy disrupted.",
       "sikh_representation": "Sikh soldiers disproportionate in Indian Army but zero political decision-making role.",
-      "signal_to_watch": "LAC troop movements, China-Pakistan coordination, US arms sales to India"
+      "signal_to_watch": "LAC troop movements, China-Pakistan coordination signals, US arms sales to India"
     },
     {
       "id": "global_food_crisis",
-      "title": "Second Global Food Crisis (Ukraine + Climate)",
+      "title": "Second Global Food Crisis (Ukraine + El Niño)",
       "probability": 45,
       "timeframe": "2025-2028",
-      "trigger": "Ukraine war continues. Climate disrupts Asian monsoon. Global wheat stocks at record low.",
+      "trigger": "Ukraine war continues. El Niño cuts Asian monsoon. Global wheat stocks at record low.",
       "who_decides": [
-        "G20",
+        "G20 food security committee",
         "WTO",
-        "USA",
-        "India"
+        "USA (export policy)",
+        "India (export bans)"
       ],
-      "punjab_impact": "EXTREME — Punjab produces 15% India wheat, 25% rice. Export bans vs income opportunity tension.",
-      "sikh_representation": "Punjab farmers have no G20 voice.",
-      "signal_to_watch": "USDA world supply reports, India Food Corporation stock levels, monsoon forecasts"
+      "punjab_impact": "EXTREME — Punjab produces 15% of India wheat, 25% of rice. Export bans keep local prices low but farmers lose income. Or: global demand spikes income but inflation hurts poor.",
+      "sikh_representation": "Punjab farmers have no G20 voice. Decisions made in Washington, Brussels, New Delhi.",
+      "signal_to_watch": "USDA world supply reports, India Food Corporation stock levels, El Niño forecasts"
     },
     {
       "id": "multipolar_bloc_formation",
-      "title": "World Splits into Two Hard Blocs",
+      "title": "World Splits into Two Hard Blocs (New Cold War)",
       "probability": 40,
       "timeframe": "2025-2035",
-      "trigger": "USA-China tech war becomes comprehensive. SWIFT splits. India forced to choose.",
+      "trigger": "USA-China tech war becomes comprehensive. SWIFT split. Two payment systems. India must choose.",
       "who_decides": [
         "USA",
         "China",
         "Russia",
         "EU",
-        "India"
+        "India (forced choice)"
       ],
-      "punjab_impact": "SYSTEMIC — Sikh community split across both blocs (Five Eyes countries vs Russia/Gulf). Remittance and diaspora status split.",
-      "sikh_representation": "Sikh community torn. No unified Panthic position on which bloc to support.",
-      "signal_to_watch": "India UN votes, India CBDC system, semiconductor import sources, G20 language"
+      "punjab_impact": "SYSTEMIC — If India joins US bloc: CAD/GBP diaspora corridors safe, Russia oil banned, fertiliser prices spike. If India joins China bloc: diaspora countries sanction India, Sikh NRI status threatened.",
+      "sikh_representation": "Sikh community is split across both potential blocs (majority in Five Eyes countries). No unified position. Will be torn.",
+      "signal_to_watch": "India UN votes, India joining CBDC systems, semiconductor import sources, G20 communiqué language"
     }
   ],
   "yalta_pattern_history": [
@@ -223,7 +235,8 @@
         "France",
         "USA"
       ],
-      "punjab_impact": "Jallianwala Bagh massacre (April 1919). 379+ killed. No international accountability.",
+      "decision": "Colonial order preserved. Indian demands for self-rule ignored. Gandhi's non-cooperation movement launched.",
+      "punjab_impact": "Jallianwala Bagh massacre (April 1919) — 379+ killed. British retain Punjab. No international accountability.",
       "pattern": "Major powers in transition → colonial subjects ignored → violence in Punjab"
     },
     {
@@ -234,7 +247,8 @@
         "UK",
         "USSR"
       ],
-      "punjab_impact": "Partition 1947 decided by British withdrawal timeline. Punjab divided, 1-2 million killed.",
+      "decision": "Post-war world divided. British Empire fate discussed. Indian independence timeline left vague.",
+      "punjab_impact": "Partition 1947 decided by British withdrawal timeline set here. Punjab divided, 1-2 million killed.",
       "pattern": "Major powers redraw maps → Punjab divided → catastrophic human cost"
     },
     {
@@ -245,30 +259,33 @@
         "USSR (pro-India)",
         "China (pro-Pakistan)"
       ],
-      "punjab_impact": "War fought partly on Punjab front. Simla Agreement locks Kashmir dispute permanently.",
+      "decision": "US sends USS Enterprise to Bay of Bengal. USSR counters. India wins but under superpower shadow.",
+      "punjab_impact": "War fought partly on Punjab front. Post-war: Simla Agreement locks Kashmir dispute.",
       "pattern": "Superpower proxy positioning → Punjab is frontline → outcomes set by external power balance"
     },
     {
       "year": 1984,
-      "event": "Operation Blue Star / Woodrose",
+      "event": "Operation Blue Star / Operation Woodrose",
       "major_powers": [
-        "UK (SAS advisory)",
+        "UK (supplied military advice)",
         "USA (silent)"
       ],
-      "punjab_impact": "Sri Darbar Sahib desecrated. Thousands killed. Sikh diaspora permanently shaped.",
+      "decision": "No international intervention. UK Special Air Service advisors reportedly involved in planning.",
+      "punjab_impact": "Sri Darbar Sahib desecrated. 492+ killed (official), thousands more (estimated). Sikh diaspora permanently radicalized.",
       "pattern": "India acts in Punjab → world silent → Sikh community bears consequence alone"
     },
     {
       "year": 2023,
-      "event": "Canada-India Crisis (Nijjar killing)",
+      "event": "Canada-India diplomatic crisis (Hardeep Singh Nijjar killing)",
       "major_powers": [
         "Canada",
         "USA",
         "UK",
         "India"
       ],
-      "punjab_impact": "Sikh diaspora Canada status threatened. Punjab NRI remittances at risk.",
-      "pattern": "Sikh diaspora political activity → state response → Punjab external lifeline threatened"
+      "decision": "Five Eyes countries vs India standoff. India expelled diplomats. No international legal resolution.",
+      "punjab_impact": "Sikh diaspora Canada immigration threatened. Punjab NRI remittances at risk. Sikh political advocates branded as security threats.",
+      "pattern": "Sikh diaspora political activity → state response → Punjab's external economic lifeline threatened"
     }
   ],
   "sikh_political_power": {
@@ -277,8 +294,9 @@
       "federal_mps": 18,
       "notable": [
         "Jagmeet Singh (NDP Leader)",
-        "Harjit Sajjan (ex-Defence Min)",
+        "Harjit Sajjan (Defence Min, 2015-21)",
         "Bardish Chagger",
+        "Tim Uppal",
         "Ruby Sahota"
       ],
       "power_level": "SIGNIFICANT — NDP kingmaker in minority government situations",
@@ -289,7 +307,8 @@
       "parliament_members": 9,
       "notable": [
         "Tanmanjeet Singh Dhesi",
-        "Preet Kaur Gill"
+        "Preet Kaur Gill",
+        "Gurinder Singh Josan"
       ],
       "power_level": "MODERATE — Growing but no cabinet-level representation",
       "risk": "Post-Brexit immigration tightening affects new Punjabi migrants"
@@ -297,30 +316,73 @@
     "usa": {
       "population_est": 500000,
       "congress_members": 1,
+      "notable": [
+        "Raja Krishnamoorthi (Indian-American, Hindu — Sikh allies in Congress)"
+      ],
       "power_level": "LOW — No Sikh Congress members. Community politically fragmented.",
       "risk": "H-1B policy affects Punjabi tech workers"
     },
-    "sgpc_budget_cr": 900,
-    "collective_influence_note": "SGPC manages 85 historic Gurdwaras. ~900 Cr/yr budget. Largest Sikh institution globally."
+    "india_punjab": {
+      "legislative_assembly": 117,
+      "ruling_party": "AAP (2022-)",
+      "note": "Punjab has elected government but fiscal crisis limits autonomy. Delhi-center controls security.",
+      "power_level": "LIMITED — State government under central financial pressure"
+    },
+    "collective_gdp_influence_usd_bn": "est. 150+",
+    "sgpc_annual_budget_cr": 900,
+    "note": "SGPC is largest Sikh institution. ~₹900 Cr annual budget. Manages 85 historic Gurdwaras."
   },
   "sanction_watch": {
     "russia_sanctions": {
-      "risk": "HIGH",
-      "punjab_impact": "Russian fertiliser supply disrupted. Potash/urea prices spike → Punjab farm input costs rise."
+      "imposed_by": "USA, EU, UK, Canada, Australia, Japan",
+      "india_impact": "India buying Russian oil at discount. G7 critical but not sanctioning India (yet).",
+      "punjab_impact": "Russian fertiliser (potash, urea) supply disrupted. Global prices spike → Punjab farm input costs rise.",
+      "risk_level": "HIGH"
     },
     "iran_sanctions": {
-      "risk": "MODERATE",
-      "punjab_impact": "Chabahar waiver crucial for India-Central Asia corridor bypassing Pakistan."
+      "imposed_by": "USA, EU",
+      "india_impact": "India reduced Iran oil imports under US pressure. Chabahar port granted waiver.",
+      "punjab_impact": "Chabahar waiver crucial for India-Central Asia corridor that bypasses Pakistan.",
+      "risk_level": "MODERATE"
     },
     "china_tech_controls": {
-      "risk": "LOW-MEDIUM",
-      "punjab_impact": "Indirect — India semiconductor hub opportunity shifts Punjab labor migration."
+      "imposed_by": "USA (BIS export controls)",
+      "india_impact": "India benefits from semiconductor supply chain diversification (China+1 strategy).",
+      "punjab_impact": "Indirect: if India becomes major tech manufacturing hub, Punjab labor migration patterns shift.",
+      "risk_level": "LOW-MEDIUM"
     },
     "canada_india_tension": {
-      "risk": "HIGH",
-      "punjab_impact": "Doaba remittance corridor threatened. Student visa pipeline disrupted."
+      "imposed_by": "Canada (diplomatic, not formal sanctions)",
+      "india_impact": "Visa processing slowed. Intelligence sharing suspended. Trade talks paused.",
+      "punjab_impact": "HIGH — Doaba remittance corridor threatened. Student visa pipeline disrupted.",
+      "risk_level": "HIGH"
     }
   },
+  "sipri_arms": {
+    "India": {
+      "import_share_pct": 9.8,
+      "major_suppliers": [
+        "Russia 36%",
+        "France 33%",
+        "USA 11%"
+      ],
+      "trend": "diversifying away from Russia post-Ukraine sanctions"
+    },
+    "Pakistan": {
+      "import_share_pct": 2.8,
+      "major_suppliers": [
+        "China 82%"
+      ],
+      "trend": "almost entirely China-supplied — strategic dependency"
+    },
+    "note": "India is world's largest arms importer. Dependency on Russia creates G7 tension.",
+    "punjab_relevance": "India-Pakistan military balance determined by these supply chains. Punjab is the primary land frontier."
+  },
   "recent_events": [],
-  "geo_tone_scores": {}
+  "geo_tone_scores": {
+    "brics_meeting": null,
+    "canada_india_sikh": null,
+    "indus_water": null,
+    "india_china_lac": null
+  }
 }

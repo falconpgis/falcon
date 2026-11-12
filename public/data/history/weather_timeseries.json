@@ -1,0 +1,11 @@
+[
+  {
+    "snapshot_date": "2026-11-12",
+    "rain_mm": 0.0,
+    "temp_max": 29.0,
+    "temp_min": 17.9,
+    "drought_signal": "CRITICAL",
+    "rain_7d_mm": 0.0,
+    "anomaly_pct": -100.0
+  }
+]

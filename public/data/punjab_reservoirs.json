@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "generated_at": "2026-11-12T07:44:08.844815Z",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.43,
+          31.41
+        ]
+      },
+      "properties": {
+        "name": "Gobind Sagar (Bhakra)",
+        "river": "Sutlej",
+        "state": "Himachal Pradesh",
+        "frl_mcm": 7501.4,
+        "storage_mcm": 6001.1,
+        "percent_full": 80,
+        "alert": "normal",
+        "source": "seasonal-estimate",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.93,
+          32.0
+        ]
+      },
+      "properties": {
+        "name": "Pong Dam",
+        "river": "Beas",
+        "state": "Himachal Pradesh",
+        "frl_mcm": 8570.0,
+        "storage_mcm": 6856.0,
+        "percent_full": 80,
+        "alert": "normal",
+        "source": "seasonal-estimate",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.67,
+          32.56
+        ]
+      },
+      "properties": {
+        "name": "Ranjit Sagar Dam",
+        "river": "Ravi",
+        "state": "Jammu & Kashmir",
+        "frl_mcm": 3280.0,
+        "storage_mcm": 2624.0,
+        "percent_full": 80,
+        "alert": "normal",
+        "source": "seasonal-estimate",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.74,
+          32.49
+        ]
+      },
+      "properties": {
+        "name": "Thein (Ranjit Sagar)",
+        "river": "Ravi",
+        "state": "Punjab",
+        "frl_mcm": 3280.0,
+        "storage_mcm": 2624.0,
+        "percent_full": 80,
+        "alert": "normal",
+        "source": "seasonal-estimate",
+        "date": "2026-11-12"
+      }
+    }
+  ]
+}

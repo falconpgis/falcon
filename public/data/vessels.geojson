@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.99,
+          24.856
+        ]
+      },
+      "properties": {
+        "name": "Karachi Port",
+        "country": "Pakistan",
+        "type": "port",
+        "port_type": "major",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.31,
+          24.774
+        ]
+      },
+      "properties": {
+        "name": "Port Qasim",
+        "country": "Pakistan",
+        "type": "port",
+        "port_type": "major",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.325,
+          25.122
+        ]
+      },
+      "properties": {
+        "name": "Gwadar Port",
+        "country": "Pakistan",
+        "type": "port",
+        "port_type": "CPEC",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.954,
+          18.948
+        ]
+      },
+      "properties": {
+        "name": "JNPT Mumbai",
+        "country": "India",
+        "type": "port",
+        "port_type": "major",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.218,
+          23.0
+        ]
+      },
+      "properties": {
+        "name": "Kandla Port",
+        "country": "India",
+        "type": "port",
+        "port_type": "major",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.708,
+          22.839
+        ]
+      },
+      "properties": {
+        "name": "Mundra Port",
+        "country": "India",
+        "type": "port",
+        "port_type": "major",
+        "date": "2026-11-12T07:43:43.439816Z",
+        "source": "static"
+      }
+    }
+  ]
+}
