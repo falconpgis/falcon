@@ -17,5 +17,24 @@
       "india_china_lac": null
     },
     "article_count": 0
+  },
+  {
+    "date": "2026-11-13",
+    "india_alignment_score": 59,
+    "india_alignment_label": "Leaning West",
+    "scenario_probabilities": {
+      "india_pakistan_water_war": 35,
+      "canada_india_rupture": 28,
+      "china_india_border_war": 22,
+      "global_food_crisis": 45,
+      "multipolar_bloc_formation": 40
+    },
+    "geo_tone_scores": {
+      "brics_meeting": null,
+      "canada_india_sikh": null,
+      "indus_water": null,
+      "india_china_lac": null
+    },
+    "article_count": 0
   }
 ]

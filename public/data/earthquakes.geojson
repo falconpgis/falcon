@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1794469423000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-13&endtime=2026-11-12&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1794554125000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-14&endtime=2026-11-13&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -744,10 +744,10 @@
     {
       "type": "Feature",
       "properties": {
-        "mag": 4.3,
-        "place": "36 km ESE of K\u016dlob, Tajikistan",
-        "time": 1792391424210,
-        "updated": 1792564219040,
+        "mag": 4.5,
+        "place": "17 km NW of Fayzabad, Afghanistan",
+        "time": 1792391418982,
+        "updated": 1794487075040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3b0",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u3b0&format=geojson",
@@ -757,19 +757,19 @@
         "alert": null,
         "status": "reviewed",
         "tsunami": 0,
-        "sig": 284,
+        "sig": 312,
         "net": "us",
         "code": "6000u3b0",
         "ids": ",us6000u3b0,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 29,
-        "dmin": 2.144,
-        "rms": 0.79,
-        "gap": 109,
+        "nst": 42,
+        "dmin": 2.506,
+        "rms": 0.66,
+        "gap": 100,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.3 - 36 km ESE of K\u016dlob, Tajikistan",
+        "title": "M 4.5 - 17 km NW of Fayzabad, Afghanistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -777,8 +777,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          70.148,
-          37.7654,
+          70.4197,
+          37.2144,
           10
         ]
       },
@@ -873,6 +873,49 @@
     {
       "type": "Feature",
       "properties": {
+        "mag": 4.2,
+        "place": "25 km ESE of Jurm, Afghanistan",
+        "time": 1792127830936,
+        "updated": 1794475693040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2n6",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u2n6&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 271,
+        "net": "us",
+        "code": "6000u2n6",
+        "ids": ",us6000u2n6,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 30,
+        "dmin": 2.752,
+        "rms": 0.76,
+        "gap": 94,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.2 - 25 km ESE of Jurm, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.1016,
+          36.777,
+          213.723
+        ]
+      },
+      "id": "us6000u2n6"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "mag": 4.4,
         "place": "25 km NE of Rust\u0101q, Afghanistan",
         "time": 1792057889803,
@@ -955,49 +998,6 @@
         ]
       },
       "id": "us6000u279"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.3,
-        "place": "37 km S of Jurm, Afghanistan",
-        "time": 1791893566785,
-        "updated": 1793886813040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u211",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u211&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 284,
-        "net": "us",
-        "code": "6000u211",
-        "ids": ",us6000u211,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 61,
-        "dmin": 2.458,
-        "rms": 0.85,
-        "gap": 70,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.3 - 37 km S of Jurm, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          70.8739,
-          36.5273,
-          188.329
-        ]
-      },
-      "id": "us6000u211"
     }
   ],
   "bbox": [
@@ -1006,6 +1006,6 @@
     10,
     80.8002,
     37.8644,
-    213.504
+    213.723
   ]
 }

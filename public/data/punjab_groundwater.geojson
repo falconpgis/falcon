@@ -15,7 +15,7 @@
         "depth_mbgl": 14.2,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -33,7 +33,7 @@
         "depth_mbgl": 9.8,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -51,7 +51,7 @@
         "depth_mbgl": 7.5,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -69,7 +69,7 @@
         "depth_mbgl": 16.4,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -87,7 +87,7 @@
         "depth_mbgl": 12.1,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -105,7 +105,7 @@
         "depth_mbgl": 22.3,
         "risk": "HIGH",
         "color": "#f57c00",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -123,7 +123,7 @@
         "depth_mbgl": 25.1,
         "risk": "HIGH",
         "color": "#f57c00",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -141,7 +141,7 @@
         "depth_mbgl": 18.7,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -159,7 +159,7 @@
         "depth_mbgl": 13.6,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -177,7 +177,7 @@
         "depth_mbgl": 8.2,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -195,7 +195,7 @@
         "depth_mbgl": 10.4,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -213,7 +213,7 @@
         "depth_mbgl": 15.8,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -231,7 +231,7 @@
         "depth_mbgl": 6.8,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -249,7 +249,7 @@
         "depth_mbgl": 5.9,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -267,7 +267,7 @@
         "depth_mbgl": 7.2,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -285,7 +285,7 @@
         "depth_mbgl": 28.4,
         "risk": "HIGH",
         "color": "#f57c00",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -303,7 +303,7 @@
         "depth_mbgl": 31.2,
         "risk": "CRITICAL",
         "color": "#d32f2f",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -321,7 +321,7 @@
         "depth_mbgl": 11.5,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -339,7 +339,7 @@
         "depth_mbgl": 9.3,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -357,7 +357,7 @@
         "depth_mbgl": 19.6,
         "risk": "MODERATE",
         "color": "#fbc02d",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -375,7 +375,7 @@
         "depth_mbgl": 5.1,
         "risk": "LOW",
         "color": "#388e3c",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     },
@@ -393,7 +393,7 @@
         "depth_mbgl": 26.7,
         "risk": "HIGH",
         "color": "#f57c00",
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "source": "CGWB-2023-bulletin"
       }
     }
