@@ -7,5 +7,14 @@
     "drought_signal": "CRITICAL",
     "rain_7d_mm": 0.0,
     "anomaly_pct": -100.0
+  },
+  {
+    "snapshot_date": "2026-11-14",
+    "rain_mm": 0.1,
+    "temp_max": 28.2,
+    "temp_min": 18.9,
+    "drought_signal": "CRITICAL",
+    "rain_7d_mm": 0.4,
+    "anomaly_pct": -97.7
   }
 ]

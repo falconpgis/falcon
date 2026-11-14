@@ -58,5 +58,35 @@
       "Pathankot": 5.1,
       "Malerkotla": 26.7
     }
+  },
+  {
+    "snapshot_date": "2026-11-14",
+    "avg_depth_mbgl": 14.8,
+    "critical_districts": 1,
+    "source": "CGWB-2023-bulletin",
+    "districts": {
+      "Amritsar": 14.2,
+      "Gurdaspur": 9.8,
+      "Hoshiarpur": 7.5,
+      "Jalandhar": 16.4,
+      "Kapurthala": 12.1,
+      "Ludhiana": 22.3,
+      "Moga": 25.1,
+      "SAS Nagar": 18.7,
+      "Patiala": 13.6,
+      "Rupnagar": 8.2,
+      "SBS Nagar": 10.4,
+      "Fatehgarh Sahib": 15.8,
+      "Firozpur": 6.8,
+      "Fazilka": 5.9,
+      "Muktsar": 7.2,
+      "Barnala": 28.4,
+      "Sangrur": 31.2,
+      "Bathinda": 11.5,
+      "Mansa": 9.3,
+      "Tarn Taran": 19.6,
+      "Pathankot": 5.1,
+      "Malerkotla": 26.7
+    }
   }
 ]

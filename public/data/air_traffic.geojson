@@ -6,18 +6,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.3928,
-          31.4601
+          76.7603,
+          30.6827
         ]
       },
       "properties": {
-        "icao24": "760a0a",
-        "callsign": "SIF786",
-        "country": "Pakistan",
-        "altitude_ft": 2925,
-        "speed_kts": 211,
-        "heading": 232,
-        "date": "2026-11-13T07:15:24.104615Z",
+        "icao24": "702087",
+        "callsign": "BBC201",
+        "country": "Bangladesh",
+        "altitude_ft": 36000,
+        "speed_kts": 387,
+        "heading": 298,
+        "date": "2026-11-14T07:03:57.131032Z",
         "source": "OpenSky Network"
       }
     },
@@ -26,18 +26,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.6807,
-          30.9713
+          74.4049,
+          31.5314
         ]
       },
       "properties": {
-        "icao24": "80145c",
-        "callsign": "IGO5068",
-        "country": "India",
-        "altitude_ft": 34250,
-        "speed_kts": 513,
-        "heading": 142,
-        "date": "2026-11-13T07:15:24.104615Z",
+        "icao24": "733490",
+        "callsign": "733490",
+        "country": "Islamic Republic of Iran",
+        "altitude_ft": 825,
+        "speed_kts": 170,
+        "heading": 2,
+        "date": "2026-11-14T07:03:57.131032Z",
         "source": "OpenSky Network"
       }
     },
@@ -46,38 +46,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.5882,
-          30.7436
+          74.5263,
+          31.4218
         ]
       },
       "properties": {
-        "icao24": "151db6",
-        "callsign": "AFL271",
-        "country": "Russian Federation",
-        "altitude_ft": 32000,
-        "speed_kts": 411,
-        "heading": 292,
-        "date": "2026-11-13T07:15:24.104615Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.7647,
-          31.1651
-        ]
-      },
-      "properties": {
-        "icao24": "4cac0b",
-        "callsign": "KZR907",
-        "country": "Ireland",
-        "altitude_ft": 35000,
-        "speed_kts": 514,
-        "heading": 137,
-        "date": "2026-11-13T07:15:24.104615Z",
+        "icao24": "781df2",
+        "callsign": "HYT9090",
+        "country": "China",
+        "altitude_ft": 12300,
+        "speed_kts": 267,
+        "heading": 156,
+        "date": "2026-11-14T07:03:57.131032Z",
         "source": "OpenSky Network"
       }
     }

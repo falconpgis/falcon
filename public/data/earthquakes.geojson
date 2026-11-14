@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1794554125000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-14&endtime=2026-11-13&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1794639838000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-15&endtime=2026-11-14&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -10,6 +10,92 @@
     "offset": 1
   },
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.4,
+        "place": "29 km WNW of Baghl\u0101n, Afghanistan",
+        "time": 1794565039293,
+        "updated": 1794595119040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txz7",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000txz7&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 298,
+        "net": "us",
+        "code": "7000txz7",
+        "ids": ",us7000txz7,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 27,
+        "dmin": 1.793,
+        "rms": 0.53,
+        "gap": 149,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.4 - 29 km WNW of Baghl\u0101n, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.3878,
+          36.2047,
+          10
+        ]
+      },
+      "id": "us7000txz7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.1,
+        "place": "66 km SSE of Farkh\u0101r, Afghanistan",
+        "time": 1794564456127,
+        "updated": 1794596759040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txz5",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000txz5&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 259,
+        "net": "us",
+        "code": "7000txz5",
+        "ids": ",us7000txz5,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 19,
+        "dmin": 1.785,
+        "rms": 0.9,
+        "gap": 123,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.1 - 66 km SSE of Farkh\u0101r, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.2408,
+          36.0578,
+          10
+        ]
+      },
+      "id": "us7000txz5"
+    },
     {
       "type": "Feature",
       "properties": {
@@ -401,9 +487,9 @@
       "type": "Feature",
       "properties": {
         "mag": 5.2,
-        "place": "59 km SW of Ashk\u0101sham, Afghanistan",
-        "time": 1792950263735,
-        "updated": 1792952874570,
+        "place": "56 km SW of Ashk\u0101sham, Afghanistan",
+        "time": 1792950264344,
+        "updated": 1794607976791,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4va",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u4va&format=geojson",
@@ -419,13 +505,13 @@
         "ids": ",us6000u4va,",
         "sources": ",us,",
         "types": ",dyfi,origin,phase-data,",
-        "nst": 93,
-        "dmin": 2.315,
-        "rms": 0.77,
-        "gap": 20,
+        "nst": 129,
+        "dmin": 2.289,
+        "rms": 0.74,
+        "gap": 18,
         "magType": "mww",
         "type": "earthquake",
-        "title": "M 5.2 - 59 km SW of Ashk\u0101sham, Afghanistan",
+        "title": "M 5.2 - 56 km SW of Ashk\u0101sham, Afghanistan",
         "near_punjab": false,
         "alert_level": "moderate",
         "source": "USGS"
@@ -433,9 +519,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          71.1025,
-          36.274,
-          110.025
+          71.1332,
+          36.2899,
+          118.444
         ]
       },
       "id": "us6000u4va"
@@ -955,49 +1041,6 @@
         ]
       },
       "id": "us6000u2fx"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.2,
-        "place": "8 km N of M\u012br Bachah K\u014d\u1e6f, Afghanistan",
-        "time": 1791950598404,
-        "updated": 1793765540040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u279",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u279&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 271,
-        "net": "us",
-        "code": "6000u279",
-        "ids": ",us6000u279,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 17,
-        "dmin": 0.308,
-        "rms": 1.17,
-        "gap": 85,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.2 - 8 km N of M\u012br Bachah K\u014d\u1e6f, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          69.1185,
-          34.8235,
-          10
-        ]
-      },
-      "id": "us6000u279"
     }
   ],
   "bbox": [
