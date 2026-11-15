@@ -46,5 +46,21 @@
       "India": 80,
       "Global": 25
     }
+  },
+  {
+    "date": "2026-11-15",
+    "total": 700,
+    "relevant": 100,
+    "country_counts": {
+      "Russia": 140,
+      "China": 70,
+      "Iran": 90,
+      "Pakistan": 155,
+      "Afghanistan": 100,
+      "Kyrgyzstan": 20,
+      "UK": 20,
+      "India": 80,
+      "Global": 25
+    }
   }
 ]
