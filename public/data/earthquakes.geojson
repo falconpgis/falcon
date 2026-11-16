@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1794726452000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-16&endtime=2026-11-15&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1794813114000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-17&endtime=2026-11-16&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -10,6 +10,92 @@
     "offset": 1
   },
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.9,
+        "place": "44 km S of Jurm, Afghanistan",
+        "time": 1794778641082,
+        "updated": 1794780978040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyga",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tyga&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 369,
+        "net": "us",
+        "code": "7000tyga",
+        "ids": ",us7000tyga,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 67,
+        "dmin": 2.431,
+        "rms": 0.78,
+        "gap": 56,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 4.9 - 44 km S of Jurm, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.9205,
+          36.4657,
+          191.363
+        ]
+      },
+      "id": "us7000tyga"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 5,
+        "place": "74 km N of P\u0101r\u016bn, Afghanistan",
+        "time": 1794764916959,
+        "updated": 1794766098040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyfh",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tyfh&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 385,
+        "net": "us",
+        "code": "7000tyfh",
+        "ids": ",us7000tyfh,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 96,
+        "dmin": 2.165,
+        "rms": 0.67,
+        "gap": 55,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 5.0 - 74 km N of P\u0101r\u016bn, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "moderate",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.9503,
+          36.0947,
+          100.728
+        ]
+      },
+      "id": "us7000tyfh"
+    },
     {
       "type": "Feature",
       "properties": {
@@ -143,9 +229,9 @@
       "type": "Feature",
       "properties": {
         "mag": 5,
-        "place": "130 km NE of Thang, India",
-        "time": 1793897785875,
-        "updated": 1793950600750,
+        "place": "135 km ENE of Thang, India",
+        "time": 1793897786175,
+        "updated": 1794775284628,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tw8p",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tw8p&format=geojson",
@@ -161,13 +247,13 @@
         "ids": ",us7000tw8p,",
         "sources": ",us,",
         "types": ",dyfi,origin,phase-data,",
-        "nst": 75,
-        "dmin": 5.121,
-        "rms": 1.02,
-        "gap": 59,
+        "nst": 88,
+        "dmin": 5.2,
+        "rms": 0.75,
+        "gap": 57,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 5.0 - 130 km NE of Thang, India",
+        "title": "M 5.0 - 135 km ENE of Thang, India",
         "near_punjab": false,
         "alert_level": "moderate",
         "source": "USGS"
@@ -175,9 +261,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          77.9399,
-          35.6318,
-          76.944
+          78.0343,
+          35.6054,
+          85.287
         ]
       },
       "id": "us7000tw8p"
@@ -229,9 +315,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.1,
-        "place": "57 km SW of Zahedan, Iran",
-        "time": 1793725670024,
-        "updated": 1793727605040,
+        "place": "65 km SW of Zahedan, Iran",
+        "time": 1793725669403,
+        "updated": 1794777892040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tvpc",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tvpc&format=geojson",
@@ -247,13 +333,13 @@
         "ids": ",us7000tvpc,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 29,
-        "dmin": 5.628,
-        "rms": 0.44,
-        "gap": 101,
+        "nst": 36,
+        "dmin": 5.558,
+        "rms": 0.65,
+        "gap": 71,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.1 - 57 km SW of Zahedan, Iran",
+        "title": "M 4.1 - 65 km SW of Zahedan, Iran",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -261,12 +347,55 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          60.4194,
-          29.1514,
+          60.3716,
+          29.0945,
           10
         ]
       },
       "id": "us7000tvpc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.1,
+        "place": "98 km NNE of Khand\u016bd, Afghanistan",
+        "time": 1793684136192,
+        "updated": 1794811783040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tv3p",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tv3p&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 259,
+        "net": "us",
+        "code": "7000tv3p",
+        "ids": ",us7000tv3p,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 31,
+        "dmin": 0.667,
+        "rms": 0.52,
+        "gap": 57,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.1 - 98 km NNE of Khand\u016bd, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8741,
+          37.72,
+          10
+        ]
+      },
+      "id": "us7000tv3p"
     },
     {
       "type": "Feature",
@@ -955,100 +1084,14 @@
         ]
       },
       "id": "us6000u2y1"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.3,
-        "place": "9 km ESE of R\u0101mpur, India",
-        "time": 1792191988801,
-        "updated": 1793684926462,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2wp",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u2wp&format=geojson",
-        "felt": 4,
-        "cdi": 3.6,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 286,
-        "net": "us",
-        "code": "6000u2wp",
-        "ids": ",us6000u2wp,",
-        "sources": ",us,",
-        "types": ",dyfi,origin,phase-data,",
-        "nst": 44,
-        "dmin": 4.375,
-        "rms": 0.56,
-        "gap": 95,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.3 - 9 km ESE of R\u0101mpur, India",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.7287,
-          31.4181,
-          29.899
-        ]
-      },
-      "id": "us6000u2wp"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.2,
-        "place": "25 km ESE of Jurm, Afghanistan",
-        "time": 1792127830936,
-        "updated": 1794475693040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2n6",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u2n6&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 271,
-        "net": "us",
-        "code": "6000u2n6",
-        "ids": ",us6000u2n6,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 30,
-        "dmin": 2.752,
-        "rms": 0.76,
-        "gap": 94,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.2 - 25 km ESE of Jurm, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.1016,
-          36.777,
-          213.723
-        ]
-      },
-      "id": "us6000u2n6"
     }
   ],
   "bbox": [
-    60.4194,
+    60.3716,
     25.8377,
     10,
     80.8002,
     37.8644,
-    213.723
+    213.504
   ]
 }
