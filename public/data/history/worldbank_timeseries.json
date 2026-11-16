@@ -6,5 +6,13 @@
     "india_pm25": 54.052,
     "india_water_stress": 66.492,
     "pk_military_pct": 2.914
+  },
+  {
+    "date": "2026-11-16",
+    "india_gdp": null,
+    "india_inflation": null,
+    "india_pm25": null,
+    "india_water_stress": 66.492,
+    "pk_military_pct": null
   }
 ]
