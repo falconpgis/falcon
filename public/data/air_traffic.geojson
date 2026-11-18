@@ -6,18 +6,78 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          73.8263,
-          32.1499
+          75.271,
+          31.1702
         ]
       },
       "properties": {
-        "icao24": "4cac0d",
-        "callsign": "KZR908",
-        "country": "Ireland",
-        "altitude_ft": 36000,
-        "speed_kts": 410,
-        "heading": 322,
-        "date": "2026-11-17T08:27:56.332914Z",
+        "icao24": "507c60",
+        "callsign": "UZB566",
+        "country": "Uzbekistan",
+        "altitude_ft": 32000,
+        "speed_kts": 399,
+        "heading": 286,
+        "date": "2026-11-18T08:01:11.902445Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.4497,
+          31.4675
+        ]
+      },
+      "properties": {
+        "icao24": "3c4594",
+        "callsign": "BOX725",
+        "country": "Germany",
+        "altitude_ft": 30000,
+        "speed_kts": 462,
+        "heading": 321,
+        "date": "2026-11-18T08:01:11.902445Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.3881,
+          31.2054
+        ]
+      },
+      "properties": {
+        "icao24": "801432",
+        "callsign": "IGO6871",
+        "country": "India",
+        "altitude_ft": 30000,
+        "speed_kts": 411,
+        "heading": 327,
+        "date": "2026-11-18T08:01:11.902445Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.6111,
+          32.1009
+        ]
+      },
+      "properties": {
+        "icao24": "80154b",
+        "callsign": "IGO2496",
+        "country": "India",
+        "altitude_ft": 38000,
+        "speed_kts": 473,
+        "heading": 9,
+        "date": "2026-11-18T08:01:11.902445Z",
         "source": "OpenSky Network"
       }
     }
