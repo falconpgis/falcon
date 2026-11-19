@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1794988872000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-19&endtime=2026-11-18&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795075038000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-20&endtime=2026-11-19&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -310,6 +310,49 @@
         ]
       },
       "id": "us7000txz5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4,
+        "place": "14 km E of Khorugh, Tajikistan",
+        "time": 1794266104191,
+        "updated": 1795063846040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx7n",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tx7n&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 246,
+        "net": "us",
+        "code": "7000tx7n",
+        "ids": ",us7000tx7n,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 27,
+        "dmin": 1.031,
+        "rms": 0.51,
+        "gap": 159,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.0 - 14 km E of Khorugh, Tajikistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.7181,
+          37.4777,
+          138.715
+        ]
+      },
+      "id": "us7000tx7n"
     },
     {
       "type": "Feature",
@@ -1084,92 +1127,6 @@
         ]
       },
       "id": "us6000u3r1"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.9,
-        "place": "76 km WSW of Murghob, Tajikistan",
-        "time": 1792424137049,
-        "updated": 1793391324040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3d2",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u3d2&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 369,
-        "net": "us",
-        "code": "6000u3d2",
-        "ids": ",us6000u3d2,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 41,
-        "dmin": 1.945,
-        "rms": 1,
-        "gap": 66,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.9 - 76 km WSW of Murghob, Tajikistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.1916,
-          37.8644,
-          10
-        ]
-      },
-      "id": "us6000u3d2"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.5,
-        "place": "17 km NW of Fayzabad, Afghanistan",
-        "time": 1792391418982,
-        "updated": 1794487075040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3b0",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u3b0&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 312,
-        "net": "us",
-        "code": "6000u3b0",
-        "ids": ",us6000u3b0,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 42,
-        "dmin": 2.506,
-        "rms": 0.66,
-        "gap": 100,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.5 - 17 km NW of Fayzabad, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          70.4197,
-          37.2144,
-          10
-        ]
-      },
-      "id": "us6000u3b0"
     }
   ],
   "bbox": [
@@ -1177,7 +1134,7 @@
     25.9029,
     10,
     80.8002,
-    37.8644,
+    37.72,
     216.084
   ]
 }

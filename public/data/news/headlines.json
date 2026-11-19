@@ -1,114 +1,114 @@
 {
-  "generated": "2026-11-18T07:47:04Z",
-  "date": "2026-11-18",
+  "generated": "2026-11-19T07:43:08Z",
+  "date": "2026-11-19",
   "source": "GDELT 2.0 + RSS aggregation",
   "articles": [
     {
       "topic": "rss",
-      "title": "IBM CEO Arvind Krishna On Children Using AI: \"Stopping Humans From Using Tools Is A Fool's Errand\"",
+      "title": "\"Never Intended To Disrespect Balasaheb\": Sena Leader's Apology Amid Photo Row",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/artificial-intelligence/ibm-ceo-arvind-krishna-on-children-using-ai-stopping-humans-from-using-tools-is-a-fools-errand-12342843#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/never-intended-to-disrespect-balasaheb-sena-leader-shaina-ncs-apology-amid-photo-row-12347997#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "'Write To Me Openly': PM Modi Asks India Inc To Suggest Industry Reforms",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/write-to-me-openly-pm-narendra-modi-asks-india-inc-to-suggest-industry-reforms-12348015#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Prince William Has Indian Roots? The Story Of His Ancestor Elia Kewark",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/prince-william-has-indian-roots-the-story-of-his-ancestor-elia-kewark-12348035#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Real-Life Mirzapur? Story Of UP's Tiwari Haata That Akhilesh Yadav Visited",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/up-elections-hari-shankar-tiwari-yogi-adityanath-real-life-mirzapur-story-of-ups-tiwari-haata-that-akhilesh-yadav-visited-12347821#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Father Wanted Him To Be A Sub-Inspector; He Became An IPS Officer: The Making Of DCP Rajiv Kumar",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/father-wanted-him-to-be-a-sub-inspector-he-chose-to-become-ips-officer-the-making-of-dcp-rajiv-kumar-12347991#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "In South Korea's Make-Or-Break College Exam, Even A Shirt Button Can Raise Suspicion",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/in-south-koreas-make-or-break-college-exam-even-a-shirt-button-can-raise-suspicion-12347832#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Overseas Congress Leaders Question Sam Pitroda Over PM Praise, Seek Ouster",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/after-pm-narendra-modi-praise-sam-pitroda-faces-ouster-call-by-overseas-congress-leaders-12347719#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Family Declared Indian, 75-Year-Old Assam Man Classified 'Streamline Foreigner'",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/cachar-foreigners-tribunal-family-declared-indian-75-year-old-assam-man-classified-streamline-foreigner-12347776#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Uttar Pradesh Teacher Eligibility Test 2026: Registration Begins On Nov 24, Exam In Feb 2027",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/uptet-2026-registration-exam-schedule-out-registration-begins-november-24-exam-scheduled-for-february-26-27-12347604#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
+      "tone": null
+    },
+    {
+      "topic": "scl_brics",
+      "title": "SBI Clerk Prelims Result 2026 Out: Here's How To Check Scorecard, Mains Call Letter",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/sbi-clerk-prelims-result-2026-out-heres-how-to-check-scorecard-mains-call-letter-12347743#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
       "tone": null
     },
     {
       "topic": "china_military",
-      "title": "Adani Cement Deploys Heavy-Duty Electric Trucks At Gujarat's Sanghi Plant",
+      "title": "\"India Playing Whole New Game\": PM Modi's GTA-Style Dig At Opposition",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/adani-cement-deploys-heavy-duty-electric-trucks-at-gujarats-sanghi-plant-12342722#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/india-playing-whole-new-game-pm-modis-gta-style-dig-at-opposition-12347381#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Top Court Files Contempt Plea Against Lawyer For Remarks On Chief Justice",
+      "topic": "russia_ukraine",
+      "title": "Console, Internet, Hardware: Why Playing GTA 6 Feels Like Luxury",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/unsavoury-remarks-against-cji-sc-issues-contempt-notice-to-lawyer-12342433#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "\"Turned Into PILs\": Why Chief Justice Took 2 Cases Away From A Judge's Bench",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/supreme-court-turned-into-pils-why-chief-justice-surya-kant-took-2-cases-away-from-a-justice-amanullah-bench-12342635#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "'Category A' Terrorist Lateef Bhat Meets His End Exactly A Year After Joining Lashkar In J&K",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/category-a-terrorist-lateef-bhat-meets-his-end-exactly-a-year-after-joining-lashkar-e-taiba-in-jammu-and-kashmir-12342604#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "'Aura Farming' And Looksmaxxing' Among New Words Added To Cambridge Dictionary",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/aura-farming-and-looksmaxxing-among-new-words-added-to-cambridge-dictionary-12342593#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rahul Gandhi Flags India's 'Economic Crisis' In US, BJP Calls Him Anti-India",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/rahul-gandhi-flags-indias-economic-crisis-in-us-bjp-calls-him-anti-india-columbia-university-12341858#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Thar For Horse Race Winner At Bihar MLA Anant Singh's Daughter's Wedding",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/thar-for-horse-race-winner-at-bihar-mla-anant-singhs-daughters-wedding-12342511#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rashtriya Indian Military College Exam 2026: City Slip Out, Here's How To Check",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/rashtriya-indian-military-college-exam-2026-city-slip-out-heres-how-to-check-12342459#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Tenant Who Robbed, Murdered Assam Family Lost Rs 4 Lakh In Online Game: Cops",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/dibrugarh-triple-murders-tenant-who-robbed-murdered-assam-family-lost-rs-4-lakh-in-online-game-cops-12342394#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Lashkar Terrorist Lateef Bhat Killed In J&K Encounter. He Was Hiding Inside Mosque",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/lashkar-terrorist-lateef-bhat-killed-in-j-k-encounter-he-was-hiding-inside-mosque-12342224#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "BJP's UP Strategy: 6 Yatras, PM Modi, Amit Shah To Lead Charge From Next Month",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/up-elections-2027-bjps-up-strategy-6-yatras-pm-modi-amit-shah-to-lead-charge-from-next-month-12342267#publisher=newsstand]]>",
-      "date": "<![CDATA[W",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/gta-6-rockstar-games-vice-city-console-internet-hardware-why-playing-gta-6-feels-like-luxury-12347523#publisher=newsstand]]>",
+      "date": "<![CDATA[T",
       "tone": null
     },
     {
@@ -220,110 +220,128 @@
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Hungry, unpaid and afraid: Africa’s journalists pushed to the brink",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/opinions/2026/11/18/hungry-unpaid-and-afraid-africas-journalists-pushed-to-the-brink?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Africa’s economic future cannot depend on Washington",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/opinions/2026/11/18/africas-economic-future-cannot-depend-on-washington?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "How the Houthis fund war effort and tighten grip on Yemen",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/18/how-the-houthis-fund-war-effort-and-tighten-grip-on-yemen?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "What’s in the air you breathe? How to stay safe during smog season",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/18/whats-in-the-air-you-breathe-how-to-stay-safe-during-smog-season-2?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rafael Grossi is eyeing the UN’s top job. Will US support nuke his chances?",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/18/rafael-grossi-wants-to-be-un-chief-will-trumps-support-nuke-his-chances?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "FIFA election: Who are Infantino’s challengers, and will he be re-elected?",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/sports/2026/11/18/fifa-president-election-nomination-infantino-diallo-tashima-vega?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rare video of Brazilian Amazon tribe",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rare-video-of-brazilian-amazon-tribe?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Waymo suspends driverless freeway rides across US after California ban",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/18/waymo-suspends-driverless-freeway-rides-across-us-after-california-ban?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Australia issues sanctions targeting Israeli settlers",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rubio rules out cyberattacks or links between tech outages",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rubio-rules-out-cyberattacks-or-links-between-tech-outages?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Mary Peltola flips Alaska Senate seat in another Democratic win",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/18/mary-peltola-wins-alaska-senate-seat-in-another-democratic-win?traffic_source=rss",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
       "topic": "kashmir",
-      "title": "Nvidia dismisses calls to reinstate Jensen Huang amid blockbuster earnings",
+      "title": "‘Too early’ to determine impact of US blockade on Iran, with Tehran defiant",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/economy/2026/11/18/nvidia-shoots-down-calls-for-jensen-huangs-return-amid-strong-earnings?traffic_source=rss",
+      "url": "https://www.aljazeera.com/economy/2026/11/19/too-early-to-determine-impact-of-us-siege-on-iran-with-tehran-defiant?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Netanyahu’s last stand and the dangerous politics of survival",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/netanyahus-last-stand-and-the-dangerous-politics-of-survival?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "‘It’s my friend’: Moment Trump greets Putin at China summit",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/19/its-my-friend-moment-trump-greets-putin-at-china-summit?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Could Trump, Putin and Xi end the nuclear age?",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/opinions/2026/11/19/could-trump-putin-and-xi-end-the-nuclear-age?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Grand Theft Auto VI launches to rave reviews after 13-year wait",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/grand-theft-auto-vi-launches-to-rave-reviews-after-13-year-wait?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The Xi-Putin-Trump summit will not be a ‘new Yalta’",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/opinions/2026/11/19/the-xi-putin-trump-summit-will-not-be-a-new-yalta?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Ecuadorian footballer gets eight-year ban for throwing rock at referee",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/sports/2026/11/19/ecuadorian-footballer-gets-eight-year-ban-for-throwing-rock-at-referee?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "ICJ to rule on Rohingya genocide case against Myanmar: What’s at stake?",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/icj-to-rule-on-rohingya-genocide-case-against-myanmar-whats-at-stake?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Far from Trump-Putin meeting, Europe to count cost of Ukraine’s defence",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/far-from-trump-putin-meeting-europe-to-count-cost-of-ukraines-defence?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Trump wants to talk nuclear with Putin and Xi",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/19/trump-wants-to-talk-nuclear-with-putin-and-xi?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Trump makes third Supreme Court bid to end Venezuelan migrant protections",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/trump-makes-third-supreme-court-bid-to-end-venezuelan-migrant-protections?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Elon Musk says he feels ‘pretty foolish’ about US midterm spending",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/19/elon-musk-says-he-feels-pretty-foolish-about-us-midterm-spending?traffic_source=rss",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "One in four women globally unable to refuse sex within marriage, says UN",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/global-development/2026/nov/19/women-girls-rights-rape-sexual-violence-africa-marriage-unfpa",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Fears grow that US will put Nobel-winning judge under sanctions after Myanmar genocide ruling",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/18/us-sanctions-icj-judges-myanmar-genocide-ruling-israel-gaza-court",
       "date": "Wed, 18 No",
       "tone": null
     },
@@ -355,21 +373,21 @@
       "tone": null
     },
     {
-      "topic": "kashmir",
-      "title": "Relocation of Cape Town baboons to sanctuary ignites heated protests",
+      "topic": "rss",
+      "title": "Florida pastor found guilty over 2021 assassination of Haitian president",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/16/cape-town-baboons-relocation-protests",
-      "date": "Mon, 16 No",
+      "url": "https://www.theguardian.com/us-news/2026/nov/18/florida-pastor-guilty-haiti-president-assassination",
+      "date": "Wed, 18 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Zimbabwean author Simbarashe Kundizeza cleared of using AI to write prize-winning story",
+      "title": "Hegseth uses Venezuela visit to boast of Maduro’s capture by US military",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/books/2026/nov/12/zimbabwean-author-simbarashe-kundizeza-cleared-ai-caine-prize-winning-story",
-      "date": "Thu, 12 No",
+      "url": "https://www.theguardian.com/world/2026/nov/18/pete-hegseth-venezuela-nicolas-maduro-military",
+      "date": "Wed, 18 No",
       "tone": null
     },
     {
@@ -400,26 +418,17 @@
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Costa Rican journalist shot dead in first such killing in 25 years",
+      "topic": "russia_ukraine",
+      "title": "Datacentres to create 70% more carbon emissions by 2030, IEA report warns",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/17/costa-rica-journalist-camilo-rodriguez-shot-dead",
-      "date": "Tue, 17 No",
+      "url": "https://www.theguardian.com/world/2026/nov/19/datacentres-to-create-70-more-carbon-emissions-by-2030-iea-report-warns",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "European-made pesticides named in 1,605 poisoning reports in Brazil last year",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/environment/2026/nov/17/european-made-pesticides-named-1605-brazil-poisoning-reports",
-      "date": "Tue, 17 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un",
+      "topic": "china_military",
+      "title": "Apec summit as it happened: Xi welcomes Trump on China visit as Putin claims Europe in ‘humiliating decline’",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
       "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china",
@@ -428,209 +437,200 @@
     },
     {
       "topic": "rss",
-      "title": "South Korea’s high-stakes university exams upended by AI cheating scandal",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Nvidia insists Huang will not return as CEO as it reports strong sales",
+      "title": "Anthropic raises $81bn in record IPO",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/3a8881b8-068c-4950-9238-4f8eb1efc870?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/62c0510b-ca65-441e-9baf-675b93903b9e?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Nvidia has a chance to trade drama for durability",
+      "title": "AI advances at Anthropic trigger new safety fears on eve of IPO",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/2d3e1b32-4b45-418b-8b06-90874057eac0?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/d8be4655-211c-49a8-bfe4-18a00b8e8619?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "How Jensen Huang’s family shaped Nvidia’s Megaspeed dealings",
+      "topic": "kashmir",
+      "title": "Retail investors face squeeze in blockbuster Anthropic IPO",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/65ff066f-a81c-4d24-95da-73c2d7b83a27?syn-25a6b1a6=1",
-      "date": "Tue, 17 No",
+      "url": "https://www.ft.com/content/38c122d6-b533-4595-9554-3852c52e580f?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Deutsche Bank hired a Qatari royal. Why?",
+      "title": "Trump greets ‘my friend’ Putin ahead of historic trilateral with Xi",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/9edd3730-3a15-4e1a-b33a-629aff00e847?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/fcf6d27b-a04c-4cef-8b03-ce2423566f1f",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "The good and the bad of climate policy",
+      "title": "Adani: the billionaire at the heart of Modi’s India",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/68e72928-ef85-481e-adbd-46b7b654223e?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/e1867545-5142-4ee5-b092-b7e04ac04b66?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Anthropic IPO set to deliver windfall to handful of smaller VC firms",
+      "title": "Angry America and its housing market",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/a3430f0d-0080-4970-8eec-2c14c8438b3d?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/9450175e-3da3-4df3-bd93-050683bbb98a?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Putin pushes ‘Eurasian’ order ahead of meeting with Xi and Trump",
+      "title": "Musk says he feels ‘foolish’ for donating nearly $500mn to Republicans",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/ef5dab0d-7335-4dc6-9e44-254bdd9cdc06?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Democrats win Alaska Senate seat to complete midterms victory",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/dc73d4ce-0139-4a72-9b2a-ab9803a84240?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Wall Street expects corporate earnings growth to halve next year",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/74fdac03-bd9b-4e68-9e6e-dc023eb47be9?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "AI asked ‘better questions’ than KPMG accountants in pilot audit",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/5168b3e9-75d0-4be0-9ccd-d327d6b16c05?syn-25a6b1a6=1",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Flags, fists and an extra 5 minutes: Manila reveals a confident but tired Trump",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3374871/flags-fists-and-extra-5-minutes-manila-reveals-confident-tired-trump",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Key takeaways from speeches at Apec CEO Summit, including Xi and Putin addresses",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/economy/global-economy/article/3374876/key-takeaways-speeches-apec-ceo-summit-including-xi-and-putin-addresses",
-      "date": "Wed, 18 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "Chinese spaceplanes’ global reach, a study on erectile dysfunction: 7 science highlights",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/science/article/3374870/chinese-spaceplanes-global-reach-study-erectile-dysfunction-7-science-highlights",
-      "date": "Wed, 18 No",
+      "url": "https://www.ft.com/content/1af0d736-d5e5-4601-989d-638c9cea74b2?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "From war games to crisis planning: Manila’s bid for a ‘Squad’ command hub",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/politics/article/3374873/war-games-crisis-planning-manilas-bid-squad-command-hub",
+      "title": "‘Situational Awareness 2.0’: Leopold Aschenbrenner plots comeback",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/1fcbc6ea-1be3-44d2-b564-8ebf91181639?syn-25a6b1a6=1",
       "date": "Wed, 18 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Bahrain and Kuwait repel drone attacks after US strikes Iranian island",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/world/middle-east/article/3374869/bahrain-and-kuwait-repel-drone-attacks-after-us-strikes-iranian-island",
-      "date": "Wed, 18 No",
+      "title": "Deutsche Bank’s Italian unit hid up to €800mn of mortgage lending losses",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/06be5c7d-b1f2-44e9-9cad-a2dcb5a2f452?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Thailand’s businesses fret over Trump’s zero tariff on US goods, farmers comment",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/economics/article/3374865/thailands-businesses-fret-over-trumps-zero-tariff-us-goods-farmers-comment",
-      "date": "Wed, 18 No",
+      "title": "Gold loses its lustre for investors",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/86aaff9a-0d0f-49dd-81fc-4c96bcbf2f32?syn-25a6b1a6=1",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Pickleball enthusiast cheated out of HK$6 million in online investment scam",
+      "title": "Side by side in Shenzhen: inside Xi Jinping and Peng Liyuan’s first-couple diplomacy",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3374864/pickleball-enthusiast-cheated-out-hk6-million-online-investment-scam",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/china/diplomacy/article/3375044/side-side-shenzhen-inside-xi-jinping-and-peng-liyuans-first-couple-diplomacy",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "Elon Musk says his 6-year-old son loves China because it’s a ‘toy paradise’",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/china/diplomacy/article/3375042/elon-musk-says-his-6-year-old-son-loves-china-because-its-toy-paradise",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Putin brings a signature diplomatic tool with him to Shenzhen – his limousine",
+      "title": "Hong Kong police arrest 123 and uncover 108 cases in anti-fraud operation",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3374859/putin-brings-signature-diplomatic-tool-him-shenzhen-his-limousine",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375033/hong-kong-police-arrest-123-and-uncover-108-cases-anti-fraud-operation",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Abby Choi’s ex-father-in-law tells court he dismembered and disposed of her body",
+      "title": "Apec summit finds Marco Rubio again admiring Chinese architecture",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3374858/abby-chois-ex-father-law-tells-court-he-dismembered-and-disposed-her-body",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/china/diplomacy/article/3375032/apec-summit-finds-marco-rubio-again-admiring-chinese-architecture",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "Homo erectus teeth found in China’s rainforest topple theory of human evolution",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/china/science/article/3374985/homo-erectus-teeth-found-chinas-rainforest-topple-theory-human-evolution",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "2 arrested after allegedly using fake HK$200b statement at HSBC’s headquarters",
+      "title": "UN intellectual property agency pledges deeper cooperation with Hong Kong",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3374853/2-arrested-after-allegedly-using-fake-hk200b-statement-hsbcs-headquarters",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375029/un-intellectual-property-agency-pledges-deeper-cooperation-hong-kong",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Hong Kong lawmakers urge wider access to re-employment allowances",
+      "title": "Greater Bay Area has ‘enormous’ potential, John Lee tells Xi at Apec",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3374850/hong-kong-lawmakers-urge-wider-access-re-employment-allowances",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375026/greater-bay-area-potential-enormous-john-lee-tells-xi-apec-ceo-summit",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "US and China have mutual interest in getting oil through Strait of Hormuz: Trump",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/china/diplomacy/article/3375023/talks-xi-get-under-way-trump-asks-china-do-more-us-farmers",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "scl_brics",
+      "title": "South Korea’s top law exam scorer found in cardiac arrest amid AI fraud scandal",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/asia/east-asia/article/3375021/south-koreas-top-law-exam-scorer-found-cardiac-arrest-amid-ai-fraud-scandal",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Malaysians lose US$1.6 billion to scams since 2023, love fraud ranks lowest",
+      "title": "Van Gogh painting sells for record US$190.4 million after dispute",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/asia/southeast-asia/article/3374848/malaysians-lose-us16-billion-scams-2023-love-fraud-ranks-lowest",
-      "date": "Wed, 18 No",
+      "url": "https://www.scmp.com/news/world/united-states-canada/article/3375017/van-gogh-painting-sells-record-us1904-million-after-dispute",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Crackdowns failed to stop Southeast Asia’s scam centres. Here’s what advocates want next",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/week-asia/health-environment/article/3375016/crackdowns-failed-stop-southeast-asias-scam-centres-heres-what-advocates-want-next",
+      "date": "Thu, 19 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "Anthropic’s record US$81.3 billion IPO arms US AI giant for price war with Chinese rivals",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/tech/big-tech/article/3375005/anthropics-record-us813-billion-ipo-arms-us-ai-giant-price-war-chinese-rivals",
+      "date": "Thu, 19 No",
       "tone": null
     },
     {
