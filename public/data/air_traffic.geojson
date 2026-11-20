@@ -6,18 +6,58 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.2129,
-          30.4765
+          75.3948,
+          31.5248
         ]
       },
       "properties": {
-        "icao24": "80186e",
+        "icao24": "8014d8",
+        "callsign": "IGO6010",
+        "country": "India",
+        "altitude_ft": 32000,
+        "speed_kts": 459,
+        "heading": 16,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.2551,
+          30.2189
+        ]
+      },
+      "properties": {
+        "icao24": "8015c3",
+        "callsign": "VTSSR",
+        "country": "India",
+        "altitude_ft": 24075,
+        "speed_kts": 383,
+        "heading": 352,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.1046,
+          30.9396
+        ]
+      },
+      "properties": {
+        "icao24": "8015b2",
         "callsign": "IGO56TP",
         "country": "India",
-        "altitude_ft": 20600,
-        "speed_kts": 357,
-        "heading": 352,
-        "date": "2026-11-19T07:57:16.960053Z",
+        "altitude_ft": 22000,
+        "speed_kts": 352,
+        "heading": 341,
+        "date": "2026-11-20T07:48:17.868242Z",
         "source": "OpenSky Network"
       }
     },
@@ -26,38 +66,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.2288,
-          31.0203
+          75.3115,
+          31.2436
         ]
       },
       "properties": {
-        "icao24": "80181c",
-        "callsign": "VTSRE",
-        "country": "India",
-        "altitude_ft": 26025,
-        "speed_kts": 405,
-        "heading": 16,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.3375,
-          31.3517
-        ]
-      },
-      "properties": {
-        "icao24": "8018e0",
+        "icao24": "80171b",
         "callsign": "IGO2496",
         "country": "India",
-        "altitude_ft": 36025,
-        "speed_kts": 460,
-        "heading": 16,
-        "date": "2026-11-19T07:57:16.960053Z",
+        "altitude_ft": 37975,
+        "speed_kts": 477,
+        "heading": 5,
+        "date": "2026-11-20T07:48:17.868242Z",
         "source": "OpenSky Network"
       }
     },
@@ -66,38 +86,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.3991,
-          31.46
+          74.7049,
+          31.2199
         ]
       },
       "properties": {
-        "icao24": "7609f6",
-        "callsign": "FJL500",
-        "country": "Pakistan",
-        "altitude_ft": 2825,
-        "speed_kts": 169,
-        "heading": 207,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.332,
-          29.7461
-        ]
-      },
-      "properties": {
-        "icao24": "4bb10b",
-        "callsign": "THY209",
+        "icao24": "4bb193",
+        "callsign": "THY65",
         "country": "Turkey",
-        "altitude_ft": 40000,
-        "speed_kts": 498,
-        "heading": 352,
-        "date": "2026-11-19T07:57:16.960053Z",
+        "altitude_ft": 35975,
+        "speed_kts": 447,
+        "heading": 317,
+        "date": "2026-11-20T07:48:17.868242Z",
         "source": "OpenSky Network"
       }
     },
@@ -106,138 +106,98 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.5091,
-          31.1075
+          75.0129,
+          30.9386
         ]
       },
       "properties": {
-        "icao24": "4ca7c6",
+        "icao24": "abaf47",
+        "callsign": "FDX6419",
+        "country": "United States",
+        "altitude_ft": 30000,
+        "speed_kts": 477,
+        "heading": 317,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.4622,
+          30.4444
+        ]
+      },
+      "properties": {
+        "icao24": "4cc4a9",
+        "callsign": "ICE1330",
+        "country": "Iceland",
+        "altitude_ft": 40000,
+        "speed_kts": 425,
+        "heading": 324,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.4599,
+          30.7876
+        ]
+      },
+      "properties": {
+        "icao24": "407d6c",
+        "callsign": "GEMLG",
+        "country": "United Kingdom",
+        "altitude_ft": 43000,
+        "speed_kts": 412,
+        "heading": 292,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.9649,
+          31.2436
+        ]
+      },
+      "properties": {
+        "icao24": "4d0118",
+        "callsign": "CLX7544",
+        "country": "Luxembourg",
+        "altitude_ft": 37000,
+        "speed_kts": 550,
+        "heading": 106,
+        "date": "2026-11-20T07:48:17.868242Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.7467,
+          31.0286
+        ]
+      },
+      "properties": {
+        "icao24": "4cac10",
         "callsign": "KZR162",
         "country": "Ireland",
-        "altitude_ft": 34000,
-        "speed_kts": 415,
-        "heading": 291,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.6094,
-          29.7665
-        ]
-      },
-      "properties": {
-        "icao24": "4243f5",
-        "callsign": "SMR109",
-        "country": "United Kingdom",
-        "altitude_ft": 31875,
-        "speed_kts": 438,
-        "heading": 131,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.828,
-          31.666
-        ]
-      },
-      "properties": {
-        "icao24": "760a0d",
-        "callsign": "FJL680",
-        "country": "Pakistan",
-        "altitude_ft": 32450,
-        "speed_kts": 476,
-        "heading": 30,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.4034,
-          31.4811
-        ]
-      },
-      "properties": {
-        "icao24": "760a15",
-        "callsign": "FJL843",
-        "country": "Pakistan",
-        "altitude_ft": 5100,
-        "speed_kts": 157,
-        "heading": 181,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.1857,
-          30.8807
-        ]
-      },
-      "properties": {
-        "icao24": "4ba94d",
-        "callsign": "THY48L",
-        "country": "Turkey",
-        "altitude_ft": 32000,
-        "speed_kts": 461,
-        "heading": 291,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.2577,
-          31.6742
-        ]
-      },
-      "properties": {
-        "icao24": "4cac15",
-        "callsign": "KZR164",
-        "country": "Ireland",
         "altitude_ft": 34025,
-        "speed_kts": 430,
-        "heading": 322,
-        "date": "2026-11-19T07:57:16.960053Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.5111,
-          31.8754
-        ]
-      },
-      "properties": {
-        "icao24": "801503",
-        "callsign": "IGO6871",
-        "country": "India",
-        "altitude_ft": 32000,
-        "speed_kts": 471,
-        "heading": 16,
-        "date": "2026-11-19T07:57:16.960053Z",
+        "speed_kts": 408,
+        "heading": 291,
+        "date": "2026-11-20T07:48:17.868242Z",
         "source": "OpenSky Network"
       }
     }
