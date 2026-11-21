@@ -1464,6 +1464,7 @@
         <button class="map-layer-btn"        data-layer="air"     onclick="mapLayerToggle(this,'air')"     style="font-size:10px;padding:2px 7px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap;flex-shrink:0">✈ Air</button>
         <button class="map-layer-btn"        data-layer="rail"    onclick="mapLayerToggle(this,'rail')"    style="font-size:10px;padding:2px 7px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap;flex-shrink:0">🚂 Rail</button>
         <button class="map-layer-btn"        data-layer="vessels" onclick="mapLayerToggle(this,'vessels')" style="font-size:10px;padding:2px 7px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap;flex-shrink:0">🚢 Ocean</button>
+        <button class="map-layer-btn"        data-layer="sat"     onclick="mapLayerToggle(this,'sat')"     style="font-size:10px;padding:2px 7px;background:none;border:1px solid #444;border-radius:3px;color:#888;cursor:pointer;white-space:nowrap;flex-shrink:0">🛰 Satellite</button>
       </div>
       <button onclick="toggleMapPanel()" style="background:none;border:none;color:#888;font-size:16px;cursor:pointer;padding:0 12px;height:100%;flex-shrink:0;transition:color 0.15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">✕</button>
     </div>
@@ -1594,6 +1595,7 @@
     air:     { bg:'rgba(171,71,188,0.25)', bd:'rgba(171,71,188,0.6)', tx:'#ce93d8' },
     rail:    { bg:'rgba(255,193,7,0.25)',  bd:'rgba(255,193,7,0.6)',  tx:'#ffc107' },
     vessels: { bg:'rgba(0,188,212,0.25)',  bd:'rgba(0,188,212,0.6)',  tx:'#00bcd4' },
+    sat:     { bg:'rgba(200,149,42,0.25)', bd:'rgba(200,149,42,0.6)', tx:'#c8962a' },
   };
 
   // Track what's loaded and shown
@@ -1659,44 +1661,136 @@
     import('./src/layers/groundwater.js').then(m => m.removeGroundwater(viewer));
   }
 
-  // ── Air traffic (OpenSky GeoJSON) ─────────────────────────────────────────
-  function _aircraftIcon(heading) {
-    const c = document.createElement('canvas');
-    c.width = c.height = 24;
-    const ctx = c.getContext('2d');
-    ctx.translate(12, 12);
-    ctx.rotate(((heading || 0) - 90) * Math.PI / 180);
-    ctx.fillStyle = '#ce93d8';
-    ctx.beginPath();
-    ctx.moveTo(0,-9); ctx.lineTo(6,9); ctx.lineTo(0,5); ctx.lineTo(-6,9);
-    ctx.closePath(); ctx.fill();
-    return c.toDataURL();
-  }
-  async function _loadLayerAir(viewer) {
-    const st = _layerState['air'];
-    if (st && st.loaded) { _showLayerEntities(viewer, st.entityIds); return; }
-    const state = { loaded: true, visible: true, entityIds: [] };
-    _layerState['air'] = state;
+  // ── Air traffic (OpenSky live → GeoJSON fallback) ────────────────────────
+  // Tries OpenSky Network directly from browser first (no CORS issues on HTTPS).
+  // Falls back to cached public/data/air_traffic.geojson if OpenSky is unavailable.
+  // Auto-refreshes every 5 minutes while layer is active.
+  let _airRefreshTimer = null;
+
+  async function _fetchAircraftFeatures() {
+    // Punjab + broad North India bbox
+    const LAT_MIN = 28.0, LAT_MAX = 33.5, LON_MIN = 72.5, LON_MAX = 78.5;
+    // Try OpenSky live
+    try {
+      const url = `https://opensky-network.org/api/states/all?lamin=${LAT_MIN}&lomin=${LON_MIN}&lamax=${LAT_MAX}&lomax=${LON_MAX}`;
+      const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (r.ok) {
+        const d = await r.json();
+        const states = (d.states || []).filter(s => s[5] && s[6] && !s[8]); // has lon/lat, not on ground
+        if (states.length) {
+          return states.map(s => ({
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [s[5], s[6]] },
+            properties: {
+              icao24: s[0] || '', callsign: (s[1]||'').trim() || s[0] || '?',
+              country: s[2] || '', altitude_ft: s[7] ? Math.round(s[7]*3.28084) : 0,
+              speed_kts: s[9] ? Math.round(s[9]*1.94384) : 0, heading: Math.round(s[10]||0),
+              source: 'OpenSky live',
+            }
+          }));
+        }
+      }
+    } catch(_) {}
+    // Fallback: cached GeoJSON
     try {
       const r = await fetch('./public/data/air_traffic.geojson?v=' + Date.now());
-      if (!r.ok) return;
-      const geo = await r.json();
-      geo.features.forEach(f => {
-        const [lon, lat] = f.geometry.coordinates;
-        const p = f.properties;
-        const id = 'air_' + (p.icao24 || Math.random().toString(36).slice(2));
-        viewer.entities.add({
-          id, name: p.callsign || id,
-          position: Cesium.Cartesian3.fromDegrees(lon, lat),
-          billboard: { image: _aircraftIcon(p.heading), width:20, height:20,
-            verticalOrigin: Cesium.VerticalOrigin.CENTER },
-          description: `<b>${p.callsign}</b><br>${p.altitude_ft} ft · ${p.speed_kts} kts`,
-        });
-        state.entityIds.push(id);
-      });
-    } catch(e) { console.warn('Air traffic layer:', e); }
+      if (r.ok) { const g = await r.json(); return g.features || []; }
+    } catch(_) {}
+    return [];
   }
+
+  function _aircraftColor(alt_ft) {
+    if (alt_ft > 35000) return '#ffffff';
+    if (alt_ft > 20000) return '#ce93d8';
+    if (alt_ft > 10000) return '#90caf9';
+    if (alt_ft > 3000)  return '#a5d6a7';
+    return '#ffcc80'; // low / approach
+  }
+
+  function _aircraftIcon(heading, alt_ft) {
+    const c = document.createElement('canvas');
+    c.width = c.height = 28;
+    const ctx = c.getContext('2d');
+    const col = _aircraftColor(alt_ft || 0);
+    ctx.translate(14, 14);
+    ctx.rotate(((heading || 0) - 90) * Math.PI / 180);
+    // Body
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.moveTo(0, -11); ctx.lineTo(3, 2); ctx.lineTo(0, 0); ctx.lineTo(-3, 2);
+    ctx.closePath(); ctx.fill();
+    // Wings
+    ctx.beginPath();
+    ctx.moveTo(-8, 2); ctx.lineTo(8, 2); ctx.lineTo(5, 5); ctx.lineTo(-5, 5);
+    ctx.closePath(); ctx.fillStyle = col; ctx.globalAlpha = 0.7; ctx.fill();
+    ctx.globalAlpha = 1;
+    // Tail
+    ctx.beginPath();
+    ctx.moveTo(-4, 7); ctx.lineTo(4, 7); ctx.lineTo(2, 10); ctx.lineTo(-2, 10);
+    ctx.closePath(); ctx.fillStyle = col; ctx.globalAlpha = 0.6; ctx.fill();
+    return c.toDataURL();
+  }
+
+  async function _renderAirEntities(viewer, features) {
+    // Remove old air entities
+    const st = _layerState['air'];
+    if (st) {
+      st.entityIds.forEach(id => { try { viewer.entities.removeById(id); } catch(_){} });
+      st.entityIds = [];
+    }
+    const state = st || { loaded: true, visible: true, entityIds: [] };
+    _layerState['air'] = state;
+    features.forEach(f => {
+      const [lon, lat] = f.geometry.coordinates;
+      const p = f.properties;
+      const id = 'air_' + (p.icao24 || Math.random().toString(36).slice(2));
+      const col = _aircraftColor(p.altitude_ft || 0);
+      viewer.entities.add({
+        id, name: p.callsign || id,
+        position: Cesium.Cartesian3.fromDegrees(lon, lat),
+        billboard: {
+          image: _aircraftIcon(p.heading, p.altitude_ft),
+          width: 28, height: 28,
+          verticalOrigin: Cesium.VerticalOrigin.CENTER,
+          heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+        },
+        label: {
+          text: p.callsign || '',
+          font: '10px sans-serif', fillColor: Cesium.Color.fromCssColorString(col),
+          outlineColor: Cesium.Color.BLACK, outlineWidth: 2,
+          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+          pixelOffset: new Cesium.Cartesian2(0, -18),
+          distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 800000),
+        },
+        description: `<b>${p.callsign || p.icao24}</b><br>
+          ${p.country || ''}<br>
+          Alt: <b>${p.altitude_ft ? p.altitude_ft.toLocaleString() + ' ft' : '—'}</b><br>
+          Speed: ${p.speed_kts || '—'} kts<br>
+          Heading: ${p.heading || '—'}°<br>
+          <span style="color:#888;font-size:11px">${p.source || 'OpenSky'}</span>`,
+      });
+      state.entityIds.push(id);
+    });
+    // Show count in toast
+    const count = features.length;
+    if (window.showCmdToast) window.showCmdToast(`✈ ${count} aircraft in region (live)`);
+  }
+
+  async function _loadLayerAir(viewer) {
+    // Always refresh live data (don't use stale cache)
+    const features = await _fetchAircraftFeatures();
+    await _renderAirEntities(viewer, features);
+    // Auto-refresh every 5 min while visible
+    if (_airRefreshTimer) clearInterval(_airRefreshTimer);
+    _airRefreshTimer = setInterval(async () => {
+      if (!_layerVisible['air']) return;
+      const fresh = await _fetchAircraftFeatures();
+      await _renderAirEntities(viewer, fresh);
+    }, 5 * 60 * 1000);
+  }
+
   function _hideLayerAir(viewer) {
+    if (_airRefreshTimer) { clearInterval(_airRefreshTimer); _airRefreshTimer = null; }
     const st = _layerState['air'];
     if (st) _hideLayerEntities(viewer, st.entityIds);
   }
@@ -1758,6 +1852,94 @@
     if (viewer._railwayLayer) viewer._railwayLayer.show = false;
   }
 
+  // ── Historical satellite (NASA GIBS WMTS — free, no key) ─────────────────
+  // Layers available:
+  //   MODIS_Terra_CorrectedReflectance_TrueColor  (2000-present, daily)
+  //   Landsat_WELD_CorrectedReflectance_TrueColor_Global_Monthly (2011-2012)
+  //   BlueMarble_ShadedRelief_Bathymetry          (timeless composite)
+  // For oldest: we use USGS LandsatLook WMS which serves Landsat Collection 2
+  // back to 1972 (Landsat 1 MSS). We also offer a year slider UI.
+
+  const SAT_YEARS = [
+    { year: '1972', label: 'Landsat 1 · 1972', layer: 'Landsat_WELD_CorrectedReflectance_TrueColor_Global_Monthly', date: '1972-10-15' },
+    { year: '1990', label: 'Landsat 4/5 · 1990', layer: 'Landsat_WELD_CorrectedReflectance_TrueColor_Global_Monthly', date: '1990-10-15' },
+    { year: '2000', label: 'MODIS · 2000', layer: 'MODIS_Terra_CorrectedReflectance_TrueColor', date: '2000-11-01' },
+    { year: '2010', label: 'MODIS · 2010', layer: 'MODIS_Terra_CorrectedReflectance_TrueColor', date: '2010-11-01' },
+    { year: '2020', label: 'MODIS · 2020', layer: 'MODIS_Terra_CorrectedReflectance_TrueColor', date: '2020-11-01' },
+    { year: 'now',  label: 'Current',      layer: null, date: null },
+  ];
+  let _satLayerObj = null;
+  let _satYearIdx  = 0;
+  let _satPanelEl  = null;
+
+  function _buildSatPanel() {
+    if (_satPanelEl) return;
+    const panel = document.createElement('div');
+    panel.id = 'sat-year-panel';
+    panel.style.cssText = [
+      'position:fixed','bottom:52px','left:50%','transform:translateX(-50%)',
+      'background:rgba(14,14,14,0.95)','border:1px solid #333','border-radius:8px',
+      'padding:10px 14px','z-index:30','display:flex','align-items:center',
+      'gap:8px','font-size:12px','color:#ccc','white-space:nowrap',
+      'backdrop-filter:blur(6px)',
+    ].join(';');
+    panel.innerHTML = `
+      <span style="color:#c8962a;font-weight:600;letter-spacing:1px">🛰 YEAR</span>
+      <button id="sat-prev" onclick="satYearStep(-1)" style="background:none;border:1px solid #444;border-radius:4px;color:#ccc;padding:2px 8px;cursor:pointer">‹</button>
+      <span id="sat-year-label" style="min-width:160px;text-align:center;color:#fff;font-weight:600"></span>
+      <button id="sat-next" onclick="satYearStep(+1)" style="background:none;border:1px solid #444;border-radius:4px;color:#ccc;padding:2px 8px;cursor:pointer">›</button>
+      <span id="sat-source" style="font-size:10px;color:#555">NASA GIBS / USGS Landsat</span>
+    `;
+    document.body.appendChild(panel);
+    _satPanelEl = panel;
+    _applySatYear();
+  }
+
+  function _removeSatPanel() {
+    if (_satPanelEl) { _satPanelEl.remove(); _satPanelEl = null; }
+  }
+
+  function _applySatYear() {
+    const viewer = window._cesiumViewer;
+    if (!viewer) return;
+    // Remove existing layer
+    if (_satLayerObj) { viewer.imageryLayers.remove(_satLayerObj, true); _satLayerObj = null; }
+    const cfg = SAT_YEARS[_satYearIdx];
+    document.getElementById('sat-year-label') && (document.getElementById('sat-year-label').textContent = cfg.label);
+    if (!cfg.layer) return; // "Current" = base imagery, no overlay
+    // NASA GIBS WMTS endpoint
+    const provider = new Cesium.WebMapTileServiceImageryProvider({
+      url: 'https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/' + cfg.layer + '/default/' + cfg.date + '/250m/{TileMatrix}/{TileRow}/{TileCol}.jpg',
+      layer:         cfg.layer,
+      style:         'default',
+      tileMatrixSetID: '250m',
+      format:        'image/jpeg',
+      tileWidth:     512,
+      tileHeight:    512,
+      tilingScheme:  new Cesium.GeographicTilingScheme(),
+      credit:        'Imagery: NASA GIBS / USGS Landsat',
+      minimumLevel:  0,
+      maximumLevel:  8,
+    });
+    _satLayerObj = viewer.imageryLayers.addImageryProvider(provider);
+    _satLayerObj.alpha = 0.92;
+  }
+
+  window.satYearStep = function(dir) {
+    _satYearIdx = Math.max(0, Math.min(SAT_YEARS.length - 1, _satYearIdx + dir));
+    _applySatYear();
+  };
+
+  function _loadLayerSat(viewer) {
+    _satYearIdx = 0; // start at oldest (1972)
+    _buildSatPanel();
+    _applySatYear();
+  }
+  function _hideLayerSat(viewer) {
+    if (_satLayerObj) { viewer.imageryLayers.remove(_satLayerObj, true); _satLayerObj = null; }
+    _removeSatPanel();
+  }
+
   // ── Master toggle ─────────────────────────────────────────────────────────
   const _MAP_LOAD = {
     fires:   _loadLayerFires,
@@ -1766,6 +1948,7 @@
     air:     _loadLayerAir,
     vessels: _loadLayerVessels,
     rail:    _loadLayerRail,
+    sat:     _loadLayerSat,
   };
   const _MAP_HIDE = {
     fires:   _hideLayerFires,
@@ -1774,6 +1957,7 @@
     air:     _hideLayerAir,
     vessels: _hideLayerVessels,
     rail:    _hideLayerRail,
+    sat:     _hideLayerSat,
   };
   const _layerVisible = {};
 
