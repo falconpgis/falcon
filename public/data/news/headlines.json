@@ -1,114 +1,114 @@
 {
-  "generated": "2026-11-20T07:33:50Z",
-  "date": "2026-11-20",
+  "generated": "2026-11-21T07:29:47Z",
+  "date": "2026-11-21",
   "source": "GDELT 2.0 + RSS aggregation",
   "articles": [
     {
+      "topic": "rss",
+      "title": "From A Rajasthan Village To IPS: Meet Farmer's Son Who Became Delhi Police DCP",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/upsc-success-story-from-a-small-village-to-ips-meet-farmers-son-rajendra-prasad-meena-who-became-dcp-in-delhi-police-12357726#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
+      "tone": null
+    },
+    {
       "topic": "china_military",
-      "title": "Medical Seats In India: Centre's 75,000 Seat Expansion Plan Explained",
+      "title": "Kunda's King And His Thakur Court: Raja Bhaiya's Big Power Play Before UP Polls",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/medical-seats-in-india-centres-75-000-seat-expansion-plan-explained-12353122#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/up-elections-2027-kundas-king-and-his-thakur-court-raja-bhaiyas-big-power-play-before-up-polls-12357759#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Woman Dies 2 Months After Burn Injuries During Darjeeling Honeymoon",
+      "title": "Ladakh Votes In Panchayat, Municipal Polls Amid Freezing Cold",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/woman-dies-2-months-after-burn-injuries-during-darjeeling-honeymoon-12348179#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
-      "tone": null
-    },
-    {
-      "topic": "scl_brics",
-      "title": "\"Double Standards\": Row Over Pak Minister Attending SCO Meet In Delhi",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/sco-meeting-musadik-malik-india-visit-confused-foreign-policy-opposition-jabs-bjp-over-pak-minister-musadik-malik-at-sco-meet-in-delhi-12352922#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/ladakh-local-body-elections-news-ladakh-votes-in-panchayat-municipal-polls-amid-freezing-cold-12357747#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "West Bengal HS 3rd Semester Result 2026-27 Date And Time Announced: Here's When And How To Check",
+      "title": "Noel Tata Seeks Board Meeting Recordings Amid Tata Chairman Row",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/west-bengal-hs-3rd-semester-result-2026-27-date-and-time-announced-heres-when-and-how-to-check-12352982#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/noel-tata-seeks-board-meeting-recordings-amid-tata-chairman-row-12357691#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Maharashtra Woman Gets Land Back After 30-Year Dispute Over Rs 25,000 Loan",
+      "title": "Congress Workers Damage Meta's Hyderabad Office Over Account Suspension, Issue Ultimatum",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/maharashtra-woman-gets-land-back-after-30-year-dispute-over-rs-25-000-loan-12352788#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/youth-congress-protest-outside-hyderabad-meta-office-over-account-curbs-12356134#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "2 Girls Die After Eating Poisonous Wild Plant Pods While Playing In UP",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/2-girls-die-after-eating-poisonous-wild-plant-pods-while-playing-in-up-12357620#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "ITR Filing 2026: 7 Crucial Checks Businesses Must Complete After Tax Audit",
+      "title": "CLAT 2027 Admit Card Out For Undergraduate And Postgraduate: Exam On December 6",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/itr-filing-2026-7-crucial-checks-businesses-must-complete-after-tax-audit-12352951#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/education/clat-2027-admit-card-out-for-undergraduate-and-postgraduate-exam-on-december-6-12357652#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "\"Paid To Defame India\": BJP On Rahul Gandhi's \"Compromised PM\" Post",
+      "title": "Man Tries To Shoot Lover's Father, Relatives In Bengaluru, Flees When Overpowered",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/paid-to-defame-india-bjp-on-rahul-gandhis-compromised-pm-post-pm-mod-trump-xi-putin-meeting-12352856#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/man-tries-to-shoot-lovers-father-relatives-in-bengaluru-flees-when-overpowered-12357649#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "In Fresh Gen Z Push, BJP To Hold Events In Schools, Colleges On Constitution Day",
+      "title": "UP Police Recreates Missing Woman's Face Using AI, Trace Her After 5 Years",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/in-fresh-gen-z-push-bjp-to-hold-events-in-schools-colleges-on-constitution-day-on-november-26-12352718#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/up-police-recreates-missing-womans-face-using-ai-trace-her-after-5-years-12357482#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
-      "topic": "scl_brics",
-      "title": "On Camera, Woman Dies After Truck Hits Scooter, Runs Over Her In Maharashtra",
+      "topic": "kashmir",
+      "title": "Lost Father In Class 10, Truck Driver's Son Becomes DSP In Jammu And Kashmir",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/on-camera-32-year-old-woman-dies-after-truck-hits-scooter-runs-over-her-in-maharashtras-palghar-12352711#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/education/civil-services-success-story-lost-his-father-in-class-10-truck-drivers-son-becomes-dsp-in-jammu-and-kashmir-12357396#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Tripura Information Commission Fines Officer Rs 25,000 Over RTI Violation",
+      "topic": "russia_ukraine",
+      "title": "After Southern Railway, Eastern Railway Warns: Loud Calls, Music On Trains Could Land You In Jail",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/tripura-information-commission-fines-officer-rs-25-000-over-rti-violation-12352689#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "SSC Junior Engineer Exam 2026: Answer Key, Response Sheets Out; Here's Direct Link To Check",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/ssc-je-2026-answer-key-response-sheets-released-objection-window-open-heres-direct-link-to-check-and-challenge-12352656#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/after-southern-railway-eastern-railway-warns-loud-calls-music-on-trains-could-land-you-in-jail-12357368#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Poaching Before Poll Pact? BJP Inducts Akali Dal Leaders Amid Alliance Buzz",
+      "title": "MK Stalin's Second Coming? Kolathur Conqueror Dead, All Eyes On Bypoll",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/punjab-elections-2027-poaching-before-poll-pact-bjp-inducts-akali-dal-leaders-amid-alliance-buzz-12352644#publisher=newsstand]]>",
-      "date": "<![CDATA[F",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/kolathur-tamil-nadu-vs-babu-vijay-tvk-mlas-death-leaves-mk-stalins-lost-bastion-open-will-he-contest-again-12357277#publisher=newsstand]]>",
+      "date": "<![CDATA[S",
       "tone": null
     },
     {
@@ -221,109 +221,118 @@
     },
     {
       "topic": "russia_ukraine",
-      "title": "EU and Britain to agree steps towards relations reset",
+      "title": "Emergency crews in Ukraine hit by a double-tap strike",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/eu-and-britain-to-agree-steps-towards-relations-reset?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/21/emergency-crews-in-ukraine-hit-by-a-double-tap-strike?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Sandpapergate: Australian gov’t demands CA to ensure transparency in forum",
+      "title": "Three US citizens among 4 convicted in Honduras over sex-trafficking case",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/sports/2026/11/20/sandpapergate-australia-ball-tampering-2018-scandal-cricket-government-bancroft-cummins?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/news/2026/11/21/three-us-citizens-among-4-convicted-in-honduras-over-sex-trafficking-case?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "‘We don’t want our future decided by the military’: Young Germans protest",
+      "title": "Train collides with minibus in Indonesia",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/we-dont-want-our-future-decided-by-the-military-young-germans-protest?traffic_source=rss",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Tashima says Balogun red card row at World Cup prompted FIFA presidency bid",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/sports/2026/11/20/kozo-tashima-japan-fifa-president-election-balogun-red-card-world-cup-infantino?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/21/train-collides-with-minibus-in-indonesia?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "US maritime agency warned Iran blockade was adding to rising Gulf premiums",
+      "title": "Sudan’s war will end, but will it be too late?",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/economy/2026/11/20/us-maritime-agency-warned-iran-blockade-was-adding-to-rising-gulf-premiums?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/opinions/2026/11/21/sudans-war-will-end-but-will-it-be-too-late?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "china_military",
-      "title": "Trump bows to pressure, replaces US cyber security director",
+      "title": "Netanyahu is playing with the fire that killed Rabin",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/trump-bows-to-pressure-replaces-us-cyber-security-director?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/opinions/2026/11/21/netanyahu-is-playing-with-the-fire-that-killed-rabin?traffic_source=rss",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "kashmir",
+      "title": "Can Israel’s opposition bloc stay united against Netanyahu?",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/21/can-israels-opposition-bloc-stay-united-against-netanyahu?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Tears of joy, prayers for return home: Rohingya react to genocide ruling",
+      "title": "Funeral held for New York teen shot while walking to school",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/tears-of-joy-prayers-for-return-home-rohingya-react-to-genocide-ruling?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/21/funeral-held-for-new-york-teen-shot-while-walking-to-school?traffic_source=rss",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "Al Jazeera explains: The US-China AI race is entering a new phase",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/21/al-jazeera-explains-the-us-china-ai-race-is-entering-a-new-phase?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Gaza Civil Defence struggles to rescue lives as vehicles break down",
+      "title": "Saudi-led coalition intercepts three Houthi missiles headed for Riyadh",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/gaza-civil-defence-struggles-to-rescue-lives-as-vehicles-fall-into-disrepair?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/news/2026/11/21/saudi-led-coalition-intercepts-three-houthi-missiles-headed-for-riyadh?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Contaminated petrol leaves Yemeni drivers struggling to make ends meet",
+      "title": "Three French police officers sentenced over racist assault on Black man",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/contaminated-petrol-leaves-yemeni-drivers-struggling-to-make-ends-meet?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "Kushner: Trump open to NATO-like security guarantees for Ukraine",
+      "title": "Gen Z protests sweep Europe over wars, rising costs and climate",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/kushner-trump-open-to-nato-like-security-guarantees-for-ukraine?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Canada’s beloved Tim Hortons brews ire over ‘excessive’ Israeli data deal",
+      "title": "Trump calls for Nvidia to reinstate ‘brilliant’ Jensen Huang",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/canadas-beloved-tim-hortons-brews-ire-over-excessive-israeli-data-deal-2?traffic_source=rss",
-      "date": "Fri, 20 No",
+      "url": "https://www.aljazeera.com/news/2026/11/21/trump-calls-for-nvidia-to-reinstate-brilliant-jensen-huang?traffic_source=rss",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
-      "topic": "china_military",
-      "title": "Thousands protest Colombia’s tax plans amid row over US military role",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/20/thousands-protest-colombias-tax-plans-amid-row-over-us-military-role?traffic_source=rss",
+      "topic": "rss",
+      "title": "California’s coastal communities on alert as biggest waves in years hit state",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/us-news/2026/nov/20/california-coastal-communities-alert-big-waves-hit-state",
       "date": "Fri, 20 No",
       "tone": null
     },
@@ -364,12 +373,12 @@
       "tone": null
     },
     {
-      "topic": "china_military",
-      "title": "Five EU states announce plans for immigration ‘return hubs’ in Rwanda",
+      "topic": "rss",
+      "title": "‘Weak and dizzy’: the secretive ICE force-feeding tactics that ended a Cuban father’s hunger strike",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda",
-      "date": "Tue, 17 No",
+      "url": "https://www.theguardian.com/us-news/2026/nov/20/ice-cuba-hunger-strike-force-feeding",
+      "date": "Fri, 20 No",
       "tone": null
     },
     {
@@ -410,245 +419,317 @@
     },
     {
       "topic": "rss",
-      "title": "Isolated Brazilian tribe emerges amid alarm over threats to group’s way of life",
+      "title": "Trump threatens ‘tremendous penalties’ for US tech firms that build datacenters abroad",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people",
-      "date": "Tue, 17 No",
+      "url": "https://www.theguardian.com/us-news/2026/nov/20/trump-datacenters-white-house",
+      "date": "Fri, 20 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day of trading",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+      "date": "Fri, 20 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "US tech stocks plunge into bear market in worst week since Covid-19 crisis",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/9f3c6ed6-c08f-4710-9683-ee2f5eb25841?syn-25a6b1a6=1",
+      "date": "Fri, 20 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Donald Trump threatens ‘tremendous’ tax on data centres built outside US",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/ae564e09-eb0d-42c6-b61f-50a4e61d0240?syn-25a6b1a6=1",
+      "date": "Fri, 20 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Nvidia faces US regulator’s probe into its accounting",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/9b28ed72-aac4-4291-9734-bf60b66645ab?syn-25a6b1a6=1",
+      "date": "Fri, 20 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The AI cyber threat is already here",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/3cf882c6-0be6-43f5-b01e-b6f765686c8b?syn-25a6b1a6=1",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The manufacturing of novelty",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/99711b1a-3e54-4349-9c81-769cf7c96b97?syn-25a6b1a6=1",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The dead hand of history weighs on Deutsche Bank",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/bfa66957-73d4-44f1-bea5-6b141c197920",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Oil shipped through Hormuz falls as Iranian strikes increase",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/5fbc2b9d-0360-4a1f-9e4a-3e86168cbbc5?syn-25a6b1a6=1",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "China, Russia and US agree peace declaration with no mention of Ukraine and Iran wars",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/19/china-russia-us-agree-peace-statement-no-mention-ukraine-iran-wars",
-      "date": "Thu, 19 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "Trump accused of falling asleep during Xi Jinping speech at Apec summit in China",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/us-news/2026/nov/19/trump-apec-asleep-china",
-      "date": "Thu, 19 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Tech stocks fall as Anthropic IPO fails to reignite AI trade",
+      "title": "Trump considering new Iran strikes as US military warns of strain on forces",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/c7ad2e0c-efd1-40c2-a5a8-819ced8acf5b?syn-25a6b1a6=1",
+      "url": "https://www.ft.com/content/2daf570c-189a-4362-a128-828c520b902e",
       "date": "Fri, 20 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Anthropic shares jump 17% after record Wall Street listing",
+      "title": "CVC claims accounting manipulation in €3bn Advent pastry ingredients deal",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/2b203097-7c61-464f-810f-962912a133dd?syn-25a6b1a6=1",
-      "date": "Thu, 19 No",
+      "url": "https://www.ft.com/content/06999b01-07f1-44a1-8eab-a5d5e7ecd70f?syn-25a6b1a6=1",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "So, Anthropic is finally a public company. What now?",
+      "title": "Jamie Dimon vows to claw back ‘unfair’ UK bank tax",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/017044a9-76dc-4cb4-9259-a844a96f2757",
+      "url": "https://www.ft.com/content/4dd143d0-0b10-4bb8-ac15-e04702fa8b9a?syn-25a6b1a6=1",
       "date": "Fri, 20 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Pensions are eating everything",
+      "title": "Builders bet on €620bn defence infrastructure boom in Europe",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/6986a3b5-12ed-4aad-ac61-f86ded3e6fa3?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "China revels in Xi’s ‘Yalta 2.0’ moment",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/c1c540af-f9ba-479a-8473-4b7619859453?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
+      "url": "https://www.ft.com/content/b647fcba-e5e6-4ca2-8417-8c9146eac39e?syn-25a6b1a6=1",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Can Nvidia learn from AIG’s mistakes?",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/c1f1c0d2-466e-46b9-b346-5ce4677c55ea?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Oil loses grip on bond markets as inflation ‘virus’ spreads",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/562e278e-1e12-49d2-b7f7-91a289ffd660?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "China prepares to restart US private equity investments after pullback",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/73e7d386-c5d1-4422-8abb-adbfaf92aa0d?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "US approved sale of Nvidia and AMD chips to Chinese companies",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/76342072-2781-4b16-ba3b-816a25214483?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Rejoining the EU would boost UK economy twice as much as Swiss-style deal",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/22c052bf-a9dc-49f3-a18b-02b5dc490635?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "UK and EU poised to finalise deal to ‘reset’ relations",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/912a7730-2428-4d4c-8dde-9c41a99ab562?syn-25a6b1a6=1",
-      "date": "Thu, 19 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Lenders aim to bar SpaceX from launching $40bn of chips into orbit",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/33b5643c-2957-4d42-9116-5e34a3c54e29?syn-25a6b1a6=1",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "‘If there is doubt, shoot’: why a Malaysian police order has critics on edge",
+      "title": "Abby Choi murder trial: ex-in-laws blame each other as 2 accounts of killing emerge",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/people/article/3375203/if-there-doubt-shoot-why-malaysian-police-order-has-critics-edge",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "Xi urges China-Singapore innovation partnership in talks with PM Lawrence Wong",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3375196/xi-urges-china-singapore-innovation-partnership-talks-pm-lawrence-wong",
-      "date": "Fri, 20 No",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375315/abby-choi-murder-trial-ex-laws-blame-each-other-2-accounts-killing-emerge",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "11-second handshake: Takaichi adopts more proactive approach with Xi at Apec, experts say",
+      "title": "Xi, Trump agree military AI decisions must involve humans, Bessent says",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3375179/11-second-handshake-takaichi-adopts-more-proactive-approach-xi-apec-say-experts",
-      "date": "Fri, 20 No",
+      "url": "https://www.scmp.com/news/china/diplomacy/article/3375321/xi-trump-agree-military-ai-decisions-must-involve-humans-bessent-says",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Can Indonesia’s Widodo rebuild his political dynasty with key allies gone?",
+      "title": "India wants the world’s pension billions. Will regulatory hurdles slow the bet?",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/politics/article/3375182/can-indonesias-widodo-rebuild-his-political-dynasty-key-allies-gone",
-      "date": "Fri, 20 No",
+      "url": "https://www.scmp.com/week-asia/economics/article/3375263/india-wants-worlds-pension-billions-will-regulatory-hurdles-slow-bet",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Xi Jinping urges trust-based partnership with Australia in Shenzhen bilateral talks",
+      "title": "French Senate approves police shootings law dubbed ‘licence to kill’ by critics",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3375180/xi-jinping-urges-trust-based-partnership-australia-shenzhen-bilateral-talks",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "No fowl play: Singapore judge throws out passenger lawsuit after driver stops for chicken",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/people/article/3375178/no-fowl-play-singapore-judge-throws-out-passenger-lawsuit-after-driver-stops-chicken",
-      "date": "Fri, 20 No",
+      "url": "https://www.scmp.com/news/world/europe/article/3375320/french-senate-approves-police-shootings-law-dubbed-licence-kill-critics",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Record 57% of Primary 1 pupils in Hong Kong admitted to preferred schools in 2027",
+      "title": "Man, 61, arrested over fake Chanel, Dior perfumes sold in alleged scam run by his son",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/education/article/3375174/record-57-primary-1-pupils-hong-kong-admitted-preferred-schools-2027",
-      "date": "Fri, 20 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Man jailed for life over murder of yoga instructor ex-girlfriend in luxury hotel",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375165/man-jailed-life-murdering-yoga-instructor-ex-girlfriend-luxury-hotel",
-      "date": "Fri, 20 No",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375319/man-61-arrested-over-fake-chanel-dior-perfumes-sold-alleged-scam-run-his-son",
+      "date": "Sat, 21 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "Anwar vows crackdown after suspicious bags at Malaysian airbase lead to US$1.2m drug bust",
+      "title": "UN talks pledge to draft ‘killer robot’ rules by 2028 after Russian pushback",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/health-environment/article/3375162/anwar-vows-crackdown-after-suspicious-bags-malaysian-airbase-lead-us12m-drug-bust",
+      "url": "https://www.scmp.com/news/world/europe/article/3375318/un-talks-pledge-draft-killer-robot-rules-2028-after-russian-pushback",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Using IDs to check concert tickets, combat scalping could slow entry: tourism chief",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375317/using-ids-check-concert-tickets-combat-scalping-could-slow-entry-tourism-chief",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "China’s EV adoption rate to top 70% as petrol cars take brunt of drop in overall sales",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/business/china-business/article/3375236/chinas-ev-adoption-rate-top-70-petrol-cars-take-brunt-drop-overall-sales",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Yemen’s Houthis launch strikes on Riyadh after Saudi coalition ‘special operation’",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/world/middle-east/article/3375314/yemens-houthis-launch-strikes-riyadh-after-saudi-coalition-special-operation",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "Deal on duty-free Swiss exports to China a boon for Hong Kong, top diplomat says",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375311/deal-duty-free-swiss-exports-china-boon-hong-kong-top-diplomat-says",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Will political distrust upend South Korea’s bid to tame its ‘imperial presidency’?",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/week-asia/politics/article/3375273/will-political-distrust-upend-south-koreas-bid-tame-its-imperial-presidency",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "china_military",
+      "title": "A steadier US-China relationship still leaves Southeast Asia on guard",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/week-asia/opinion/article/3375242/steadier-us-china-relationship-still-leaves-southeast-asia-guard",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "REACTION: America imprisons &#8220;Indian government-backed&#8221; anti-Sikh terrorist",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/reaction-america-imprisons-indian-government-backed-anti-sikh-terrorist/",
+      "date": "Sat, 21 No",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "India&#8217;s Anti-Sikh assassin faces New York sentencing",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/indias-anti-sikh-assassin-faces-new-york-sentencing/",
       "date": "Fri, 20 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Comb restores hair growth; Kim Jong-un daughter’s luxury ski gear: SCMP’s 7 highlights",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/world/article/3375020/comb-restores-hair-growth-kim-jong-un-daughters-luxury-ski-gear-scmps-7-highlights",
-      "date": "Fri, 20 No",
+      "title": "Punjab Police violence meets various protests across Punjab",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/punjab-police-violence-meets-various-protests-across-punjab/",
+      "date": "Fri, 30 Oc",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Hong Kong’s 1996 Garley Building fire horror – SCMP archive",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/society/article/3375011/hong-kongs-1996-garley-building-fire-horror-scmp-archive",
-      "date": "Fri, 20 No",
+      "topic": "sikh_diaspora",
+      "title": "&#8220;Breach of trust&#8221; or &#8220;unplanned&#8221; prayer visit? Sikh groups release statements on RSS Gurdwara event",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/breach-of-trust-or-unplanned-gathering-sikh-groups-release-statements-on-rss-gurdwara-event/",
+      "date": "Thu, 10 Se",
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Why the ball is in Kim Jong-un’s court on a meeting with Donald Trump",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/diplomacy/article/3375160/why-ball-kim-jong-uns-court-meeting-donald-trump",
-      "date": "Fri, 20 No",
+      "topic": "sikh_diaspora",
+      "title": "&#8220;India poisoned my wife, just like Avtar Singh Khanda&#8221; &#8211; Khalistan activist speaks out",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/india-poisoned-my-wife-just-like-avtar-singh-khanda-khalistan-activist-speaks-out/",
+      "date": "Thu, 20 Au",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "USA to extradite &#8220;Indian nationalist&#8221; gangster for Canadian Sikh leader assassination",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/usa-to-extradite-indian-nationalist-gangster-for-canadian-sikh-leader-assassination/",
+      "date": "Tue, 21 Ju",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "Sikh genocide film gets global pirate screenings after India censorship",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/sikh-genocide-film-finally-released-but-censorship-continues/",
+      "date": "Mon, 13 Ju",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "Sikh community groups speak out on &#8220;ceremonial knife&#8221; murder",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/sikh-community-groups-speak-out-on-ceremonial-knife-murder/",
+      "date": "Thu, 28 Ma",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "Double Gurdwara “execution” in Italy underlines diaspora assassination concerns",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/double-gurdwara-execution-in-italy-underlines-diaspora-assassination-concerns/",
+      "date": "Sun, 10 Ma",
+      "tone": null
+    },
+    {
+      "topic": "sikh_diaspora",
+      "title": "Two suspicious deaths reflect worrying times for Sikhs in India",
+      "source": "Sikh PA",
+      "domain": "www.sikhpa.com",
+      "url": "https://www.sikhpa.com/two-suspicious-deaths-reflect-worrying-times-for-sikhs-in-india/",
+      "date": "Thu, 07 Ma",
       "tone": null
     }
   ]

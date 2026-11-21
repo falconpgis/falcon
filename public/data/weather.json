@@ -1,99 +1,99 @@
 {
-  "fetched_utc": "2026-11-19T07:56:15.312877Z",
+  "fetched_utc": "2026-11-21T07:43:17.667763Z",
   "station": {
     "lat": 30.9,
     "lon": 75.8,
     "name": "Ludhiana (Punjab centroid)"
   },
   "current": {
-    "time": "2026-11-19T13:15",
+    "time": "2026-11-21T13:00",
     "interval": 900,
-    "temperature": 24.8,
-    "windspeed": 2.9,
-    "winddirection": 317,
+    "temperature": 24.1,
+    "windspeed": 5.5,
+    "winddirection": 157,
     "is_day": 1,
-    "weathercode": 0
+    "weathercode": 3
   },
   "forecast": [
-    {
-      "date": "2026-11-19",
-      "rain_mm": 0.0,
-      "rain_prob": 0,
-      "temp_max": 25.3,
-      "temp_min": 13.0,
-      "wind_kmh": 6.5
-    },
-    {
-      "date": "2026-11-20",
-      "rain_mm": 0.0,
-      "rain_prob": 0,
-      "temp_max": 24.5,
-      "temp_min": 12.4,
-      "wind_kmh": 4.8
-    },
     {
       "date": "2026-11-21",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 24.0,
-      "temp_min": 12.2,
-      "wind_kmh": 4.7
+      "temp_max": 24.3,
+      "temp_min": 13.6,
+      "wind_kmh": 8.2
     },
     {
       "date": "2026-11-22",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 24.2,
-      "temp_min": 10.6,
-      "wind_kmh": 8.6
+      "temp_max": 24.0,
+      "temp_min": 12.9,
+      "wind_kmh": 9.2
     },
     {
       "date": "2026-11-23",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 24.1,
-      "temp_min": 12.5,
-      "wind_kmh": 9.4
+      "temp_max": 24.2,
+      "temp_min": 12.8,
+      "wind_kmh": 9.7
     },
     {
       "date": "2026-11-24",
       "rain_mm": 0.0,
       "rain_prob": 0,
       "temp_max": 24.6,
-      "temp_min": 12.4,
-      "wind_kmh": 8.7
+      "temp_min": 12.7,
+      "wind_kmh": 9.2
     },
     {
       "date": "2026-11-25",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 24.4,
+      "temp_max": 24.9,
       "temp_min": 12.4,
-      "wind_kmh": 7.3
+      "wind_kmh": 6.9
     },
     {
       "date": "2026-11-26",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 24.2,
-      "temp_min": 11.9,
-      "wind_kmh": 5.7
+      "temp_max": 24.5,
+      "temp_min": 12.7,
+      "wind_kmh": 7.0
     },
     {
       "date": "2026-11-27",
       "rain_mm": 0.0,
       "rain_prob": 0,
       "temp_max": 24.3,
-      "temp_min": 11.7,
-      "wind_kmh": 4.1
+      "temp_min": 11.9,
+      "wind_kmh": 4.0
     },
     {
       "date": "2026-11-28",
       "rain_mm": 0.0,
       "rain_prob": 0,
-      "temp_max": 23.8,
-      "temp_min": 11.9,
-      "wind_kmh": 6.7
+      "temp_max": 23.7,
+      "temp_min": 12.1,
+      "wind_kmh": 6.5
+    },
+    {
+      "date": "2026-11-29",
+      "rain_mm": 0.0,
+      "rain_prob": 0,
+      "temp_max": 23.6,
+      "temp_min": 11.3,
+      "wind_kmh": 5.2
+    },
+    {
+      "date": "2026-11-30",
+      "rain_mm": 0.0,
+      "rain_prob": 0,
+      "temp_max": 23.3,
+      "temp_min": 11.7,
+      "wind_kmh": 7.6
     }
   ],
   "signals": {

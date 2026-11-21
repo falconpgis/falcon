@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795160899000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-21&endtime=2026-11-20&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795247059000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-22&endtime=2026-11-21&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -702,9 +702,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.4,
-        "place": "32 km SW of Ashk\u0101sham, Afghanistan",
-        "time": 1793116622376,
-        "updated": 1793125032040,
+        "place": "30 km SW of Ashk\u0101sham, Afghanistan",
+        "time": 1793116622184,
+        "updated": 1795202311040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttgz",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttgz&format=geojson",
@@ -720,13 +720,13 @@
         "ids": ",us7000ttgz,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 63,
-        "dmin": 2.079,
-        "rms": 0.77,
-        "gap": 60,
+        "nst": 69,
+        "dmin": 2.065,
+        "rms": 0.69,
+        "gap": 53,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.4 - 32 km SW of Ashk\u0101sham, Afghanistan",
+        "title": "M 4.4 - 30 km SW of Ashk\u0101sham, Afghanistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -734,9 +734,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          71.318,
-          36.4496,
-          123.853
+          71.3374,
+          36.4581,
+          120.331
         ]
       },
       "id": "us7000ttgz"
@@ -745,9 +745,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.6,
-        "place": "41 km S of Farkh\u0101r, Afghanistan",
-        "time": 1793110146874,
-        "updated": 1793121739040,
+        "place": "48 km S of Farkh\u0101r, Afghanistan",
+        "time": 1793110147498,
+        "updated": 1795191494040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttgc",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttgc&format=geojson",
@@ -763,13 +763,13 @@
         "ids": ",us7000ttgc,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 132,
-        "dmin": 1.799,
-        "rms": 0.56,
-        "gap": 42,
+        "nst": 129,
+        "dmin": 1.741,
+        "rms": 0.43,
+        "gap": 43,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.6 - 41 km S of Farkh\u0101r, Afghanistan",
+        "title": "M 4.6 - 48 km S of Farkh\u0101r, Afghanistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -777,9 +777,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          69.9044,
-          36.2043,
-          115.076
+          69.9187,
+          36.1377,
+          123.027
         ]
       },
       "id": "us7000ttgc"
