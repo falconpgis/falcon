@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FALCON · Data Report</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gold:    #c8962a;
+    --gold-lt: #e8b84b;
+    --bg:      #0d0d0d;
+    --surface: #141414;
+    --card:    #1a1a1a;
+    --border:  #2a2a2a;
+    --text:    #e8e8e8;
+    --muted:   #888;
+    --green:   #3dba6e;
+    --amber:   #e8a020;
+    --red:     #e04444;
+    --radius:  8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; }
+
+  /* ── Top bar ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .logo { font-size: 18px; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+  .subtitle { color: var(--muted); font-size: 12px; }
+  .last-run { margin-left: auto; font-size: 11px; color: var(--muted); text-align: right; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+  .dot.green { background: var(--green); }
+  .dot.amber { background: var(--amber); }
+  .dot.red   { background: var(--red); }
+
+  /* ── Layout ── */
+  main { padding: 16px; max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold);
+    text-transform: uppercase; margin: 20px 0 10px;
+    border-left: 3px solid var(--gold); padding-left: 8px;
+  }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .grid-wide { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px;
+  }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .card-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .card-badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .badge-ok     { background: rgba(61,186,110,.15); color: var(--green); }
+  .badge-warn   { background: rgba(232,160,32,.15);  color: var(--amber); }
+  .badge-error  { background: rgba(224,68,68,.15);   color: var(--red); }
+  .badge-stale  { background: rgba(136,136,136,.15); color: var(--muted); }
+  .card-value { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1.1; }
+  .card-unit  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .card-sub   { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .card-date  { font-size: 10px; color: #555; margin-top: 8px; }
+
+  /* ── Chart cards ── */
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .chart-card canvas { margin-top: 10px; }
+
+  /* ── News list ── */
+  .news-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .news-item { border-bottom: 1px solid var(--border); padding: 8px 0; }
+  .news-item:last-child { border-bottom: none; }
+  .news-country { font-size: 10px; color: var(--gold); font-weight: 600; }
+  .news-title   { font-size: 13px; color: var(--text); line-height: 1.4; margin-top: 2px; }
+  .news-outlet  { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .news-title a { color: inherit; text-decoration: none; }
+  .news-title a:hover { color: var(--gold-lt); }
+
+  /* ── Status bar ── */
+  .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .status-chip {
+    font-size: 11px; padding: 3px 10px; border-radius: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  /* ── Reservoir bar ── */
+  .res-item { margin-bottom: 10px; }
+  .res-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+  .res-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .res-fill { height: 100%; border-radius: 4px; transition: width 0.6s; }
+
+  /* ── Loading / error ── */
+  .loading { color: var(--muted); font-size: 12px; padding: 20px; text-align: center; }
+  .err     { color: var(--red); font-size: 11px; margin-top: 6px; }
+
+  @media (max-width: 600px) {
+    .grid, .grid-wide { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">⚡ FALCON</div>
+    <div class="subtitle">Punjab Geospatial Intelligence · Data Report</div>
+  </div>
+  <div class="last-run" id="run-info">Loading…</div>
+</header>
+
+<main>
+
+  <!-- Pipeline status -->
+  <div class="section-title">Pipeline Status</div>
+  <div class="card" id="pipeline-status">
+    <div class="loading">Checking data sources…</div>
+  </div>
+
+  <!-- Air quality -->
+  <div class="section-title">Air Quality (AQI)</div>
+  <div class="grid" id="aqi-grid">
+    <div class="card"><div class="loading">Loading AQI…</div></div>
+  </div>
+
+  <!-- Fires -->
+  <div class="section-title">Fire Hotspots (NASA FIRMS)</div>
+  <div class="grid" id="fires-grid">
+    <div class="card"><div class="loading">Loading fires…</div></div>
+  </div>
+
+  <!-- Reservoirs -->
+  <div class="section-title">Water Reservoirs (CWC India)</div>
+  <div class="card" id="reservoir-card">
+    <div class="loading">Loading reservoir data…</div>
+  </div>
+
+  <!-- Earthquakes -->
+  <div class="section-title">Earthquakes (USGS · M≥3.0 · Last 30 Days)</div>
+  <div class="grid" id="quake-grid">
+    <div class="card"><div class="loading">Loading…</div></div>
+  </div>
+
+  <!-- Currencies -->
+  <div class="section-title">Currencies (Base: INR)</div>
+  <div class="grid" id="currency-grid">
+    <div class="card"><div class="loading">Loading currencies…</div></div>
+  </div>
+
+  <!-- Mandi prices -->
+  <div class="section-title">Mandi Prices (AGMARKNET)</div>
+  <div class="grid" id="mandi-grid">
+    <div class="card"><div class="loading">Loading mandi data…</div></div>
+  </div>
+
+  <!-- AQI history chart -->
+  <div class="section-title">AQI History (Last 30 Days)</div>
+  <div class="chart-card">
+    <div class="card-title">Punjab Stations · Daily Average AQI</div>
+    <canvas id="aqi-chart" height="80"></canvas>
+  </div>
+
+  <!-- Regional news -->
+  <div class="section-title">Regional Intelligence · Punjab-Relevant Headlines</div>
+  <div class="grid-wide">
+    <div class="news-card" id="news-russia-china">
+      <div class="card-title" style="margin-bottom:8px">Russia · China · Iran</div>
+      <div class="loading">Loading…</div>
+    </div>
+    <div class="news-card" id="news-pak-af">
+      <div class="card-title" style="margin-bottom:8px">Pakistan · Afghanistan</div>
+      <div class="loading">Loading…</div>
+    </div>
+    <div class="news-card" id="news-india">
+      <div class="card-title" style="margin-bottom:8px">India · Global</div>
+      <div class="loading">Loading…</div>
+    </div>
+  </div>
+
+  <!-- News summary -->
+  <div class="section-title">News Source Summary</div>
+  <div class="card" id="news-summary">
+    <div class="loading">Loading…</div>
+  </div>
+
+  <div style="height:40px"></div>
+</main>
+
+<script>
+const BASE = 'https://falconpgis.github.io/falcon/public/data/';
+const HIST = BASE + 'history/';
+
+async function load(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+function age(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  const hrs = Math.round((Date.now() - d) / 3.6e6);
+  if (hrs < 24) return hrs + 'h ago';
+  return Math.round(hrs / 24) + 'd ago';
+}
+
+function badge(dateStr) {
+  if (!dateStr) return '<span class="card-badge badge-error">no data</span>';
+  const hrs = (Date.now() - new Date(dateStr)) / 3.6e6;
+  if (hrs < 30)  return '<span class="card-badge badge-ok">live</span>';
+  if (hrs < 72)  return '<span class="card-badge badge-warn">recent</span>';
+  return '<span class="card-badge badge-stale">stale</span>';
+}
+
+function aqiColor(aqi) {
+  if (!aqi) return '#888';
+  if (aqi <= 50)  return '#3dba6e';
+  if (aqi <= 100) return '#a8d84e';
+  if (aqi <= 200) return '#e8c020';
+  if (aqi <= 300) return '#e88020';
+  return '#e04444';
+}
+
+function resColor(pct) {
+  if (pct >= 60) return '#3dba6e';
+  if (pct >= 35) return '#e8a020';
+  return '#e04444';
+}
+
+// ── Run info ──────────────────────────────────────────────────────────────
+document.getElementById('run-info').innerHTML =
+  `<span class="dot green"></span> Report as of ${new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})}<br><span style="font-size:10px;color:#444">Data updated nightly 06:00 IST</span>`;
+
+// ── Pipeline status ───────────────────────────────────────────────────────
+async function loadPipelineStatus() {
+  const sources = [
+    { name: 'Fires',       url: BASE + 'punjab_fires.geojson',   key: 'generated_at' },
+    { name: 'AQI',         url: BASE + 'punjab_aqi.json',         key: 'generated_at' },
+    { name: 'Mandi',       url: BASE + 'punjab_mandi.json',       key: 'generated_at' },
+    { name: 'Currencies',  url: BASE + 'currencies.json',         key: 'generated'    },
+    { name: 'Weather',     url: BASE + 'weather.json',            key: 'generated_at' },
+    { name: 'Groundwater', url: BASE + 'punjab_groundwater.geojson', key: 'generated_at' },
+    { name: 'Air Traffic', url: BASE + 'air_traffic.geojson',     key: 'generated_at' },
+    { name: 'Vessels',     url: BASE + 'vessels.geojson',         key: 'generated_at' },
+    { name: 'Earthquakes', url: BASE + 'earthquakes.geojson',     key: 'generated_at' },
+    { name: 'News',        url: BASE + 'regional_news.json',      key: 'generated_at' },
+    { name: 'Reservoirs',  url: BASE + 'punjab_reservoirs.json',  key: 'generated_at' },
+  ];
+  const results = await Promise.allSettled(sources.map(s => load(s.url)));
+  let chips = '';
+  results.forEach((r, i) => {
+    const s = sources[i];
+    if (r.status === 'fulfilled') {
+      const dt = r.value[s.key] || r.value.date;
+      const hrs = dt ? (Date.now() - new Date(dt)) / 3.6e6 : 999;
+      const cls = hrs < 30 ? 'green' : hrs < 72 ? 'amber' : 'red';
+      chips += `<div class="status-chip"><span class="dot ${cls}"></span>${s.name}<span style="color:#555;margin-left:2px">${age(dt)}</span></div>`;
+    } else {
+      chips += `<div class="status-chip"><span class="dot red"></span>${s.name}<span class="err">missing</span></div>`;
+    }
+  });
+  document.getElementById('pipeline-status').innerHTML =
+    `<div class="card-title" style="margin-bottom:10px">Data Sources — Last Refresh</div><div class="status-row">${chips}</div>`;
+}
+
+// ── AQI ───────────────────────────────────────────────────────────────────
+async function loadAQI() {
+  const data = await load(BASE + 'punjab_aqi.json');
+  const features = data.features || [];
+  if (!features.length) { document.getElementById('aqi-grid').innerHTML = '<div class="card"><div class="err">No AQI data</div></div>'; return; }
+  const html = features.map(f => {
+    const p = f.properties;
+    const c = aqiColor(p.aqi);
+    return `<div class="card" style="border-left:3px solid ${c}">
+      <div class="card-head">
+        <div class="card-title">${p.station || p.city}</div>
+        ${badge(p.date)}
+      </div>
+      <div class="card-value" style="color:${c}">${p.aqi ?? '—'}</div>
+      <div class="card-unit">${p.category || 'AQI'}</div>
+      <div class="card-date">${p.city}${p.date ? ' · ' + p.date : ''}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('aqi-grid').innerHTML = html;
+}
+
+// ── Fires ─────────────────────────────────────────────────────────────────
+async function loadFires() {
+  const data = await load(BASE + 'punjab_fires.geojson');
+  const features = data.features || [];
+  const count = features.length;
+  const highConf = features.filter(f => f.properties.confidence === 'high' || f.properties.confidence >= 80).length;
+  const today = features.filter(f => {
+    const d = f.properties.acq_date || f.properties.date || '';
+    return d === new Date().toISOString().slice(0,10);
+  }).length;
+  document.getElementById('fires-grid').innerHTML = `
+    <div class="card" style="border-left:3px solid #e04444">
+      <div class="card-head"><div class="card-title">Total Hotspots</div>${badge(data.generated_at)}</div>
+      <div class="card-value">${count}</div>
+      <div class="card-unit">fire detections (last 24h window)</div>
+    </div>
+    <div class="card" style="border-left:3px solid #e88020">
+      <div class="card-head"><div class="card-title">High Confidence</div></div>
+      <div class="card-value">${highConf}</div>
+      <div class="card-unit">verified fire pixels</div>
+    </div>
+    <div class="card" style="border-left:3px solid #e8a020">
+      <div class="card-head"><div class="card-title">Today</div></div>
+      <div class="card-value">${today || '—'}</div>
+      <div class="card-unit">detections today</div>
+      <div class="card-date">Source: NASA FIRMS VIIRS · ${data.generated_at ? age(data.generated_at) : ''}</div>
+    </div>`;
+}
+
+// ── Reservoirs ────────────────────────────────────────────────────────────
+async function loadReservoirs() {
+  const data = await load(BASE + 'punjab_reservoirs.json');
+  const features = data.features || [];
+  const html = features.map(f => {
+    const p = f.properties;
+    const pct = p.percent_full || 0;
+    const col = resColor(pct);
+    return `<div class="res-item">
+      <div class="res-label">
+        <span>${p.name} <span style="color:#555;font-size:10px">(${p.river})</span></span>
+        <span style="color:${col};font-weight:600">${pct.toFixed(0)}%
+          <span style="font-size:10px;font-weight:400;color:#555">${p.storage_mcm} MCM</span>
+        </span>
+      </div>
+      <div class="res-bar"><div class="res-fill" style="width:${Math.min(pct,100)}%;background:${col}"></div></div>
+      <div style="font-size:10px;color:#555;margin-top:2px">${p.state} · FRL ${p.frl_mcm} MCM · <span style="color:${p.alert==='critical'?'var(--red)':p.alert==='low'?'var(--amber)':'var(--green)'}">${p.alert}</span> · ${p.source}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('reservoir-card').innerHTML =
+    `<div class="card-head"><div class="card-title">Punjab Reservoirs — Live Storage</div>${badge(data.generated_at)}</div>${html || '<div class="err">No data</div>'}`;
+}
+
+// ── Earthquakes ───────────────────────────────────────────────────────────
+async function loadQuakes() {
+  const data = await load(BASE + 'earthquakes.geojson');
+  const features = data.features || [];
+  const count = features.length;
+  const mags   = features.map(f => f.properties.mag || 0).filter(Boolean);
+  const maxMag  = mags.length ? Math.max(...mags).toFixed(1) : '—';
+  const nearPunjab = features.filter(f => f.properties.near_punjab).length;
+  const major = features.filter(f => (f.properties.mag || 0) >= 5.0).length;
+  document.getElementById('quake-grid').innerHTML = `
+    <div class="card" style="border-left:3px solid #c8962a">
+      <div class="card-head"><div class="card-title">Total Events</div>${badge(data.generated_at)}</div>
+      <div class="card-value">${count}</div>
+      <div class="card-unit">earthquakes M≥3.0</div>
+    </div>
+    <div class="card" style="border-left:3px solid ${maxMag >= 6 ? '#e04444' : maxMag >= 5 ? '#e88020' : '#888'}">
+      <div class="card-head"><div class="card-title">Strongest</div></div>
+      <div class="card-value">M ${maxMag}</div>
+      <div class="card-unit">max magnitude (last 30 days)</div>
+    </div>
+    <div class="card" style="border-left:3px solid #e04444">
+      <div class="card-head"><div class="card-title">Near Punjab</div></div>
+      <div class="card-value">${nearPunjab}</div>
+      <div class="card-unit">within Punjab bounding box</div>
+    </div>
+    <div class="card" style="border-left:3px solid #e88020">
+      <div class="card-head"><div class="card-title">M≥5.0</div></div>
+      <div class="card-value">${major}</div>
+      <div class="card-unit">moderate or stronger</div>
+      <div class="card-date">Zone: Hindu Kush · Himalayas · Karakoram</div>
+    </div>`;
+}
+
+// ── Currencies ────────────────────────────────────────────────────────────
+async function loadCurrencies() {
+  const data = await load(BASE + 'currencies.json');
+  const rates = data.rates || {};
+  const KEY_CURRENCIES = ['USD','PKR','CNY','RUB','AED','CAD','GBP','EUR'];
+  const html = KEY_CURRENCIES.filter(c => rates[c]).map(c => `
+    <div class="card">
+      <div class="card-head"><div class="card-title">${c}/INR</div>${c === 'PKR' ? '<span class="card-badge badge-warn">watch</span>' : ''}</div>
+      <div class="card-value">${typeof rates[c] === 'number' ? rates[c].toFixed(4) : rates[c]}</div>
+      <div class="card-unit">1 INR = ${rates[c].toFixed(4)} ${c}</div>
+    </div>`).join('');
+  document.getElementById('currency-grid').innerHTML = html ||
+    `<div class="card"><div class="err">No currency data</div></div>`;
+}
+
+// ── Mandi prices ──────────────────────────────────────────────────────────
+async function loadMandi() {
+  try {
+    const data = await load(BASE + 'punjab_mandi.json');
+    const records = data.records || data.features || [];
+    const grid = document.getElementById('mandi-grid');
+    if (!records.length) { grid.innerHTML = '<div class="card"><div class="err">No mandi data</div></div>'; return; }
+    // Group by commodity
+    const byComm = {};
+    records.forEach(r => {
+      const p = r.properties || r;
+      const comm = p.commodity || p.crop || 'Unknown';
+      if (!byComm[comm]) byComm[comm] = [];
+      byComm[comm].push(p);
+    });
+    const html = Object.entries(byComm).slice(0,8).map(([comm, rows]) => {
+      const avg = Math.round(rows.reduce((s,r) => s + (r.modal_price || r.price || 0), 0) / rows.length);
+      return `<div class="card">
+        <div class="card-head"><div class="card-title">${comm}</div>${badge(rows[0].date)}</div>
+        <div class="card-value">₹${avg.toLocaleString('en-IN')}</div>
+        <div class="card-unit">modal price / quintal · ${rows.length} mandis</div>
+      </div>`;
+    }).join('');
+    grid.innerHTML = html || '<div class="card"><div class="err">No records</div></div>';
+  } catch(e) {
+    document.getElementById('mandi-grid').innerHTML = `<div class="card"><div class="err">Mandi data unavailable</div></div>`;
+  }
+}
+
+// ── AQI history chart ─────────────────────────────────────────────────────
+async function loadAQIChart() {
+  const data = await load(HIST + 'aqi_timeseries.json');
+  const records = data.records || (Array.isArray(data) ? data : []);
+  if (!records.length) return;
+  const labels   = records.map(r => r.date);
+  const stations = Object.keys(records[0].stations || {});
+  const COLORS   = ['#c8962a','#3dba6e','#e04444','#4a9eff','#e8a020','#9b59b6'];
+  const datasets  = stations.map((s, i) => ({
+    label:       s,
+    data:        records.map(r => r.stations[s] || null),
+    borderColor: COLORS[i % COLORS.length],
+    backgroundColor: 'transparent',
+    tension:     0.3,
+    pointRadius: 2,
+    borderWidth: 1.5,
+  }));
+  const ctx = document.getElementById('aqi-chart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: '#888', boxWidth: 12, font: { size: 11 } } },
+        tooltip: { mode: 'index', intersect: false },
+      },
+      scales: {
+        x: { ticks: { color: '#555', maxTicksLimit: 10, font: { size: 10 } }, grid: { color: '#1f1f1f' } },
+        y: { ticks: { color: '#888', font: { size: 10 } }, grid: { color: '#1f1f1f' },
+             title: { display: true, text: 'AQI', color: '#555', font: { size: 10 } } },
+      },
+    }
+  });
+}
+
+// ── Regional news ─────────────────────────────────────────────────────────
+async function loadNews() {
+  const data = await load(BASE + 'regional_news.json');
+  const relevant = data.relevant_articles || [];
+
+  const GROUP = {
+    'news-russia-china': ['Russia','China','Iran'],
+    'news-pak-af':       ['Pakistan','Afghanistan','Kazakhstan','Kyrgyzstan','Uzbekistan'],
+    'news-india':        ['India','UK','Global','Nepal','Bangladesh','Sri Lanka','Turkey','UAE'],
+  };
+
+  Object.entries(GROUP).forEach(([id, countries]) => {
+    const items = relevant.filter(a => countries.includes(a.country)).slice(0, 6);
+    const el = document.getElementById(id);
+    const title = el.querySelector('.card-title');
+    if (!items.length) {
+      el.innerHTML = (title ? title.outerHTML : '') + '<div class="err" style="margin-top:8px">No relevant headlines</div>';
+      return;
+    }
+    const list = items.map(a => `<div class="news-item">
+      <div class="news-country">${a.country} · ${a.outlet}</div>
+      <div class="news-title">${a.link ? `<a href="${a.link}" target="_blank" rel="noopener">${a.title}</a>` : a.title}</div>
+      ${a.summary ? `<div class="news-outlet">${a.summary.substring(0,120)}…</div>` : ''}
+    </div>`).join('');
+    el.innerHTML = (title ? title.outerHTML : '') + list;
+  });
+
+  // Summary
+  const summary = data.country_summary || {};
+  const rows = Object.entries(summary).sort((a,b) => b[1].relevant - a[1].relevant)
+    .map(([c,v]) => `<div class="status-chip"><span class="dot ${v.relevant > 0 ? 'amber' : 'green'}"></span>${c}: ${v.relevant}/${v.total}</div>`).join('');
+  document.getElementById('news-summary').innerHTML =
+    `<div class="card-title" style="margin-bottom:8px">Punjab-Relevant Articles by Country (${data.relevant_to_punjab}/${data.total_articles} total)</div>
+     <div class="status-row">${rows}</div>
+     <div class="card-date" style="margin-top:8px">${badge(data.generated_at)} · Updated ${age(data.generated_at)}</div>`;
+}
+
+// ── Run all ───────────────────────────────────────────────────────────────
+async function runAll() {
+  const tasks = [
+    loadPipelineStatus(),
+    loadAQI(),
+    loadFires(),
+    loadReservoirs(),
+    loadQuakes(),
+    loadCurrencies(),
+    loadMandi(),
+    loadAQIChart(),
+    loadNews(),
+  ];
+  // Run independently — each handles its own errors
+  tasks.forEach(t => t.catch(e => console.warn(e)));
+}
+
+runAll();
+</script>
+</body>
+</html>
