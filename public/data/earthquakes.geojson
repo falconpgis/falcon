@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795247059000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-22&endtime=2026-11-21&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795332320000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-23&endtime=2026-11-22&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -10,6 +10,49 @@
     "offset": 1
   },
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.4,
+        "place": "36 km SSE of Jurm, Afghanistan",
+        "time": 1795255831043,
+        "updated": 1795257813040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uckx",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000uckx&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 298,
+        "net": "us",
+        "code": "6000uckx",
+        "ids": ",us6000uckx,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 22,
+        "dmin": 2.534,
+        "rms": 0.58,
+        "gap": 121,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.4 - 36 km SSE of Jurm, Afghanistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.9787,
+          36.5599,
+          154.104
+        ]
+      },
+      "id": "us6000uckx"
+    },
     {
       "type": "Feature",
       "properties": {
@@ -998,92 +1041,6 @@
         ]
       },
       "id": "us6000u4h9"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.4,
-        "place": "31 km SE of Dalbandin, Pakistan",
-        "time": 1792711611920,
-        "updated": 1793942568040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u48b",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u48b&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 298,
-        "net": "us",
-        "code": "6000u48b",
-        "ids": ",us6000u48b,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 30,
-        "dmin": 6.934,
-        "rms": 1.22,
-        "gap": 191,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.4 - 31 km SE of Dalbandin, Pakistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          64.6524,
-          28.7109,
-          88.361
-        ]
-      },
-      "id": "us6000u48b"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.5,
-        "place": "12 km W of Ashk\u0101sham, Afghanistan",
-        "time": 1792663661669,
-        "updated": 1794840655040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u42e",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u42e&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 312,
-        "net": "us",
-        "code": "6000u42e",
-        "ids": ",us6000u42e,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 88,
-        "dmin": 1.848,
-        "rms": 0.86,
-        "gap": 51,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.5 - 12 km W of Ashk\u0101sham, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.389,
-          36.6802,
-          174.102
-        ]
-      },
-      "id": "us6000u42e"
     }
   ],
   "bbox": [

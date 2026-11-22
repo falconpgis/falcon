@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated_at": "2026-11-21T07:44:41.411889Z",
+  "generated_at": "2026-11-22T07:25:41.783894Z",
   "features": [
     {
       "type": "Feature",
@@ -20,7 +20,7 @@
         "percent_full": 80,
         "alert": "normal",
         "source": "seasonal-estimate",
-        "date": "2026-11-21"
+        "date": "2026-11-22"
       }
     },
     {
@@ -41,7 +41,7 @@
         "percent_full": 80,
         "alert": "normal",
         "source": "seasonal-estimate",
-        "date": "2026-11-21"
+        "date": "2026-11-22"
       }
     },
     {
@@ -62,7 +62,7 @@
         "percent_full": 80,
         "alert": "normal",
         "source": "seasonal-estimate",
-        "date": "2026-11-21"
+        "date": "2026-11-22"
       }
     },
     {
@@ -83,7 +83,7 @@
         "percent_full": 80,
         "alert": "normal",
         "source": "seasonal-estimate",
-        "date": "2026-11-21"
+        "date": "2026-11-22"
       }
     }
   ]
