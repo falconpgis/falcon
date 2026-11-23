@@ -1,42 +1,6 @@
 {
-  "fetched_utc": "2026-11-16T09:29:08.684108Z",
+  "fetched_utc": "2026-11-23T10:41:03.983849Z",
   "total_gurdwaras": 0,
-  "total_sikh_politicians": 74,
-  "by_country": [
-    {
-      "country": "India",
-      "gurdwaras": 0,
-      "sikh_mps": 56
-    },
-    {
-      "country": "United Kingdom",
-      "gurdwaras": 0,
-      "sikh_mps": 6
-    },
-    {
-      "country": "Canada",
-      "gurdwaras": 0,
-      "sikh_mps": 5
-    },
-    {
-      "country": "United States",
-      "gurdwaras": 0,
-      "sikh_mps": 4
-    },
-    {
-      "country": "Malaysia",
-      "gurdwaras": 0,
-      "sikh_mps": 1
-    },
-    {
-      "country": "Non-Aligned Movement",
-      "gurdwaras": 0,
-      "sikh_mps": 1
-    },
-    {
-      "country": "Patiala State",
-      "gurdwaras": 0,
-      "sikh_mps": 1
-    }
-  ]
+  "total_sikh_politicians": 0,
+  "by_country": []
 }
