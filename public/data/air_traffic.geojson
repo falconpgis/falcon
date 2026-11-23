@@ -6,58 +6,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          73.8247,
-          32.1501
+          75.3461,
+          31.377
         ]
       },
       "properties": {
-        "icao24": "6831e4",
-        "callsign": "VSV5317",
-        "country": "Kazakhstan",
-        "altitude_ft": 36000,
-        "speed_kts": 413,
-        "heading": 322,
-        "date": "2026-11-22T07:25:19.965359Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.9623,
-          31.999
-        ]
-      },
-      "properties": {
-        "icao24": "abaf47",
-        "callsign": "abaf47",
-        "country": "United States",
-        "altitude_ft": 37000,
-        "speed_kts": 504,
-        "heading": 143,
-        "date": "2026-11-22T07:25:19.965359Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.9486,
-          29.8872
-        ]
-      },
-      "properties": {
-        "icao24": "80154b",
-        "callsign": "IGO604",
+        "icao24": "80171b",
+        "callsign": "IGO2496",
         "country": "India",
-        "altitude_ft": 35975,
+        "altitude_ft": 36000,
         "speed_kts": 419,
-        "heading": 191,
-        "date": "2026-11-22T07:25:19.965359Z",
+        "heading": 15,
+        "date": "2026-11-23T08:11:50.439550Z",
         "source": "OpenSky Network"
       }
     },
@@ -66,18 +26,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.4676,
-          31.1153
+          75.73,
+          29.6628
         ]
       },
       "properties": {
-        "icao24": "4cad1f",
-        "callsign": "KZR8132",
-        "country": "Ireland",
-        "altitude_ft": 33975,
-        "speed_kts": 395,
-        "heading": 294,
-        "date": "2026-11-22T07:25:19.965359Z",
+        "icao24": "801403",
+        "callsign": "AXB3305",
+        "country": "India",
+        "altitude_ft": 32350,
+        "speed_kts": 485,
+        "heading": 141,
+        "date": "2026-11-23T08:11:50.439550Z",
         "source": "OpenSky Network"
       }
     },
@@ -86,18 +46,38 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.3276,
-          30.6583
+          75.288,
+          30.016
         ]
       },
       "properties": {
-        "icao24": "151fe1",
-        "callsign": "AFL271",
-        "country": "Russian Federation",
-        "altitude_ft": 32000,
-        "speed_kts": 439,
-        "heading": 302,
-        "date": "2026-11-22T07:25:19.965359Z",
+        "icao24": "750551",
+        "callsign": "MAS492",
+        "country": "Malaysia",
+        "altitude_ft": 30825,
+        "speed_kts": 404,
+        "heading": 352,
+        "date": "2026-11-23T08:11:50.439550Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.4204,
+          31.5072
+        ]
+      },
+      "properties": {
+        "icao24": "6010ef",
+        "callsign": "ANK577",
+        "country": "Kyrgyzstan",
+        "altitude_ft": 37000,
+        "speed_kts": 508,
+        "heading": 142,
+        "date": "2026-11-23T08:11:50.439550Z",
         "source": "OpenSky Network"
       }
     }

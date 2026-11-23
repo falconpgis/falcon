@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795332320000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-23&endtime=2026-11-22&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795421511000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-24&endtime=2026-11-23&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -573,9 +573,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.1,
-        "place": "117 km NNE of Barishal, Pakistan",
-        "time": 1793555864661,
-        "updated": 1793573492040,
+        "place": "113 km NNE of Barishal, Pakistan",
+        "time": 1793555864570,
+        "updated": 1795380102040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tuqq",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tuqq&format=geojson",
@@ -591,13 +591,13 @@
         "ids": ",us7000tuqq,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 44,
-        "dmin": 2.256,
-        "rms": 0.83,
-        "gap": 111,
+        "nst": 50,
+        "dmin": 2.243,
+        "rms": 0.91,
+        "gap": 72,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.1 - 117 km NNE of Barishal, Pakistan",
+        "title": "M 4.1 - 113 km NNE of Barishal, Pakistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -605,8 +605,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.054,
-          37.336,
+          75.019,
+          37.3103,
           10
         ]
       },
@@ -998,49 +998,6 @@
         ]
       },
       "id": "us6000u4qc"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.1,
-        "place": "47 km SSW of Jurm, Afghanistan",
-        "time": 1792793395831,
-        "updated": 1793944034040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4h9",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u4h9&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 259,
-        "net": "us",
-        "code": "6000u4h9",
-        "ids": ",us6000u4h9,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 39,
-        "dmin": 2.291,
-        "rms": 0.57,
-        "gap": 98,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.1 - 47 km SSW of Jurm, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          70.5703,
-          36.489,
-          213.07
-        ]
-      },
-      "id": "us6000u4h9"
     }
   ],
   "bbox": [
