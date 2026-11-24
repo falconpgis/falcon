@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795421511000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-24&endtime=2026-11-23&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795515924000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-25&endtime=2026-11-24&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -143,9 +143,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.9,
-        "place": "44 km S of Jurm, Afghanistan",
-        "time": 1794778641082,
-        "updated": 1794780978040,
+        "place": "41 km S of Jurm, Afghanistan",
+        "time": 1794778641794,
+        "updated": 1795473134040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyga",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tyga&format=geojson",
@@ -161,13 +161,13 @@
         "ids": ",us7000tyga,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 67,
-        "dmin": 2.431,
-        "rms": 0.78,
-        "gap": 56,
+        "nst": 74,
+        "dmin": 2.244,
+        "rms": 0.6,
+        "gap": 55,
         "magType": "mww",
         "type": "earthquake",
-        "title": "M 4.9 - 44 km S of Jurm, Afghanistan",
+        "title": "M 4.9 - 41 km S of Jurm, Afghanistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -175,9 +175,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          70.9205,
-          36.4657,
-          191.363
+          70.8326,
+          36.4923,
+          196.642
         ]
       },
       "id": "us7000tyga"
@@ -955,49 +955,6 @@
         ]
       },
       "id": "us7000tvzm"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.3,
-        "place": "41 km SSW of Ashk\u0101sham, Afghanistan",
-        "time": 1792883289114,
-        "updated": 1794024471040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4qc",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u4qc&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 284,
-        "net": "us",
-        "code": "6000u4qc",
-        "ids": ",us6000u4qc,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 25,
-        "dmin": 2.162,
-        "rms": 0.96,
-        "gap": 117,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.3 - 41 km SSW of Ashk\u0101sham, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.287,
-          36.3699,
-          106.594
-        ]
-      },
-      "id": "us6000u4qc"
     }
   ],
   "bbox": [
