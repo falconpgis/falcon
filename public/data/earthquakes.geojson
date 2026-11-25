@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795515924000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-25&endtime=2026-11-24&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795597838000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-26&endtime=2026-11-25&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -10,6 +10,49 @@
     "offset": 1
   },
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.3,
+        "place": "27 km S of Surab, Pakistan",
+        "time": 1795486585675,
+        "updated": 1795492163040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3q",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000ud3q&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 284,
+        "net": "us",
+        "code": "6000ud3q",
+        "ids": ",us6000ud3q,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 18,
+        "dmin": 8.08,
+        "rms": 0.58,
+        "gap": 205,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.3 - 27 km S of Surab, Pakistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.2542,
+          28.2447,
+          10
+        ]
+      },
+      "id": "us6000ud3q"
+    },
     {
       "type": "Feature",
       "properties": {
@@ -572,6 +615,49 @@
     {
       "type": "Feature",
       "properties": {
+        "mag": 4.3,
+        "place": "29 km SE of Dullewala, Pakistan",
+        "time": 1793602202625,
+        "updated": 1795531779040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txjn",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000txjn&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 284,
+        "net": "us",
+        "code": "7000txjn",
+        "ids": ",us7000txjn,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 36,
+        "dmin": 2.385,
+        "rms": 0.47,
+        "gap": 143,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.3 - 29 km SE of Dullewala, Pakistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.6867,
+          31.6688,
+          10
+        ]
+      },
+      "id": "us7000txjn"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "mag": 4.1,
         "place": "113 km NNE of Barishal, Pakistan",
         "time": 1793555864570,
@@ -654,6 +740,49 @@
         ]
       },
       "id": "us7000tupb"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.3,
+        "place": "55 km NNE of Muzaffar\u0101b\u0101d, Pakistan",
+        "time": 1793275317746,
+        "updated": 1795520520040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttym",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttym&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 284,
+        "net": "us",
+        "code": "7000ttym",
+        "ids": ",us7000ttym,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 33,
+        "dmin": 1.233,
+        "rms": 0.84,
+        "gap": 77,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.3 - 55 km NNE of Muzaffar\u0101b\u0101d, Pakistan",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7119,
+          34.8306,
+          45.24
+        ]
+      },
+      "id": "us7000ttym"
     },
     {
       "type": "Feature",
@@ -869,99 +998,13 @@
         ]
       },
       "id": "us6000u4y8"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 5.2,
-        "place": "56 km SW of Ashk\u0101sham, Afghanistan",
-        "time": 1792950264344,
-        "updated": 1794607976791,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4va",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000u4va&format=geojson",
-        "felt": 6,
-        "cdi": 2.7,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 418,
-        "net": "us",
-        "code": "6000u4va",
-        "ids": ",us6000u4va,",
-        "sources": ",us,",
-        "types": ",dyfi,origin,phase-data,",
-        "nst": 129,
-        "dmin": 2.289,
-        "rms": 0.74,
-        "gap": 18,
-        "magType": "mww",
-        "type": "earthquake",
-        "title": "M 5.2 - 56 km SW of Ashk\u0101sham, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "moderate",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.1332,
-          36.2899,
-          118.444
-        ]
-      },
-      "id": "us6000u4va"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.1,
-        "place": "35 km SE of D\u0101rchul\u0101, Nepal",
-        "time": 1792912897857,
-        "updated": 1794058810040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tvzm",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tvzm&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 259,
-        "net": "us",
-        "code": "7000tvzm",
-        "ids": ",us7000tvzm,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 22,
-        "dmin": 7.584,
-        "rms": 0.99,
-        "gap": 166,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.1 - 35 km SE of D\u0101rchul\u0101, Nepal",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.8002,
-          29.6017,
-          10
-        ]
-      },
-      "id": "us7000tvzm"
     }
   ],
   "bbox": [
     60.3716,
     25.9029,
     10,
-    80.8002,
+    78.0343,
     37.72,
     216.084
   ]

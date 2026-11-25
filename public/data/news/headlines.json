@@ -1,329 +1,230 @@
 {
-  "generated": "2026-11-24T10:10:51Z",
-  "date": "2026-11-24",
+  "generated": "2026-11-25T08:55:54Z",
+  "date": "2026-11-25",
   "source": "GDELT 2.0 + RSS aggregation",
   "articles": [
     {
       "topic": "rss",
-      "title": "Want To Study Abroad, But Prefer Asia? These 10 Universities Rank Among The Region's Best",
+      "title": "Murder Accused's Hand Chopped Off With Machete, Then Shot Dead Outside Pune Court",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/want-to-study-abroad-but-prefer-asia-these-10-universities-rank-among-the-regions-best-12370254#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
+      "url": "<![CDATA[https://www.ndtv.com/pune-news/murder-accuseds-hand-chopped-off-with-machete-then-shot-dead-outside-pune-court-12374587#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
-      "topic": "china_military",
-      "title": "Opinion: Opinion | BJP Seals Punjab Deal With Akalis. But What Explains Its Demand For More Seats?",
+      "topic": "rss",
+      "title": "3 Killed, 2 Missing After 6 Of Family Thrown Into Canal In Gujarat",
       "source": "NDTV India",
       "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/opinion/bjp-seals-punjab-deal-with-akalis-but-what-explains-its-demand-for-more-seats-12370245#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "'Chor Hai Tera Chacha': When Priyanka Gandhi Slapped Boy In School For Teasing Her",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/chor-hai-tera-chacha-when-priyanka-gandhi-slapped-boy-in-school-for-teasing-her-12370005#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Amarinder Singh Pushed For Akali-BJP Alliance, But Was MIA At Announcement",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/punjab-election-amarinder-singh-pushed-for-akali-bjp-alliance-but-was-mia-at-announcement-12370179#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Probe Agency Arrests Delhi-Based Lawyer Over Link With Mahadev Betting App Case Kingpin",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/mahadev-betting-app-probe-hc-relief-paves-way-for-ed-to-arrest-delhi-based-lawyer-12368780#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "BJP, Akalis Ally In Punjab, Amit Shah Says \"Bada Bhai\" Will Be Chief Minister",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/bjp-shiromani-akali-dal-sad-announce-alliance-for-punjab-assembly-elections-12369662#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "24x7 Shops, State Renaming Among Key Proposals In Bengal Winter Session",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/west-bengal-winter-session-december-4-24x7-shops-state-renaming-among-key-proposals-in-bengal-winter-session-12370126#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "On Punjab Chief Minister Question, Amit Shah Points To \"Bada Bhai\" Akalis",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/on-punjab-chief-minister-question-amit-shah-points-to-bada-bhai-akalis-12370137#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "PM YASASVI Scholarship 2026 Offers Up To Rs 1.25 Lakh, Check Eligibility Criteria",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/pm-yasasvi-scholarship-2026-offers-up-to-rs-1-25-lakh-check-eligibility-criteria-12370120#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Akali, BJP To Fight Punjab Polls Together: What Led To Split 6 Years Ago",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/india-news/akali-bjp-to-fight-punjab-assembly-election-together-what-led-to-split-6-years-ago-12369967#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Opinion: Opinion | Might Is Right: How Xi, Putin And Trump Are Divvying Up The World",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/opinion/might-is-right-how-xi-putin-and-trump-are-divvying-up-the-world-12369950#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "'To Address Sleep Deprivation': IIT Madras Launches Sleep Study Facility, Autism Lab, E-Ambulance",
-      "source": "NDTV India",
-      "domain": "www.ndtv.com",
-      "url": "<![CDATA[https://www.ndtv.com/education/union-health-secretary-inaugurates-sleep-study-facility-autism-lab-at-iit-madras-flags-off-e-ambulance-12369943#publisher=newsstand]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Punjab by-polls: Notices served on minister, SAPM for 'violating' election code of conduct",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381918-notices-served-on-minister-sapm-for-violating-election-code-of-conduct]]>",
-      "date": "<![CDATA[F",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "27th Amendment empowers FCC to hear all constitutional cases: minister",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381786-27th-amendment-empowers-fcc-to-hear-all-constitutional-cases-minister]]>",
-      "date": "<![CDATA[F",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "JF-17 attracts strong attention at Dubai Airshow as friendly country inks procurement MoU",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381731-jf-17-attracts-strong-attention-at-dubai-airshow-as-friendly-country-inks-procurement-mou]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "US lawmakers laud Punjab govt's initiative to modernise brick-kiln",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381705-us-lawmakers-laud-punjab-govts-initiative-to-modernise-brick-kiln]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Security forces gun down 30 terrorists in multiple IBOs in KP: ISPR",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381698-security-forces-gun-down-30-terrorists-in-multiple-ibos-in-kp-ispr]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "MQM-P calls for new province in Sindh",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381701-mqm-p-calls-for-new-province-in-sindh]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "pakistan_economy",
-      "title": "US report validates Pakistan military edge over India: PM",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1381699-us-report-validates-pakistan-military-edge-over-india-pm]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "pakistan_economy",
-      "title": "Banned TTP poses serious threat to Pakistan security: UNSC panel",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359210-banned-ttp-poses-serious-threat-to-pakistan-security-unsc-panel]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "CM Afridi clarifies remarks on by-poll after ECP requests army deployment",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359222-ecp-seeks-troops-deployment-in-haripur-by-polls-takes-notices-of-cm-afridis-threats]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "pakistan_economy",
-      "title": "Dubai sees 3.2m Pakistani passengers in 2025 as airport sets new milestone",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359184-dubai-sees-32m-pakistani-passengers-in-2025-as-airport-sets-new-milestone]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Security forces kill 23 Indian proxy terrorists in KP's Kurram",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359185-security-forces-kill-23-indian-proxy-terrorists-in-kps-kurram]]>",
-      "date": "<![CDATA[T",
-      "tone": null
-    },
-    {
-      "topic": "pakistan_economy",
-      "title": "Pakistan to construct island to boost oil exploration: report",
-      "source": "The News Pakistan",
-      "domain": "www.thenews.com.pk",
-      "url": "<![CDATA[https://www.thenews.com.pk/latest/1359101-pakistan-to-construct-island-to-boost-oil-exploration-report]]>",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/3-killed-2-missing-after-6-of-maharashtra-family-thrown-into-canal-in-surat-gujarat-12374090#publisher=newsstand]]>",
       "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "Why S Korea issued air raid alert after Russian jets flew near its airspace",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/why-s-korea-issued-air-raid-alert-after-russian-jets-flew-near-its-airspace?traffic_source=rss",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Russian attack kills two people in Ukraine’s Zaporizhzhia",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/russian-attack-kills-two-people-in-ukraines-zaporizhzhia?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "title": "Backlash Over Comedian Yash Maheshwari's Chhath Sindoor Joke, He Apologises",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/backlash-over-comedian-yash-maheshwaris-chhath-sindoor-joke-he-apologises-12374574#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "US army says detonation of lead explosives in Iowa will proceed",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/us-army-says-detonation-of-lead-explosives-in-iowa-will-proceed?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "title": "CJP's Saurav Das Approaches Court After He Was Stopped From Flying To UK",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/cjps-saurav-das-approaches-delhi-high-court-after-he-was-stopped-from-flying-to-uk-12374078#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Malaysia set to return thousands of Rohingya refugees to Myanmar",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/malaysia-set-to-return-thousands-of-rohingya-refugees-to-myanmar-2?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "title": "CAT 2026 On November  29: Check Paper Pattern, Marking Scheme, Exam Day Key Guidelines",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/cat-2026-exam-dayguidelines-cat-2026-on-november-29-check-paper-pattern-marking-scheme-what-is-allowed-and-not-12374544#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Moment Mexican troops captured cartel leader ‘El Chapo Isidro’",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/11/24/moment-mexican-troops-captured-cartel-leader-el-chapo?traffic_source=rss",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "pakistan_economy",
-      "title": "Pakistan’s Zeeshan Ali set for historic flight to China’s space station",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/pakistans-zeeshan-ali-set-for-historic-flight-to-chinas-space-station?traffic_source=rss",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Wars choke global food routes, threatening aid for 7.3 million, WFP warns",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/wars-choke-global-food-routes-threatening-aid-for-7-3-million-wfp-warns?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "title": "After Temple, Mosque, Pillar Enters Deepam Row: Story Of A Contested Hilltop",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/deepathoon-karthigai-deepam-thirupparankundram-madurai-a-lamp-a-hill-and-history-dating-back-to-londons-privy-council-intervention-12374247#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Why has Yemen’s offensive against the Houthis in al-Bayda stalled?",
-      "source": "Al Jazeera World",
-      "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/why-has-yemens-offensive-against-the-houthis-in-al-bayda-stalled?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "title": "Tamil Nadu Blames Temple Board For Defying Supreme Court's Deepam Order",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/madurai-official-apology-to-supreme-court-on-why-hilltop-lamp-karthigai-deepam-was-not-lit-12374331#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "\"Forced\" To Announce Seats: Samajwadi Party Sources Amid Rift With Congress",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/why-samajwadi-party-announced-5-candidates-amid-up-seat-sharing-talks-12374084#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "\"Need Rahul Gandhi To Beat BJP\": Congress MP Breathes Fire on Samajwadi Party",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/up-election-congress-sp-seat-sharing-need-rahul-gandhi-to-beat-bjp-congress-mp-breathes-fire-on-samajwadi-party-12374384#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Man Punches Co-Passenger On IndiGo Flight, Tries To Choke Him With Belt",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/india-news/man-punches-co-passenger-on-indigo-abu-dhabi-kochi-flight-tries-to-choke-him-with-belt-12373772#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "IIM Mumbai Opens Admissions For Advanced Project Management Programme, Check Details",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/education/iim-mumbai-opens-admissions-for-advanced-project-management-programme-check-details-12374385#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Opinion: Opinion | Indian Firms Are Making Record Profits. Why Are Foreign Investors Still Leaving?",
+      "source": "NDTV India",
+      "domain": "www.ndtv.com",
+      "url": "<![CDATA[https://www.ndtv.com/opinion/indian-firms-are-making-record-profits-why-are-foreign-investors-still-leaving-12374323#publisher=newsstand]]>",
+      "date": "<![CDATA[W",
       "tone": null
     },
     {
       "topic": "china_military",
-      "title": "Sheikh Hasina plans to return to Bangladesh from exile on December 16",
+      "title": "Galatasaray defy Israel’s complaint to UEFA over pro-Palestine banners",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/sheikh-hasina-plans-to-return-to-bangladesh-from-exile-on-december-16?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "url": "https://www.aljazeera.com/sports/2026/11/25/galatasaray-defy-israels-complaint-to-uefa-over-pro-palestine-banners?traffic_source=rss",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Member states must not betray the ICC",
+      "title": "Saudi-led coalition intercepts Houthi attacks after Hodeidah strike",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/opinions/2026/11/24/member-states-must-not-betray-the-icc?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "url": "https://www.aljazeera.com/news/2026/11/25/saudi-led-coalition-intercepts-houthi-attacks-after-hodeidah-strike?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Countries that thrive on global cooperation must help sustain it",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/opinions/2026/11/25/countries-that-thrive-on-global-cooperation-must-help-sustain-it?traffic_source=rss",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "Australia warns tech giants of multibillion-dollar fines for online ‘harm’",
+      "title": "Is Russia really aiming for a new European security architecture?",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/news/2026/11/24/australia-warns-tech-giants-of-multibillion-dollar-fines-for-online-harm?traffic_source=rss",
-      "date": "Tue, 24 No",
+      "url": "https://www.aljazeera.com/opinions/2026/11/25/is-russia-really-aiming-for-a-new-european-security-architecture?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "From stargazing to space: Pakistan watches its first astronaut take flight",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/features/2026/11/25/from-stargazing-to-space-pakistan-watches-its-first-astronaut-take-flight?traffic_source=rss",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Why Eisenkot is negotiating with Netanyahu",
+      "title": "Rescuers search for dozens trapped in flooded Indonesia gold mine",
       "source": "Al Jazeera World",
       "domain": "www.aljazeera.com",
-      "url": "https://www.aljazeera.com/opinions/2026/11/24/why-eisenkot-is-negotiating-with-netanyahu?traffic_source=rss",
+      "url": "https://www.aljazeera.com/news/2026/11/25/rescuers-search-for-dozens-trapped-in-flooded-indonesia-gold-mine?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Sentences served, but Gaza prisoners remain behind Israeli bars",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/sentences-served-but-gaza-prisoners-remain-behind-israeli-bars?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "Pakistan rejoices as country’s first astronaut enters orbit",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/pakistan-rejoices-as-countrys-first-astronaut-enters-orbit?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Bangladesh garment workers win 36% pay rise after weeks of protest",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/bangladesh-garment-workers-win-36-pay-rise-after-weeks-of-protest?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Phone spying to missiles: Why India-Israel strategic ties go beyond Modi",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/phone-spying-to-missiles-why-india-israel-strategic-ties-go-beyond-modi?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "The Gambia election: Can the next president deliver on a decade of promise",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/the-gambia-election-can-the-next-president-deliver-on-a-decade-of-promise?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "UK warns companies of potential Russian sabotage threat",
+      "source": "Al Jazeera World",
+      "domain": "www.aljazeera.com",
+      "url": "https://www.aljazeera.com/news/2026/11/25/uk-warns-companies-of-potential-russian-sabotage-threat?traffic_source=rss",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "russia_ukraine",
+      "title": "More than 300 Russians killed as Moscow props up Mali’s junta, leaked data reveals",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/24/russian-fighters-killed-in-mali-africa-leaked-data",
       "date": "Tue, 24 No",
       "tone": null
     },
@@ -365,11 +266,38 @@
     },
     {
       "topic": "rss",
-      "title": "One in four women globally unable to refuse sex within marriage, says UN",
+      "title": "All hostages freed after Colombian security forces storm supermarket, says president",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/global-development/2026/nov/19/women-girls-rights-rape-sexual-violence-africa-marriage-unfpa",
-      "date": "Thu, 19 No",
+      "url": "https://www.theguardian.com/world/2026/nov/25/hostages-freed-colombia-security-forces-storm-cartagena-supermarket",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Colombia’s president arrives at scene of supermarket hostage siege in tourist city",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/24/cartagena-colombia-hostages-supermarket",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Kilmar Ábrego García, man at center of Trump deportation battle, leaves US",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/us-news/2026/nov/24/kilmar-abrego-garcia-leaves-us",
+      "date": "Tue, 24 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Life expectancy in Cuba falls for first time since 1950 amid economic crisis",
+      "source": "Guardian World",
+      "domain": "www.theguardian.com",
+      "url": "https://www.theguardian.com/world/2026/nov/24/cuba-life-expectancy-decline",
+      "date": "Tue, 24 No",
       "tone": null
     },
     {
@@ -382,264 +310,219 @@
       "tone": null
     },
     {
-      "topic": "rss",
-      "title": "Barbados town’s three-year deal with Bristol ‘part of the reparative process’",
+      "topic": "china_military",
+      "title": "China investigates politburo star in Xi Jinping’s latest purge",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/news/2026/nov/23/barbados-minister-speightstown-bristol-deal-slave-trade-reparations",
-      "date": "Mon, 23 No",
+      "url": "https://www.theguardian.com/world/2026/nov/25/china-investigates-politburo-chen-jining-xi-jinping-purge",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Trump administration deported US citizen to Mexico, DoJ admits in court",
+      "title": "The Nvidia case is just the latest episode of Trump disregarding intelligence",
       "source": "Guardian World",
       "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/us-news/2026/nov/23/trump-administration-deported-citizen-mexico",
-      "date": "Mon, 23 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Bank of England directors illegally profited from post-abolition enslavement in Cuba",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/news/2026/nov/22/bank-of-england-directors-illegally-profited-enslavement-cuba",
-      "date": "Sun, 22 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Alleged Mexican drug cartel boss ‘El Chapo Isidro’ arrested in special forces raid",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/21/alleged-mexican-drug-cartel-boss-el-chapo-isidro-meza-flores-arrested",
-      "date": "Sat, 21 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Malaysia to send thousands of migrants back to Myanmar as PM acknowledges junta’s ‘atrocities’",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/24/malaysia-to-send-thousands-of-migrants-back-to-myanmar",
+      "url": "https://www.theguardian.com/technology/2026/nov/24/nvidia-trump-huang-intelligence",
       "date": "Tue, 24 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "South Korea tells island residents to take shelter after Russian military aircraft approach",
-      "source": "Guardian World",
-      "domain": "www.theguardian.com",
-      "url": "https://www.theguardian.com/world/2026/nov/24/south-korea-tells-island-residents-to-take-shelter-after-russian-military-aircraft-approach",
-      "date": "Tue, 24 No",
+      "title": "Trump shelves plans for business deals with Russia",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/36e342f2-17d4-48a7-80f6-2456dfdd6f91?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "‘Tech bros strike back’ as Trump rescues Nvidia’s Huang",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/a1374617-d3a2-415a-8490-72b164eefc0e?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "A French crisis would be a threat — and opportunity — for Europe",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/c72a8e34-13c2-4336-90b1-e59bac95c78b?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "How an ex-McKinsey partner reverse engineered a $500bn wealth manager",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/2a40938d-d3c8-47dd-a5e9-b728b685a5ed?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Tech stocks slide as confidence in AI trade fades",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/705eb84c-801d-4a96-b908-e366511e886a?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "‘Anflopic’ bodes badly for OpenAI’s IPO prospects",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/1c62dcfe-826f-4638-a9ee-c3b3009bc45d",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "Inside the ‘war room’ that lobbied Trump to bring back Jensen Huang",
+      "title": "Europe must not accept ‘hybrid’ warfare as normal, defence chief warns",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/82d3be02-8ac7-4acb-aefa-6e3722ee05cc?syn-25a6b1a6=1",
-      "date": "Mon, 23 No",
+      "url": "https://www.ft.com/content/7f57f64e-1f85-4be8-87ec-2db18830ebb2?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Trump made up to $15mn on Nvidia shares after Huang’s return",
+      "title": "Trump readies raft of new tariffs on major economies",
       "source": "Financial Times",
       "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/67b0a070-c2a9-4229-885a-383cca657763?syn-25a6b1a6=1",
-      "date": "Mon, 23 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "US lawmakers vow to sharpen Huang probes as he returns to Nvidia",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/6b4e5bfb-d566-4a61-a12c-057881a261b8?syn-25a6b1a6=1",
-      "date": "Mon, 23 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Big Tech’s blind spot",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/c96c40c5-6b07-4433-b65f-19105e9ccb44?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Britain bought fake C4 explosives for Ukraine",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/b5873050-2b90-4889-bbf6-902234e51e9f?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "The political tide is turning on US audits",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/b7726a77-5f25-4c9c-8900-1609479b34b8?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "US tech stocks set to slip after blistering rally",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/c0cb932a-076e-4471-8009-91749fde5f47?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Singapore is no backdoor for US chips, PM says",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/6ca21b39-ff62-42e0-9695-9220b438f7eb?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Pentagon delays Patriot missile shipments to Ukraine",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/02db16f6-808f-44b4-98dc-fe47f6a04d33?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "OpenAI engineer possessed dozens of meeting recordings, say US prosecutors",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/f860152a-6bd6-43f7-8ba1-4a6ae94d6565?syn-25a6b1a6=1",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Top Fed official probed over whether she breached ‘blackout period’",
-      "source": "Financial Times",
-      "domain": "www.ft.com",
-      "url": "https://www.ft.com/content/2c1fcdc0-eb16-4cee-9041-736527c2ae83?syn-25a6b1a6=1",
-      "date": "Mon, 23 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Hongkongers face higher power bills next year as CLP, HK Electric raise tariffs",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/society/article/3375624/hongkongers-face-higher-power-bills-next-year-clp-hk-electric-raise-tariffs",
+      "url": "https://www.ft.com/content/335b593d-1478-4550-ab0a-71fec6280eb0?syn-25a6b1a6=1",
       "date": "Tue, 24 No",
       "tone": null
     },
     {
       "topic": "china_military",
-      "title": "China’s carmakers overtake Japanese rivals in 14 markets this year amid high EV demand",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/economy/global-economy/article/3375618/chinas-carmakers-overtake-japanese-rivals-14-markets-year-amid-high-ev-demand",
+      "title": "Huang says he still does not believe in CEO succession planning at Nvidia",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/cd1831d0-c3f1-4705-b8e2-badfb5e39764?syn-25a6b1a6=1",
       "date": "Tue, 24 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "What next for Malaysia’s 133,000 Rohingya after Turkey’s refusal?",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/people/article/3375614/what-next-malaysias-133000-rohingya-after-turkeys-refusal",
-      "date": "Tue, 24 No",
+      "title": "Will the Nvidia fallout kill off Asia’s data centre boom?",
+      "source": "Financial Times",
+      "domain": "www.ft.com",
+      "url": "https://www.ft.com/content/e5df32d1-1801-4d81-b2f5-b83e93377c1c?syn-25a6b1a6=1",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
-      "topic": "china_military",
-      "title": "China’s carrier-based JL-15 fighter trainer to make public debut at Zhuhai air show",
+      "topic": "rss",
+      "title": "Meta officials meet India’s Congress party to calm social media takedown row",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/military/article/3375608/chinas-carrier-based-jl-15-fighter-trainer-make-public-debut-zhuhai-air-show",
-      "date": "Tue, 24 No",
+      "url": "https://www.scmp.com/news/asia/south-asia/article/3375747/meta-officials-meet-indias-congress-party-calm-social-media-takedown-row",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Malaysian regulator sues Google for US$146m over ‘harmful’ online content",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/week-asia/politics/article/3375742/malaysian-regulator-sues-google-us146m-over-harmful-online-content",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Hong Kong tourist spending hits HK$111 billion in first half of 2026",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375740/hong-kong-tourist-spending-hits-hk111-billion-first-half-2026",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "russia_ukraine",
-      "title": "China couple run silent eatery where greetings, orders require no words – only warm smiles",
+      "title": "Is Malaysia’s subsidy tsar next to leave Anwar Ibrahim’s cabinet?",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/people-culture/trending-china/article/3375620/china-couple-run-silent-eatery-where-greetings-orders-require-no-words-only-warm-smiles",
-      "date": "Tue, 24 No",
+      "url": "https://www.scmp.com/week-asia/politics/article/3375739/malaysias-subsidy-tsar-next-leave-anwar-ibrahims-cabinet",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Abby Choi’s ex-husband says he lacked legal advice when he named father as killer",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375737/abby-chois-ex-husband-says-he-lacked-legal-advice-when-he-named-father-killer",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Policeman fined, banned from driving after no ‘causation’ of death found in crash",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375736/policeman-fined-banned-driving-after-no-causation-death-found-crash",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "BYD apologises for wheel-rim error; Chinese car buyers go electric: 7 EV reads",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/business/china-evs/article/3375716/byd-apologises-wheel-rim-error-chinese-car-buyers-go-electric-7-ev-reads",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "pakistan_economy",
+      "title": "China-Pakistan crewed space mission was a decade in the making: minister",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/china/science/article/3375722/china-pakistan-crewed-space-mission-was-decade-making-minister",
+      "date": "Wed, 25 No",
+      "tone": null
+    },
+    {
+      "topic": "rss",
+      "title": "Families of 9 out of 10 helpers killed in Tai Po blaze still awaiting compensation",
+      "source": "SCMP China",
+      "domain": "www.scmp.com",
+      "url": "https://www.scmp.com/news/hong-kong/society/article/3375666/families-9-out-10-helpers-killed-tai-po-blaze-still-awaiting-compensation",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "china_military",
-      "title": "China approves 2-month suspension extension for select US export restrictions",
+      "title": "BYD eyes a second European plant, enters talks with Ineos over a French assembly",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/economy/global-economy/article/3375609/china-approves-2-month-extension-select-us-export-restrictions",
-      "date": "Tue, 24 No",
+      "url": "https://www.scmp.com/business/china-evs/article/3375711/byd-eyes-second-european-plant-enters-talks-ineos-over-french-assembly-france",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "US B94 nuclear bomb designation signals renewed push for bunker-busting weapons",
+      "title": "Migrant who became a symbol in Trump crackdown leaves US voluntarily",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/china/military/article/3375597/us-b94-nuclear-bomb-designation-signals-renewed-push-bunker-busting-weapons",
-      "date": "Tue, 24 No",
+      "url": "https://www.scmp.com/news/world/united-states-canada/article/3375712/migrant-who-became-symbol-trump-crackdown-leaves-us-voluntarily",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
       "topic": "rss",
-      "title": "Why Japan is taking its missile drills to Indian soil",
+      "title": "Japanese DJ Mao reports alleged theft of jewellery worth HK$158,000 on flight",
       "source": "SCMP China",
       "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/week-asia/politics/article/3375590/why-japan-taking-its-missile-drills-indian-soil",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "china_military",
-      "title": "Dutch minister heads to China as Nvidia saga revives US push for tougher ASML curbs",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/economy/policy/article/3375565/dutch-minister-heads-china-nvidia-saga-revives-us-push-tougher-asml-curbs",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "rss",
-      "title": "Hong Kong school reminded on rest after requiring night study for lagging pupils",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/education/article/3375607/hong-kong-school-reminded-rest-after-requiring-night-study-lagging-pupils",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "Hongkongers’ Mark Six excitement snowballs towards HK$73 million jackpot",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3375604/hongkongers-mark-six-excitement-snowballs-towards-hk73-million-jackpot",
-      "date": "Tue, 24 No",
-      "tone": null
-    },
-    {
-      "topic": "russia_ukraine",
-      "title": "North Korea threatens to shut Swiss office over Russian youth camp sanctions",
-      "source": "SCMP China",
-      "domain": "www.scmp.com",
-      "url": "https://www.scmp.com/news/asia/east-asia/article/3375602/north-korea-threatens-shut-swiss-office-over-russian-youth-camp-sanctions",
-      "date": "Tue, 24 No",
+      "url": "https://www.scmp.com/news/hong-kong/law-and-crime/article/3375710/japanese-dj-mao-reports-alleged-theft-jewellery-worth-hk158000-flight",
+      "date": "Wed, 25 No",
       "tone": null
     },
     {
