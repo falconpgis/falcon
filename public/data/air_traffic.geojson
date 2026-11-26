@@ -6,98 +6,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.5119,
-          31.8793
+          75.3494,
+          31.3877
         ]
       },
       "properties": {
-        "icao24": "801615",
+        "icao24": "801627",
         "callsign": "AXB1391",
         "country": "India",
-        "altitude_ft": 35750,
-        "speed_kts": 451,
-        "heading": 16,
-        "date": "2026-11-25T09:10:37.385695Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.2231,
-          30.2784
-        ]
-      },
-      "properties": {
-        "icao24": "801685",
-        "callsign": "AXB108",
-        "country": "India",
-        "altitude_ft": 21750,
-        "speed_kts": 375,
-        "heading": 347,
-        "date": "2026-11-25T09:10:37.385695Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.3442,
-          31.1516
-        ]
-      },
-      "properties": {
-        "icao24": "4bb1c5",
-        "callsign": "THY727",
-        "country": "Turkey",
-        "altitude_ft": 36000,
-        "speed_kts": 430,
-        "heading": 291,
-        "date": "2026-11-25T09:10:37.385695Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.7388,
-          31.3035
-        ]
-      },
-      "properties": {
-        "icao24": "68332c",
-        "callsign": "VSV5302",
-        "country": "Kazakhstan",
-        "altitude_ft": 34000,
-        "speed_kts": 419,
-        "heading": 286,
-        "date": "2026-11-25T09:10:37.385695Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.0812,
-          30.8757
-        ]
-      },
-      "properties": {
-        "icao24": "4ac8da",
-        "callsign": "BLX248",
-        "country": "Sweden",
         "altitude_ft": 38000,
-        "speed_kts": 452,
-        "heading": 317,
-        "date": "2026-11-25T09:10:37.385695Z",
+        "speed_kts": 448,
+        "heading": 16,
+        "date": "2026-11-26T08:55:51.955468Z",
         "source": "OpenSky Network"
       }
     },
@@ -106,18 +26,38 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.4024,
-          31.2612
+          74.649,
+          31.3259
         ]
       },
       "properties": {
-        "icao24": "80155b",
-        "callsign": "IGO912",
+        "icao24": "461f53",
+        "callsign": "FIN144",
+        "country": "Finland",
+        "altitude_ft": 36000,
+        "speed_kts": 462,
+        "heading": 286,
+        "date": "2026-11-26T08:55:51.955468Z",
+        "source": "OpenSky Network"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.5751,
+          31.3576
+        ]
+      },
+      "properties": {
+        "icao24": "800b9a",
+        "callsign": "AXB115",
         "country": "India",
-        "altitude_ft": 34025,
-        "speed_kts": 453,
-        "heading": 11,
-        "date": "2026-11-25T09:10:37.385695Z",
+        "altitude_ft": 25975,
+        "speed_kts": 59,
+        "heading": 124,
+        "date": "2026-11-26T08:55:51.955468Z",
         "source": "OpenSky Network"
       }
     },
@@ -126,38 +66,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.7588,
-          30.6817
+          74.6703,
+          31.3202
         ]
       },
       "properties": {
-        "icao24": "4851b3",
-        "callsign": "KLM844",
-        "country": "Kingdom of the Netherlands",
-        "altitude_ft": 32000,
-        "speed_kts": 473,
-        "heading": 299,
-        "date": "2026-11-25T09:10:37.385695Z",
-        "source": "OpenSky Network"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.0184,
-          30.9339
-        ]
-      },
-      "properties": {
-        "icao24": "507c48",
-        "callsign": "UZB424",
-        "country": "Uzbekistan",
-        "altitude_ft": 32000,
-        "speed_kts": 443,
-        "heading": 317,
-        "date": "2026-11-25T09:10:37.385695Z",
+        "icao24": "39d2a7",
+        "callsign": "AFR199",
+        "country": "France",
+        "altitude_ft": 36000,
+        "speed_kts": 460,
+        "heading": 286,
+        "date": "2026-11-26T08:55:51.955468Z",
         "source": "OpenSky Network"
       }
     }
