@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795683353000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-27&endtime=2026-11-26&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795770367000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-28&endtime=2026-11-27&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -271,10 +271,10 @@
     {
       "type": "Feature",
       "properties": {
-        "mag": 4,
-        "place": "32 km SE of Kargil, India",
-        "time": 1794632367508,
-        "updated": 1794634908040,
+        "mag": 4.1,
+        "place": "50 km SE of Kargil, India",
+        "time": 1794632366629,
+        "updated": 1795755435040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty72",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ty72&format=geojson",
@@ -284,19 +284,19 @@
         "alert": null,
         "status": "reviewed",
         "tsunami": 0,
-        "sig": 246,
+        "sig": 259,
         "net": "us",
         "code": "7000ty72",
         "ids": ",us7000ty72,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 27,
-        "dmin": 2.689,
-        "rms": 0.76,
-        "gap": 186,
+        "nst": 32,
+        "dmin": 2.783,
+        "rms": 0.72,
+        "gap": 165,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.0 - 32 km SE of Kargil, India",
+        "title": "M 4.1 - 50 km SE of Kargil, India",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -304,12 +304,55 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.392,
-          34.3601,
+          76.5376,
+          34.2578,
           10
         ]
       },
       "id": "us7000ty72"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.2,
+        "place": "54 km E of Bhadarw\u0101h, India",
+        "time": 1794626330712,
+        "updated": 1795751888040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucc1",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6000ucc1&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 271,
+        "net": "us",
+        "code": "6000ucc1",
+        "ids": ",us6000ucc1,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 15,
+        "dmin": 2.606,
+        "rms": 1.2,
+        "gap": 148,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.2 - 54 km E of Bhadarw\u0101h, India",
+        "near_punjab": false,
+        "alert_level": "minor",
+        "source": "USGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.2937,
+          33.0327,
+          10
+        ]
+      },
+      "id": "us6000ucc1"
     },
     {
       "type": "Feature",
@@ -869,92 +912,6 @@
         ]
       },
       "id": "us7000ttmk"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.4,
-        "place": "30 km SW of Ashk\u0101sham, Afghanistan",
-        "time": 1793116622184,
-        "updated": 1795202311040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttgz",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttgz&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 298,
-        "net": "us",
-        "code": "7000ttgz",
-        "ids": ",us7000ttgz,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 69,
-        "dmin": 2.065,
-        "rms": 0.69,
-        "gap": 53,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.4 - 30 km SW of Ashk\u0101sham, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.3374,
-          36.4581,
-          120.331
-        ]
-      },
-      "id": "us7000ttgz"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.6,
-        "place": "48 km S of Farkh\u0101r, Afghanistan",
-        "time": 1793110147498,
-        "updated": 1795191494040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttgc",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttgc&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 326,
-        "net": "us",
-        "code": "7000ttgc",
-        "ids": ",us7000ttgc,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 129,
-        "dmin": 1.741,
-        "rms": 0.43,
-        "gap": 43,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.6 - 48 km S of Farkh\u0101r, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          69.9187,
-          36.1377,
-          123.027
-        ]
-      },
-      "id": "us7000ttgc"
     }
   ],
   "bbox": [
