@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1795770367000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-28&endtime=2026-11-27&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
+    "generated": 1795854432000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-10-29&endtime=2026-11-28&minlatitude=25.0&maxlatitude=38.0&minlongitude=60.0&maxlongitude=85.0&minmagnitude=3.0&orderby=time&limit=500",
     "title": "USGS Earthquakes",
     "status": 200,
     "api": "2.8.4",
@@ -530,9 +530,9 @@
       "type": "Feature",
       "properties": {
         "mag": 4.2,
-        "place": "47 km SSW of Jurm, Afghanistan",
-        "time": 1793818489398,
-        "updated": 1793833199040,
+        "place": "43 km S of Jurm, Afghanistan",
+        "time": 1793818489335,
+        "updated": 1795810241040,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tw2x",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000tw2x&format=geojson",
@@ -548,13 +548,13 @@
         "ids": ",us7000tw2x,",
         "sources": ",us,",
         "types": ",origin,phase-data,",
-        "nst": 41,
-        "dmin": 2.32,
-        "rms": 0.86,
+        "nst": 46,
+        "dmin": 2.298,
+        "rms": 0.88,
         "gap": 87,
         "magType": "mb",
         "type": "earthquake",
-        "title": "M 4.2 - 47 km SSW of Jurm, Afghanistan",
+        "title": "M 4.2 - 43 km S of Jurm, Afghanistan",
         "near_punjab": false,
         "alert_level": "minor",
         "source": "USGS"
@@ -562,9 +562,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          70.7177,
-          36.446,
-          199.264
+          70.7427,
+          36.4774,
+          199.924
         ]
       },
       "id": "us7000tw2x"
@@ -826,92 +826,6 @@
         ]
       },
       "id": "us7000ttym"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.2,
-        "place": "32 km WSW of Ashk\u0101sham, Afghanistan",
-        "time": 1793190810814,
-        "updated": 1794904199040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttnr",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttnr&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 271,
-        "net": "us",
-        "code": "7000ttnr",
-        "ids": ",us7000ttnr,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 63,
-        "dmin": 2.644,
-        "rms": 0.54,
-        "gap": 73,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.2 - 32 km WSW of Ashk\u0101sham, Afghanistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.2125,
-          36.5487,
-          216.084
-        ]
-      },
-      "id": "us7000ttnr"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "mag": 4.1,
-        "place": "47 km ESE of Khorugh, Tajikistan",
-        "time": 1793171259319,
-        "updated": 1794904401040,
-        "tz": null,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttmk",
-        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000ttmk&format=geojson",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
-        "status": "reviewed",
-        "tsunami": 0,
-        "sig": 259,
-        "net": "us",
-        "code": "7000ttmk",
-        "ids": ",us7000ttmk,",
-        "sources": ",us,",
-        "types": ",origin,phase-data,",
-        "nst": 26,
-        "dmin": 1.018,
-        "rms": 1.26,
-        "gap": 123,
-        "magType": "mb",
-        "type": "earthquake",
-        "title": "M 4.1 - 47 km ESE of Khorugh, Tajikistan",
-        "near_punjab": false,
-        "alert_level": "minor",
-        "source": "USGS"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72.0594,
-          37.3503,
-          165.505
-        ]
-      },
-      "id": "us7000ttmk"
     }
   ],
   "bbox": [
@@ -920,6 +834,6 @@
     10,
     78.0343,
     37.72,
-    216.084
+    202.737
   ]
 }
